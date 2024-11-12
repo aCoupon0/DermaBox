@@ -10,7 +10,7 @@ const client = twilio(accountSid, authToken);
 
 // Crear una instancia de Express
 const app = express();
-const port = 3000; // Puedes cambiar el puerto si es necesario
+const PORT = process.env.PORT || 3000;
 
 // Middleware para analizar el cuerpo JSON de las solicitudes
 app.use(express.json());
@@ -47,6 +47,6 @@ app.post('/send-message', (req, res) => {
 
 
 // Iniciar el servidor
-app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
