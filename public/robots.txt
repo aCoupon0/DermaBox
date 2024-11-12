@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /limpiador.html
+Disallow: /hidratante.html
+Disallow: /bloqueador.html
+Disallow: /potenciador.html
+Disallow: /formulario.html
+Disallow: /confirmacion.html
+Allow: /index.html

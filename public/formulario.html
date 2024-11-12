@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador de rutinas Skincare personalizadas</title>
+    <link rel="stylesheet" href="/css/formulario.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="robots" content="noindex, nofollow">
+</head>
+
+<body>
+    <div class="logo-zone">
+        <button class="circle-btn" onclick="irAtras()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <p class="txt-1">Tu primer DermaBox</p>
+    </div>
+
+    <div class="exchange-zone">
+        <i class="fas fa-retweet"></i>
+        <p>Intercambia entre la versión Estándar y Premium</p>
+    </div>
+    <!-- Lista donde se renderizan los productos -->
+    <div id="product-list" class="flatlist"></div>
+
+    <div class="price-zone">
+        <div class="price-zone-1">
+            <p class="precio"></p>
+            <p class="envio"></p>
+        </div>
+        <div class="price-zone-2">
+            <button class="purchase-btn">COMPRAR</button>
+        </div>
+
+    </div>
+    <div class="formulario-separador"></div>
+    <div class="duration-bar">
+        <div class="duration-container">
+            <p class="duration-txt-1">QUIZ DE SEGUIMIENTO GRATUITO</p>
+            <p class="duration-txt-2"></p>
+        </div>
+    </div>
+    <div class="routine-title">
+        <p>Cuándo y cómo hacer la rutina</p>
+    </div>
+    <div class="capture" id="capture">
+        <div class="morning-routine"></div>
+        <div class="night-routine"></div>
+    </div>
+
+    <div id="confirmation-modal" class="modal hidden">
+        <div class="modal-close">
+            <button class="circle-btn" onclick="cerrarModal()"> <i class="fas fa-arrow-left"></i></button>
+        </div>
+        <p>Ingresa los siguientes datos, por favor</p>
+
+        <!-- Inputs section -->
+        <div class="input-group">
+            <input type="text" id="name" name="name" placeholder="Nombre">
+        </div>
+
+        <div class="input-group">
+            <input type="tel" id="phone" name="phone" placeholder="Celular">
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="city" name="city" placeholder="Ciudad">
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="address" name="address" placeholder="Dirección completa">
+        </div>
+
+        <div class="separador-modal"></div>
+
+        <p>Por favor, escoge</p>
+
+        <div class="selection-group">
+            <div id="contraentrega" class="selectable" onclick="selectOption('c')">Pago Contraentrega</div>
+            <div id="nequi" class="selectable" onclick="selectOption('n')">Pago por Nequi</div>
+        </div>
+        <div class="zona-cobro">
+            <p class="cobro">COBRO:</p>
+            <p class="cobro-sign">$</p>
+            <p class="cobro-final"></p>
+        </div>
+
+        <div class="final-button-zone">
+            <button class="final-button" onclick="envioFormulario()">Pedir</button>
+        </div>   
+
+    </div>
+
+    <script src="/js/formulario.js"></script>
+</body>
+
+</html>

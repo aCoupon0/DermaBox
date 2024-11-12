@@ -1,0 +1,685 @@
+/* Reseteo de márgenes y paddings para evitar inconsistencias entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definición de la fuente 'j' */
+@font-face {
+    font-family: 'j';
+    src: url('../assets/j.ttf') format('truetype');
+}
+
+/* Definición de la fuente 'h' */
+@font-face {
+    font-family: 'h';
+    src: url('../assets/h.ttf') format('truetype');
+}
+
+/* Definición de la fuente 'hb' */
+@font-face {
+    font-family: 'hb';
+    src: url('../assets/hb.ttf') format('truetype');
+}
+
+/* Aplica la imagen de fondo fija */
+body {
+    background: url('../assets/fondo.webp') center center / cover no-repeat fixed;
+    height: 100%;
+    margin: 0;
+    overflow-y: auto;
+    font-size: 4vh;
+}
+
+html {
+    height: 100%;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('../assets/fondo.webp') center center / cover no-repeat;
+    z-index: -1;
+}
+
+.tipo-producto {
+    width: 100%;
+    margin-top: 6vw;
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    position: relative;
+    /* Posición relativa para el contenedor */
+    line-height: 1.6rem;
+    text-align: center;
+}
+
+.tipo-producto p {
+    font-family: 'hb';
+    color: white;
+    font-size: 1.5rem;
+}
+
+.separador-producto {
+    height: 55vh;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.217);
+}
+
+.atras-boton {
+    position: absolute;
+    left: 6vw;
+    /* Ajusta la distancia desde la izquierda */
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.607);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.3rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.atras-boton::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    transform: translate(-30%, -50%) rotate(-45deg);
+    /* Crear la flecha con CSS */
+}
+
+.zona-productos {
+    width: 95vw;
+    height: 66vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.084);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: 10vw;
+    border: 1px solid rgba(255, 255, 255, 0.415);
+    margin-left: 2.5vw;
+}
+
+.producto {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.zona-tipo-1 {
+    width: 60%;
+    height: 6%;
+    background-color: #163a06;
+    font-family: 'hb';
+    font-size: 4.9vw;
+    color: #d5ffc1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8vw;
+}
+
+.zona-tipo-2 {
+    width: 60%;
+    height: 6%;
+    background-color: #605501;
+    font-family: 'hb';
+    font-size: 4.9vw;
+    color: #fff9a8ea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8vw;
+}
+
+.zona-foto {
+    width: 100%;
+    height: 58%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.zona-foto img {
+    width: auto;
+    height: 90%;
+    object-fit: cover;
+    /* Asegura que la imagen cubra el área del contenedor, recortando si es necesario */
+}
+
+.zona-nombre {
+    width: 100%;
+    height: 14%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'hb';
+    font-size: 4.7vw;
+    text-align: center;
+    color: #ffffff;
+    line-height: 1.3rem;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.zona-cantidad {
+    width: 100%;
+    height: 9%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.zona-cantidad p {
+    font-family: 'hb';
+    font-size: 1.5rem;
+    color: #bfffa3;
+}
+
+.zona-eleccion {
+    width: 100%;
+    height: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton-eleccion {
+    width: 65%;
+    height: 10vw;
+    background-color: rgb(197, 255, 130);
+    color: rgb(32, 61, 0);
+    font-size: 4.5vw;
+    border-radius: 6vw;
+    font-family: 'hb';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 5vw;
+    margin-top: 3vw;
+    /* Sombra blanca */
+}
+
+.comparacion-titulo {
+    width: 100%;
+    height: 14vw;
+    font-family: 'hb';
+    font-size: 1.4rem;
+    color: #c6ffac;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.55rem;
+    /* Ajusta el tamaño del texto según sea necesario */
+    position: relative;
+    /* Necesario para posicionar la flecha */
+    background-color: #9dff473a;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    margin-top: 5vw;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+}
+
+.flecha-abajo {
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid currentColor;
+    /* Flecha toma el color del texto */
+    margin-left: 0.5rem;
+    /* Espacio entre el texto y la flecha */
+    position: relative;
+    top: 2px;
+    /* Ajusta la posición vertical de la flecha */
+}
+
+.comparacion-zona {
+    width: 100%;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0.721);
+    display: flex;
+    flex-direction: column;
+}
+
+.separador-comparativo {
+    width: 100%;
+    height: 7vw;
+    background-color: rgb(0, 0, 0);
+}
+
+.comparacion-zona-bloque-1 {
+    width: 100%;
+    height: auto;
+    padding-top: 6vw;
+    padding-right: 3vw;
+    padding-left: 3vw;
+    padding-bottom: 6vw;
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
+    align-items: center;
+    flex-direction: row;
+    font-size: 1.2rem;
+    font-family: 'hb';
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.782);
+    line-height: 1.5rem;
+}
+
+.comparacion-zona-bloque-1 p:first-child {
+    color: #C9FFB0;
+}
+
+.comparacion-zona-bloque-1 p:last-child {
+    color: #FFE88D;
+}
+
+.bloque-comparativo {
+    width: 100%;
+    height: 30vw;
+    
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    margin-bottom: 5vw;
+}
+
+.titulo-comparativo {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'hb';
+    font-size: 1.25rem;
+    color: white;
+    border-top: 1px solid rgba(255, 255, 255, 0.198);
+    border-left: none;
+    padding-top: 3vw;
+}
+
+
+.valores-comparativos {
+    width: 100%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    gap:9vw;
+    align-items: center;
+    font-family: 'hb';
+}
+
+/* Estilos para primer tipo de comparación */
+
+.valores-comparativos-1 {
+    width: 100%;
+    height: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: 'hb';
+    gap: 2px;
+}
+
+.eleccion-estandar {
+    height: 60%;
+    border-bottom-left-radius: 10vw;
+    border-top-left-radius: 10vw;
+    background: linear-gradient(135deg, #013220, #184D2B);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #C9FFB0;
+    font-family: 'hb';
+    font-size: 1.3rem;
+    box-shadow: 4px 4px 8px rgba(0, 51, 34, 0.5),
+        /* Sombra más oscura del color más oscuro */
+        0px 0px 15px rgba(0, 51, 34, 0.3);
+}
+
+.eleccion-premium {
+    height: 60%;
+    border-bottom-right-radius: 10vw;
+    border-top-right-radius: 10vw;
+    background: linear-gradient(135deg, #B8860B, #D4A017);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fffc98;
+    font-family: 'hb';
+    font-size: 1.3rem;
+    box-shadow: 4px 4px 8px rgba(130, 75, 10, 0.5),
+        /* Sombra más oscura del color más oscuro */
+        0px 0px 15px rgba(130, 75, 10, 0.3);
+}
+
+.info-opener {
+    border: none;
+    width: 45%;
+    height: 50%;
+    background-color: #d0d0d0;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    border-radius: 15vw;
+    color: rgb(35, 35, 35);
+    border: 0.5px solid rgba(0, 0, 0, 0.52);
+    font-family: 'hb';
+    font-size: 1.2rem;
+    box-shadow: 0px 3px 0px #757575d0;
+
+    /* Nuevas propiedades para truncar el texto */
+    white-space: nowrap;
+    /* Evitar saltos de línea */
+    overflow: hidden;
+    /* Ocultar el texto que se desborda */
+    text-overflow: ellipsis;
+    /* Mostrar "..." al final */
+}
+
+.valor-plus {
+    font-size: 2.3rem;
+    color: #FFE88D;
+    text-shadow:
+        1px 1px 4px rgba(255, 232, 141, 0.6),
+        /* Brillo suave */
+        1px 1px 6px rgba(255, 232, 141, 0.5),
+        /* Brillo más fuerte */
+        1px 1px 10px rgba(255, 255, 255, 0.4);
+}
+
+.valor-equal {
+    font-size: 2.3rem;
+    color: #bcfffd;
+    text-shadow:
+        1px 1px 4px rgba(0, 62, 74, 0.6),
+        /* Brillo suave */
+        1px 1px 6px rgba(64, 152, 156, 0.5),
+        /* Brillo más fuerte */
+        1px 1px 10px rgba(174, 241, 227, 0.4);
+}
+
+.valor {
+    font-size: 2.3rem;
+    color: white;
+}
+
+.base {
+    font-size: 1.3rem;
+    color: rgb(255, 255, 255);
+    font-family: 'h';
+}
+
+.seccion-desplegable {
+    width: 100%;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.236);
+}
+
+.titulo-desplegable {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'h';
+    font-size: 1.35rem;
+    color: white;
+    line-height: 1.85rem;
+    padding: 4vw;
+}
+
+.texto-titulo {
+    max-width: 70vw;
+    /* Cambia este valor según lo necesites */
+    overflow-wrap: break-word;
+    /* Para permitir saltos de línea */
+    word-wrap: break-word;
+    /* Alternativa para asegurar saltos de línea */
+    white-space: normal;
+    /* Asegura que se respeten los saltos de línea */
+}
+
+.titulo-desplegable-2 {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'h';
+    font-size: 1.35rem;
+    color: white;
+    line-height: 1.85rem;
+    padding: 4vw;
+}
+
+i {
+    font-size: 1.5rem;
+    /* Ajusta el tamaño según sea necesario */
+    transition: transform 0.2s ease;
+}
+
+.contenido-desplegable {
+    display: none;
+    margin-top: 5vw;
+    width: 100%;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+    padding-left: 4vw;
+    padding-right: 2vw;
+    background-color: rgba(0, 0, 0, 0.285);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    color: white;
+    font-size: 1.3rem;
+}
+
+
+
+.info-txt {
+    font-family: 'h';
+    font-weight: 100;
+    font-size: 1.15rem;
+    margin-bottom: 5vw;
+    margin-left: 2vw;
+    color: rgba(255, 255, 255, 0.628);
+}
+
+.info-description {
+    font-family: 'h';
+    font-weight: 100;
+    font-size: 1.15rem;
+    margin-bottom: 5vw;
+    margin-left: 2vw;
+    color: rgb(255, 255, 255);
+}
+
+.ingrediente {
+    font-family: 'hb';
+    font-weight: 300;
+    font-size: 1.15rem;
+    margin-top: 2vw;
+    margin-left: 5vw;
+    color: #ffffff;
+}
+
+.title {
+    color: #B0F691;
+    font-family: 'hb';
+}
+
+.subtitle {
+    font-family: 'hb';
+    color: #62fff2;
+}
+
+.zona-omitir {
+    width: 100%;
+    height: 10%;
+    background-color: #00fffb2c;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.zona-omitir-1 {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    padding: 4vw;
+    font-family: 'hb';
+    color: rgb(209, 255, 250);
+    font-size: 4.7vw;
+    line-height: 1.1;
+}
+
+.zona-omitir-2 {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.omitir-separador {
+    height: 55%;
+    border-radius: 15vw;
+    background-color: rgba(255, 255, 255, 0.501);
+    width: 1px;
+}
+
+.boton-omitir {
+    width: 80%;
+    height: 60%;
+    border-radius: 15vw;
+    background-color: #b2fdfce3;
+    border: none;
+    font-size: 1.25rem;
+    color: #013130;
+    font-family: 'hb';
+}
+
+.zona-etapas {
+    width: 90vw;
+    height: 12vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 4vw;
+    margin-bottom: 3vw;
+    margin-top: 3vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.etapa {
+    height: 10vw;
+    width: 10vw;
+    font-family: 'hb';
+    font-size: 5vw;
+    color: rgba(255, 255, 255, 0.461);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.etapa-activa {
+    height: 10vw;
+    width: 10vw;
+    border-radius: 15vw;
+    color: rgb(195, 247, 152);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'hb';
+    border: 1px solid rgba(216, 255, 87, 0.476);
+    background-color: rgba(216, 255, 87, 0.023);
+    font-size: 5vw;
+}
+
+.separador-valores {
+    height: 65%;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.177);
+}
+
+.ampliacion-body {
+    width: 100%;
+    height: 15vh;
+}
+
+.titulo-comparativo .icono-titulo {
+    color: white;
+    font-size: 1.3rem;
+    margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+    vertical-align: middle; /* Centra el ícono con el texto */
+    margin-right: 3vw;
+}
+
+.titulo-comparativo .icono-crown {
+    color: rgb(255, 236, 131);
+    font-size: 1.3rem;
+    margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+    vertical-align: middle; /* Centra el ícono con el texto */
+    margin-right: 3vw;
+}
+
+.titulo-comparativo .icono-drop {
+    color: rgb(148, 255, 241);
+    font-size: 1.3rem;
+    margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+    vertical-align: middle; /* Centra el ícono con el texto */
+    margin-right: 3vw;
+}
+
+.titulo-comparativo .icono-plant {
+    color: rgb(212, 255, 148);
+    font-size: 1.3rem;
+    margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+    vertical-align: middle; /* Centra el ícono con el texto */
+    margin-right: 3vw;
+}
+
+a {
+    color: #00c4c1;
+}
+
+.circle {
+    margin-right: 2vw;
+    font-size: 3vw;
+    color: rgba(255, 125, 125, 0);
+}

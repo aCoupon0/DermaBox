@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escoge tu hidratante</title>
+    <link rel="stylesheet" href="../css/product.css"> <!-- Ruta actualizada para el CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="robots" content="noindex, nofollow">
+</head>
+
+<body>
+    <div class="tipo-producto">
+        <button class="atras-boton" onclick="irAtras()"></button>
+        <p><span style="font-size: 1.1rem;">Escoge tu</span><br> HIDRATANTE</p>
+    </div>
+    <div class="zona-etapas">
+        <div class="etapa">1</div>
+        <div class="etapa-activa">2</div>
+        <div class="etapa">3</div>
+        <div class="etapa">4</div>
+    </div>
+
+    <div class="zona-productos">
+
+    </div>
+
+    <div class="comparacion-titulo">COMPARACIÓN</div>
+    <div class="comparacion-zona">
+        <div class="comparacion-zona-bloque-1">
+            <p id="H1"></p>
+            <p id="H2"></p>
+        </div>
+    </div>
+
+    <div class="seccion-desplegable" id="info1">
+        <div class="titulo-desplegable" onclick="toggleContent('contenido1')">
+            <p class="texto-titulo">Información del <span style="font-family: 'hb'; font-weight: 400; color: #dbfd7e;"
+                    id="span-H1"></span></p>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div id="contenido1" class="contenido-desplegable">
+
+
+        </div>
+    </div>
+
+    <div class="seccion-desplegable" id="info2">
+        <div class="titulo-desplegable-2" onclick="toggleContent('contenido2')">
+            <p class="texto-titulo">Información del <span style="font-family: 'hb'; font-weight: 400; color: #ffe23e;"
+                    id="span-H2"></span></p>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div id="contenido2" class="contenido-desplegable">
+
+        </div>
+    </div>
+
+    <div class="ampliacion-body"></div>
+
+    <script src="../js/product.js"></script>
+    <script src="js/info.js"></script>
+    <script>
+        const H1 = JSON.parse(localStorage.getItem('H1'));
+        const H2 = JSON.parse(localStorage.getItem('H2'));
+
+        // Obtener casoParticular del localStorage
+        const casoParticularString = localStorage.getItem('casoParticular');
+
+        // Convertir el string a objeto
+        const casoParticular = JSON.parse(casoParticularString);
+
+        // Construye el HTML dinámico para cada producto
+        const htmlProductos = `
+            <div class="producto">
+                <div class="zona-foto">
+                    <img src="../assets/productos/${H1.foto}.webp" alt="Imagen Producto" />
+                </div>
+                <div class="zona-tipo-1">${H1.calidad === 'E' ? 'Estándar' : 'Premium'}</div>
+                <div class="zona-nombre">${H1.nombre} <br>
+                    <span style="font-family: 'h'; font-size: 1.1rem; color: #ffffffe0;">${H1.cantidad}ml</span>
+                </div>
+                <div class="zona-cantidad">
+                    <p>$ ${H1.valor.toLocaleString('es-ES')}</p>
+                </div>
+                <div class="zona-eleccion">
+                    <button class="boton-eleccion" onclick="agregarProducto('H1')">Elegir este</button>
+                </div>
+            </div>
+    
+            <div class="producto">
+                <div class="zona-foto">
+                    <img src="../assets/productos/${H2.foto}.webp" alt="Imagen Producto 2" />
+                </div>
+                <div class="zona-tipo-2">${H2.calidad === 'E' ? 'Estándar' : 'Premium'}</div>
+                <div class="zona-nombre">${H2.nombre} <br>
+                    <span style="font-family: 'h'; font-size: 1.1rem; color: #ffffffe0;">${H2.cantidad}ml</span>
+                </div>
+                <div class="zona-cantidad">
+                    <p>$ ${H2.valor.toLocaleString('es-ES')}</p>
+                </div>
+                <div class="zona-eleccion">
+                    <button class="boton-eleccion" onclick="agregarProducto('H2')">Elegir este</button>
+                </div>
+            </div>
+        `;
+
+        // Inserta el HTML generado en el contenedor principal
+        document.querySelector('.zona-productos').innerHTML = htmlProductos;
+
+        // Función de ejemplo para agregar el producto (puedes personalizarla según tus necesidades)
+        function agregarProducto(productoId) {
+            const producto = productoId === 'H1' ? H1 : H2;
+            let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
+            actualKit.push(producto);
+            localStorage.setItem('actualKit', JSON.stringify(actualKit));
+            window.location.href = "bloqueador.html";
+        }
+        function irAtras() {
+            // Obtener el arreglo actualKit del localStorage
+            let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
+
+            // Eliminar el último elemento si el arreglo no está vacío
+            if (actualKit.length > 0) {
+                actualKit.pop(); // Elimina el último elemento
+                localStorage.setItem('actualKit', JSON.stringify(actualKit)); // Actualiza el localStorage
+            }
+            // Redirigir a la pestaña anterior
+            window.location.href = 'limpiador.html' // Ir a la página anterior
+        }
+
+        const comparacionesPosibles = [
+            {
+                nombre: 'Tónico Centella Asiatica',
+                pureza: 75,
+                RA: 80,
+                HS: 80,
+                A: 60,
+                TCM: 78,
+                mejoresResultados: '8'
+            },
+            {
+                nombre: 'Tónico de Hinojo Marino',
+                pureza: 83,
+                RA: 50,
+                HS: 88,
+                A: 82,
+                TCM: 73,
+                mejoresResultados: '8'
+            },
+            {
+                nombre: 'Neutrogena Hydroboost',
+                pureza: 90,
+                RA: 65,
+                HS: 95,
+                A: 70,
+                TCM: 70,
+                mejoresResultados: '6'
+            },
+            {
+                nombre: 'Facial Moisturising Lotion PM',
+                pureza: 92,
+                RA: 80,
+                HS: 95,
+                A: 80,
+                TCM: 85,
+                mejoresResultados: '6'
+            },
+            {
+                nombre: 'Crema Hidratante de Cerave',
+                pureza: 95,
+                RA: 68,
+                HS: 97,
+                A: 80,
+                TCM: 82,
+                mejoresResultados: '6'
+            },
+        ]
+
+        const molde = [
+            ["Pureza", 0, 0],
+            ["Potencia Antiacné", 0, 0],
+            ["Hidratación", 0, 0],
+            ["Acción Antiedad", 0, 0],
+            ["Mejora de la textura", 0, 0],
+            ["Mejores resultados en", "", ""],
+        ]
+
+        function llenarMolde() {
+            const comparacionH1 = comparacionesPosibles.find(item => item.nombre === H1.nombre);
+            const comparacionH2 = comparacionesPosibles.find(item => item.nombre === H2.nombre);
+
+            if (!comparacionH1 || !comparacionH2) {
+                console.warn("No se encontró uno de los productos en comparacionesPosibles");
+                return;
+            }
+
+            // Asignar valores explícitamente para L1
+            molde[0][1] = comparacionH1.pureza;               // Pureza para L1
+            molde[5][1] = comparacionH1.mejoresResultados;    // Mejores resultados para L1
+            molde[1][1] = comparacionH1.RA;                   // Potencia Antiacné para L1
+            molde[2][1] = comparacionH1.HS;                   // Hidratación para L1
+            molde[3][1] = comparacionH1.A;                    // Acción Antiedad para L1
+            molde[4][1] = comparacionH1.TCM;                  // Mejora de la textura para L1
+
+            // Asignar valores explícitamente para L2
+            molde[0][2] = comparacionH2.pureza;               // Pureza para L2
+            molde[5][2] = comparacionH2.mejoresResultados;    // Mejores resultados para L2
+            molde[1][2] = comparacionH2.RA;                   // Potencia Antiacné para L2
+            molde[2][2] = comparacionH2.HS;                   // Hidratación para L2
+            molde[3][2] = comparacionH2.A;                    // Acción Antiedad para L2
+            molde[4][2] = comparacionH2.TCM;                  // Mejora de la textura para L2
+        }
+
+        // Llama a la función
+        llenarMolde();
+
+        const comparacionZona = document.querySelector('.comparacion-zona');
+
+        // Llena los nombres de L1 y L2
+        document.getElementById('H1').textContent = H1.nombre;
+        document.getElementById('H2').textContent = H2.nombre;
+
+        // Construcción del HTML para los bloques comparativos
+        let htmlComparativos = '';
+
+        for (let i = 0; i < molde.length; i++) {
+            // Título del bloque
+            const titulo = molde[i][0];
+
+            // Valores del bloque
+            const valorH1 = molde[i][1] || 0; // Maneja caso de valores undefined
+            const valorH2 = molde[i][2] || 0; // Maneja caso de valores undefined
+
+            // Condiciones según el índice
+            if (i === 1) { // Para Potencia Antiacné
+                if (!casoParticular[1].includes('RA.')) {
+                    continue; // Omitir Potencia Antiacné si RA. no está presente
+                }
+            }
+            if (i === 2) { // Para Hidratación
+                if (!casoParticular[1].includes('HS.')) {
+                    continue; // Omitir Hidratación si HS. no está presente
+                }
+            }
+            if (i === 3) { // Para Anti-Aging
+                if (!casoParticular[1].includes('A.')) {
+                    continue; // Omitir Anti-Aging si A. no está presente
+                }
+            }
+            if (i === 4) { // Para TCM
+                if (!casoParticular[1].includes('TCM.')) {
+                    continue; // Omitir TCM si TCM. no está presente
+                }
+            }
+
+            // Determina cuál es el valor mayor o si son iguales
+            let claseValorH1, claseValorH2;
+            if (valorH1 === valorH2) {
+                claseValorH1 = 'valor-equal';
+                claseValorH2 = 'valor-equal';
+            } else {
+                const mayorValor = Math.max(valorH1, valorH2);
+                claseValorH1 = valorH1 === mayorValor ? 'valor-plus' : 'valor';
+                claseValorH2 = valorH2 === mayorValor ? 'valor-plus' : 'valor';
+            }
+
+            const esMejoresResultados = titulo === 'Mejores resultados en';
+
+            // Crear el bloque comparativo
+            htmlComparativos += `
+        <div class="bloque-comparativo">
+            <div class="titulo-comparativo">
+                ${titulo === 'Pureza' ? '<i class="fa-solid fa-crown icono-crown"></i>' : ''}
+                ${titulo === 'Potencia Antiacné' ? '<i class="fa-solid fa-wand-magic-sparkles icono-titulo"></i>' : ''}
+                ${titulo === 'Hidratación' ? '<i class="fas fa-tint icono-drop"></i>' : ''}
+                ${titulo === 'Acción Antiedad' ? '<i class="fa solid fa-seedling icono-plant"></i>' : ''}
+                ${titulo === 'Mejora de la textura' ? '<i class="fa-solid fa-feather-pointed icono-titulo"></i>' : ''}
+                ${titulo === 'Mejores resultados en' ? '<i class="fa-solid fa-clock icono-titulo"></i>' : ''}
+                ${titulo}
+            </div>
+            <div class="valores-comparativos">
+                <p class="${claseValorH1}">${valorH1}${esMejoresResultados ? '<span class="base"> semanas</span>' : '<span class="base"></span>'}</p>
+                <div class="separador-valores"></div>
+                <p class="${claseValorH2}">${valorH2}${esMejoresResultados ? '<span class="base"> semanas</span>' : '<span class="base"></span>'}</p>
+            </div>
+        </div>
+    `;
+        }
+        // Insertar el HTML de bloques comparativos en la zona correspondiente
+        comparacionZona.innerHTML += htmlComparativos;
+
+        // Asigna los nombres de L1 y L2 a los spans correspondientes
+        document.getElementById('span-H1').textContent = H1.nombre;
+        document.getElementById('span-H2').textContent = H2.nombre;
+
+        // Mensaje para contenido1
+        let mensajeContenido1 = '';
+
+        // Buscar el objeto en infoLimpiadores de forma literal
+        const objetoEncontradoH1 = infoHidratantes.find(item => item.nombre === H1.nombre);
+
+        if (objetoEncontradoH1) {
+            // Iniciar el mensaje con queEs
+            mensajeContenido1 += objetoEncontradoH1.queEs; // Siempre comienza con queEs
+
+            // Verifica y suma ingredientes según el caso particular
+            if (casoParticular[1].includes('RA.')) {
+                mensajeContenido1 += objetoEncontradoH1.RA;
+            }
+            if (casoParticular[1].includes('HS.')) {
+                mensajeContenido1 += objetoEncontradoH1.HS;
+            }
+            if (casoParticular[1].includes('A.')) {
+                mensajeContenido1 += objetoEncontradoH1.A;
+            }
+            if (casoParticular[1].includes('TCM.')) {
+                mensajeContenido1 += objetoEncontradoH1.TCM;
+            }
+
+            // Sumar siempre BC y queEsperar al final
+            mensajeContenido1 += objetoEncontradoH1.BC;
+            mensajeContenido1 += objetoEncontradoH1.queEsperar;
+
+            // Asigna el mensaje al contenido1
+            document.getElementById('contenido1').innerHTML = mensajeContenido1;
+        } else {
+            console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${H1.nombre}`);
+        }
+
+        // Mensaje para contenido2
+        let mensajeContenido2 = '';
+
+        // Buscar el objeto en infoLimpiadores de forma literal para L2
+        const objetoEncontradoH2 = infoHidratantes.find(item => item.nombre === H2.nombre);
+
+        if (objetoEncontradoH2) {
+            // Iniciar el mensaje con queEs
+            mensajeContenido2 += objetoEncontradoH2.queEs; // Siempre comienza con queEs
+
+            // Verifica y suma ingredientes según el caso particular
+            if (casoParticular[1].includes('RA.')) {
+                mensajeContenido2 += objetoEncontradoH2.RA;
+            }
+            if (casoParticular[1].includes('HS.')) {
+                mensajeContenido2 += objetoEncontradoH2.HS;
+            }
+            if (casoParticular[1].includes('A.')) {
+                mensajeContenido2 += objetoEncontradoH2.A;
+            }
+            if (casoParticular[1].includes('TCM.')) {
+                mensajeContenido2 += objetoEncontradoH2.TCM;
+            }
+
+            // Sumar siempre BC y queEsperar al final
+            mensajeContenido2 += objetoEncontradoH2.BC;
+            mensajeContenido2 += objetoEncontradoH2.queEsperar;
+
+            // Asigna el mensaje al contenido2
+            document.getElementById('contenido2').innerHTML = mensajeContenido2;
+        } else {
+            console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${H2.nombre}`);
+        }
+    </script>
+</body>
+
+</html>

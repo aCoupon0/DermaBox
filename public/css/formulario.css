@@ -1,0 +1,843 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: url('/assets/fondo.webp') no-repeat center center fixed;
+    background-size: cover;
+    /* Asegura que la imagen cubra toda la ventana */
+    text-align: center;
+    font-size: 4vw;
+}
+
+
+/* Definición de la fuente 'j' */
+@font-face {
+    font-family: 'j';
+    src: url('../assets/j.ttf') format('truetype');
+}
+
+/* Definición de la fuente 'h' */
+@font-face {
+    font-family: 'h';
+    src: url('../assets/h.ttf') format('truetype');
+}
+
+/* Definición de la fuente 'hb' */
+@font-face {
+    font-family: 'hb';
+    src: url('../assets/hb.ttf') format('truetype');
+}
+
+.logo-zone {
+    width: 100%;
+    height: 23vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5vw;
+    margin-bottom: 0;
+    padding-left: 5vw;
+}
+
+.txt-1 {
+    font-family: 'hb';
+    color: white;
+    font-size: 1.5rem;
+}
+
+.logo {
+    height: 40%;
+    width: auto;
+}
+
+/* Estilo base para los productos */
+.flatlist {
+    width: 93%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: row;
+    border-bottom: none;
+    /* No hay espacio entre elementos */
+    color: white;
+    font-family: 'hb';
+    height: 30vw;
+    background-color: rgba(0, 0, 0, 0.493);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px); /* Añadir prefijo */
+    box-shadow: 0 4px 17px rgba(255, 255, 255, 0);
+    border: 1px solid rgba(255, 255, 255, 0.143);
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+}
+
+.first-item {
+    border-top-left-radius: 5vw;
+    border-top-right-radius: 5vw;
+}
+
+.last-item {
+    border-bottom-left-radius: 5vw;
+    border-bottom-right-radius: 5vw;
+}
+
+.delete-btn {
+    background-color: #ffdbdbdb;
+    color: rgb(137, 0, 0);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    height: 59%;
+    width: 18%;
+    border-radius: 10vw;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4%;
+}
+
+.replace-btn {
+    background-color: #affff8db;
+    color: #003733db;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    height: 59%;
+    width: 18%;
+    border-radius: 10vw;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5vw;
+}
+
+
+.zona-foto {
+    width: 22%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zona-info {
+    width: 78%;
+    height: 100%;
+}
+
+.zona-foto img {
+    width: 95%;
+    height: auto;
+}
+
+.bloque-1 {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bloque-2 {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: left;
+    font-family: 'hb';
+    color: white;
+    font-size: 1.1rem;
+}
+
+.bloque-2 p {
+    white-space: nowrap;
+    /* Evita saltos de línea */
+    overflow: hidden;
+    /* Oculta el desbordamiento de texto */
+    text-overflow: ellipsis;
+    /* Reemplaza el texto desbordado con "..." */
+    max-width: 100%;
+    /* Asegura que se aplique el truncado a un ancho máximo */
+}
+
+.bloque-3 {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.producto-container {
+    width: auto;
+    max-width: 35%;
+    height: 59%;
+    background-color: rgba(146, 255, 250, 0.129);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    border-radius: 10vw;
+}
+
+.tipo-producto {
+    font-size: 4vw;
+    font-family: 'hb';
+    color: rgb(160, 253, 247);
+    text-decoration: wavy;
+}
+
+.bloque-3-1 {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.bloque-3-2 {
+    height: 120%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cantidad {
+    font-size: 1.1rem;
+    font-family: 'h';
+    font-weight: 300;
+    color: white;
+}
+
+.valor {
+    font-size: 1.3rem;
+    font-family: 'hb';
+    color: #B0F691;
+}
+
+span {
+    font-size: 1rem;
+    font-family: 'hb';
+    color: #B0F691;
+}
+
+.price-zone {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    margin-top: 3vw;
+}
+
+.price-zone-1 {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    ;
+}
+
+
+.price-zone-2 {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.purchase-btn {
+    height: 8vh;
+    width: 80%;
+    border-radius: 15vw;
+    color: rgb(71, 56, 3);
+    background-color: white;
+    font-family: 'hb';
+    font-size: 5.5vw;
+    border: none;
+    font-weight: 600;
+}
+
+.precio {
+    font-size: 1.8rem;
+    font-family: 'hb';
+    color: #A5FF7D;
+    margin: 0;
+}
+
+.envio {
+    font-size: 1.15rem;
+    font-family: 'hb';
+    color: #ffffff;
+    margin: 0;
+}
+
+.circle-btn {
+    width: 11vw;
+    height: 11vw;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.078);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra para darle efecto de elevación */
+}
+
+.circle-btn i {
+    font-size: 1.5rem;
+    color: #ffffff;
+    /* Puedes cambiar el color del icono si lo prefieres */
+}
+
+.circle-btn:hover {
+    background-color: #f0f0f0;
+    /* Efecto hover para que cambie de color */
+}
+
+.duration-bar {
+    width: 100%;
+    height: 12vh;
+    margin-top: 2vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+.duration-container {
+    width: auto;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 5vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+.duration-txt-1 {
+    font-family: 'h';
+    font-weight: 300;
+    color: rgb(255, 255, 255);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.duration-txt-2 {
+    font-family: 'hb';
+    color: rgb(254, 254, 254);
+    font-size: 1.7rem;
+    margin: 0;
+}
+
+.routine-title {
+    width: 100%;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'hb';
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.065);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    gap: 2vw;
+    margin-bottom: 5vw;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.256);
+    border-top: 1px solid rgba(255, 255, 255, 0.256);
+}
+
+.routine-gallery {
+    width: 100%;
+    height: 14vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4vw;
+}
+
+.routine-gallery-btn {
+    height: auto;
+    width: 70%;
+    border-radius: 7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'hb';
+    color: rgb(222, 222, 222);
+    font-size: 1.3rem;
+    gap: 2vw;
+    padding: 4vw;
+    border: 1px solid rgba(255, 255, 255, 0.096);
+    background: linear-gradient(225deg,
+            rgba(0, 0, 0, 0.6) 0%,
+            /* Negro espeso en la esquina inferior izquierda */
+            rgba(0, 0, 0, 0.855) 25%,
+            /* Sombras intermedias */
+            rgba(31, 31, 31, 0.75) 50%,
+            /* Destello blanco suave en el centro */
+            rgba(0, 0, 0, 0.8) 75%,
+            /* Negro más intenso en el lado superior derecho */
+            rgba(0, 0, 0, 0.9) 100%
+            /* Negro espeso al final */
+        );
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+}
+
+.routine-gallery-btn p {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.3rem;
+}
+
+.captura {
+    width: 100%;
+    height: auto;
+}
+
+.routine-periodicity {
+    width: 100%;
+    height: 18vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vw;
+    margin-top: 4vw;
+}
+
+.routine-periodicity-btn {
+    height: 80%;
+    width: 85vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(90, 241, 255, 0.143);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    font-family: 'hb';
+    font-size: 1.4rem;
+    color: rgb(185, 255, 254);
+    border-radius: 3vw;
+
+}
+
+.morning-routine {
+    width: 95vw;
+    height: auto;
+    background-color: #ffde5946;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: 10vw;
+    margin-bottom: 5vw;
+    padding-bottom: 1vw;
+    margin-left: 2.5vw;
+    font-family: 'hb';
+}
+
+/* Estilo general para cada producto en la rutina de la mañana */
+.morning-routine .product-item-2 {
+    padding: 10px;
+    height: auto;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 2.5vw;
+    margin-top: 2.5vw;
+    background-color: rgba(255, 255, 255, 0);
+    padding-left: 6vw;
+    text-align: left;
+    line-height: 1.5rem;
+    font-family: 'hb';
+}
+
+/* Estilo para el texto que indica el orden (PRIMERO, SEGUNDO, etc.) */
+.morning-routine .orden-producto {
+    font-size: 1.2rem;
+    color: #FFCC00;
+    /* Color de texto oscuro */
+    margin: 0;
+    font-family: 'hb';
+}
+
+/* Estilo para el nombre del producto */
+.morning-routine .nombre-producto {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #ffffffbe;
+    /* Color del texto del nombre del producto */
+    margin: 0;
+    font-family: 'hb';
+}
+
+/* Estilo para el mensaje de alerta */
+.morning-routine .alert-message {
+    font-size: 0.9rem;
+    color: #FF8672;
+    /* Color rojo para el texto de alerta */
+    margin-top: 2vw;
+    background-color: #1c0100;
+    /* Fondo suave para destacar la alerta */
+    padding: 2vw;
+    border-radius: 5px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-family: 'hb';
+}
+
+.routine-morning-title {
+    width: 90vw;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'hb';
+    font-size: 1.2rem;
+    color: #FFCC00;
+    gap: 3vw;
+}
+
+.sun-image {
+    width: 9%;
+    height: auto;
+}
+
+.night-routine {
+    width: 95vw;
+    height: auto;
+    background-color: #057a8b86;
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+    border-radius: 10vw;
+    margin-bottom: 5vw;
+    padding-bottom: 1vw;
+    margin-left: 2.5vw;
+    font-family: 'hb';
+}
+
+.routine-night-title {
+    width: 90vw;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'hb';
+    font-size: 1.2rem;
+    color: #5EE8FF;
+    gap: 3vw;
+}
+
+.night-routine .orden-producto {
+    font-size: 1.2rem;
+    color: #5EE8FF;
+    /* Color de texto oscuro */
+    margin: 0;
+}
+
+.night-routine .product-item-2 {
+    padding: 10px;
+    height: auto;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 2.5vw;
+    margin-top: 2.5vw;
+    background-color: rgba(255, 255, 255, 0);
+    padding-left: 6vw;
+    text-align: left;
+    line-height: 1.5rem;
+}
+
+/* Estilo para el nombre del producto */
+.night-routine .nombre-producto {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #ffffff7b;
+    /* Color del texto del nombre del producto */
+    margin: 0;
+
+}
+
+/* Estilo para el mensaje de alerta */
+.night-routine .alert-message {
+    font-size: 0.9rem;
+    color: #FF8672;
+    font-weight: bold;
+    /* Color rojo para el texto de alerta */
+    margin-top: 2vw;
+    background-color: #1c0100;
+    /* Fondo suave para destacar la alerta */
+    padding: 2vw;
+    border-radius: 5px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.categoria-producto {
+    margin-top: 2vw;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.separador-routine {
+    width: 90%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.585);
+    margin: 5px auto;
+    /* Para centrar y dar algo de espacio */
+}
+
+.exchange-zone {
+    width: 100%;
+    height: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    font-family: 'hb';
+    font-size: 3.95vw;
+    color: white;
+    gap: 1.5vw;
+    font-weight: 500;
+}
+
+.exchange-zone i {
+    color: #affff8db;
+    font-size: 4.5vw;
+}
+
+/* Modal general */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.618);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px); /* Añadir prefijo para Safari */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 1000;
+    flex-direction: column;
+    padding-top: 5vw;
+    opacity: 0; /* Inicialmente invisible */
+    transition: opacity 0.5s ease; /* Transición suave de 0.5 segundos */
+    visibility: hidden; /* Ocultar inicialmente para evitar clics */
+}
+
+/* Cuando el modal está visible (fade in) */
+.modal.show {
+    opacity: 1; /* Visibilidad completa */
+    visibility: visible; /* Ahora el modal es visible */
+}
+
+/* Cuando el modal está oculto (fade out) */
+.modal.hidden {
+    opacity: 0; /* Invisibilidad total */
+    visibility: hidden; /* El modal sigue siendo invisible */
+    transition: opacity 0.5s ease; /* Transición suave al ocultar */
+}
+
+
+.close-btn {
+    border: none;
+    font-size: 2rem;
+    color: black;
+    cursor: pointer;
+    height: 8vw;
+    width: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-btn:hover {
+    color: red;
+}
+
+.modal-close {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10vw;
+}
+
+.modal p{
+    font-family: "hb";
+    font-size: 4.8vw;
+    color: white;
+}
+
+.input-group {
+    margin-bottom: 4vw;
+    width: 87%;
+    height: 10vw;
+}
+
+
+input {
+    width: 90%;
+    height: 70%;
+    padding: 2vw;
+    padding-left: 6vw;
+    font-size: 1rem;
+    border-radius: 15vw;
+    background-color: rgba(255, 255, 255, 0.163);
+    color: white;
+    font-family: "hb";
+    font-size: 4.8vw;
+    border: none;
+}
+
+input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.678);
+}
+
+.separador-modal {
+    width: 60%;
+    height: 3px;
+    border-radius: 15vw;
+    background-color: white;
+    margin-top: 4vw;
+}
+
+.selection-group {
+    width: 100%;
+    height: 27vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vw;
+}
+
+.selectable {
+    width: 70%;
+    height: 85%;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 5vw;
+    font-family: "hb";
+    font-size: 4.8vw;
+    align-items: center;
+    text-align: center;
+    color: white;
+    border-radius: 10vw;
+    cursor: pointer;
+    background-color: #f9f9f922;
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+}
+
+.selectable.selected {
+    background-color: #f8f8f8f1;    
+    color: #4D3F06;
+}
+
+.zona-cobro {
+    width: 100%;
+    height: 12vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: "hb";
+    padding-right: 13vw;
+}
+
+.cobro-sign {
+   font-size: 1rem;
+   margin-left: 3vw; 
+   margin-right: 1.5vw;
+}
+
+.final-button-zone {
+    width: 100%;
+    height: 23vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .final-button {
+    width: 52%;
+    height: 65%;
+    background-color: white;
+    border-radius: 6vw;
+    border: none;
+    font-family: "hb";
+    color: #4D3F06;
+    font-size: 5vw;
+    font-weight: 900;
+ }
+
+ .formulario-separador {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.354);
+    margin-bottom: 5vw;
+ }
+
+ .descanso-mañana {
+    font-family: "hb";
+    color: #ffcc009e;
+    font-size: 5vw;
+    text-align: center;
+    line-height: 1.5rem;
+ }
+
+ .descanso-noche {
+    font-family: "hb";
+    color: #5ee7ffac;
+    font-size: 5vw;
+    text-align: center;
+    line-height: 1.5rem;
+ }
+
+ .agua-tibia {
+    background-color: #3f3900;
+    color: rgb(255, 252, 219);
+    padding: 0.3vw;
+    border-top: 1px solid rgba(255, 245, 211, 0.725);
+    border-bottom: 1px solid rgba(255, 245, 211, 0.725);
+ }
