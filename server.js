@@ -5,7 +5,7 @@ const path = require('path');
 
 // Configurar las credenciales de Twilio
 const accountSid = 'ACfd63cf95c0de859ab05cb54b8bf5742a'; // Tu Account SID de Twilio
-const authToken = '64efe5eda46f2c244aa5c2fe032a9a99'; // Tu Auth Token de Twilio
+const authToken = 'abdba5a9938e6642271c85bbd753bdab'; // Tu Auth Token de Twilio
 const client = twilio(accountSid, authToken);
 
 // Crear una instancia de Express
@@ -26,6 +26,12 @@ app.get('/', (req, res) => {
 // Ruta para enviar un mensaje de WhatsApp
 app.post('/send-message', (req, res) => {
     // Verificar que los datos se reciban correctamente
+    console.log('Datos recibidos en el servidor:', req.body.messageBody);
+
+    if (!req.body.messageBody || !req.body.messageBody.actualKit) {
+        return res.status(400).send('Datos incompletos o incorrectos');
+    }
+
     const { actualKit, casoParticular, combinacion, paymentMethod, cobroFinal, datosClientes } = req.body.messageBody; // Obtener el cuerpo de la solicitud
 
     // Crear y enviar el mensaje de WhatsApp
