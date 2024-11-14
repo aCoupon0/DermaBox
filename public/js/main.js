@@ -352,7 +352,7 @@ const limpiadoresPremium = [
 
     //DESTINADO A ALGUNAS PIELES SENSIBLES
     {
-        nombre: 'La Roche-Posay Effaclar Puryfing Foaming Gel Cleanser',
+        nombre: 'La Roche-Posay Effaclar Puryfing',
         cantidad: 200,
         valor: 153900,
         categoria: "LIMPIADOR",
