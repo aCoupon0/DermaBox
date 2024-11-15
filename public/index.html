@@ -193,6 +193,35 @@
     </section>
 
     <script src="/js/main.js"></script>
+    <script>
+        let scrollCount = 0; // Contador de clics
+    
+        // Función para manejar el clic en cualquier scrollButton
+        function handleScroll(event) {
+            scrollCount++; // Aumentar el contador
+    
+            // Enviar el evento al Google Analytics cada vez que se presiona un botón
+            gtag('event', 'scroll_button_click', {
+                'event_category': 'Interaction',
+                'event_label': 'Scroll Button ' + scrollCount,
+                'value': scrollCount
+            });
+    
+            // Si el número de clics alcanza 4, marcar el evento como 'Reached End'
+            if (scrollCount === 4) {
+                gtag('event', 'scroll_button_click', {
+                    'event_category': 'Interaction',
+                    'event_label': 'Reached End',
+                    'value': scrollCount
+                });
+            }
+        }
+    
+        // Asociar la función a todos los botones con la clase 'scrollButton'
+        document.querySelectorAll('.scrollButton').forEach(button => {
+            button.addEventListener('click', handleScroll);
+        });
+    </script>
 </body>
 
 </html>
