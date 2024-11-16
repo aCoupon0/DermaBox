@@ -192,63 +192,7 @@
         </div>
     </section>
 
-    <script src="/js/main.js"></script>
-    <script>
-        let scrollCount = 0; // Contador de clics en los scrollButtons
-
-        // Función para manejar el clic en los scrollButtons
-        function handleScroll(event) {
-            scrollCount++; // Aumentar el contador por cada clic en un scrollButton
-
-            // Verificar si es el primer clic en el scrollButton
-            if (scrollCount === 1) {
-                // Enviar el evento a Google Analytics con la etiqueta 'Inicio Quiz'
-                gtag('event', 'InicioCuestionario', {
-                    'event_category': 'Interaction',
-                    'event_label': 'Inicio Quiz',
-                    'value': scrollCount
-                });
-            }
-
-            // Enviar el evento a Google Analytics cada vez que se presiona un scrollButton
-            gtag('event', 'AvanzoCuestionario', {
-                'event_category': 'Interaction',
-                'event_label': 'Scroll Button ' + scrollCount,
-                'value': scrollCount
-            });
-
-            // Si el número de clics alcanza 4, marcar el evento como 'Reached End'
-            if (scrollCount === 4) {
-                gtag('event', 'TerminoCuestionario', {
-                    'event_category': 'Interaction',
-                    'event_label': 'Reached End',
-                    'value': scrollCount
-                });
-            }
-        }
-
-        // Función para manejar el clic en el howButton
-        function handleHowButton() {
-            // Enviar el evento al Google Analytics con el evento 'How Button Clicked'
-            gtag('event', 'PresionoHowButton', {
-                'event_category': 'Interaction',
-                'event_label': 'How Button',
-                'value': 1
-            });
-        }
-
-        // Asociar la función a todos los botones con la clase 'scrollButton'
-        document.querySelectorAll('.scrollButton').forEach(button => {
-            button.addEventListener('click', handleScroll);
-        });
-
-        // Asociar la función al howButton
-        const howButton = document.querySelector('.howButton');
-        if (howButton) {
-            howButton.addEventListener('click', handleHowButton);
-        }
-
-    </script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
