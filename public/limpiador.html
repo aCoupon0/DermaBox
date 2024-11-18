@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/product.css"> <!-- Ruta actualizada para el CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" href="assets/logo.png" type="image/png"/>
+    <link rel="icon" href="assets/logo.png" type="image/png" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLV64FXNRZ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -70,17 +70,18 @@
     <script src="js/product.js"></script>
     <script src="js/info.js"></script>
     <script>
-        // Recupera los datos de L1 y L2 del localStorage
-        const L1 = JSON.parse(localStorage.getItem('L1'));
-        const L2 = JSON.parse(localStorage.getItem('L2'));
+        document.addEventListener('DOMContentLoaded', function () {
+            // Recupera los datos de L1 y L2 del localStorage
+            const L1 = JSON.parse(localStorage.getItem('L1'));
+            const L2 = JSON.parse(localStorage.getItem('L2'));
 
-        // Obtener casoParticular del localStorage
-        const casoParticularString = localStorage.getItem('casoParticular');
-        // Convertir el string a objeto
-        const casoParticular = JSON.parse(casoParticularString);
+            // Obtener casoParticular del localStorage
+            const casoParticularString = localStorage.getItem('casoParticular');
+            // Convertir el string a objeto
+            const casoParticular = JSON.parse(casoParticularString);
 
-        // Construye el HTML dinámico para cada producto
-        const htmlProductos = `
+            // Construye el HTML dinámico para cada producto
+            const htmlProductos = `
             <div class="producto">
                 <div class="zona-foto">
                     <img src="../assets/productos/${L1.foto}.webp" alt="Imagen Producto" />
@@ -114,158 +115,158 @@
             </div>
         `;
 
-        // Inserta el HTML generado en el contenedor principal
-        document.querySelector('.zona-productos').innerHTML = htmlProductos;
+            // Inserta el HTML generado en el contenedor principal
+            document.querySelector('.zona-productos').innerHTML = htmlProductos;
 
-        // Función de ejemplo para agregar el producto (puedes personalizarla según tus necesidades)
-        function agregarProducto(productoId) {
-            const producto = productoId === 'L1' ? L1 : L2;
-            let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
-            actualKit.push(producto);
-            localStorage.setItem('actualKit', JSON.stringify(actualKit));
-            window.location.href = "hidratante.html";
-        }
-
-        const comparacionesPosibles = [
-            {
-                nombre: 'Espuma 4 en 1 de Carvenchy',
-                pureza: 80,
-                RA: 85,
-                HS: 75,
-                A: 80,
-                TCM: 85,
-                mejoresResultados: '8'
-            },
-            {
-                nombre: 'Limpiador Milk Hidrolizada de Sadoer',
-                pureza: 75,
-                RA: 70,
-                HS: 83,
-                A: 70,
-                TCM: 73,
-                mejoresResultados: '8'
-            },
-            {
-                nombre: 'Smoothing SA Cleanser de CeraVe',
-                pureza: 90,
-                RA: 93,
-                HS: 80,
-                A: 68,
-                TCM: 85,
-                mejoresResultados: '6'
-            },
-            {
-                nombre: 'La Roche-Posay Effaclar Puryfing',
-                pureza: 95,
-                RA: 90,
-                HS: 80,
-                A: 50,
-                TCM: 88,
-                mejoresResultados: '6'
-            },
-            {
-                nombre: 'Limpiador Hidratante de CeraVe',
-                pureza: 93,
-                RA: 70,
-                HS: 96,
-                A: 78,
-                TCM: 80,
-                mejoresResultados: '6'
-            },
-        ]
-
-        const molde = [
-            ["Pureza", 0, 0],
-            ["Potencia Antiacné", 0, 0],
-            ["Hidratación", 0, 0],
-            ["Acción Antiedad", 0, 0],
-            ["Mejora de la textura", 0, 0],
-            ["Mejores resultados en", "", ""],
-        ]
-
-        function llenarMolde() {
-            const comparacionL1 = comparacionesPosibles.find(item => item.nombre === L1.nombre);
-            const comparacionL2 = comparacionesPosibles.find(item => item.nombre === L2.nombre);
-
-            if (!comparacionL1 || !comparacionL2) {
-                console.warn("No se encontró uno de los productos en comparacionesPosibles");
-                return;
+            // Función de ejemplo para agregar el producto (puedes personalizarla según tus necesidades)
+            function agregarProducto(productoId) {
+                const producto = productoId === 'L1' ? L1 : L2;
+                let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
+                actualKit.push(producto);
+                localStorage.setItem('actualKit', JSON.stringify(actualKit));
+                window.location.href = "hidratante.html";
             }
 
-            // Asignar valores explícitamente para L1
-            molde[0][1] = comparacionL1.pureza;               // Pureza para L1
-            molde[5][1] = comparacionL1.mejoresResultados;    // Mejores resultados para L1
-            molde[1][1] = comparacionL1.RA;                   // Potencia Antiacné para L1
-            molde[2][1] = comparacionL1.HS;                   // Hidratación para L1
-            molde[3][1] = comparacionL1.A;                    // Acción Antiedad para L1
-            molde[4][1] = comparacionL1.TCM;                  // Mejora de la textura para L1
+            const comparacionesPosibles = [
+                {
+                    nombre: 'Espuma 4 en 1 de Carvenchy',
+                    pureza: 80,
+                    RA: 85,
+                    HS: 75,
+                    A: 80,
+                    TCM: 85,
+                    mejoresResultados: '8'
+                },
+                {
+                    nombre: 'Limpiador Milk Hidrolizada de Sadoer',
+                    pureza: 75,
+                    RA: 70,
+                    HS: 83,
+                    A: 70,
+                    TCM: 73,
+                    mejoresResultados: '8'
+                },
+                {
+                    nombre: 'Smoothing SA Cleanser de CeraVe',
+                    pureza: 90,
+                    RA: 93,
+                    HS: 80,
+                    A: 68,
+                    TCM: 85,
+                    mejoresResultados: '6'
+                },
+                {
+                    nombre: 'La Roche-Posay Effaclar Puryfing',
+                    pureza: 95,
+                    RA: 90,
+                    HS: 80,
+                    A: 50,
+                    TCM: 88,
+                    mejoresResultados: '6'
+                },
+                {
+                    nombre: 'Limpiador Hidratante de CeraVe',
+                    pureza: 93,
+                    RA: 70,
+                    HS: 96,
+                    A: 78,
+                    TCM: 80,
+                    mejoresResultados: '6'
+                },
+            ]
 
-            // Asignar valores explícitamente para L2
-            molde[0][2] = comparacionL2.pureza;               // Pureza para L2
-            molde[5][2] = comparacionL2.mejoresResultados;    // Mejores resultados para L2
-            molde[1][2] = comparacionL2.RA;                   // Potencia Antiacné para L2
-            molde[2][2] = comparacionL2.HS;                   // Hidratación para L2
-            molde[3][2] = comparacionL2.A;                    // Acción Antiedad para L2
-            molde[4][2] = comparacionL2.TCM;                  // Mejora de la textura para L2
-        }
+            const molde = [
+                ["Pureza", 0, 0],
+                ["Potencia Antiacné", 0, 0],
+                ["Hidratación", 0, 0],
+                ["Acción Antiedad", 0, 0],
+                ["Mejora de la textura", 0, 0],
+                ["Mejores resultados en", "", ""],
+            ]
 
-        // Llama a la función
-        llenarMolde();
+            function llenarMolde() {
+                const comparacionL1 = comparacionesPosibles.find(item => item.nombre === L1.nombre);
+                const comparacionL2 = comparacionesPosibles.find(item => item.nombre === L2.nombre);
 
-        const comparacionZona = document.querySelector('.comparacion-zona');
-
-        // Llena los nombres de L1 y L2
-        document.getElementById('L1').textContent = L1.nombre;
-        document.getElementById('L2').textContent = L2.nombre;
-
-        // Construcción del HTML para los bloques comparativos
-        let htmlComparativos = '';
-
-        for (let i = 0; i < molde.length; i++) {
-            // Título del bloque
-            const titulo = molde[i][0];
-
-            // Valores del bloque
-            const valorL1 = molde[i][1] || 0; // Maneja caso de valores undefined
-            const valorL2 = molde[i][2] || 0; // Maneja caso de valores undefined
-
-            // Condiciones según el índice
-            if (i === 1) { // Para Potencia Antiacné
-                if (!casoParticular[1].includes('RA.')) {
-                    continue; // Omitir Potencia Antiacné si RA. no está presente
+                if (!comparacionL1 || !comparacionL2) {
+                    console.warn("No se encontró uno de los productos en comparacionesPosibles");
+                    return;
                 }
-            }
-            if (i === 2) { // Para Hidratación
-                if (!casoParticular[1].includes('HS.')) {
-                    continue; // Omitir Hidratación si HS. no está presente
-                }
-            }
-            if (i === 3) { // Para Anti-Aging
-                if (!casoParticular[1].includes('A.')) {
-                    continue; // Omitir Anti-Aging si A. no está presente
-                }
-            }
-            if (i === 4) { // Para TCM
-                if (!casoParticular[1].includes('TCM.')) {
-                    continue; // Omitir TCM si TCM. no está presente
-                }
+
+                // Asignar valores explícitamente para L1
+                molde[0][1] = comparacionL1.pureza;               // Pureza para L1
+                molde[5][1] = comparacionL1.mejoresResultados;    // Mejores resultados para L1
+                molde[1][1] = comparacionL1.RA;                   // Potencia Antiacné para L1
+                molde[2][1] = comparacionL1.HS;                   // Hidratación para L1
+                molde[3][1] = comparacionL1.A;                    // Acción Antiedad para L1
+                molde[4][1] = comparacionL1.TCM;                  // Mejora de la textura para L1
+
+                // Asignar valores explícitamente para L2
+                molde[0][2] = comparacionL2.pureza;               // Pureza para L2
+                molde[5][2] = comparacionL2.mejoresResultados;    // Mejores resultados para L2
+                molde[1][2] = comparacionL2.RA;                   // Potencia Antiacné para L2
+                molde[2][2] = comparacionL2.HS;                   // Hidratación para L2
+                molde[3][2] = comparacionL2.A;                    // Acción Antiedad para L2
+                molde[4][2] = comparacionL2.TCM;                  // Mejora de la textura para L2
             }
 
-            // Determina cuál es el valor mayor o si son iguales
-            let claseValorL1, claseValorL2;
-            if (valorL1 === valorL2) {
-                claseValorL1 = 'valor-equal';
-                claseValorL2 = 'valor-equal';
-            } else {
-                const mayorValor = Math.max(valorL1, valorL2);
-                claseValorL1 = valorL1 === mayorValor ? 'valor-plus' : 'valor';
-                claseValorL2 = valorL2 === mayorValor ? 'valor-plus' : 'valor';
-            }
+            // Llama a la función
+            llenarMolde();
 
-            const esMejoresResultados = titulo === 'Mejores resultados en';
+            const comparacionZona = document.querySelector('.comparacion-zona');
 
-            // Crear el bloque comparativo
-            htmlComparativos += `
+            // Llena los nombres de L1 y L2
+            document.getElementById('L1').textContent = L1.nombre;
+            document.getElementById('L2').textContent = L2.nombre;
+
+            // Construcción del HTML para los bloques comparativos
+            let htmlComparativos = '';
+
+            for (let i = 0; i < molde.length; i++) {
+                // Título del bloque
+                const titulo = molde[i][0];
+
+                // Valores del bloque
+                const valorL1 = molde[i][1] || 0; // Maneja caso de valores undefined
+                const valorL2 = molde[i][2] || 0; // Maneja caso de valores undefined
+
+                // Condiciones según el índice
+                if (i === 1) { // Para Potencia Antiacné
+                    if (!casoParticular[1].includes('RA.')) {
+                        continue; // Omitir Potencia Antiacné si RA. no está presente
+                    }
+                }
+                if (i === 2) { // Para Hidratación
+                    if (!casoParticular[1].includes('HS.')) {
+                        continue; // Omitir Hidratación si HS. no está presente
+                    }
+                }
+                if (i === 3) { // Para Anti-Aging
+                    if (!casoParticular[1].includes('A.')) {
+                        continue; // Omitir Anti-Aging si A. no está presente
+                    }
+                }
+                if (i === 4) { // Para TCM
+                    if (!casoParticular[1].includes('TCM.')) {
+                        continue; // Omitir TCM si TCM. no está presente
+                    }
+                }
+
+                // Determina cuál es el valor mayor o si son iguales
+                let claseValorL1, claseValorL2;
+                if (valorL1 === valorL2) {
+                    claseValorL1 = 'valor-equal';
+                    claseValorL2 = 'valor-equal';
+                } else {
+                    const mayorValor = Math.max(valorL1, valorL2);
+                    claseValorL1 = valorL1 === mayorValor ? 'valor-plus' : 'valor';
+                    claseValorL2 = valorL2 === mayorValor ? 'valor-plus' : 'valor';
+                }
+
+                const esMejoresResultados = titulo === 'Mejores resultados en';
+
+                // Crear el bloque comparativo
+                htmlComparativos += `
         <div class="bloque-comparativo">
             <div class="titulo-comparativo">
                 ${titulo === 'Pureza' ? '<i class="fa-solid fa-crown icono-crown"></i>' : ''}
@@ -283,84 +284,84 @@
             </div>
         </div>
     `;
-        }
-
-        // Insertar el HTML de bloques comparativos en la zona correspondiente
-        comparacionZona.innerHTML += htmlComparativos;
-
-
-        // Asigna los nombres de L1 y L2 a los spans correspondientes
-        document.getElementById('span-L1').textContent = L1.nombre;
-        document.getElementById('span-L2').textContent = L2.nombre;
-
-        // Mensaje para contenido1
-        let mensajeContenido1 = '';
-
-        // Buscar el objeto en infoLimpiadores de forma literal
-        const objetoEncontradoL1 = infoLimpiadores.find(item => item.nombre === L1.nombre);
-
-        if (objetoEncontradoL1) {
-            // Iniciar el mensaje con queEs
-            mensajeContenido1 += objetoEncontradoL1.queEs; // Siempre comienza con queEs
-
-            // Verifica y suma ingredientes según el caso particular
-            if (casoParticular[1].includes('RA.')) {
-                mensajeContenido1 += objetoEncontradoL1.RA;
-            }
-            if (casoParticular[1].includes('HS.')) {
-                mensajeContenido1 += objetoEncontradoL1.HS;
-            }
-            if (casoParticular[1].includes('A.')) {
-                mensajeContenido1 += objetoEncontradoL1.A;
-            }
-            if (casoParticular[1].includes('TCM.')) {
-                mensajeContenido1 += objetoEncontradoL1.TCM;
             }
 
-            // Sumar siempre BC y queEsperar al final
-            mensajeContenido1 += objetoEncontradoL1.BC;
-            mensajeContenido1 += objetoEncontradoL1.queEsperar;
+            // Insertar el HTML de bloques comparativos en la zona correspondiente
+            comparacionZona.innerHTML += htmlComparativos;
 
-            // Asigna el mensaje al contenido1
-            document.getElementById('contenido1').innerHTML = mensajeContenido1;
-        } else {
-            console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${L1.nombre}`);
-        }
 
-        // Mensaje para contenido2
-        let mensajeContenido2 = '';
+            // Asigna los nombres de L1 y L2 a los spans correspondientes
+            document.getElementById('span-L1').textContent = L1.nombre;
+            document.getElementById('span-L2').textContent = L2.nombre;
 
-        // Buscar el objeto en infoLimpiadores de forma literal para L2
-        const objetoEncontradoL2 = infoLimpiadores.find(item => item.nombre === L2.nombre);
+            // Mensaje para contenido1
+            let mensajeContenido1 = '';
 
-        if (objetoEncontradoL2) {
-            // Iniciar el mensaje con queEs
-            mensajeContenido2 += objetoEncontradoL2.queEs; // Siempre comienza con queEs
+            // Buscar el objeto en infoLimpiadores de forma literal
+            const objetoEncontradoL1 = infoLimpiadores.find(item => item.nombre === L1.nombre);
 
-            // Verifica y suma ingredientes según el caso particular
-            if (casoParticular[1].includes('RA.')) {
-                mensajeContenido2 += objetoEncontradoL2.RA;
+            if (objetoEncontradoL1) {
+                // Iniciar el mensaje con queEs
+                mensajeContenido1 += objetoEncontradoL1.queEs; // Siempre comienza con queEs
+
+                // Verifica y suma ingredientes según el caso particular
+                if (casoParticular[1].includes('RA.')) {
+                    mensajeContenido1 += objetoEncontradoL1.RA;
+                }
+                if (casoParticular[1].includes('HS.')) {
+                    mensajeContenido1 += objetoEncontradoL1.HS;
+                }
+                if (casoParticular[1].includes('A.')) {
+                    mensajeContenido1 += objetoEncontradoL1.A;
+                }
+                if (casoParticular[1].includes('TCM.')) {
+                    mensajeContenido1 += objetoEncontradoL1.TCM;
+                }
+
+                // Sumar siempre BC y queEsperar al final
+                mensajeContenido1 += objetoEncontradoL1.BC;
+                mensajeContenido1 += objetoEncontradoL1.queEsperar;
+
+                // Asigna el mensaje al contenido1
+                document.getElementById('contenido1').innerHTML = mensajeContenido1;
+            } else {
+                console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${L1.nombre}`);
             }
-            if (casoParticular[1].includes('HS.')) {
-                mensajeContenido2 += objetoEncontradoL2.HS;
-            }
-            if (casoParticular[1].includes('A.')) {
-                mensajeContenido2 += objetoEncontradoL2.A;
-            }
-            if (casoParticular[1].includes('TCM.')) {
-                mensajeContenido2 += objetoEncontradoL2.TCM;
-            }
 
-            // Sumar siempre BC y queEsperar al final
-            mensajeContenido2 += objetoEncontradoL2.BC;
-            mensajeContenido2 += objetoEncontradoL2.queEsperar;
+            // Mensaje para contenido2
+            let mensajeContenido2 = '';
 
-            // Asigna el mensaje al contenido2
-            document.getElementById('contenido2').innerHTML = mensajeContenido2;
-        } else {
-            console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${L2.nombre}`);
-        }
+            // Buscar el objeto en infoLimpiadores de forma literal para L2
+            const objetoEncontradoL2 = infoLimpiadores.find(item => item.nombre === L2.nombre);
 
+            if (objetoEncontradoL2) {
+                // Iniciar el mensaje con queEs
+                mensajeContenido2 += objetoEncontradoL2.queEs; // Siempre comienza con queEs
+
+                // Verifica y suma ingredientes según el caso particular
+                if (casoParticular[1].includes('RA.')) {
+                    mensajeContenido2 += objetoEncontradoL2.RA;
+                }
+                if (casoParticular[1].includes('HS.')) {
+                    mensajeContenido2 += objetoEncontradoL2.HS;
+                }
+                if (casoParticular[1].includes('A.')) {
+                    mensajeContenido2 += objetoEncontradoL2.A;
+                }
+                if (casoParticular[1].includes('TCM.')) {
+                    mensajeContenido2 += objetoEncontradoL2.TCM;
+                }
+
+                // Sumar siempre BC y queEsperar al final
+                mensajeContenido2 += objetoEncontradoL2.BC;
+                mensajeContenido2 += objetoEncontradoL2.queEsperar;
+
+                // Asigna el mensaje al contenido2
+                document.getElementById('contenido2').innerHTML = mensajeContenido2;
+            } else {
+                console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${L2.nombre}`);
+            }
+        });
     </script>
 </body>
 
