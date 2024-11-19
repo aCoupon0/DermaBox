@@ -70,7 +70,6 @@
     <script src="js/product.js"></script>
     <script src="js/info.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
             // Recupera los datos de L1 y L2 del localStorage
             const L1 = JSON.parse(localStorage.getItem('L1'));
             const L2 = JSON.parse(localStorage.getItem('L2'));
@@ -361,8 +360,7 @@
                 document.getElementById('contenido2').innerHTML = mensajeContenido2;
             } else {
                 console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${L2.nombre}`);
-            }
-        });
+            };
     </script>
 </body>
 
