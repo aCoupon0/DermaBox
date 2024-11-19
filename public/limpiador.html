@@ -124,21 +124,7 @@
                 let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
                 actualKit.push(producto);
                 localStorage.setItem('actualKit', JSON.stringify(actualKit));
-                function forceRedirect() {
-                    const targetUrl = 'hidratante.html';
-
-                    // Establece un intervalo para verificar y redirigir a la página objetivo
-                    const interval = setInterval(function () {
-                        if (window.location.href.indexOf(targetUrl) === -1) {
-                            window.location.href = targetUrl;
-                        } else {
-                            clearInterval(interval); // Detiene el intervalo cuando se llega a la página deseada
-                        }
-                    }, 1000); // Ejecuta cada 1 segundo
-                }
-
-                // Llama a la función para iniciar el intervalo de redirección
-                forceRedirect();
+                window.location.replace("hidratante.html");
             }
 
             const comparacionesPosibles = [
