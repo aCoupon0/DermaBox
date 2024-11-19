@@ -119,12 +119,13 @@
 
             // Función de ejemplo para agregar el producto (puedes personalizarla según tus necesidades)
             function agregarProducto(productoId) {
+                alert("Redirección ejecutada")
                 const producto = productoId === 'L1' ? L1 : L2;
                 let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
                 actualKit.push(producto);
                 localStorage.setItem('actualKit', JSON.stringify(actualKit));
                 window.location.href("hidratante.html");
-                alert("Redirección ejecutada")
+                
             }
 
             const comparacionesPosibles = [
