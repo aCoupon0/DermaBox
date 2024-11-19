@@ -188,25 +188,25 @@
                 const comparacionL2 = comparacionesPosibles.find(item => item.nombre === L2.nombre);
 
                 if (!comparacionL1 || !comparacionL2) {
-                    console.warn("No se encontró uno de los productos en comparacionesPosibles");
+                    console.warn("No se encontraron los nombres de los objetos L1 y L2");
                     return;
                 }
 
-                // Asignar valores explícitamente para L1
-                molde[0][1] = comparacionL1.pureza;               // Pureza para L1
-                molde[5][1] = comparacionL1.mejoresResultados;    // Mejores resultados para L1
-                molde[1][1] = comparacionL1.RA;                   // Potencia Antiacné para L1
-                molde[2][1] = comparacionL1.HS;                   // Hidratación para L1
-                molde[3][1] = comparacionL1.A;                    // Acción Antiedad para L1
-                molde[4][1] = comparacionL1.TCM;                  // Mejora de la textura para L1
+                //  valores L1
+                molde[0][1] = comparacionL1.pureza;               
+                molde[5][1] = comparacionL1.mejoresResultados;   
+                molde[1][1] = comparacionL1.RA;                   
+                molde[2][1] = comparacionL1.HS;                  
+                molde[3][1] = comparacionL1.A;                   
+                molde[4][1] = comparacionL1.TCM;                  
 
-                // Asignar valores explícitamente para L2
-                molde[0][2] = comparacionL2.pureza;               // Pureza para L2
-                molde[5][2] = comparacionL2.mejoresResultados;    // Mejores resultados para L2
-                molde[1][2] = comparacionL2.RA;                   // Potencia Antiacné para L2
-                molde[2][2] = comparacionL2.HS;                   // Hidratación para L2
-                molde[3][2] = comparacionL2.A;                    // Acción Antiedad para L2
-                molde[4][2] = comparacionL2.TCM;                  // Mejora de la textura para L2
+                //  valores L2
+                molde[0][2] = comparacionL2.pureza;               
+                molde[5][2] = comparacionL2.mejoresResultados;   
+                molde[1][2] = comparacionL2.RA;                   
+                molde[2][2] = comparacionL2.HS;                   
+                molde[3][2] = comparacionL2.A;                    
+                molde[4][2] = comparacionL2.TCM;                  
             }
 
             // Llama a la función
