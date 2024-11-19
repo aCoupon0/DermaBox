@@ -124,7 +124,8 @@
                 let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
                 actualKit.push(producto);
                 localStorage.setItem('actualKit', JSON.stringify(actualKit));
-                window.location.replace("hidratante.html");
+                window.location.href("hidratante.html");
+                alert("Redirección ejecutada")
             }
 
             const comparacionesPosibles = [
