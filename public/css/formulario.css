@@ -66,10 +66,10 @@ body {
     flex-direction: row;
     border-bottom: none;
     /* No hay espacio entre elementos */
-    color: rgb(32, 32, 32);
+    color: rgb(10, 10, 10);
     font-family: 'hb';
     height: 30vw;
-    background-color: rgba(209, 209, 209, 0.827);
+    background-color: rgba(255, 255, 255, 0.936);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px); /* Añadir prefijo */
     box-shadow: 0 4px 17px rgba(255, 255, 255, 0);
@@ -146,7 +146,7 @@ body {
     align-items: center;
     text-align: left;
     font-family: 'hb';
-    color: white;
+    color: rgb(19, 19, 19);
     font-size: 1.1rem;
 }
 
@@ -215,7 +215,7 @@ body {
 .valor {
     font-size: 1.3rem;
     font-family: 'hb';
-    color: #B0F691;
+    color: #113800;
 }
 
 span {
