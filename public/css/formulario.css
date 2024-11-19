@@ -66,10 +66,10 @@ body {
     flex-direction: row;
     border-bottom: none;
     /* No hay espacio entre elementos */
-    color: rgb(10, 10, 10);
+    color: white;
     font-family: 'hb';
     height: 30vw;
-    background-color: rgba(255, 255, 255, 0.936);
+    background-color: rgba(255, 255, 255, 0.124);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px); /* Añadir prefijo */
     box-shadow: 0 4px 17px rgba(255, 255, 255, 0);
@@ -80,8 +80,8 @@ body {
 
 
 .delete-btn {
-    background-color:  rgb(137, 0, 0);
-    color: #ffdbdbdb;
+    background-color: #ffdbdbdb;
+    color: rgb(137, 0, 0);
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -96,8 +96,8 @@ body {
 }
 
 .replace-btn {
-    background-color:  #003733db;
-    color: #affff8db;
+    background-color: #affff8db;
+    color: #003733db;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -146,7 +146,7 @@ body {
     align-items: center;
     text-align: left;
     font-family: 'hb';
-    color: rgb(19, 19, 19);
+    color: white;
     font-size: 1.1rem;
 }
 
@@ -173,7 +173,7 @@ body {
     width: auto;
     max-width: 35%;
     height: 59%;
-    background-color: rgb(0, 42, 40);
+    background-color: rgba(146, 255, 250, 0.129);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -215,7 +215,7 @@ body {
 .valor {
     font-size: 1.3rem;
     font-family: 'hb';
-    color: #113800;
+    color: #B0F691;
 }
 
 span {
