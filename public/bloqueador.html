@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/product.css"> <!-- Ruta actualizada para el CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="icon" href="assets/logo.png" type="image/png"/>
+    <link rel="icon" href="assets/logo.png" type="image/png" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLV64FXNRZ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -31,16 +31,15 @@
         <div class="etapa">4</div>
     </div>
 
-    <div class="zona-omitir">
-        <div class="zona-omitir-1">Este producto es opcional</div>
-        <div class="omitir-separador"></div>
-        <div class="zona-omitir-2">
-            <button class="boton-omitir" onclick="omitirProducto()">Omitir</button>
-        </div>
-    </div>
 
     <div class="zona-productos">
 
+    </div>
+
+    <div class="zona-omitir">
+        <div class="zona-omitir-2">
+            <button class="boton-omitir" onclick="omitirProducto()">Omitir este paso</button>
+        </div>
     </div>
 
     <div class="comparacion-titulo">COMPARACIÓN</div>
@@ -53,42 +52,70 @@
 
     <div class="seccion-desplegable" id="info1">
         <div class="titulo-desplegable" onclick="toggleContent('contenido1')">
-            <p class="texto-titulo">Información del <span style="font-family: 'hb'; font-weight: 400; color: #dbfd7e;" id="span-B1"></span></p>
+            <p class="texto-titulo">Información del <span style="font-family: 'hb'; font-weight: 400; color: #dbfd7e;"
+                    id="span-B1"></span></p>
             <i class="fas fa-chevron-down"></i>
         </div>
         <div id="contenido1" class="contenido-desplegable">
-            
+
 
         </div>
     </div>
 
     <div class="seccion-desplegable" id="info2">
         <div class="titulo-desplegable-2" onclick="toggleContent('contenido2')">
-            <p class="texto-titulo">Información del <span style="font-family: 'hb'; font-weight: 400; color: #ffe23e;" id="span-B2"></span></p>
+            <p class="texto-titulo">Información del <span style="font-family: 'hb'; font-weight: 400; color: #ffe23e;"
+                    id="span-B2"></span></p>
             <i class="fas fa-chevron-down"></i>
         </div>
         <div id="contenido2" class="contenido-desplegable">
-            
+
         </div>
     </div>
-    
+
     <div class="ampliacion-body"></div>
 
     <script src="js/product.js"></script>
     <script src="js/info.js"></script>
     <script defer>
+        function agregarProducto(productoId) {
+            const producto = productoId === 'B1' ? B1 : B2;
+            let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
+            actualKit.push(producto);
+            localStorage.setItem('actualKit', JSON.stringify(actualKit));
+            window.location.href = "potenciador.html";
+        }
+
+        function irAtras() {
+            let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
+            const index = actualKit.findIndex(item => item.categoria === "HIDRATANTE");
+
+            if (index !== -1) {
+                actualKit.splice(index, 1);
+                localStorage.setItem('actualKit', JSON.stringify(actualKit));
+            }
+
+            window.location.href = 'hidratante.html'; // Ir a la página anterior
+        }
+
+        function omitirProducto() {
+            // Redirigir directamente a la página de potenciadores
+            window.location.href = "potenciador.html";
+        }
+
         const B1 = JSON.parse(localStorage.getItem('B1'));
         const B2 = JSON.parse(localStorage.getItem('B2'));
 
-        // Obtener casoParticular del localStorage
-        const casoParticularString = localStorage.getItem('casoParticular');
+        if (!B1 || !B2) {
+            alert("Datos no encontrados");
+        }
 
-        // Convertir el string a objeto
+        const casoParticularString = localStorage.getItem('casoParticular');
         const casoParticular = JSON.parse(casoParticularString);
 
-        // Construye el HTML dinámico para cada producto
-        const htmlProductos = `
-            <div class="producto">
+        function renderizarProductos() {
+            const htmlProductos = `
+            <div class="producto primer-producto">
                 <div class="zona-foto">
                     <img src="../assets/productos/${B1.foto}.webp" alt="Imagen Producto" />
                 </div>
@@ -121,74 +148,49 @@
             </div>
         `;
 
-        // Inserta el HTML generado en el contenedor principal
-        document.querySelector('.zona-productos').innerHTML = htmlProductos;
-
-        // Función de ejemplo para agregar el producto (puedes personalizarla según tus necesidades)
-        function agregarProducto(productoId) {
-            const producto = productoId === 'B1' ? B1 : B2;
-            let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
-            actualKit.push(producto);
-            localStorage.setItem('actualKit', JSON.stringify(actualKit));
-            window.location.href = "potenciador.html";
+            document.querySelector('.zona-productos').innerHTML = htmlProductos;
         }
-        function irAtras() {
-            // Obtener el arreglo actualKit del localStorage
-            let actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
 
-            // Eliminar el último elemento si el arreglo no está vacío
-            if (actualKit.length > 0) {
-                actualKit.pop(); // Elimina el último elemento
-                localStorage.setItem('actualKit', JSON.stringify(actualKit)); // Actualiza el localStorage
-            }
-            // Redirigir a la pestaña anterior
-            window.location.href = 'hidratante.html' // Ir a la página anterior
-        }
-        function omitirProducto() {
-            // Redirigir directamente a la página de potenciadores
-            window.location.href = "potenciador.html";
-        }
-   
-        const comparacionesPosibles = [
-            {
-                nombre: 'Aloe Vera Sunscreen FPS+60 de Bioaqua',
-                pureza: 75,
-                RA: 50,
-                HS: 83,
-                A: 80,
-                TCM: 78,
-                mejoresResultados: '8'
-            },
-            {
-                nombre: 'Eucerin Oil Control FPS+50',
-                pureza: 93,
-                RA: 90,
-                HS: 50,
-                A: 97,
-                TCM: 93,
-                mejoresResultados: '6'
-            },
-            {
-                nombre: 'ISDIN Fusion Water Magic SPF 50',
-                pureza: 90,
-                RA: 85,
-                HS: 80,
-                A: 93,
-                TCM: 93,
-                mejoresResultados: '6'
-            }
-        ]
+        function renderizarComparaciones() {
+            const comparacionesPosibles = [
+                {
+                    nombre: 'Aloe Vera Sunscreen FPS+60 de Bioaqua',
+                    pureza: 75,
+                    RA: 50,
+                    HS: 83,
+                    A: 80,
+                    TCM: 78,
+                    mejoresResultados: '8'
+                },
+                {
+                    nombre: 'Eucerin Oil Control FPS+50',
+                    pureza: 93,
+                    RA: 90,
+                    HS: 50,
+                    A: 97,
+                    TCM: 93,
+                    mejoresResultados: '6'
+                },
+                {
+                    nombre: 'ISDIN Fusion Water Magic SPF 50',
+                    pureza: 90,
+                    RA: 85,
+                    HS: 80,
+                    A: 93,
+                    TCM: 93,
+                    mejoresResultados: '6'
+                }
+            ]
 
-        const molde = [
-            ["Pureza", 0, 0],
-            ["Potencia Antiacné", 0, 0],
-            ["Hidratación", 0, 0],
-            ["Acción Antiedad", 0, 0],
-            ["Mejora de la textura", 0, 0],
-            ["Mejores resultados en", "", ""],
-        ]
+            const molde = [
+                ["Pureza", 0, 0],
+                ["Potencia Antiacné", 0, 0],
+                ["Hidratación", 0, 0],
+                ["Acción Antiedad", 0, 0],
+                ["Mejora de la textura", 0, 0],
+                ["Mejores resultados en", "", ""],
+            ]
 
-        function llenarMolde() {
             const comparacionB1 = comparacionesPosibles.find(item => item.nombre === B1.nombre);
             const comparacionB2 = comparacionesPosibles.find(item => item.nombre === B2.nombre);
 
@@ -212,65 +214,63 @@
             molde[2][2] = comparacionB2.HS;                   // Hidratación para L2
             molde[3][2] = comparacionB2.A;                    // Acción Antiedad para L2
             molde[4][2] = comparacionB2.TCM;                  // Mejora de la textura para L2
-        }
 
-        // Llama a la función
-        llenarMolde();
 
-        const comparacionZona = document.querySelector('.comparacion-zona');
 
-        // Llena los nombres de L1 y L2
-        document.getElementById('B1').textContent = B1.nombre;
-        document.getElementById('B2').textContent = B2.nombre;
+            const comparacionZona = document.querySelector('.comparacion-zona');
 
-        // Construcción del HTML para los bloques comparativos
-        let htmlComparativos = '';
+            // Llena los nombres de L1 y L2
+            document.getElementById('B1').textContent = B1.nombre;
+            document.getElementById('B2').textContent = B2.nombre;
 
-        for (let i = 0; i < molde.length; i++) {
-            // Título del bloque
-            const titulo = molde[i][0];
+            // Construcción del HTML para los bloques comparativos
+            let htmlComparativos = '';
 
-            // Valores del bloque
-            const valorB1 = molde[i][1] || 0; // Maneja caso de valores undefined
-            const valorB2 = molde[i][2] || 0; // Maneja caso de valores undefined
+            for (let i = 0; i < molde.length; i++) {
+                // Título del bloque
+                const titulo = molde[i][0];
 
-            // Condiciones según el índice
-            if (i === 1) { // Para Potencia Antiacné
-                if (!casoParticular[1].includes('RA.')) {
-                    continue; // Omitir Potencia Antiacné si RA. no está presente
+                // Valores del bloque
+                const valorB1 = molde[i][1] || 0; // Maneja caso de valores undefined
+                const valorB2 = molde[i][2] || 0; // Maneja caso de valores undefined
+
+                // Condiciones según el índice
+                if (i === 1) { // Para Potencia Antiacné
+                    if (!casoParticular[1].includes('RA.')) {
+                        continue; // Omitir Potencia Antiacné si RA. no está presente
+                    }
                 }
-            }
-            if (i === 2) { // Para Hidratación
-                if (!casoParticular[1].includes('HS.')) {
-                    continue; // Omitir Hidratación si HS. no está presente
+                if (i === 2) { // Para Hidratación
+                    if (!casoParticular[1].includes('HS.')) {
+                        continue; // Omitir Hidratación si HS. no está presente
+                    }
                 }
-            }
-            if (i === 3) { // Para Anti-Aging
-                if (!casoParticular[1].includes('A.')) {
-                    continue; // Omitir Anti-Aging si A. no está presente
+                if (i === 3) { // Para Anti-Aging
+                    if (!casoParticular[1].includes('A.')) {
+                        continue; // Omitir Anti-Aging si A. no está presente
+                    }
                 }
-            }
-            if (i === 4) { // Para TCM
-                if (!casoParticular[1].includes('TCM.')) {
-                    continue; // Omitir TCM si TCM. no está presente
+                if (i === 4) { // Para TCM
+                    if (!casoParticular[1].includes('TCM.')) {
+                        continue; // Omitir TCM si TCM. no está presente
+                    }
                 }
-            }
 
-            // Determina cuál es el valor mayor o si son iguales
-            let claseValorB1, claseValorB2;
-            if (valorB1 === valorB2) {
-                claseValorB1 = 'valor-equal';
-                claseValorB2 = 'valor-equal';
-            } else {
-                const mayorValor = Math.max(valorB1, valorB2);
-                claseValorB1 = valorB1 === mayorValor ? 'valor-plus' : 'valor';
-                claseValorB2 = valorB2 === mayorValor ? 'valor-plus' : 'valor';
-            }
+                // Determina cuál es el valor mayor o si son iguales
+                let claseValorB1, claseValorB2;
+                if (valorB1 === valorB2) {
+                    claseValorB1 = 'valor-equal';
+                    claseValorB2 = 'valor-equal';
+                } else {
+                    const mayorValor = Math.max(valorB1, valorB2);
+                    claseValorB1 = valorB1 === mayorValor ? 'valor-plus' : 'valor';
+                    claseValorB2 = valorB2 === mayorValor ? 'valor-plus' : 'valor';
+                }
 
-            const esMejoresResultados = titulo === 'Mejores resultados en';
+                const esMejoresResultados = titulo === 'Mejores resultados en';
 
-            // Crear el bloque comparativo
-            htmlComparativos += `
+                // Crear el bloque comparativo
+                htmlComparativos += `
         <div class="bloque-comparativo">
             <div class="titulo-comparativo">
                 ${titulo === 'Pureza' ? '<i class="fa-solid fa-crown icono-crown"></i>' : ''}
@@ -288,84 +288,91 @@
             </div>
         </div>
     `;
+            }
+
+            // Insertar el HTML de bloques comparativos en la zona correspondiente
+            comparacionZona.innerHTML += htmlComparativos;
         }
 
-        // Insertar el HTML de bloques comparativos en la zona correspondiente
-        comparacionZona.innerHTML += htmlComparativos;
+        function renderizarInformaciones() {
+            document.getElementById('span-B1').textContent = B1.nombre;
+            document.getElementById('span-B2').textContent = B2.nombre;
 
-        // Asigna los nombres de L1 y L2 a los spans correspondientes
-        document.getElementById('span-B1').textContent = B1.nombre;
-        document.getElementById('span-B2').textContent = B2.nombre;
+            // Mensaje para contenido1
+            let mensajeContenido1 = '';
 
-        // Mensaje para contenido1
-        let mensajeContenido1 = '';
+            // Buscar el objeto en infoLimpiadores de forma literal
+            const objetoEncontradoB1 = infoProtectores.find(item => item.nombre === B1.nombre);
 
-        // Buscar el objeto en infoLimpiadores de forma literal
-        const objetoEncontradoB1 = infoProtectores.find(item => item.nombre === B1.nombre);
+            if (objetoEncontradoB1) {
+                // Iniciar el mensaje con queEs
+                mensajeContenido1 += objetoEncontradoB1.queEs; // Siempre comienza con queEs
 
-        if (objetoEncontradoB1) {
-            // Iniciar el mensaje con queEs
-            mensajeContenido1 += objetoEncontradoB1.queEs; // Siempre comienza con queEs
+                // Verifica y suma ingredientes según el caso particular
+                if (casoParticular[1].includes('RA.')) {
+                    mensajeContenido1 += objetoEncontradoB1.RA;
+                }
+                if (casoParticular[1].includes('HS.')) {
+                    mensajeContenido1 += objetoEncontradoB1.HS;
+                }
+                if (casoParticular[1].includes('A.')) {
+                    mensajeContenido1 += objetoEncontradoB1.A;
+                }
+                if (casoParticular[1].includes('TCM.')) {
+                    mensajeContenido1 += objetoEncontradoB1.TCM;
+                }
 
-            // Verifica y suma ingredientes según el caso particular
-            if (casoParticular[1].includes('RA.')) {
-                mensajeContenido1 += objetoEncontradoB1.RA;
+                // Sumar siempre BC y queEsperar al final
+                mensajeContenido1 += objetoEncontradoB1.BC;
+                mensajeContenido1 += objetoEncontradoB1.queEsperar;
+
+                // Asigna el mensaje al contenido1
+                document.getElementById('contenido1').innerHTML = mensajeContenido1;
+            } else {
+                console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${B1.nombre}`);
             }
-            if (casoParticular[1].includes('HS.')) {
-                mensajeContenido1 += objetoEncontradoB1.HS;
-            }
-            if (casoParticular[1].includes('A.')) {
-                mensajeContenido1 += objetoEncontradoB1.A;
-            }
-            if (casoParticular[1].includes('TCM.')) {
-                mensajeContenido1 += objetoEncontradoB1.TCM;
-            }
 
-            // Sumar siempre BC y queEsperar al final
-            mensajeContenido1 += objetoEncontradoB1.BC;
-            mensajeContenido1 += objetoEncontradoB1.queEsperar;
+            // Mensaje para contenido2
+            let mensajeContenido2 = '';
 
-            // Asigna el mensaje al contenido1
-            document.getElementById('contenido1').innerHTML = mensajeContenido1;
-        } else {
-            console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${B1.nombre}`);
+            // Buscar el objeto en infoLimpiadores de forma literal para L2
+            const objetoEncontradoB2 = infoProtectores.find(item => item.nombre === B2.nombre);
+
+            if (objetoEncontradoB2) {
+                // Iniciar el mensaje con queEs
+                mensajeContenido2 += objetoEncontradoB2.queEs; // Siempre comienza con queEs
+
+                // Verifica y suma ingredientes según el caso particular
+                if (casoParticular[1].includes('RA.')) {
+                    mensajeContenido2 += objetoEncontradoB2.RA;
+                }
+                if (casoParticular[1].includes('HS.')) {
+                    mensajeContenido2 += objetoEncontradoB2.HS;
+                }
+                if (casoParticular[1].includes('A.')) {
+                    mensajeContenido2 += objetoEncontradoB2.A;
+                }
+                if (casoParticular[1].includes('TCM.')) {
+                    mensajeContenido2 += objetoEncontradoB2.TCM;
+                }
+
+                // Sumar siempre BC y queEsperar al final
+                mensajeContenido2 += objetoEncontradoB2.BC;
+                mensajeContenido2 += objetoEncontradoB2.queEsperar;
+
+                // Asigna el mensaje al contenido2
+                document.getElementById('contenido2').innerHTML = mensajeContenido2;
+            } else {
+                console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${B2.nombre}`);
+            }
         }
 
-        // Mensaje para contenido2
-        let mensajeContenido2 = '';
-
-        // Buscar el objeto en infoLimpiadores de forma literal para L2
-        const objetoEncontradoB2 = infoProtectores.find(item => item.nombre === B2.nombre);
-
-        if (objetoEncontradoB2) {
-            // Iniciar el mensaje con queEs
-            mensajeContenido2 += objetoEncontradoB2.queEs; // Siempre comienza con queEs
-
-            // Verifica y suma ingredientes según el caso particular
-            if (casoParticular[1].includes('RA.')) {
-                mensajeContenido2 += objetoEncontradoB2.RA;
-            }
-            if (casoParticular[1].includes('HS.')) {
-                mensajeContenido2 += objetoEncontradoB2.HS;
-            }
-            if (casoParticular[1].includes('A.')) {
-                mensajeContenido2 += objetoEncontradoB2.A;
-            }
-            if (casoParticular[1].includes('TCM.')) {
-                mensajeContenido2 += objetoEncontradoB2.TCM;
-            }
-
-            // Sumar siempre BC y queEsperar al final
-            mensajeContenido2 += objetoEncontradoB2.BC;
-            mensajeContenido2 += objetoEncontradoB2.queEsperar;
-
-            // Asigna el mensaje al contenido2
-            document.getElementById('contenido2').innerHTML = mensajeContenido2;
-        } else {
-            console.warn(`No se encontró un objeto en "infoLimpiadores" con el nombre especificado: ${B2.nombre}`);
-        }
-
-   </script>
+        window.onload = function () {
+            renderizarProductos();
+            renderizarInformaciones();
+            renderizarComparaciones()
+        };
+    </script>
 </body>
 
 </html>
