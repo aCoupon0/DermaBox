@@ -607,6 +607,7 @@ i {
 }
 
 .etapa {
+    all: unset;
     height: 10vw;
     width: 10vw;
     font-family: 'hb';
@@ -615,6 +616,7 @@ i {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: none;
 }
 
 .etapa-activa {

@@ -76,7 +76,7 @@
 
     <script src="../js/product.js"></script>
     <script src="js/info.js"></script>
-    <script>
+    <script defer>
         const P1 = JSON.parse(localStorage.getItem('P1'));
         const P2 = JSON.parse(localStorage.getItem('P2'));
 
@@ -92,7 +92,7 @@
                 <div class="zona-foto">
                     <img src="../assets/productos/${P1.foto}.webp" alt="Imagen Producto" />
                 </div>
-                <div class="zona-tipo-1">${P1.calidad === 'E' ? 'Coreano' : 'Premium'}</div>
+                <div class="zona-tipo-1">${P1.calidad === 'E' ? 'Estándar' : 'Premium'}</div>
                 <div class="zona-nombre">${P1.nombre} <br>
                     <span style="font-family: 'h'; font-size: 1.1rem; color: #ffffffe0;">${P1.cantidad}ml</span>
                 </div>
@@ -108,7 +108,7 @@
                 <div class="zona-foto">
                     <img src="../assets/productos/${P2.foto}.webp" alt="Imagen Producto 2" />
                 </div>
-                <div class="zona-tipo-2">${P2.calidad === 'E' ? 'Coreano' : 'Premium'}</div>
+                <div class="zona-tipo-2">${P2.calidad === 'E' ? 'Estándar' : 'Premium'}</div>
                 <div class="zona-nombre">${P2.nombre} <br>
                     <span style="font-family: 'h'; font-size: 1.1rem; color: #ffffffe0;">${P2.cantidad}ml</span>
                 </div>
