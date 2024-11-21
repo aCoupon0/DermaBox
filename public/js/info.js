@@ -533,7 +533,7 @@ infoHidratantes = [
         nombre: 'Facial Moisturising Lotion PM',
         queEs: `
         <p class="title">¿QUÉ ES?</p>
-        <p class="info-description">Loción hidratante nocturna. Azctúa mientras duermes para reparar, nutrir e hidratar la piel. Su fórmula ligera y rica en ceramidas ayuda a restaurar la barrera cutánea y a dar una sensación sedosa a la piel.</p>   
+        <p class="info-description">Loción hidratante nocturna. Actúa mientras duermes para reparar, nutrir e hidratar la piel. Su fórmula ligera y rica en ceramidas ayuda a restaurar la barrera cutánea y a dar una sensación sedosa a la piel.</p>   
         <p class="title">INGREDIENTES RELEVANTES</p>
     `,
         RA: `

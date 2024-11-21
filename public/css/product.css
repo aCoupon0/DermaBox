@@ -64,7 +64,7 @@ body::before {
 .tipo-producto p {
     font-family: 'hb';
     color: white;
-    font-size: 1.5rem;
+    font-size: 6vw;
 }
 
 .separador-producto {
@@ -184,7 +184,7 @@ body::before {
     font-size: 4.5vw;
     text-align: center;
     color: #ffffff;
-    line-height: 1.3rem;
+    line-height: 4.5vw;
     flex-direction: column;
     gap: 1vw;
     padding-left: 3%;
@@ -204,7 +204,7 @@ body::before {
 
 .zona-cantidad p {
     font-family: 'hb';
-    font-size: 1.5rem;
+    font-size: 6vw;
     color: #bfffa3;
 }
 
@@ -238,12 +238,11 @@ body::before {
     width: 100%;
     height: 14vw;
     font-family: 'hb';
-    font-size: 1.4rem;
+    font-size: 5.5vw;
     color: #c6ffac;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.55rem;
     /* Ajusta el tamaño del texto según sea necesario */
     position: relative;
     /* Necesario para posicionar la flecha */
@@ -293,11 +292,11 @@ body::before {
     gap: 4vw;
     align-items: center;
     flex-direction: row;
-    font-size: 1.2rem;
+    font-size: 4.9vw;
     font-family: 'hb';
     text-align: center;
     background-color: rgba(0, 0, 0, 0.782);
-    line-height: 1.5rem;
+    line-height: 5.5vw;
 }
 
 .comparacion-zona-bloque-1 p:first-child {
@@ -324,7 +323,7 @@ body::before {
     justify-content: center;
     align-items: center;
     font-family: 'hb';
-    font-size: 1.25rem;
+    font-size: 5.5vw;
     color: white;
     border-top: 1px solid rgba(255, 255, 255, 0.198);
     border-left: none;
@@ -337,7 +336,7 @@ body::before {
     height: 70%;
     display: flex;
     justify-content: center;
-    gap:9vw;
+    gap: 9vw;
     align-items: center;
     font-family: 'hb';
 }
@@ -410,7 +409,7 @@ body::before {
 }
 
 .valor-plus {
-    font-size: 2.3rem;
+    font-size: 8.7vw;
     color: #FFE88D;
     text-shadow:
         1px 1px 4px rgba(255, 232, 141, 0.6),
@@ -421,7 +420,7 @@ body::before {
 }
 
 .valor-equal {
-    font-size: 2.3rem;
+    font-size: 8.7vw;
     color: #bcfffd;
     text-shadow:
         1px 1px 4px rgba(0, 62, 74, 0.6),
@@ -432,7 +431,7 @@ body::before {
 }
 
 .valor {
-    font-size: 2.3rem;
+    font-size: 8.7vw;
     color: white;
 }
 
@@ -455,9 +454,9 @@ body::before {
     justify-content: space-between;
     align-items: center;
     font-family: 'h';
-    font-size: 1.35rem;
+    font-size: 5.5vw;
     color: white;
-    line-height: 1.85rem;
+    line-height: 7vw;
     padding: 4vw;
 }
 
@@ -478,9 +477,9 @@ body::before {
     justify-content: space-between;
     align-items: center;
     font-family: 'h';
-    font-size: 1.35rem;
+    font-size: 5.5vw;
     color: white;
-    line-height: 1.85rem;
+    line-height: 7vw;
     padding: 4vw;
 }
 
@@ -502,7 +501,7 @@ i {
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     color: white;
-    font-size: 1.3rem;
+    font-size: 5.5vw;
 }
 
 
@@ -510,7 +509,7 @@ i {
 .info-txt {
     font-family: 'h';
     font-weight: 100;
-    font-size: 1.15rem;
+    font-size: 4.2vw;
     margin-bottom: 5vw;
     margin-left: 2vw;
     color: rgba(255, 255, 255, 0.628);
@@ -519,7 +518,7 @@ i {
 .info-description {
     font-family: 'h';
     font-weight: 100;
-    font-size: 1.15rem;
+    font-size: 4.2vw;
     margin-bottom: 5vw;
     margin-left: 2vw;
     color: rgb(255, 255, 255);
@@ -528,7 +527,7 @@ i {
 .ingrediente {
     font-family: 'hb';
     font-weight: 300;
-    font-size: 1.15rem;
+    font-size: 5vw;
     margin-top: 2vw;
     margin-left: 5vw;
     color: #ffffff;
@@ -537,11 +536,13 @@ i {
 .title {
     color: #B0F691;
     font-family: 'hb';
+    font-size: 95%;
 }
 
 .subtitle {
     font-family: 'hb';
     color: #62fff2;
+    font-size: 85%;
 }
 
 .zona-omitir {
@@ -567,7 +568,7 @@ i {
     border-radius: 15vw;
     background-color:   #001e1d;
     border: none;
-    font-size: 20px;
+    font-size: 5vw;
     color: #00fffb;
     font-family: 'hb';
     backdrop-filter: blur(30px);
@@ -625,7 +626,7 @@ i {
 
 .ampliacion-body {
     width: 100%;
-    height: 15vh;
+    height: 10vh;
 }
 
 .titulo-comparativo .icono-titulo {

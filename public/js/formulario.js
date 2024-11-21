@@ -522,7 +522,7 @@ const replaceData = [
         categoria: "HIDRATANTE",
         foto: "centella",
         tiempo: "N",
-        turno: 20,
+        turno: 13,
         alert: "",
         replace: 3,
         calidad: 'E'
@@ -704,7 +704,7 @@ const replaceData = [
         categoria: "POTENCIADOR",
         foto: "vibrant-retinol",
         tiempo: "N",
-        turno: 40,
+        turno: 15,
         alert: "SOLO DOS VECES POR SEMANA",
         replace: 17,
         calidad: 'E',
@@ -716,7 +716,7 @@ const replaceData = [
         categoria: "POTENCIADOR",
         foto: "to-retinol",
         tiempo: "N",
-        turno: 40,
+        turno: 15,
         alert: "SOLO DOS VECES POR SEMANA",
         replace: 16,
         calidad: 'P'
@@ -808,7 +808,7 @@ const replaceData = [
         categoria: "POTENCIADOR",
         foto: "vibrant-retinol",
         tiempo: "N",
-        turno: 40,
+        turno: 15,
         alert: "SOLO DOS VECES POR SEMANA",
         replace: 25,
         calidad: 'E'
@@ -820,7 +820,7 @@ const replaceData = [
         categoria: "POTENCIADOR",
         foto: "adapaleno",
         tiempo: "N",
-        turno: 40,
+        turno: 15,
         alert: "SOLO DOS VECES POR SEMANA",
         replace: 24,
         calidad: 'P'
