@@ -453,7 +453,7 @@ button.disabled {
     gap: 3vw;
     align-items: center;
     flex-direction: column;
-    background-color: #000000a2;
+    background: linear-gradient(135deg, #006266ba, #002a62a4);
 }
 
 #endButton {
@@ -474,7 +474,7 @@ button.disabled {
     color: rgb(226, 255, 193);
     font-size: 5vw;
     line-height: 1.3rem;
-    background-color: #ffffff0d;
+    background-color: #00000051;
     border-bottom: 1px solid rgba(255, 255, 255, 0.251);
 }
 

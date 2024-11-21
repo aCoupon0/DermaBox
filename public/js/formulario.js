@@ -530,7 +530,7 @@ const replaceData = [
     {
         nombre: 'Neutrogena Hydroboost',
         cantidad: 50,
-        valor: 80000,
+        valor: 73500,
         categoria: "HIDRATANTE",
         foto: "neutrogena-2",
         tiempo: "N",
@@ -582,7 +582,7 @@ const replaceData = [
     {
         nombre: 'Differin Adapalene 0.1%',
         cantidad: 30,
-        valor: 120900,
+        valor: 134100,
         categoria: "POTENCIADOR",
         foto: "adapaleno",
         tiempo: "N",
@@ -658,9 +658,9 @@ const replaceData = [
         calidad: 'E'
     },
     {
-        nombre: 'La Roche-Posay Effaclar Puryfing Foaming Gel Cleanser',
+        nombre: 'La Roche-Posay Effaclar Puryfing',
         cantidad: 200,
-        valor: 153900,
+        valor: 140000,
         categoria: "LIMPIADOR",
         foto: "effaclar",
         tiempo: "N",
@@ -686,7 +686,7 @@ const replaceData = [
     {
         nombre: 'Sérum Hialurónico 2% + B5 The Ordinary',
         cantidad: 30,
-        valor: 83900,
+        valor: 63000,
         categoria: "POTENCIADOR",
         foto: "to-hialuronico",
         tiempo: "N",
@@ -712,7 +712,7 @@ const replaceData = [
     {
         nombre: 'The Ordinary Retinol 0.2% in Squalane',
         cantidad: 30,
-        valor: 73100,
+        valor: 73500,
         categoria: "POTENCIADOR",
         foto: "to-retinol",
         tiempo: "N",
@@ -764,7 +764,7 @@ const replaceData = [
     {
         nombre: 'The Ordinary Ácido Glicólico 7% Toning Solution',
         cantidad: 240,
-        valor: 103700,
+        valor: 122300,
         categoria: "POTENCIADOR",
         foto: "to-glycolyc",
         tiempo: "N",
@@ -790,7 +790,7 @@ const replaceData = [
     {
         nombre: 'Differin Adapalene 0.1%',
         cantidad: 30,
-        valor: 120900,
+        valor: 134100,
         categoria: "POTENCIADOR",
         foto: "adapaleno",
         tiempo: "N",
@@ -816,7 +816,7 @@ const replaceData = [
     {
         nombre: 'Differin Adapalene 0.1%',
         cantidad: 30,
-        valor: 120900,
+        valor: 134100,
         categoria: "POTENCIADOR",
         foto: "adapaleno",
         tiempo: "N",
@@ -842,7 +842,7 @@ const replaceData = [
     {
         nombre: 'The Ordinary Retinol 0.2% in Squalane',
         cantidad: 30,
-        valor: 73100,
+        valor: 73500,
         categoria: "POTENCIADOR",
         foto: "to-retinol",
         tiempo: "N",
@@ -1052,7 +1052,7 @@ const replaceData = [
     {
         nombre: 'Crema Hidratante de Cerave',
         cantidad: 454,
-        valor: 117900,
+        valor: 91900,
         categoria: "HIDRATANTE",
         foto: "cerave-cream",
         tiempo: "MN",
@@ -1104,7 +1104,7 @@ const replaceData = [
     {
         nombre: 'Crema Hidratante de Cerave',
         cantidad: 454,
-        valor: 117900,
+        valor: 91900,
         categoria: "HIDRATANTE",
         foto: "cerave-cream",
         tiempo: "MN",
@@ -1131,7 +1131,7 @@ const replaceData = [
     {
         nombre: 'Neutrogena Hydroboost',
         cantidad: 50,
-        valor: 80000,
+        valor: 73500,
         categoria: "HIDRATANTE",
         foto: "neutrogena-2",
         tiempo: "N",
@@ -1157,7 +1157,7 @@ const replaceData = [
     {
         nombre: 'The Ordinary Ácido Glicólico 7% Toning Solution',
         cantidad: 240,
-        valor: 103700,
+        valor: 122300,
         categoria: "POTENCIADOR",
         foto: "to-glycolyc",
         tiempo: "N",

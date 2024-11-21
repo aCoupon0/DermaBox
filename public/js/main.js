@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'La Roche-Posay Effaclar Puryfing',
             cantidad: 200,
-            valor: 153900,
+            valor: 140000,
             categoria: "LIMPIADOR",
             foto: "effaclar",
             tiempo: "N",
@@ -515,7 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Neutrogena Hydroboost',
             cantidad: 50,
-            valor: 80000,
+            valor: 73500,
             categoria: "HIDRATANTE",
             foto: "neutrogena-2",
             tiempo: "N",
@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Crema Hidratante de Cerave',
             cantidad: 454,
-            valor: 117900,
+            valor: 91900,
             categoria: "HIDRATANTE",
             foto: "cerave-cream",
             tiempo: "MN",
@@ -577,7 +577,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Crema Hidratante de Cerave',
             cantidad: 454,
-            valor: 117900,
+            valor: 91900,
             categoria: "HIDRATANTE",
             foto: "cerave-cream",
             tiempo: "MN",
@@ -592,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Neutrogena Hydroboost',
             cantidad: 50,
-            valor: 80000,
+            valor: 73500,
             categoria: "HIDRATANTE",
             foto: "neutrogena-2",
             tiempo: "N",
@@ -845,7 +845,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Differin Adapalene 0.1%',
             cantidad: 30,
-            valor: 120900,
+            valor: 134100,
             categoria: "POTENCIADOR",
             foto: "adapaleno",
             tiempo: "N",
@@ -872,7 +872,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Sérum Hialurónico 2% + B5 The Ordinary',
             cantidad: 30,
-            valor: 83900,
+            valor: 63000,
             categoria: "POTENCIADOR",
             foto: "to-hialuronico",
             tiempo: "N",
@@ -885,7 +885,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'The Ordinary Retinol 0.2% in Squalane',
             cantidad: 30,
-            valor: 73100,
+            valor: 73500,
             categoria: "POTENCIADOR",
             foto: "to-retinol",
             tiempo: "N",
@@ -912,7 +912,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'The Ordinary Ácido Glicólico 7% Toning Solution',
             cantidad: 240,
-            valor: 103700,
+            valor: 122300,
             categoria: "POTENCIADOR",
             foto: "to-glycolyc",
             tiempo: "N",
@@ -925,7 +925,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Differin Adapalene 0.1%',
             cantidad: 30,
-            valor: 120900,
+            valor: 134100,
             categoria: "POTENCIADOR",
             foto: "adapaleno",
             tiempo: "N",
@@ -938,7 +938,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Differin Adapalene 0.1%',
             cantidad: 30,
-            valor: 120900,
+            valor: 134100,
             categoria: "POTENCIADOR",
             foto: "adapaleno",
             tiempo: "N",
@@ -951,7 +951,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'The Ordinary Retinol 0.2% in Squalane',
             cantidad: 30,
-            valor: 73100,
+            valor: 73500,
             categoria: "POTENCIADOR",
             foto: "to-retinol",
             tiempo: "N",
@@ -977,7 +977,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'The Ordinary Ácido Glicólico 7% Toning Solution',
             cantidad: 240,
-            valor: 103700,
+            valor: 122300,
             categoria: "POTENCIADOR",
             foto: "to-glycolyc",
             tiempo: "N",

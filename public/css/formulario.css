@@ -70,12 +70,26 @@ body {
     font-family: 'hb';
     height: 30vw;
     background-color: rgba(255, 255, 255, 0.124);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px); /* Añadir prefijo */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* Añadir prefijo */
     box-shadow: 0 4px 17px rgba(255, 255, 255, 0);
-    border: 1px solid rgba(255, 255, 255, 0.143);
     padding-top: 1vw;
     padding-bottom: 1vw;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.148);
+}
+
+.first-item {
+    box-shadow: 0px -4px 15px rgba(255, 255, 255, 0.069), 0px -4px 15px rgba(173, 216, 230, 0.03);
+    border-top: none;
+    border-top-left-radius: 5vw;
+    border-top-right-radius: 5vw;
+}
+
+.last-item {
+    box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.065), 0px 8px 15px rgba(173, 216, 230, 0.045);
+    border-bottom: none;
+    border-bottom-left-radius: 5vw;
+    border-bottom-right-radius: 5vw;
 }
 
 
@@ -170,8 +184,8 @@ body {
 }
 
 .producto-container {
-    width: auto;
-    max-width: 35%;
+    width: 35%;
+    max-width: 40%;
     height: 59%;
     background-color: rgba(146, 255, 250, 0.129);
     display: flex;
@@ -183,9 +197,9 @@ body {
 }
 
 .tipo-producto {
-    font-size: 4vw;
+    font-size: 3.8vw;
     font-family: 'hb';
-    color: rgb(160, 253, 247);
+    color: rgba(160, 253, 247, 0.811);
     text-decoration: wavy;
 }
 
@@ -439,9 +453,9 @@ span {
 .morning-routine {
     width: 95vw;
     height: auto;
-    background-color: #ffde5946;
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    background-color: #80670271;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
     border-radius: 10vw;
     margin-bottom: 5vw;
     padding-bottom: 1vw;
@@ -522,9 +536,9 @@ span {
 .night-routine {
     width: 95vw;
     height: auto;
-    background-color: #057a8b86;
-    backdrop-filter: blur(13px);
-    -webkit-backdrop-filter: blur(13px);
+    background-color: #00353d88;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
     border-radius: 10vw;
     margin-bottom: 5vw;
     padding-bottom: 1vw;
