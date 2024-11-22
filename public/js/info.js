@@ -16,14 +16,14 @@ infoLimpiadores = [
     <p class="ingrediente"> <i class="fa-solid fa-o circle"></i>Gluconolactona</p>
     <p class="info-txt">Exfoliante suave, elimina bacterias y acelera la cicatrización y curación. <a href="https://kajo-cosmetics.com/en/blogs/journal/the-gentle-exfoliation-of-gluconolactone-a-pha-for-sensitive-skin" target="_blank">KAJO</a></p>
     <p class="ingrediente"> <i class="fa-solid fa-o circle"></i>Niacinamida</p>
-    <p class="info-txt">Reduce la inflamación de los brotes y equilibra la cantidad de grasa en la piel. <a href="https://www.struthealth.com/blog/niacinamide-acne-how-this-essential-skin-vitamin-helps-acne" target="_blank">STRUT</a></p>
+    <p class="info-txt">Reduce la inflamación de los brotes y equilibra la cantidad de sebo en los poros. <a href="https://www.struthealth.com/blog/niacinamide-acne-how-this-essential-skin-vitamin-helps-acne" target="_blank">STRUT</a></p>
 `,
         HS: `
     <p class="subtitle">Para Hidratar y Sanar</p>
     <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Glicerina</p>
-    <p class="info-txt">Atrae y retiene la humedad en la piel, mejorando su hidratación. <a href="https://borealisderm.com/in-the-news/a-guide-to-glycerin-for-skin-according-to-dermatologists/" target="_blank">Borealis</a></p>
+    <p class="info-txt">Atrae y retiene la humedad en la piel. <a href="https://borealisderm.com/in-the-news/a-guide-to-glycerin-for-skin-according-to-dermatologists/" target="_blank">Borealis</a></p>
     <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Ácido Hialurónico</p>
-    <p class="info-txt">Proporciona hidratación intensa al atraer agua hacia las capas más profundas de la piel. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" target="_blank">PMC</a></p>
+    <p class="info-txt">Atrae agua hasta las capas más profundas de la piel. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" target="_blank">PMC</a></p>
     <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Centella Asiática</p>
     <p class="info-txt">Acelera la curación y cicatrización correcta de la piel. <a href="https://www.mdpi.com/2218-1989/13/2/276" target="_blank">MDPI</a></p>
 `,

@@ -579,12 +579,11 @@ i {
 
 .zona-etapas {
     width: 90vw;
-    height: 12vw;
+    height: 3vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-end;
-    gap: 4vw;
+    align-items: center;
     margin-bottom: 3vw;
     margin-top: 3vw;
     margin-left: 5vw;
@@ -593,8 +592,8 @@ i {
 
 .etapa {
     all: unset;
-    height: 10vw;
-    width: 10vw;
+    height: 65%;
+    width: 18%;
     font-family: 'hb';
     font-size: 5vw;
     color: rgba(255, 255, 255, 0.461);
@@ -602,20 +601,32 @@ i {
     justify-content: center;
     align-items: center;
     border: none;
+    background-color: rgba(255, 255, 255, 0.099);
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.057), 0px 4px 15px rgba(173, 216, 230, 0.035);
 }
 
 .etapa-activa {
-    height: 10vw;
-    width: 10vw;
-    border-radius: 15vw;
-    color: rgb(195, 247, 152);
+    height: 65%;
+    width: 18%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'hb';
-    border: 1px solid rgba(216, 255, 87, 0.476);
-    background-color: rgba(216, 255, 87, 0.023);
+    background-color: rgb(255, 255, 255);
     font-size: 5vw;
+    border-radius: 5vw;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.327), 0px 4px 15px rgba(173, 216, 230, 0.194);
+    border: none;
+}
+
+.primera-etapa {
+    border-top-left-radius: 5vw;
+    border-bottom-left-radius: 5vw;
+}
+
+.ultima-etapa {
+    border-top-right-radius: 5vw;
+    border-bottom-right-radius: 5vw;
 }
 
 .separador-valores {
