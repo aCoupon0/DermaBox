@@ -373,10 +373,22 @@
             };
         }
 
+        function mostrarScroll() {
+            // Desplazar hacia abajo suavemente a 300px (distancia más pequeña)
+            window.scrollTo({ top: 350, behavior: 'smooth' });
+
+            // Después de llegar a 300px, regresar inmediatamente al principio
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 1000);  // 0.8 segundos de espera antes de volver al inicio
+        }
+
+
         window.onload = function () {
             renderizarProductos();
             renderizarInformaciones();
-            renderizarComparaciones()
+            renderizarComparaciones();
+            mostrarScroll()
         };
     </script>
 </body>

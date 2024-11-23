@@ -1,12 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const dynamicBlock = document.getElementById("dynamic-block");
+    const contentArray = [
+        `
+            <p class="text-1">La rutina puede tener hasta 4 pasos</p>
+            <p class="text-2">
+            De cada uno podrás escoger entre un <br> producto 
+            <span class="hb-font estandar">Estándar</span>,
+            uno <span class="hb-font premium">Premium</span> u omitirlo.
+            </p>
+        `,
+        `
+            <p class="text-1">Productos personalizados para ti.</p>
+            <p class="text-2">
+                <span class="hb-font">Los productos que te mostramos los <br>escogemos según tus respuestas.</span>
+            </p>
+        `,
+    ];
+
+    let currentIndex = 0;
+
+    function swapContent() {
+        // Desvanecer el bloque actual
+        dynamicBlock.classList.remove("visible");
+
+        setTimeout(() => {
+            // Cambiar contenido
+            dynamicBlock.innerHTML = contentArray[currentIndex];
+            currentIndex = (currentIndex + 1) % contentArray.length;
+
+            // Desvanecer hacia adentro el nuevo contenido
+            dynamicBlock.classList.add("visible");
+        }, 1000); // Duración del fade-out (1 segundo)
+    }
+
+    dynamicBlock.innerHTML = contentArray[currentIndex];
+    dynamicBlock.classList.add("visible");
+    currentIndex++;
+
+    // Repetir cada 6 segundos (5 segundos de contenido visible + 1 segundo de animación)
+    setInterval(swapContent, 5000);
+
     // Verificar si 'actualKit' en localStorage tiene más de un elemento
     const actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
-    
+
     if (actualKit.length > 1) {
         window.location.href = '../formulario.html'; // Redirigir a formulario.html
         return; // Detener ejecución del resto del código si redirige
     }
-    
+
     const sections = document.querySelectorAll('section');
     const buttons = document.querySelectorAll('.scrollButton');
     const endButton = document.getElementById('endButton');
@@ -48,33 +89,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para manejar el scroll
     function handleScroll(event) {
-    const button = event.target;
-    const currentSection = button.closest('section');
-    const sectionIndex = Array.from(sections).indexOf(currentSection) - 1;
+        const button = event.target;
+        const currentSection = button.closest('section');
+        const sectionIndex = Array.from(sections).indexOf(currentSection) - 1;
 
-    // Permitir desplazamiento sin restricciones en la primera sección
-    if (sectionIndex < 0) {
-        scrollToNextSection(button);
-        return;
-    }
+        // Permitir desplazamiento sin restricciones en la primera sección
+        if (sectionIndex < 0) {
+            scrollToNextSection(button);
+            return;
+        }
 
-    // Verificar si el contenido del array es solo '0'
-    if (casoParticular[sectionIndex].length === 1 && casoParticular[sectionIndex][0] === '0') {
-       alert('Selecciona una opción, por favor');
-        return; // No continuar si no hay opción seleccionada
-    }
+        // Verificar si el contenido del array es solo '0'
+        if (casoParticular[sectionIndex].length === 1 && casoParticular[sectionIndex][0] === '0') {
+            alert('Selecciona una opción, por favor');
+            return; // No continuar si no hay opción seleccionada
+        }
 
-    // Mostrar animación de carga y desplazar a la siguiente sección
-    button.innerHTML = '<span class="loading-icon"></span>';
-    button.disabled = true;
+        // Mostrar animación de carga y desplazar a la siguiente sección
+        button.innerHTML = '<span class="loading-icon"></span>';
+        button.disabled = true;
 
-    setTimeout(() => {
-        button.innerHTML = button.getAttribute('data-original-text') || 'Siguiente';
-        button.disabled = false;
+        setTimeout(() => {
+            button.innerHTML = button.getAttribute('data-original-text') || 'Siguiente';
+            button.disabled = false;
 
-        scrollToNextSection(button);
+            scrollToNextSection(button);
 
-    }, button.id === 'lastScroll' ? 3000 : 400); // Ajuste de tiempo, devolverlo a 4000 : 400 cuando se termine
+        }, button.id === 'lastScroll' ? 3000 : 400); // Ajuste de tiempo, devolverlo a 4000 : 400 cuando se termine
     }
 
 
@@ -84,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Asignar eventos a los botones
     buttons.forEach((button, index) => {
-    button.setAttribute('data-original-text', button.textContent);
-    button.addEventListener('click', handleScroll);
+        button.setAttribute('data-original-text', button.textContent);
+        button.addEventListener('click', handleScroll);
     });
 
     // Lógica para manejar las opciones seleccionadas en las secciones
@@ -135,18 +176,18 @@ document.addEventListener('DOMContentLoaded', () => {
     endButton.addEventListener('click', () => {
         // Ordenar las opciones seleccionadas en la sección 3 (segunda posición del array) según el orden específico
         casoParticular[1].sort((a, b) => order.indexOf(a) - order.indexOf(b));
-    
+
         // Filtrar y eliminar los '0' de cada posición del array
         casoParticular = casoParticular.map(arr => arr.filter(item => item !== '0'));
         localStorage.setItem('casoParticular', JSON.stringify(casoParticular));
-    
+
         // Generar el string primerosTres
         const primerosTres = casoParticular.map(arr => arr.join('')).join('-');
         localStorage.setItem('primerosTres', primerosTres);
-    
+
         // Inicializar las variables
         let L1, L2, H1, H2, B1, B2, P1, P2;
-    
+
         // Buscar en limpiadoresEstandar
         for (const limpiador of limpiadoresEstandar) {
             if (limpiador.configuraciones.includes(primerosTres)) {
@@ -154,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break; // Salir del bucle una vez encontrado
             }
         }
-    
+
         // Buscar en limpiadoresPremium
         for (const limpiador of limpiadoresPremium) {
             if (limpiador.configuraciones.includes(primerosTres)) {
@@ -162,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break; // Salir del bucle una vez encontrado
             }
         }
-    
+
         // Buscar en hidratantesEstandar
         for (const hidratante of hidratantesEstandar) {
             if (hidratante.configuraciones.includes(primerosTres)) {
@@ -170,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break; // Salir del bucle una vez encontrado
             }
         }
-    
+
         // Buscar en hidratantesPremium
         for (const hidratante of hidratantesPremium) {
             if (hidratante.configuraciones.includes(primerosTres)) {
@@ -178,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break; // Salir del bucle una vez encontrado
             }
         }
-    
+
         // Buscar en protectoresEstandar
         for (const protector of protectoresEstandar) {
             if (protector.configuraciones.includes(primerosTres)) {
@@ -186,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break; // Salir del bucle una vez encontrado
             }
         }
-    
+
         // Buscar en protectoresPremium
         for (const protector of protectoresPremium) {
             if (protector.configuraciones.includes(primerosTres)) {
@@ -194,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break; // Salir del bucle una vez encontrado
             }
         }
-    
+
         // Buscar en potenciadoresEstandar
         for (const potenciador of potenciadoresEstandar) {
             if (potenciador.configuraciones.includes(primerosTres)) {
@@ -202,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break; // Salir del bucle una vez encontrado
             }
         }
-    
+
         // Buscar en potenciadoresPremium
         for (const potenciador of potenciadoresPremium) {
             if (potenciador.configuraciones.includes(primerosTres)) {
@@ -210,8 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 break; // Salir del bucle una vez encontrado
             }
         }
-    
-        // Guardar los objetos en localStorage
+
         localStorage.setItem('L1', JSON.stringify(L1));
         localStorage.setItem('L2', JSON.stringify(L2));
         localStorage.setItem('H1', JSON.stringify(H1));
@@ -220,9 +260,58 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('B2', JSON.stringify(B2));
         localStorage.setItem('P1', JSON.stringify(P1));
         localStorage.setItem('P2', JSON.stringify(P2));
-    
-        window.location.href = "../limpiador.html";
+
+        redireccionLimpiador();
+
     });
+
+    function redireccionLimpiador() {
+        // Obtener los valores de localStorage
+        const L1 = JSON.parse(localStorage.getItem('L1'));
+        const L2 = JSON.parse(localStorage.getItem('L2'));
+        const H1 = JSON.parse(localStorage.getItem('H1'));
+        const H2 = JSON.parse(localStorage.getItem('H2'));
+        const B1 = JSON.parse(localStorage.getItem('B1'));
+        const B2 = JSON.parse(localStorage.getItem('B2'));
+        const P1 = JSON.parse(localStorage.getItem('P1'));
+        const P2 = JSON.parse(localStorage.getItem('P2'));
+
+        // Verificar si alguna de las variables es undefined o null
+        if ([L1, L2, H1, H2, B1, B2, P1, P2].includes(null) || [L1, L2, H1, H2, B1, B2, P1, P2].includes(undefined)) {
+            // Si alguna variable es undefined o null, mostrar un mensaje de error
+            alert('Hubo un error, por favor vuelve a presionar el botón');
+        } else {
+            // Si todas las variables están definidas, redirigir
+            window.location.href = "../limpiador.html";
+        }
+    }
+
+    function bloquesIntercambiables() {
+        const interchangeableBlocks = document.querySelectorAll('.bloque-3-1.intercambiable');
+        let currentIndex = 0;
+
+        function switchContent() {
+            // Get the current and next blocks
+            const currentBlock = interchangeableBlocks[currentIndex];
+            const nextIndex = (currentIndex + 1) % interchangeableBlocks.length;
+            const nextBlock = interchangeableBlocks[nextIndex];
+
+            // Fade out the current block
+            currentBlock.classList.remove('active');
+
+            // Fade in the next block after the fade-out completes
+            setTimeout(() => {
+                nextBlock.classList.add('active');
+                currentIndex = nextIndex; // Update the current index
+            }, 1000); // Match the fade-out duration (1s)
+        }
+
+        // Start with the first block visible
+        interchangeableBlocks[0].classList.add('active');
+
+        // Run the switching logic in an infinite loop
+        setInterval(switchContent, 6000); // 5 seconds display + 1 second fade-out
+    }
 
     const limpiadoresEstandar = [
 
@@ -241,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
             configuraciones: ['G-RA.-N', 'G-TCM.-N', 'G-RA.HS.-N', 'G-RA.A.-N', 'G-RA.TCM.-N', 'G-HS.TCM.-N', 'G-A.TCM.-N', 'G-RA.HS.A.-N', 'G-RA.HS.TCM.-N', 'G-RA.A.TCM.-N', 'G-HS.A.TCM.-N', 'G-RA.HS.A.TCM.-N', 'M-RA.-N', 'M-TCM.-N',
                 'M-RA.HS.-N', 'M-RA.A.-N', 'M-RA.TCM.-N', 'M-A.TCM.-N', 'M-RA.HS.A.-N', 'M-RA.HS.TCM.-N', 'M-RA.A.TCM.-N', 'M-RA.HS.A.TCM.-N']
         },
-    
+
         //DESTINADO A ALGUNAS PIELES SENSIBLES
         {
             nombre: 'Espuma 4 en 1 de Carvenchy',
@@ -256,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['G-HS.-N', 'G-HS.-S', 'G-A.-N', 'G-A.-S', 'G-HS.A.-N', 'G-HS.A.-S']
         },
-    
+
         //DESTINADO A ALGUNAS PIELES SENSIBLES
         {
             nombre: 'Espuma 4 en 1 de Carvenchy',
@@ -272,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
             configuraciones: ['G-RA.-S', 'G-TCM.-S', 'G-RA.HS.-S', 'G-RA.A.-S', 'G-RA.TCM.-S', 'G-HS.TCM.-S', 'G-A.TCM.-S', 'G-RA.HS.A.-S', 'G-RA.HS.TCM.-S', 'G-RA.A.TCM.-S', 'G-HS.A.TCM.-S', 'G-RA.HS.A.TCM.-S', 'M-RA.-S', 'M-TCM.-S',
                 'M-RA.HS.-S', 'M-RA.A.-S', 'M-RA.TCM.-S', 'M-A.TCM.-S', 'M-RA.HS.A.-S', 'M-RA.HS.TCM.-S', 'M-RA.A.TCM.-S', 'M-RA.HS.A.TCM.-S', 'S-RA.-N']
         },
-    
+
         //CAMBIA POR EL HYDRATING CLEANSER, SOLO POR LA NOCHE EN ESTE CASO, ALGUNAS SENSIBLES O QUE SOLO QUIEREN HIDRATAR
         {
             nombre: 'Espuma 4 en 1 de Carvenchy',
@@ -286,9 +375,9 @@ document.addEventListener('DOMContentLoaded', () => {
             replace: 35,
             calidad: 'E',
             configuraciones: ['M-HS.-N', 'M-HS.-S', 'M-A.-S', 'M-HS.A.-S', 'M-HS.TCM.-S', 'M-HS.A.TCM.-S', 'S-RA.-S', 'S-A.-N', 'S-A.-S', 'S-TCM.-S', 'S-RA.HS.-S', 'S-RA.A.-S', 'S-RA.TCM.-S', 'S-HS.A.-N', 'S-HS.A.-S', 'S-HS.TCM.-N',
-            'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-S']
+                'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-S']
         },
-    
+
         //CAMBIA POR EL HYDRATING CLEANSER, AHORA ES DIA Y NOCHE
         {
             nombre: 'Espuma 4 en 1 de Carvenchy',
@@ -303,8 +392,8 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['M-A.-N', 'M-HS.A.-N', 'M-HS.TCM.-N', 'M-HS.A.TCM.-N', 'S-TCM.-N', 'S-RA.HS.-N', 'S-RA.A.-N', 'S-RA.TCM.-N', 'S-RA.A.TCM.-N', 'S-RA.HS.A.TCM.-N']
         },
-    
-    
+
+
         //CAMBIA POR EL HYDRATING CLEANSER, SOLO NOCHE
         {
             nombre: 'Limpiador Milk Hidrolizada de Sadoer',
@@ -320,9 +409,9 @@ document.addEventListener('DOMContentLoaded', () => {
             configuraciones: ['S-HS.-N', 'S-HS.-S']
         },
     ]
-    
+
     const limpiadoresPremium = [
-    
+
         //DESTINADO A LAS PIELES NO SENSIBLES, DEBIDO A QUE SE APLICA POR LA MAÑANA Y POR LA NOCHE
         {
             nombre: 'Smoothing SA Cleanser de CeraVe',
@@ -338,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
             configuraciones: ['G-RA.-N', 'G-TCM.-N', 'G-RA.HS.-N', 'G-RA.A.-N', 'G-RA.TCM.-N', 'G-HS.TCM.-N', 'G-A.TCM.-N', 'G-RA.HS.A.-N', 'G-RA.HS.TCM.-N', 'G-RA.A.TCM.-N', 'G-HS.A.TCM.-N', 'G-RA.HS.A.TCM.-N', 'M-RA.-N', 'M-TCM.-N',
                 'M-RA.HS.-N', 'M-RA.A.-N', 'M-RA.TCM.-N', 'M-A.TCM.-N', 'M-RA.HS.A.-N', 'M-RA.HS.TCM.-N', 'M-RA.A.TCM.-N', 'M-RA.HS.A.TCM.-N']
         },
-    
+
         //DESTINADO A ALGUNAS PIELES SENSIBLES
         {
             nombre: 'La Roche-Posay Effaclar Puryfing',
@@ -353,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'P',
             configuraciones: ['G-HS.-N', 'G-HS.-S', 'G-A.-N', 'G-A.-S', 'G-HS.A.-N', 'G-HS.A.-S']
         },
-    
+
         //DESTINADO A ALGUNAS PIELES SENSIBLES
         {
             nombre: 'Smoothing SA Cleanser de CeraVe',
@@ -369,7 +458,7 @@ document.addEventListener('DOMContentLoaded', () => {
             configuraciones: ['G-RA.-S', 'G-TCM.-S', 'G-RA.HS.-S', 'G-RA.A.-S', 'G-RA.TCM.-S', 'G-HS.TCM.-S', 'G-A.TCM.-S', 'G-RA.HS.A.-S', 'G-RA.HS.TCM.-S', 'G-RA.A.TCM.-S', 'G-HS.A.TCM.-S', 'G-RA.HS.A.TCM.-S', 'M-RA.-S', 'M-TCM.-S',
                 'M-RA.HS.-S', 'M-RA.A.-S', 'M-RA.TCM.-S', 'M-A.TCM.-S', 'M-RA.HS.A.-S', 'M-RA.HS.TCM.-S', 'M-RA.A.TCM.-S', 'M-RA.HS.A.TCM.-S', 'S-RA.-N']
         },
-    
+
         //CAMBIA POR LA ESPUMA 4 EN 1 Y SOLO POR LA NOCHE
         {
             nombre: 'Limpiador Hidratante de CeraVe',
@@ -383,9 +472,9 @@ document.addEventListener('DOMContentLoaded', () => {
             replace: 34,
             calidad: 'P',
             configuraciones: ['M-HS.-N', 'M-HS.-S', 'M-A.-S', 'M-HS.A.-S', 'M-HS.TCM.-S', 'M-HS.A.TCM.-S', 'S-RA.-S', 'S-A.-N', 'S-A.-S', 'S-TCM.-S', 'S-RA.HS.-S', 'S-RA.A.-S', 'S-RA.TCM.-S', 'S-HS.A.-N', 'S-HS.A.-S', 'S-HS.TCM.-N',
-            'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-S']
+                'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-S']
         },
-    
+
         //CAMBIA POR LA ESPUMA 4 EN 1 y se aplica dia y noche
         {
             nombre: 'Limpiador Hidratante de CeraVe',
@@ -400,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'P',
             configuraciones: ['M-A.-N', 'M-HS.A.-N', 'M-HS.TCM.-N', 'M-HS.A.TCM.-N', 'S-TCM.-N', 'S-RA.HS.-N', 'S-RA.A.-N', 'S-RA.TCM.-N', 'S-RA.A.TCM.-N', 'S-RA.HS.A.TCM.-N']
         },
-    
+
         //CAMBIA POR LA LECHE HIDROLIZADA DE SADOER
         {
             nombre: 'Limpiador Hidratante de CeraVe',
@@ -416,9 +505,9 @@ document.addEventListener('DOMContentLoaded', () => {
             configuraciones: ['S-HS.-N', 'S-HS.-S']
         },
     ]
-    
+
     const hidratantesEstandar = [
-    
+
         {
             nombre: 'Tónico Centella Asiatica',
             cantidad: 120,
@@ -432,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['G-RA.-N', 'G-HS.-N', 'S-RA.HS.-N', 'S-RA.TCM.-N', 'S-RA.TCM.-S', 'S-RA.HS.TCM.-N']
         },
-    
+
         {
             nombre: 'Tónico Centella Asiatica',
             cantidad: 120,
@@ -448,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'G-HS.TCM.-N', 'G-HS.TCM.-S', 'G-RA.HS.TCM.-N', 'G-RA.HS.TCM.-S', 'M-RA.-N', 'M-RA.-S', 'M-TCM.-N', 'M-TCM.-S', 'M-RA.HS.-N', 'M-RA.HS.-S', 'M-RA.TCM.-N', 'M-RA.TCM.-S',
                 'M-RA.HS.TCM.-N', 'M-RA.HS.TCM.-S', 'S-RA.HS.-S', 'S-RA.HS.TCM.-S']
         },
-    
+
         {
             nombre: 'Tónico de Hinojo Marino',
             cantidad: 120,
@@ -464,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'M-A.-N', 'M-A.-S', 'M-RA.A.-N', 'M-RA.A.-S', 'M-HS.A.-N', 'M-HS.A.-S', 'M-HS.TCM.-N', 'M-HS.TCM.-S', 'M-A.TCM.-N', 'M-A.TCM.-S', 'M-RA.HS.A.-N', 'M-RA.HS.A.-S', 'M-RA.A.TCM.-N', 'M-RA.A.TCM.-S', 'M-HS.A.TCM.-N',
                 'M-HS.A.TCM.-S', 'M-RA.HS.A.TCM.-N', 'M-RA.HS.A.TCM.-S', 'S-TCM.-S', 'S-RA.A.-S', 'S-HS.A.-S']
         },
-    
+
         {
             nombre: 'Tónico Centella Asiatica',
             cantidad: 120,
@@ -478,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['S-RA.-N', 'S-RA.-S']
         },
-    
+
         //ESTE SE INTERCAMBIA POR EL CERAVE MOISTURZING, EL GRANDE
         {
             nombre: 'Tónico de Hinojo Marino',
@@ -493,7 +582,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['S-HS.-N', 'S-HS.-S', 'S-A.-N', 'S-A.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N', 'S-RA.HS.A.TCM.-S']
         },
-    
+
         //ESTE SE INTERCAMBIA POR EL NEUTROGENA HYDROBOOST
         {
             nombre: 'Tónico de Hinojo Marino',
@@ -509,9 +598,9 @@ document.addEventListener('DOMContentLoaded', () => {
             configuraciones: ['S-TCM.-N', 'S-RA.A.-N', 'S-HS.A.-N', 'S-HS.TCM.-N', 'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S']
         },
     ]
-    
+
     const hidratantesPremium = [
-    
+
         {
             nombre: 'Neutrogena Hydroboost',
             cantidad: 50,
@@ -525,7 +614,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'P',
             configuraciones: ['G-RA.-N', 'G-HS.-N', 'S-RA.HS.-N', 'S-RA.TCM.-N', 'S-RA.TCM.-S', 'S-RA.HS.TCM.-N']
         },
-    
+
         {
             nombre: 'Facial Moisturising Lotion PM',
             cantidad: 52,
@@ -541,7 +630,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'G-HS.TCM.-N', 'G-HS.TCM.-S', 'G-RA.HS.TCM.-N', 'G-RA.HS.TCM.-S', 'M-RA.-N', 'M-RA.-S', 'M-TCM.-N', 'M-TCM.-S', 'M-RA.HS.-N', 'M-RA.HS.-S', 'M-RA.TCM.-N', 'M-RA.TCM.-S',
                 'M-RA.HS.TCM.-N', 'M-RA.HS.TCM.-S', 'S-RA.HS.-S', 'S-RA.HS.TCM.-S']
         },
-    
+
         {
             nombre: 'Facial Moisturising Lotion PM',
             cantidad: 52,
@@ -557,7 +646,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'M-A.-N', 'M-A.-S', 'M-RA.A.-N', 'M-RA.A.-S', 'M-HS.A.-N', 'M-HS.A.-S', 'M-HS.TCM.-N', 'M-HS.TCM.-S', 'M-A.TCM.-N', 'M-A.TCM.-S', 'M-RA.HS.A.-N', 'M-RA.HS.A.-S', 'M-RA.A.TCM.-N', 'M-RA.A.TCM.-S', 'M-HS.A.TCM.-N',
                 'M-HS.A.TCM.-S', 'M-RA.HS.A.TCM.-N', 'M-RA.HS.A.TCM.-S', 'S-TCM.-S', 'S-RA.A.-S', 'S-HS.A.-S']
         },
-    
+
         //ESTA SE INTERCAMBIA POR EL TONICO DE CENTELLA ASIATICA
         {
             nombre: 'Crema Hidratante de Cerave',
@@ -572,7 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'P',
             configuraciones: ['S-RA.-N', 'S-RA.-S']
         },
-    
+
         //ESTE SE INTERCAMBIA POR EL SEA FENNEL
         {
             nombre: 'Crema Hidratante de Cerave',
@@ -587,7 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'P',
             configuraciones: ['S-HS.-N', 'S-HS.-S', 'S-A.-N', 'S-A.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N', 'S-RA.HS.A.TCM.-S']
         },
-    
+
         //ESTE SE INTERCAMBIA POR EL SEA FENNEL
         {
             nombre: 'Neutrogena Hydroboost',
@@ -603,7 +692,7 @@ document.addEventListener('DOMContentLoaded', () => {
             configuraciones: ['S-TCM.-N', 'S-RA.A.-N', 'S-HS.A.-N', 'S-HS.TCM.-N', 'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S']
         },
     ]
-    
+
     const protectoresEstandar = [
         {
             nombre: 'Aloe Vera Sunscreen FPS+60 de Bioaqua',
@@ -622,7 +711,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'M-HS.TCM.-N', 'M-HS.TCM.-S', 'M-A.TCM.-N', 'M-A.TCM.-S', 'M-RA.HS.A.-N', 'M-RA.HS.A.-S', 'M-RA.HS.TCM.-N', 'M-RA.HS.TCM.-S', 'M-RA.A.TCM.-N', 'M-RA.A.TCM.-S', 'M-HS.A.TCM.-N', 'M-HS.A.TCM.-S', 'M-RA.HS.A.TCM.-N',
                 'M-RA.HS.A.TCM.-S']
         },
-    
+
         {
             nombre: 'Aloe Vera Sunscreen FPS+60 de Bioaqua',
             cantidad: 150,
@@ -635,11 +724,11 @@ document.addEventListener('DOMContentLoaded', () => {
             replace: 41,
             calidad: 'E',
             configuraciones: ['S-RA.-N', 'S-RA.-S', 'S-HS.-N', 'S-HS.-S', 'S-A.-N', 'S-A.-S', 'S-TCM.-N', 'S-TCM.-S', 'S-RA.HS.-N', 'S-RA.HS.-S', 'S-RA.A.-N', 'S-RA.A.-S', 'S-RA.TCM.-N', 'S-RA.TCM.-S', 'S-HS.A.-N', 'S-HS.A.-S',
-            'S-HS.TCM.-N', 'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N',
-            'S-RA.HS.A.TCM.-S']
+                'S-HS.TCM.-N', 'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N',
+                'S-RA.HS.A.TCM.-S']
         }
     ]
-    
+
     const protectoresPremium = [
         {
             nombre: 'Eucerin Oil Control FPS+50',
@@ -658,7 +747,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'M-HS.TCM.-N', 'M-HS.TCM.-S', 'M-A.TCM.-N', 'M-A.TCM.-S', 'M-RA.HS.A.-N', 'M-RA.HS.A.-S', 'M-RA.HS.TCM.-N', 'M-RA.HS.TCM.-S', 'M-RA.A.TCM.-N', 'M-RA.A.TCM.-S', 'M-HS.A.TCM.-N', 'M-HS.A.TCM.-S', 'M-RA.HS.A.TCM.-N',
                 'M-RA.HS.A.TCM.-S']
         },
-    
+
         {
             nombre: 'ISDIN Fusion Water Magic SPF 50',
             cantidad: 50,
@@ -671,11 +760,11 @@ document.addEventListener('DOMContentLoaded', () => {
             replace: 40,
             calidad: 'P',
             configuraciones: ['S-RA.-N', 'S-RA.-S', 'S-HS.-N', 'S-HS.-S', 'S-A.-N', 'S-A.-S', 'S-TCM.-N', 'S-TCM.-S', 'S-RA.HS.-N', 'S-RA.HS.-S', 'S-RA.A.-N', 'S-RA.A.-S', 'S-RA.TCM.-N', 'S-RA.TCM.-S', 'S-HS.A.-N', 'S-HS.A.-S',
-            'S-HS.TCM.-N', 'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N',
-            'S-RA.HS.A.TCM.-S']
+                'S-HS.TCM.-N', 'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N',
+                'S-RA.HS.A.TCM.-S']
         }
     ]
-    
+
     const potenciadoresEstandar = [
         //Su pareja es el differin 
         {
@@ -691,7 +780,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['G-RA.-N', 'G-RA.HS.-N', 'M-RA.-N', 'S-RA.-N']
         },
-    
+
         //Su pareja es el the ordinary niacinaimda & zinc
         {
             nombre: 'Serum Niacinamida de Bioaqua',
@@ -705,7 +794,7 @@ document.addEventListener('DOMContentLoaded', () => {
             replace: 11,
             calidad: 'E',
             configuraciones: ['G-RA.-S', 'G-RA.HS.-S', 'G-RA.A.-S', 'G-RA.TCM.-S', 'M-RA.-S', 'M-RA.HS.-N', 'M-RA.HS.-S', 'M-RA.A.-S', 'M-RA.TCM.-S', 'M-RA.HS.A.-S', 'M-RA.HS.TCM.-S', 'M-RA.A.TCM.-S', 'M-RA.HS.A.TCM.-S', 'S-RA.-S',
-            'S-RA.HS.-N', 'S-RA.HS.-S', 'S-RA.A.-S', 'S-RA.TCM.-S', 'S-HS.TCM.-S']
+                'S-RA.HS.-N', 'S-RA.HS.-S', 'S-RA.A.-S', 'S-RA.TCM.-S', 'S-HS.TCM.-S']
         },
         {
             nombre: 'Sérum Hialurónico de Bioaqua',
@@ -720,7 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['G-HS.-N', 'G-HS.-S', 'M-HS.-N', 'M-HS.-S', 'S-HS.-N', 'S-HS.-S']
         },
-    
+
         //Su pareja es el the ordinary retinol, este es el que es usa dos veces por semana
         {
             nombre: 'Sérum Retinol de Vibrant Glamoúr',
@@ -734,7 +823,7 @@ document.addEventListener('DOMContentLoaded', () => {
             replace: 17,
             calidad: 'E',
             configuraciones: ['G-A.-N', 'G-RA.A.-N', 'G-HS.A.-N', 'G-A.TCM.-N', 'G-HS.A.TCM.-N', 'G-RA.HS.A.TCM.-N', 'M-A.-N', 'M-HS.A.-N', 'M-A.TCM.-N', 'M-RA.HS.A.-N', 'M-RA.A.TCM.-N', 'M-HS.A.TCM.-N', 'M-RA.HS.A.TCM.-N', 'S-A.-N',
-            'S-RA.A.-N', 'S-HS.A.-N', 'S-A.TCM.-N', 'S-RA.HS.A.-N', 'S-RA.A.TCM.-N', 'S-HS.A.TCM.-N', 'S-RA.HS.A.TCM.-N']
+                'S-RA.A.-N', 'S-HS.A.-N', 'S-A.TCM.-N', 'S-RA.HS.A.-N', 'S-RA.A.TCM.-N', 'S-HS.A.TCM.-N', 'S-RA.HS.A.TCM.-N']
         },
         {
             nombre: 'Sérum de Vitamina C Bioaqua',
@@ -749,7 +838,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['G-A.-S', 'G-TCM.-S', 'G-HS.A.-S', 'G-HS.TCM.-S', 'G-A.TCM.-S', 'G-RA.HS.A.-S', 'M-A.-S', 'M-TCM.-S', 'M-HS.A.-S', 'M-A.TCM.-S', 'M-HS.A.TCM.-S', 'S-A.-S', 'S-HS.A.-S']
         },
-    
+
         //Su pareja es el acido glicolico de the ordinary
         {
             nombre: 'Pads Ácido Glicólico de Elaimei',
@@ -764,7 +853,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['G-TCM.-N', 'G-HS.TCM.-N', 'M-TCM.-N', 'M-RA.TCM.-N', 'M-HS.TCM.-N', 'M-RA.HS.TCM.-N']
         },
-    
+
         //Su pareja es el differin
         {
             nombre: 'Pads Ácido Glicólico de Elaimei',
@@ -779,7 +868,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: []
         },
-    
+
         //Su pareja es el differin
         {
             nombre: 'Sérum Retinol de Vibrant Glamoúr',
@@ -794,7 +883,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['G-RA.TCM.-N', 'G-RA.HS.A.-N', 'G-RA.HS.TCM.-N', 'G-RA.A.TCM.-N', 'M-RA.A.-N']
         },
-    
+
         //Su pareja es el otro retinol, pero estos son una vez por semana
         {
             nombre: 'Sérum Retinol de Vibrant Glamoúr',
@@ -809,7 +898,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['G-RA.HS.TCM.-S', 'G-RA.A.TCM.-S', 'G-HS.A.TCM.-S', 'G-RA.HS.A.TCM.-S']
         },
-    
+
         //Su pareja es el ácido láctico
         {
             nombre: 'Serum Niacinamida de Bioaqua',
@@ -824,7 +913,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['M-HS.TCM.-S', 'S-TCM.-N', 'S-TCM.-S', 'S-HS.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-S']
         },
-    
+
         //Su pareja es el ácido glicolico de the ordinary
         {
             nombre: 'Serum Niacinamida de Bioaqua',
@@ -840,7 +929,7 @@ document.addEventListener('DOMContentLoaded', () => {
             configuraciones: ['S-RA.TCM.-N']
         },
     ]
-    
+
     const potenciadoresPremium = [
         {
             nombre: 'Differin Adapalene 0.1%',
@@ -867,7 +956,7 @@ document.addEventListener('DOMContentLoaded', () => {
             replace: 10,
             calidad: 'P',
             configuraciones: ['G-RA.-S', 'G-RA.HS.-S', 'G-RA.A.-S', 'G-RA.TCM.-S', 'M-RA.-S', 'M-RA.HS.-N', 'M-RA.HS.-S', 'M-RA.A.-S', 'M-RA.TCM.-S', 'M-RA.HS.A.-S', 'M-RA.HS.TCM.-S', 'M-RA.A.TCM.-S', 'M-RA.HS.A.TCM.-S', 'S-RA.-S',
-            'S-RA.HS.-N', 'S-RA.HS.-S', 'S-RA.A.-S', 'S-RA.TCM.-S', 'S-HS.TCM.-S']
+                'S-RA.HS.-N', 'S-RA.HS.-S', 'S-RA.A.-S', 'S-RA.TCM.-S', 'S-HS.TCM.-S']
         },
         {
             nombre: 'Sérum Hialurónico 2% + B5 The Ordinary',
@@ -894,7 +983,7 @@ document.addEventListener('DOMContentLoaded', () => {
             replace: 16,
             calidad: 'P',
             configuraciones: ['G-A.-N', 'G-RA.A.-N', 'G-HS.A.-N', 'G-A.TCM.-N', 'G-HS.A.TCM.-N', 'G-RA.HS.A.TCM.-N', 'M-A.-N', 'M-HS.A.-N', 'M-A.TCM.-N', 'M-RA.HS.A.-N', 'M-RA.A.TCM.-N', 'M-HS.A.TCM.-N', 'M-RA.HS.A.TCM.-N', 'S-A.-N',
-            'S-RA.A.-N', 'S-HS.A.-N', 'S-A.TCM.-N', 'S-RA.HS.A.-N', 'S-RA.A.TCM.-N', 'S-HS.A.TCM.-N', 'S-RA.HS.A.TCM.-N']
+                'S-RA.A.-N', 'S-HS.A.-N', 'S-A.TCM.-N', 'S-RA.HS.A.-N', 'S-RA.A.TCM.-N', 'S-HS.A.TCM.-N', 'S-RA.HS.A.TCM.-N']
         },
         {
             nombre: 'CeraVe Skin Renewing Vitamin C Serum',
@@ -988,6 +1077,10 @@ document.addEventListener('DOMContentLoaded', () => {
             configuraciones: ['S-RA.TCM.-N']
         },
     ]
+
+    window.onload = function () {
+        bloquesIntercambiables()
+    };
 });
 
 

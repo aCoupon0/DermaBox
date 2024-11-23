@@ -44,12 +44,7 @@
                 </p>
             </div>
             <div class="separador"></div>
-            <div class="bloque-3-1">
-                <p class="text-1">Apto para cualquier presupuesto.</p>
-                <p class="text-2">
-                    De cada paso podrás escoger entre un <br> producto <span class="hb-font estandar">Estándar</span>, uno <span class="hb-font premium">Premium</span> u omitirlo.
-                </p>
-            </div>
+            <div class="bloque-3-1" id="dynamic-block"></div>
         </div>
         <div class="bloque-how">
             <button class="how-button">¿Cómo funciona?</button>
@@ -184,10 +179,26 @@
                 <div class="separador-bloque-carga"></div>
                 <p>Tu rutina ha sido creada <br> exitosamente!</p>
             </div>
-            <img src="assets/rutina.webp" alt="" class="routine-img">
+            <div class="exp-container">
+                <div class="exp-1">
+                    <p>Según tus respuestas, escogimos <br> 2 posibles productos para cada paso</p>
+                </div>
+                <div class="exp-arrow">
+                    <img src="assets/arrow.webp" alt="">
+                </div>
+                <div class="exp-2">
+                    <p>En cada paso podrás:</p>
+                </div>
+                <div class="exp-estandar">Escoger el producto <span class="highlight-estandar"> Estándar</span></div>
+                <div class="exp-conjuction">o</div>
+                <div class="exp-premium">Escoger el producto <span class="highlight-premium"> Premium</span></div>
+                <div class="exp-conjuction">u</div>
+                <div class="exp-omitir"><span class="highlight-omitir">Omitir </span> y no incluir ese paso</div>
+                <div class="exp-button">
+                    <button id="endButton">Entendido</button>
+                </div>
+            </div>
 
-
-            <button id="endButton">Entendido</button>
         </div>
     </section>
 

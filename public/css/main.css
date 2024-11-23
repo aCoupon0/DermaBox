@@ -1,10 +1,13 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Oculta el scroll de la página */
+    overflow: hidden;
+    /* Oculta el scroll de la página */
     background: url('/assets/fondo.webp') no-repeat center center fixed;
-    background-size: cover; /* Asegura que la imagen cubra toda la ventana */
+    background-size: cover;
+    /* Asegura que la imagen cubra toda la ventana */
     font-size: 4vw;
 }
 
@@ -27,15 +30,18 @@ html, body {
 }
 
 section {
-    width: 100%; /* Ancho completo de la ventana */
-    height: 100%; /* Alto completo de la ventana */
+    width: 100%;
+    /* Ancho completo de la ventana */
+    height: 100%;
+    /* Alto completo de la ventana */
     display: flex;
     justify-content: flex-start;
     align-items: center;
     font-size: 2rem;
     color: white;
     text-align: center;
-    background: transparent; /* Fondo completamente transparente */
+    background: transparent;
+    /* Fondo completamente transparente */
     flex-direction: column;
     border-bottom: 1px solid rgba(255, 255, 255, 0.21);
 }
@@ -56,8 +62,10 @@ button {
 }
 
 button:active {
-    transform: scale(0.95); /* Hacer que el botón se encoja ligeramente */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añadir un efecto de sombra para mayor dinamismo */
+    transform: scale(0.95);
+    /* Hacer que el botón se encoja ligeramente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Añadir un efecto de sombra para mayor dinamismo */
 }
 
 button:hover {
@@ -123,17 +131,68 @@ button.disabled {
     background-color: #ffffff2b;
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
+    position: relative;
+    overflow: hidden;
 }
 
 .bloque-3-1 {
     width: 100%;
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
+    justify-content: center;
+    align-items: center;
     text-align: left;
     padding-left: 3vw;
     flex-direction: column;
     margin: 3.5vw;
+}
+
+/* Estilos para el bloque que se intercambia dinámicamente */
+#dynamic-block {
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease; /* Animación de desvanecimiento */
+}
+
+#dynamic-block.visible {
+    opacity: 1;
+}
+
+.steps-list-1 {
+    width: 100vw;
+    height: 6.5vw;
+    gap: 4vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.steps-list-2 {
+    width: 100vw;
+    height: 6.5vw;
+    gap: 4vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.step {
+    width: auto;
+    max-width: 55%;
+    height: 80%;
+    border-radius: 5vw;
+    background-color: rgba(255, 255, 255, 0.082);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    font-family: 'hb';
+    color: rgb(255, 255, 255);
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    padding-right: 5vw;
+    padding-left: 5vw;
 }
 
 .separador {
@@ -142,14 +201,20 @@ button.disabled {
     background-color: #ffffff43;
 }
 
-.text-1, .text-2 {
+.text-1,
+.text-2 {
     margin: 0;
     padding: 0;
-    color: white; /* Puedes ajustar el color del texto según tu diseño */
-    font-size: 4.5vw; /* Ajusta el tamaño de fuente según sea necesario */
-    text-align: left; /* Asegura que el texto esté alineado a la izquierda */
-    width: 100%; /* Asegura que el texto ocupe todo el ancho del contenedor */
-    white-space: normal; /* Asegura que el texto se mantenga dentro del contenedor */
+    color: white;
+    /* Puedes ajustar el color del texto según tu diseño */
+    font-size: 4.5vw;
+    /* Ajusta el tamaño de fuente según sea necesario */
+    text-align: left;
+    /* Asegura que el texto esté alineado a la izquierda */
+    width: 100%;
+    /* Asegura que el texto ocupe todo el ancho del contenedor */
+    white-space: normal;
+    /* Asegura que el texto se mantenga dentro del contenedor */
 }
 
 .text-1 {
@@ -167,15 +232,18 @@ button.disabled {
 }
 
 .hb-font {
-    font-family: 'hb', sans-serif; /* Fuente hb para el texto dentro del span */
+    font-family: 'hb', sans-serif;
+    /* Fuente hb para el texto dentro del span */
 }
 
 .estandar {
-    color: #B0F691; /* Color verde para la versión estándar */
+    color: #B0F691;
+    /* Color verde para la versión estándar */
 }
 
 .premium {
-    color: #FFE88D; /* Color dorado para la versión premium */
+    color: #FFE88D;
+    /* Color dorado para la versión premium */
 }
 
 .bloque-4 {
@@ -238,11 +306,16 @@ button.disabled {
 }
 
 .bloque-4-texto {
-    font-family: 'hb', sans-serif; /* Ajusta la fuente si es necesario */
-    font-size: 1.2rem; /* Ajusta el tamaño del texto */
-    text-align: center; /* Centra el texto horizontalmente */
-    margin-bottom: 10px; /* Espacio entre el texto y el botón */
-    color: #ffffff; /* Color del texto */
+    font-family: 'hb', sans-serif;
+    /* Ajusta la fuente si es necesario */
+    font-size: 1.2rem;
+    /* Ajusta el tamaño del texto */
+    text-align: center;
+    /* Centra el texto horizontalmente */
+    margin-bottom: 10px;
+    /* Espacio entre el texto y el botón */
+    color: #ffffff;
+    /* Color del texto */
     margin-top: 0;
 }
 
@@ -261,6 +334,7 @@ button.disabled {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -276,9 +350,12 @@ button.disabled {
 }
 
 .alert-icon {
-    font-size: 39px; /* Tamaño del ícono */
-    margin-right: 10px; /* Espacio entre el ícono y el texto */
-    color: #B0F691; /* Color del ícono */
+    font-size: 39px;
+    /* Tamaño del ícono */
+    margin-right: 10px;
+    /* Espacio entre el ícono y el texto */
+    color: #B0F691;
+    /* Color del ícono */
     margin-left: 5vw;
 }
 
@@ -449,11 +526,10 @@ button.disabled {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: flex-start;
-    gap: 3vw;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(135deg, #006266ba, #002a62a4);
+    background: linear-gradient(135deg, #000000da, #012529cc)
 }
 
 #endButton {
@@ -474,7 +550,7 @@ button.disabled {
     color: rgb(226, 255, 193);
     font-size: 5vw;
     line-height: 1.3rem;
-    background-color: #00000051;
+    background-color: #00000000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.251);
 }
 
@@ -493,12 +569,145 @@ button.disabled {
     border-radius: 5vw;
 }
 
-.routine-img {
-    width: 85%;
-    height: auto;
-    padding-top: 5%;
-    padding-bottom: 5%;
+.exp-container {
+    width: 100%;
+    height: 83%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
+
+.exp-1 {
+    width: 100%;
+    height: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 5vw;
+}
+
+.exp-1 p {
+    font-family: 'hb';
+    color: white;
+    font-size: 5vw;
+}
+
+.exp-arrow {
+    width: 100%;
+    height: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5vw;
+}
+
+.exp-arrow img {
+    height: 100%;
+    width: auto;
+}
+
+.exp-2 {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.exp-2 p {
+    font-family: 'hb';
+    color: white;
+    font-size: 5vw;
+}
+
+.exp-estandar {
+    width: 80%;
+    height: 8%;
+    background-color: #aff69144;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7vw;
+    font-family: 'h', sans-serif;
+    color: #ffffff;
+    font-size: 5vw;
+}
+
+.exp-conjuction {
+    width: 100%;
+    height: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+    color: white;
+    font-family: 'hb';
+}
+
+.exp-premium {
+    width: 80%;
+    height: 8%;
+    background-color: #ffe88d6e;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7vw;
+    font-family: 'h', sans-serif;
+    color: #ffffff;
+    font-size: 5vw;
+}
+
+.exp-omitir {
+    width: 80%;
+    height: 8%;
+    background-color: #78edff6a;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7vw;
+    font-family: 'h', sans-serif;
+    color: #ffffff;
+    font-size: 5vw;
+}
+
+.highlight-estandar {
+    font-family: 'hb', sans-serif; /* Asumiendo que tienes una fuente llamada 'HB' */
+    color: #C9FFB0;
+    display: inline-block;
+    margin-left: 5px;
+  }
+  
+  .highlight-premium {
+    font-family: 'hb', sans-serif;
+    color: #FFE88D;
+    display: inline-block;
+    margin-left: 5px;
+  }
+  
+  .highlight-omitir {
+    font-family: 'hb', sans-serif;
+    color: #78ECFF;
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+.exp-button {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
 
 /* Animación para fade in y slide de izquierda a derecha */
 @keyframes fadeSlideIn {
@@ -506,6 +715,7 @@ button.disabled {
         opacity: 0;
         transform: translateX(-5px);
     }
+
     100% {
         opacity: 1;
         transform: translateX(0);
@@ -525,13 +735,15 @@ button.disabled {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.513); /* Fondo oscuro */
+    background-color: rgba(0, 0, 0, 0.513);
+    /* Fondo oscuro */
     backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px); /* Añadir prefijo */
+    -webkit-backdrop-filter: blur(30px);
+    /* Añadir prefijo */
     opacity: 0;
     visibility: hidden;
     z-index: 10;
-    transition: opacity 0.25s ease-in-out, visibility 0s 0.25s; 
+    transition: opacity 0.25s ease-in-out, visibility 0s 0.25s;
 }
 
 .modal-overlay.active {
@@ -560,36 +772,46 @@ button.disabled {
 
 /* Estilos para las secciones */
 .modal-section {
-    background-color: rgba(255, 255, 255, 0); /* Fondo blanco con opacidad */
-    width: 95%; /* Aumentamos el ancho al 95% */
-    margin: 1% auto; /* Centramos horizontalmente y añadimos espacio entre secciones */
+    background-color: rgba(255, 255, 255, 0);
+    /* Fondo blanco con opacidad */
+    width: 95%;
+    /* Aumentamos el ancho al 95% */
+    margin: 1% auto;
+    /* Centramos horizontalmente y añadimos espacio entre secciones */
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0; /* Comienza oculta */
+    opacity: 0;
+    /* Comienza oculta */
     animation: fade-in 1s forwards ease-in-out;
 }
 
 .section-1 {
-    height: 20%; /* Hacemos la primera sección más corta */
+    height: 20%;
+    /* Hacemos la primera sección más corta */
     animation-delay: 0.5s;
 }
 
 .section-2 {
-    height: 38%; /* Le damos más altura a la segunda sección */
+    height: 38%;
+    /* Le damos más altura a la segunda sección */
     animation-delay: 1s;
 }
 
 .section-3 {
-    height: 25%; /* La tercera sección queda igual */
+    height: 25%;
+    /* La tercera sección queda igual */
     animation-delay: 1.5s;
 }
 
 /* Estilos para las imágenes */
 .modal-image {
-    width: 84%; /* Las imágenes ocuparán el 95% del ancho de la sección */
-    height: auto; /* La altura será automática en función de la imagen */
-    object-fit: contain; /* Mantiene las proporciones de la imagen */
+    width: 84%;
+    /* Las imágenes ocuparán el 95% del ancho de la sección */
+    height: auto;
+    /* La altura será automática en función de la imagen */
+    object-fit: contain;
+    /* Mantiene las proporciones de la imagen */
 }
 
 /* Botón cerrar */
@@ -608,11 +830,14 @@ button.disabled {
 @keyframes fade-in {
     from {
         opacity: 0;
-        transform: translateY(20px); /* Mover hacia abajo al iniciar */
+        transform: translateY(20px);
+        /* Mover hacia abajo al iniciar */
     }
+
     to {
         opacity: 1;
-        transform: translateY(0); /* Entra en su posición original */
+        transform: translateY(0);
+        /* Entra en su posición original */
     }
 }
 
@@ -620,23 +845,10 @@ button.disabled {
 /* Estilos para los separadores */
 .separator {
     height: 1px;
-    width: 100%; /* Ancho del 85% */
-    background-color: rgba(255, 255, 255, 0.65); /* Blanco con opacidad de 0.65 */
-    margin: 1% auto; /* Centramos el separador y añadimos un pequeño margen */
+    width: 100%;
+    /* Ancho del 85% */
+    background-color: rgba(255, 255, 255, 0.65);
+    /* Blanco con opacidad de 0.65 */
+    margin: 1% auto;
+    /* Centramos el separador y añadimos un pequeño margen */
 }
-
-.final-exp {
-    font-family: 'hb';
-    color: white;
-    font-size: 1.35rem;
-    margin-left: 3%;
-    margin-right: 3%;
-}
-
-
-
-
-
-
-
-
