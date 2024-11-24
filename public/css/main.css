@@ -69,7 +69,7 @@ button:active {
 }
 
 button:hover {
-    background-color: #d8ffc8;
+    background: linear-gradient(135deg, #000000da, #012529cc)
 }
 
 button.disabled {
@@ -584,7 +584,9 @@ button.disabled {
     justify-content: center;
     align-items: center;
     text-align: center;
-    line-height: 5vw;
+    line-height: 6.5vw;
+    margin-top: 5vw;
+    margin-bottom: 5vw;
 }
 
 .exp-1 p {
@@ -593,119 +595,31 @@ button.disabled {
     font-size: 5vw;
 }
 
-.exp-arrow {
+.exp-img {
     width: 100%;
-    height: 7%;
+    height: 42%;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    font-size: 5vw;
 }
 
-.exp-arrow img {
-    height: 100%;
+.exp-img img {
     width: auto;
+    height: 95%;
 }
 
 .exp-2 {
+    font-family: 'hb';
+    color: white;
+    font-size: 5vw;
     width: 100%;
-    height: 10%;
+    height: 12%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.exp-2 p {
-    font-family: 'hb';
-    color: white;
-    font-size: 5vw;
-}
-
-.exp-estandar {
-    width: 80%;
-    height: 8%;
-    background-color: #aff69144;
-    margin-bottom: 2%;
-    margin-top: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7vw;
-    font-family: 'h', sans-serif;
-    color: #ffffff;
-    font-size: 5vw;
-}
-
-.exp-conjuction {
-    width: 100%;
-    height: 4%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 5vw;
-    color: white;
-    font-family: 'hb';
-}
-
-.exp-premium {
-    width: 80%;
-    height: 8%;
-    background-color: #ffe88d6e;
-    margin-bottom: 2%;
-    margin-top: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7vw;
-    font-family: 'h', sans-serif;
-    color: #ffffff;
-    font-size: 5vw;
-}
-
-.exp-omitir {
-    width: 80%;
-    height: 8%;
-    background-color: #78edff6a;
-    margin-bottom: 2%;
-    margin-top: 2%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7vw;
-    font-family: 'h', sans-serif;
-    color: #ffffff;
-    font-size: 5vw;
-}
-
-.highlight-estandar {
-    font-family: 'hb', sans-serif; /* Asumiendo que tienes una fuente llamada 'HB' */
-    color: #C9FFB0;
-    display: inline-block;
-    margin-left: 5px;
-  }
-  
-  .highlight-premium {
-    font-family: 'hb', sans-serif;
-    color: #FFE88D;
-    display: inline-block;
-    margin-left: 5px;
-  }
-  
-  .highlight-omitir {
-    font-family: 'hb', sans-serif;
-    color: #78ECFF;
-    display: inline-block;
-    margin-right: 5px;
-  }
-
-.exp-button {
-    width: 100%;
-    height: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    line-height: 7vw;
+    margin-bottom: 8vw;
 }
 
 
@@ -735,7 +649,7 @@ button.disabled {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.513);
+    background-color: rgba(0, 0, 0, 0.772);
     /* Fondo oscuro */
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
@@ -787,26 +701,29 @@ button.disabled {
 }
 
 .section-1 {
-    height: 20%;
-    /* Hacemos la primera sección más corta */
+    height: auto;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
     animation-delay: 0.5s;
 }
 
 .section-2 {
-    height: 38%;
-    /* Le damos más altura a la segunda sección */
+    height: auto;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
     animation-delay: 1s;
 }
 
 .section-3 {
-    height: 25%;
-    /* La tercera sección queda igual */
+    height: auto;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
     animation-delay: 1.5s;
 }
 
 /* Estilos para las imágenes */
 .modal-image {
-    width: 84%;
+    width: 100%;
     /* Las imágenes ocuparán el 95% del ancho de la sección */
     height: auto;
     /* La altura será automática en función de la imagen */
@@ -818,11 +735,12 @@ button.disabled {
 .close-modal {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #B0F691;
+    background-color: #EDEBEB;
+    color: #2B2200;
     border: none;
-    border-radius: 5px;
+    border-radius: 5vw;
     cursor: pointer;
-    width: 95%;
+    width: 85%;
     margin: 2% auto;
 }
 
@@ -845,9 +763,9 @@ button.disabled {
 /* Estilos para los separadores */
 .separator {
     height: 1px;
-    width: 100%;
+    width: 80%;
     /* Ancho del 85% */
-    background-color: rgba(255, 255, 255, 0.65);
+    background-color: rgba(255, 255, 255, 0.202);
     /* Blanco con opacidad de 0.65 */
     margin: 1% auto;
     /* Centramos el separador y añadimos un pequeño margen */

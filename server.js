@@ -15,6 +15,12 @@ const PORT = process.env.PORT || 3000;
 // Middleware para analizar el cuerpo JSON de las solicitudes
 app.use(express.json());
 
+// Ruta dinámica para pedidos
+app.get("/pedidos/:id", (req, res) => {
+    // Sirve siempre el mismo archivo HTML
+    res.sendFile(path.join(__dirname, "public/pedidos.html"));
+});
+
 // Servir archivos estáticos desde la carpeta "public"
 app.use(express.static(path.join(__dirname, 'public')));
 

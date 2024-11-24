@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Pedido</title>
+    <link rel="stylesheet" href="/css/pedidos.css">
+</head>
+
+<body>
+    <div class="zona-logo">
+        <img src="/assets/logo.webp" alt="" class="logo">
+    </div>
+    <div class="zona-pedido">
+        <p>Pedido </p>
+        <p><span id="numeral">#</span><span id="pedido-id"></span></p>
+    </div>
+    <div class="separador-container">
+        <div class="separador"></div>
+    </div>
+    <div class="primary-info">
+        <div class="info-container">
+            <span class="info-title">Cliente</span>
+            <span class="simple-info" id="nombre"></span>
+        </div>
+        <div class="info-container">
+            <span class="info-title">Estado</span>
+            <span class="simple-info" id="estado"></span>
+        </div>
+        <div class="info-container">
+            <span class="info-title">Entrega estimada</span>
+            <span class="simple-info" id="entrega"></span>
+        </div>
+    </div>
+    <div class="separador-container">
+        <div class="separador"></div>
+    </div>
+
+
+    <script defer>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Obtén el parámetro desde la URL
+            const currentUrl = window.location.pathname; // Ejemplo: "/pedidos/1903"
+            const pedidoId = currentUrl.split("/")[2]; // Obtén "1903"
+
+            // Lista de pedidos
+            const pedidos = [
+                {
+                    codigo: "1903",
+                    nombre: "Claudia Baquero",
+                    estado: "En proceso",
+                    contenido: ["Producto A", "Producto B"],
+                    fechaPedido: "28 de Nov.",
+                },
+                {
+                    codigo: "1904",
+                    nombre: "Gabriel Paris",
+                    estado: "Enviado",
+                    contenido: ["Producto C", "Producto D"],
+                    fechaPedido: "30 de nov.",
+                },
+            ];
+
+            // Busca el pedido correspondiente
+            const pedidoActual = pedidos.find((pedido) => String(pedido.codigo) === pedidoId);
+
+            // Llenar los datos en el HTML
+            if (pedidoActual) {
+                // Actualizar el número del pedido con el formato correcto
+                const numeralElement = document.getElementById("numeral");
+                const pedidoElement = document.getElementById("pedido-id");
+                numeralElement.textContent = "#"; // Asegura que el numeral esté siempre visible
+                pedidoElement.textContent = pedidoId; // Asigna el número del pedido
+
+                // Actualizar el nombre del cliente en el span con id="nombre"
+                const nombreElement = document.getElementById("nombre");
+                nombreElement.textContent = pedidoActual.nombre;
+
+                // Actualizar el nombre del cliente en el span con id="nombre"
+                const estadoElement = document.getElementById("estado");
+                estadoElement.textContent = pedidoActual.estado;
+
+                // Cambiar el color del estado según el valor de "estado"
+                if (pedidoActual.estado === "Entregado") {
+                    estadoElement.style.color = "#00B911"; // Color azul para "En preparación"
+                } else if (pedidoActual.estado === "Enviado") {
+                    estadoElement.style.color = "#E7D30D"; // Puedes cambiar el color para otros estados si lo deseas
+                } else if (pedidoActual.estado === "En proceso") {
+                    estadoElement.style.color = "#00E8CC"; // Color naranja para "En proceso"
+                } else {
+                    estadoElement.style.color = "black"; // Color por defecto si no hay coincidencias
+                }
+
+                // Actualizar el nombre del cliente en el span con id="nombre"
+                const entregaElement = document.getElementById("entrega");
+                entregaElement.textContent = pedidoActual.fechaPedido;
+
+                // Asignar el pedidoId como variable global para el botón
+                window.pedidoId = pedidoId;
+            } else {
+                document.body.innerHTML = "<h1>Pedido no encontrado</h1>";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

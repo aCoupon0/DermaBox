@@ -100,7 +100,8 @@ function eliminarProducto(index) {
     localStorage.setItem('actualKit', JSON.stringify(actualKit)); // Actualizar el localStorage
     renderProductList(); // Volver a renderizar la lista
     renderMorningRoutine();  // Renderiza la rutina de la mañana
-    renderNightRoutine()
+    renderNightRoutine();
+    updateDurationAndDate()
 }
 
 function irAtras() {
@@ -222,14 +223,16 @@ function renderMorningRoutine() {
     }
 
     // Renderizar los productos filtrados
+    const orden = ['PRIMERO', 'SEGUNDO', 'TERCERO', 'CUARTO', 'QUINTO'];
+    let inicioIndex = tieneLimpiador ? 0 : 1; // Si no hay limpiador, el índice inicial será 1 (SEGUNDO)
+
     productosMorning.forEach((producto, index) => {
         // Crear un contenedor para cada producto
         const productDiv = document.createElement('div');
         productDiv.classList.add('product-item-2');
 
-        // Texto que indica el orden de los productos (PRIMERO, SEGUNDO, etc.)
-        const orden = ['PRIMERO', 'SEGUNDO', 'TERCERO', 'CUARTO', 'QUINTO'];
-        const ordenTexto = orden[index] || `${index + 1}º`;
+        // Texto que indica el orden de los productos
+        const ordenTexto = orden[index + inicioIndex] || `${index + 1 + inicioIndex}º`;
 
         // Renderizar el texto de orden
         const ordenP = document.createElement('p');
@@ -294,6 +297,11 @@ function renderNightRoutine() {
 
     // Añadir el contenedor de título al div principal
     nightRoutineDiv.appendChild(titleDiv);
+
+    const makeupDiv = document.createElement('div');
+    makeupDiv.classList.add('makeup'); // Clase para personalizar estilos
+    makeupDiv.textContent = 'Si te maquillas, retíralo como normalmente lo haces antes de aplicar la rutina.';
+    nightRoutineDiv.appendChild(makeupDiv); // Añadir el contenedor al div principal
 
     // Ordenar actualKit según la propiedad 'turno'
     const actualKitOrdenado = [...actualKit].sort((a, b) => a.turno - b.turno);
@@ -376,7 +384,8 @@ function reemplazarProducto(index) {
             precargarImagenes()
             renderProductList();  // Renderiza la lista de productos
             renderMorningRoutine();  // Renderiza la rutina de la mañana
-            renderNightRoutine()
+            renderNightRoutine();
+            updateDurationAndDate()
         } else {
             alert('El índice de reemplazo no es válido en replaceData.');
         }
@@ -485,8 +494,6 @@ function envioFormulario() {
         alert('Por favor, vuelve a intentarlo: ' + error.message); // Mostrar error
     });
 }
-
-
 
 const replaceData = [
     {
@@ -1168,11 +1175,205 @@ const replaceData = [
     },
 ]
 
-// Llamar a la función para renderizar la lista de la rutina de la mañana al cargar la página
+function updateDurationAndDate() {
+    if (!actualKit || actualKit.length === 0) {
+        console.log("actualKit está vacío o no definido.");
+        return;
+    }
+
+    const durationData = [
+        {
+            nombre: 'Espuma 4 en 1 de Carvenchy',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Limpiador Milk Hidrolizada de Sadoer',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Smoothing SA Cleanser de CeraVe',
+            duration: 2
+        },
+    
+        {
+            nombre: 'La Roche-Posay Effaclar Puryfing',
+            duration: 3
+        },
+    
+        {
+            nombre: 'Limpiador Hidratante de CeraVe',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Tónico Centella Asiatica',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Tónico de Hinojo Marino',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Neutrogena Hydroboost',
+            duration: 6
+        },
+    
+        {
+            nombre: 'Facial Moisturising Lotion PM',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Crema Hidratante de Cerave',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Aloe Vera Sunscreen FPS+60 de Bioaqua',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Eucerin Oil Control FPS+50',
+            duration: 3
+        },
+    
+        {
+            nombre: 'ISDIN Fusion Water Magic SPF 50',
+            duration: 3
+        },
+    
+        {
+            nombre: 'Serum Niacinamida de Bioaqua',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Sérum Hialurónico de Bioaqua',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Sérum Retinol de Vibrant Glamoúr',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Sérum de Vitamina C Bioaqua',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Pads Ácido Glicólico de Elaimei',
+            duration: 2
+        },
+    
+        {
+            nombre: 'Differin Adapalene 0.1%',
+            duration: 2
+        },
+    
+        {
+            nombre: 'The Ordinary Niacinamida 10% + Zinc 1%',
+            duration: 3
+        },
+    
+        {
+            nombre: 'Sérum Hialurónico 2% + B5 The Ordinary',
+            duration: 7
+        },
+    
+        {
+            nombre: 'The Ordinary Retinol 0.2% in Squalane',
+            duration: 3
+        },
+    
+        {
+            nombre: 'CeraVe Skin Renewing Vitamin C Serum',
+            duration: 3
+        },
+    
+        {
+            nombre: 'The Ordinary Ácido Glicólico 7% Toning Solution',
+            duration: 3
+        },
+    
+        {
+            nombre: 'Ácido Láctico 10% de The Ordinary',
+            duration: 3
+        }
+    ]
+    let durationTime = 0;
+
+    // Recorremos los objetos en actualKit
+    actualKit.forEach(item => {
+        // Buscamos el objeto correspondiente en durationData
+        const matchingItem = durationData.find(data => data.nombre === item.nombre);
+
+        if (matchingItem) {
+            // Actualizamos durationTime si es mayor
+            durationTime = Math.max(durationTime, matchingItem.duration);
+        }
+    });
+ 
+    localStorage.setItem('durationTime', durationTime);
+
+    const finalDate = calculateBusinessDaysFromToday(durationTime);
+
+    localStorage.setItem('finalDate', finalDate);
+
+    // Actualizamos el contenido del elemento .duration-2
+    const durationElement = document.querySelector('.duration-2');
+    if (durationElement) {
+        durationElement.innerHTML = finalDate;
+    } else {
+        console.error("No se encontró el elemento .duration-2");
+    }
+}
+
+function calculateBusinessDaysFromToday(durationTime) {
+    const today = new Date();
+    let daysAdded = 0;
+
+    const monthNames = [
+        "Ene.", "Feb.", "Mar.", "Abr.", "May.", "Jun.", 
+        "Jul.", "Ago.", "Sep.", "Oct.", "Nov.", "Dic."
+    ];
+
+    while (daysAdded < durationTime) {
+        today.setDate(today.getDate() + 1);
+
+        // Si el día no es sábado (6) ni domingo (0), lo contamos como hábil
+        if (today.getDay() !== 0 && today.getDay() !== 6) {
+            daysAdded++;
+        }
+    }
+
+    today.setDate(today.getDate() + 1);
+
+    // Formateamos la fecha con día de la semana, día del mes y mes abreviado
+    const dayOfWeek = today.toLocaleDateString('es-ES', { weekday: 'long' });
+    const day = today.getDate();
+    const month = monthNames[today.getMonth()];
+
+    // Construimos la fecha en el formato deseado
+    return `${capitalizeFirstLetter(dayOfWeek)}, ${day} de ${month}`;
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
 window.onload = function () {
     renderProductList();  // Renderiza la lista de productos
     actualizarFecha();    // Actualiza la fecha
     renderMorningRoutine();  // Renderiza la rutina de la mañana
-    renderNightRoutine()
+    renderNightRoutine();
+    updateDurationAndDate()
 };
 
