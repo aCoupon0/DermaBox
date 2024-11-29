@@ -467,7 +467,6 @@ function envioFormulario() {
     // Crear un arreglo solo con los nombres de cada objeto en actualKit
     const actualKitPodada = actualKit.map(({ cantidad, valor, foto, replace, calidad, configuraciones, ...rest }) => rest);
 
-    // Enviar los datos al servidor
     fetch('/send-message', {
         method: 'POST',
         headers: {
@@ -480,20 +479,20 @@ function envioFormulario() {
                 combinacion: combinacion,
                 paymentMethod: paymentMethod,
                 cobroFinal: cobroFinal ? cobroFinal.textContent : null,
-                datosClientes: datosClientes, // Enviar el string datosClientes
+                datosClientes: datosClientes,  // Enviar el string datosClientes
                 fechaLLegada: fechaLLegada
             }
         }),
     })
     .then(response => {
-        if (response.ok) { // Verifica si la respuesta fue exitosa
-            window.location.href = 'confirmacion.html'; // Redirige a confirmación.html
+        if (response.ok) {  // Verifica si la respuesta fue exitosa
+            window.location.href = 'confirmacion.html';  // Redirige a confirmación.html
         } else {
-            throw new Error('Error en el envío del mensaje'); // Lanza un error si no fue exitoso
+            throw new Error('Error en el envío del mensaje');  // Lanza un error si no fue exitoso
         }
     })
     .catch(error => {
-        alert('Por favor, vuelve a intentarlo: ' + error.message); // Mostrar error
+        alert('Por favor, vuelve a intentarlo: ' + error.message);  // Mostrar error
     });
 }
 

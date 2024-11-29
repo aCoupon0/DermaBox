@@ -5,7 +5,7 @@ const path = require('path');
 
 // Configurar las credenciales de Twilio
 const accountSid = 'ACfd63cf95c0de859ab05cb54b8bf5742a'; // Tu Account SID de Twilio
-const authToken = 'abdba5a9938e6642271c85bbd753bdab'; // Tu Auth Token de Twilio
+const authToken = '9c2f71c992e13823b5a02c0955492a24'; // Tu Auth Token de Twilio
 const client = twilio(accountSid, authToken);
 
 // Crear una instancia de Express
@@ -31,29 +31,32 @@ app.get('/', (req, res) => {
 
 // Ruta para enviar un mensaje de WhatsApp
 app.post('/send-message', (req, res) => {
-    // Verificar que los datos se reciban correctamente
-    console.log('Datos recibidos en el servidor:', req.body.messageBody);
+    const { actualKit, casoParticular, combinacion, paymentMethod, cobroFinal, datosClientes, fechaLLegada } = req.body.messageBody;
 
-    if (!req.body.messageBody || !req.body.messageBody.actualKit) {
-        return res.status(400).send('Datos incompletos o incorrectos');
-    }
+    // Crear el mensaje de WhatsApp con los datos recibidos
+    const messageBody = [
+        [actualKit],               // Primera posición: arreglo con actualKit
+        [datosClientes],           // Segunda posición: arreglo con datos del cliente
+        "",                        // Tercera posición: un string vacío
+        cobroFinal,                // Cuarta posición: cobroFinal
+        paymentMethod              // Quinta posición: paymentMethod
+    ];
 
-    const { actualKit, casoParticular, combinacion, paymentMethod, cobroFinal, datosClientes, fechaLlegada } = req.body.messageBody; // Obtener el cuerpo de la solicitud
+    // Agregar las variables fuera del arreglo
+    const finalMessage = JSON.stringify([messageBody, casoParticular, fechaLLegada]);
 
     // Crear y enviar el mensaje de WhatsApp
     client.messages
         .create({
-            body: `ActualKit: ${JSON.stringify(actualKit)}\nCaso Particular: ${JSON.stringify(casoParticular)}\nCombinación: ${combinacion}\nMétodo de Pago: ${paymentMethod}\nCobro Total: ${cobroFinal}\nDatos del Cliente: ${datosClientes} \nFecha: ${fechaLlegada}`, // Mensaje actualizado con saltos de línea
+            body: finalMessage,  // El cuerpo del mensaje es el arreglo estructurado
             from: 'whatsapp:+14155238886', // Número de Twilio para WhatsApp
-            to: 'whatsapp:+573058376094' // Tu número de teléfono
+            to: 'whatsapp:+573058376094'   // Tu número de teléfono
         })
         .then(message => {
-            console.log(`Mensaje enviado con SID: ${message.sid}`);
-            res.send('Mensaje enviado exitosamente');
+            res.status(200).send('Mensaje enviado correctamente');
         })
         .catch(error => {
-            console.error('Error al enviar el mensaje:', error);
-            res.status(500).send('Error al enviar el mensaje: ' + error.message); // Mensaje de error detallado
+            res.status(500).send('Error al enviar el mensaje');
         });
 });
 
