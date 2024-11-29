@@ -24,9 +24,65 @@
         <h1>Felicidades!</h1>
         <p class="txt-1">Empezaste tu viaje y adquiriste<br> tu <span>primer</span> DermaBox</p>
         <div class="separador"></div>
-        <p class="txt-2">Durante el transcurso del día <br>te enviaremos <b>la confirmación <br> de tu pedido</b> y el <b>link de seguimiento.</b></p>
+        <p class="txt-2">Durante el transcurso del día <br>te enviaremos <b>la confirmación <br> de tu pedido</b> y el
+            <b>link de seguimiento.</b></p>
         <h2>Hasta pronto!</h2>
     </div>
+
+
+
+
+
+    <div id="modal-landscape" class="modal-fullscreen">
+        <div class="modal-container">
+            <div class="circle-rotation">
+                <img src="assets/rotation.webp" alt="">
+            </div>
+            <p>DermaBox se ve mejor con el <br> celular en vertical</p>
+        </div>
+    </div>
+
+    <div id="modal-desktop" class="modal-fullscreen">
+        <div class="modal-container-desktop">
+            <div class="circle-rotation">
+                <img src="assets/no-rotation.webp" alt="">
+            </div>
+            <p>DermaBox se experimenta mejor desde el celular. <br> Solo ingresa a www.dermabox.co</p>
+        </div>
+    </div>
+
+
+    <script>
+        function checkScreen() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const isLandscape = width > height; // Verifica si está en landscape
+            const isDesktop = width > 1024; // Define un ancho para pantallas grandes
+
+            const modalLandscape = document.getElementById('modal-landscape');
+            const modalDesktop = document.getElementById('modal-desktop');
+
+            // Ocultar todos los modales inicialmente
+            modalLandscape.style.display = 'none';
+            modalDesktop.style.display = 'none';
+
+            // Mostrar modal de landscape si está en horizontal
+            if (isLandscape) {
+                modalLandscape.style.display = 'flex';
+            }
+
+            // Mostrar modal de desktop si es una pantalla grande
+            if (isDesktop) {
+                modalDesktop.style.display = 'flex';
+            }
+        }
+
+        // Ejecuta la función al cargar y al cambiar el tamaño/orientación
+        window.addEventListener('load', checkScreen);
+        window.addEventListener('resize', checkScreen);
+        window.addEventListener('orientationchange', checkScreen);
+
+    </script>
 </body>
 
 </html>

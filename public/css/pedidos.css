@@ -1,14 +1,16 @@
-html,
-body {
+html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden;
-    /* Oculta el scroll de la página */
+    overflow-x: hidden; /* Desactiva el desplazamiento horizontal */
+    overflow-y: auto;   /* Permite el desplazamiento vertical */
     background: url('/assets/fondo.webp') no-repeat center center fixed;
     background-size: cover;
-    /* Asegura que la imagen cubra toda la ventana */
     font-size: 4vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* Definición de la fuente 'j' */
@@ -35,11 +37,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 4vw;
 }
 
 .logo {
     height: auto;
-    width: 24%;
+    width: 20%;
 }
 
 .zona-pedido {
@@ -108,4 +111,664 @@ body {
     color: rgb(255, 255, 255);
     font-size: 5.5vw;
     margin-left: 6vw;
+}
+
+#carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw; /* Espacio entre los productos */
+    padding: 3vw;
+    border-radius: 8vw;
+    max-width: 600px; /* Ajusta según sea necesario */
+    background-color: rgba(255, 255, 255, 0.095);
+    font-family: "hb";
+    font-size: 5vw;
+    color: white;
+    width: 85%;
+    margin-top: 5vw;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.327), 0px 4px 15px rgba(173, 216, 230, 0.194);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.carrito-producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.carrito-producto .left {
+    width: 75%;
+    text-align: left;
+    white-space: nowrap;       /* Evita el salto de línea */
+    overflow: hidden;          /* Oculta el texto desbordante */
+    text-overflow: ellipsis;
+    border-right: 1px solid rgba(255, 255, 255, 0.532);
+    padding-right: 3VW;
+}
+
+.carrito-producto .right {
+    width: 25%;
+    text-align: right;
+    color: rgb(169, 255, 169);
+}
+
+.total {
+    width: 100%;
+    height: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row;
+    padding-right: 20vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+
+.total-txt {
+    color: rgba(255, 255, 255, 0.714);
+    font-family: "h";
+    font-size: 5vw;
+}
+
+
+.total-number {
+    color: rgb(255, 255, 255);
+    font-family: "hb";
+    font-size: 6vw;
+    margin-left: 3vw;
+}
+
+.pago {
+    width: 70%;
+    height: 12vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 4vw;
+    padding-right: 6vw;
+    padding-left: 6vw;
+    font-family: "hb";
+    font-size: 5vw;
+    margin-top: 5vw;
+}
+
+.pago-1 {
+    height: 100%;
+    width: 66%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.pago-2 {
+    height: 100%;
+    width: 34%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.precauciones-title {
+    width: 100%;
+    height: auto;
+    background-color: rgba(255, 82, 20, 0.32);
+    color: rgb(255, 231, 222);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "hb";
+    font-size: 5vw;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+}
+
+.precauciones-zone {
+    width: 100%;
+    height: auto;
+    background-color: rgba(255, 235, 228, 0.338);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "h";
+    font-size: 4.8vw;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    gap: 7vw;
+    padding-left: 8vw;
+    padding-right: 8vw;
+}
+
+.precauciones-zone ol {
+    list-style: decimal inside; /* Usa números */
+    padding: 0 4vw; /* Margen interno para ajustar el contenido */
+    margin: 0; /* Sin margen externo */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.precauciones-zone li {
+    padding-bottom: 4vw; /* Espaciado entre elementos */
+    padding-top: 4vw;
+    line-height: 6vw; /* Espaciado entre líneas */
+}
+
+.precauciones-zone li::marker {
+    font-weight: bold; /* Hace que los números sean negritas */
+    color: rgb(255, 148, 95); /* Mantiene el color del texto principal */
+    font-family: "hb";
+}
+
+.bold {
+    font-weight: bold;
+    font-family: "hb";
+}
+
+.routine-title {
+    width: 100%;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'hb';
+    color: rgb(255, 255, 255);
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.065);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    gap: 2vw;
+    margin-bottom: 5vw;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.256);
+}
+
+.capture {
+    width: 100%;
+    height: auto;
+}
+
+.morning-routine {
+    width: 95vw;
+    height: auto;
+    background-color: #80670271;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 10vw;
+    margin-bottom: 5vw;
+    padding-bottom: 1vw;
+    margin-left: 2.5vw;
+    font-family: 'hb';
+}
+
+/* Estilo general para cada producto en la rutina de la mañana */
+.morning-routine .product-item-2 {
+    padding: 10px;
+    height: auto;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 2.5vw;
+    margin-top: 2.5vw;
+    background-color: rgba(255, 255, 255, 0);
+    padding-left: 6vw;
+    text-align: left;
+    line-height: 1.5rem;
+    font-family: 'hb';
+}
+
+/* Estilo para el texto que indica el orden (PRIMERO, SEGUNDO, etc.) */
+.morning-routine .orden-producto {
+    font-size: 1.2rem;
+    color: #FFCC00;
+    /* Color de texto oscuro */
+    margin: 0;
+    font-family: 'hb';
+}
+
+/* Estilo para el nombre del producto */
+.morning-routine .nombre-producto {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #ffffffbe;
+    /* Color del texto del nombre del producto */
+    margin: 0;
+    font-family: 'hb';
+}
+
+/* Estilo para el mensaje de alerta */
+.morning-routine .alert-message {
+    font-size: 0.9rem;
+    color: #FF8672;
+    /* Color rojo para el texto de alerta */
+    margin-top: 2vw;
+    background-color: #1c0100;
+    /* Fondo suave para destacar la alerta */
+    padding: 2vw;
+    border-radius: 5px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-family: 'hb';
+}
+
+.routine-morning-title {
+    width: 90vw;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'hb';
+    font-size: 1.2rem;
+    color: #FFCC00;
+    gap: 3vw;
+}
+
+.sun-image {
+    width: 9%;
+    height: auto;
+}
+
+.night-routine {
+    width: 95vw;
+    height: auto;
+    background-color: #00353d88;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 10vw;
+    margin-bottom: 5vw;
+    padding-bottom: 1vw;
+    margin-left: 2.5vw;
+    font-family: 'hb';
+}
+
+.routine-night-title {
+    width: 90vw;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'hb';
+    font-size: 1.2rem;
+    color: #5EE8FF;
+    gap: 3vw;
+}
+
+.night-routine .orden-producto {
+    font-size: 1.2rem;
+    color: #5EE8FF;
+    /* Color de texto oscuro */
+    margin: 0;
+}
+
+.night-routine .product-item-2 {
+    padding: 10px;
+    height: auto;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 2.5vw;
+    margin-top: 2.5vw;
+    background-color: rgba(255, 255, 255, 0);
+    padding-left: 6vw;
+    text-align: left;
+    line-height: 1.5rem;
+}
+
+/* Estilo para el nombre del producto */
+.night-routine .nombre-producto {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #ffffff7b;
+    /* Color del texto del nombre del producto */
+    margin: 0;
+
+}
+
+/* Estilo para el mensaje de alerta */
+.night-routine .alert-message {
+    font-size: 0.9rem;
+    color: #FF8672;
+    font-weight: bold;
+    /* Color rojo para el texto de alerta */
+    margin-top: 2vw;
+    background-color: #1c0100;
+    /* Fondo suave para destacar la alerta */
+    padding: 2vw;
+    border-radius: 5px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.makeup {
+    height: auto;
+    width: 100%;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00353d88;
+    border-top: 1px solid #c9f8ffc5;
+    border-bottom: 1px solid #c9f8ffc5;
+    color: #c0dfff;
+    font-size: 4vw;
+    font-family: 'hb';
+}.morning-routine {
+    width: 95vw;
+    height: auto;
+    background-color: #80670271;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 10vw;
+    margin-bottom: 5vw;
+    padding-bottom: 1vw;
+    margin-left: 2.5vw;
+    font-family: 'hb';
+}
+
+/* Estilo general para cada producto en la rutina de la mañana */
+.morning-routine .product-item-2 {
+    padding: 10px;
+    height: auto;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 2.5vw;
+    margin-top: 2.5vw;
+    background-color: rgba(255, 255, 255, 0);
+    padding-left: 6vw;
+    text-align: left;
+    line-height: 1.5rem;
+    font-family: 'hb';
+}
+
+/* Estilo para el texto que indica el orden (PRIMERO, SEGUNDO, etc.) */
+.morning-routine .orden-producto {
+    font-size: 1.2rem;
+    color: #FFCC00;
+    /* Color de texto oscuro */
+    margin: 0;
+    font-family: 'hb';
+}
+
+/* Estilo para el nombre del producto */
+.morning-routine .nombre-producto {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #ffffffbe;
+    /* Color del texto del nombre del producto */
+    margin: 0;
+    font-family: 'hb';
+}
+
+/* Estilo para el mensaje de alerta */
+.morning-routine .alert-message {
+    font-size: 0.9rem;
+    color: #FF8672;
+    /* Color rojo para el texto de alerta */
+    margin-top: 2vw;
+    background-color: #1c0100;
+    /* Fondo suave para destacar la alerta */
+    padding: 2vw;
+    border-radius: 5px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    font-family: 'hb';
+}
+
+.routine-morning-title {
+    width: 90vw;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'hb';
+    font-size: 1.2rem;
+    color: #FFCC00;
+    gap: 3vw;
+}
+
+.sun-image {
+    width: 9%;
+    height: auto;
+}
+
+.night-routine {
+    width: 95vw;
+    height: auto;
+    background-color: #00353d88;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border-radius: 10vw;
+    margin-bottom: 5vw;
+    padding-bottom: 1vw;
+    margin-left: 2.5vw;
+    font-family: 'hb';
+}
+
+.routine-night-title {
+    width: 90vw;
+    height: 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'hb';
+    font-size: 1.2rem;
+    color: #5EE8FF;
+    gap: 3vw;
+}
+
+.night-routine .orden-producto {
+    font-size: 1.2rem;
+    color: #5EE8FF;
+    /* Color de texto oscuro */
+    margin: 0;
+}
+
+.night-routine .product-item-2 {
+    padding: 10px;
+    height: auto;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 2.5vw;
+    margin-top: 2.5vw;
+    background-color: rgba(255, 255, 255, 0);
+    padding-left: 6vw;
+    text-align: left;
+    line-height: 1.5rem;
+}
+
+/* Estilo para el nombre del producto */
+.night-routine .nombre-producto {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #ffffff7b;
+    /* Color del texto del nombre del producto */
+    margin: 0;
+
+}
+
+/* Estilo para el mensaje de alerta */
+.night-routine .alert-message {
+    font-size: 0.9rem;
+    color: #FF8672;
+    font-weight: bold;
+    /* Color rojo para el texto de alerta */
+    margin-top: 2vw;
+    background-color: #1c0100;
+    /* Fondo suave para destacar la alerta */
+    padding: 2vw;
+    border-radius: 5px;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.makeup {
+    height: auto;
+    width: 100%;
+    padding-top: 3vw;
+    padding-bottom: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #00353d88;
+    border-top: 1px solid #c9f8ffc5;
+    border-bottom: 1px solid #c9f8ffc5;
+    color: #c0dfff;
+    font-size: 4vw;
+    font-family: 'hb';
+    text-align: center;
+}
+
+.categoria-producto {
+    margin-top: 2vw;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.separador-routine {
+    width: 90%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.585);
+    margin: 5px auto;
+    /* Para centrar y dar algo de espacio */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.modal-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000, #012529);
+    color: white;
+    display: none; /* Ocultos por defecto */
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Asegúrate de que estén por encima de todo */
+    pointer-events: none; /* Evita la interacción */
+}
+
+.modal-fullscreen p {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+body.modal-active {
+    overflow: hidden; /* Evita el scroll en el fondo */
+}
+
+.modal-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 7vw;
+}
+
+.circle-rotation {
+    height: 20vw;
+    width: 20vw;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.495);
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.327), 0px 4px 15px rgba(173, 216, 230, 0.194);
+}
+
+.circle-rotation img {
+    width: auto;
+    height: 70%;
+}
+
+.modal-container p {
+    text-align: left;
+    font-size: 3.4vw;
+    color: white;
+    font-family: "h";
+    line-height: 4vw;
+}
+
+.modal-container-desktop {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5vw;
+}
+
+.modal-container-desktop p {
+    text-align: left;
+    font-size: 2.5vw;
+    color: white;
+    font-family: "h";
+    line-height: 4vw;
 }

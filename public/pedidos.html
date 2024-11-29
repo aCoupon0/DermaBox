@@ -36,8 +36,58 @@
     <div class="separador-container">
         <div class="separador"></div>
     </div>
+    <div class="pago"></div>
+    <div id="carrito"></div>
+    <div class="total">
+        <p class="total-txt">TOTAL</p>
+        <p class="total-number"></p>
+    </div>
+
+    <div class="routine-title">
+        <p>Recuerda tu rutina</p>
+    </div>
+    <div class="capture" id="capture">
+        <div class="morning-routine"></div>
+        <div class="night-routine"></div>
+    </div>
+
+    <div class="precauciones-title">
+        Precauciones Recomendadas
+    </div>
+    <div class="precauciones-zone">
+        <ol>
+            <li>
+                <span class="bold">EMPIEZA DE A POCO.</span>
+                No inicies todos los productos al mismo tiempo, aplica uno y mira cómo responde tu piel.
+            </li>
+
+            <li>Escucha a tu piel, si duele o se siente sensible, déjala descansar.</li>
+
+            <li>Evita zonas sensibles, con acné intenso, heridas o irritadas. Deja que se curen solas.</li>
+        </ol>
+    </div>
 
 
+
+
+
+    <div id="modal-landscape" class="modal-fullscreen">
+        <div class="modal-container">
+            <div class="circle-rotation">
+                <img src="/assets/rotation.webp" alt="">
+            </div>
+            <p>DermaBox se ve mejor con el <br> celular en vertical</p>
+        </div>
+    </div>
+
+    <div id="modal-desktop" class="modal-fullscreen">
+        <div class="modal-container-desktop">
+            <div class="circle-rotation">
+                <img src="assets/no-rotation.webp" alt="">
+            </div>
+            <p>DermaBox se experimenta mejor desde el celular. <br> Solo ingresa a www.dermabox.co</p>
+        </div>
+    </div>
     <script defer>
         document.addEventListener("DOMContentLoaded", () => {
             // Obtén el parámetro desde la URL
@@ -50,15 +100,31 @@
                     codigo: "1903",
                     nombre: "Claudia Baquero",
                     estado: "En proceso",
-                    contenido: ["Producto A", "Producto B"],
+                    contenido: [["Espuma 4 en 1 de Carvenchy", "29.900"], ["Tónico de Hinojo Marino", "17.900"], ["Serum Retinol Vibrant Glamour", "32.000"], ["Envío", "GRATIS"]],
+                    pago: ["Pago por Nequi", "Recibido"],
                     fechaPedido: "28 de Nov.",
-                },
-                {
-                    codigo: "1904",
-                    nombre: "Gabriel Paris",
-                    estado: "Enviado",
-                    contenido: ["Producto C", "Producto D"],
-                    fechaPedido: "30 de nov.",
+                    actualKit: [
+                        {
+                            "nombre": "Espuma 4 en 1 de Carvenchy",
+                            "categoria": "LIMPIADOR",
+                            "tiempo": "MN",
+                            "turno": 10,
+                            "alert": ""
+                        },
+                        {
+                            "nombre": "Facial Moisturising Lotion PM",
+                            "categoria": "HIDRATANTE",
+                            "tiempo": "N",
+                            "turno": 20,
+                            "alert": ""
+                        },
+                        {
+                            "nombre": "Sérum Retinol de Vibrant Glamoúr",
+                            "categoria": "POTENCIADOR",
+                            "tiempo": "N",
+                            "turno": 15,
+                            "alert": "SOLO DOS VECES POR SEMANA"
+                        }]
                 },
             ];
 
@@ -83,13 +149,15 @@
 
                 // Cambiar el color del estado según el valor de "estado"
                 if (pedidoActual.estado === "Entregado") {
-                    estadoElement.style.color = "#00B911"; // Color azul para "En preparación"
+                    estadoElement.style.color = "#A0FFB0"; // Color azul para "En preparación"
                 } else if (pedidoActual.estado === "Enviado") {
                     estadoElement.style.color = "#E7D30D"; // Puedes cambiar el color para otros estados si lo deseas
                 } else if (pedidoActual.estado === "En proceso") {
                     estadoElement.style.color = "#00E8CC"; // Color naranja para "En proceso"
+                } else if (pedidoActual.estado === "Pendiente de pago") {
+                    estadoElement.style.color = "#FF7140"; // Color naranja para "En proceso"
                 } else {
-                    estadoElement.style.color = "black"; // Color por defecto si no hay coincidencias
+                    estadoElement.style.color = "white"; // Color por defecto si no hay coincidencias
                 }
 
                 // Actualizar el nombre del cliente en el span con id="nombre"
@@ -101,7 +169,324 @@
             } else {
                 document.body.innerHTML = "<h1>Pedido no encontrado</h1>";
             }
+
+            let total = 0;
+
+            pedidoActual.contenido.forEach(([_, value]) => {
+                // Elimina puntos y conviértelo a número, si es posible
+                const numericValue = parseFloat(value.replace(/\./g, "")) || 0; // Si no es un número válido, usa 0
+                total += numericValue;
+            });
+
+            // Actualiza el elemento con el total, sin ceros ni signo de peso
+            const totalNumberElement = document.querySelector(".total-number");
+            totalNumberElement.textContent = total
+                .toLocaleString("es-CO") // Formatea con separadores de miles
+                .replace(/\.00$/, ""); // Remueve los decimales, aunque no los incluye al no usarlo
+
+            function renderCarrito(contenido) {
+                const carritoContainer = document.getElementById("carrito");
+                carritoContainer.innerHTML = ""; // Limpia cualquier contenido previo
+
+                contenido.forEach((producto, index) => {
+                    const productoDiv = document.createElement("div");
+                    productoDiv.classList.add("carrito-producto");
+
+                    // Agrega clases para el primer y último elemento
+                    if (index === 0) {
+                        productoDiv.classList.add("first-item");
+                    }
+                    if (index === contenido.length - 1) {
+                        productoDiv.classList.add("last-item");
+                    }
+
+                    // Crea los divs internos
+                    const leftDiv = document.createElement("div");
+                    leftDiv.classList.add("left");
+                    leftDiv.textContent = producto[0]; // Nombre del producto
+
+                    const rightDiv = document.createElement("div");
+                    rightDiv.classList.add("right");
+                    rightDiv.textContent = producto[1]; // Precio del producto
+
+                    // Añade los divs internos al producto
+                    productoDiv.appendChild(leftDiv);
+                    productoDiv.appendChild(rightDiv);
+
+                    // Añade el producto al carrito
+                    carritoContainer.appendChild(productoDiv);
+                });
+            }
+
+            // Llenar los datos en el HTML
+            if (pedidoActual) {
+                renderCarrito(pedidoActual.contenido);
+            } else {
+                document.body.innerHTML = "<h1>Pedido no encontrado</h1>";
+            }
+
+            // Actualizar el pago
+            const pagoElement = document.querySelector(".pago");
+            const [metodoPago, estadoPago] = pedidoActual.pago;
+
+            // Crear las divisiones de pago
+            const pago1Div = document.createElement("div");
+            pago1Div.classList.add("pago-1");
+            pago1Div.textContent = metodoPago;
+
+            const pago2Div = document.createElement("div");
+            pago2Div.classList.add("pago-2");
+            pago2Div.textContent = estadoPago;
+
+            if (estadoPago === "Recibido") {
+                pago2Div.style.color = "#3DA700"; // Color verde claro para "Recibido"
+            } else if (estadoPago === "Pendiente") {
+                pago2Div.style.color = "#FF672A"; // Color rojo para "Pendiente"
+            }
+
+            // Agregar las divisiones al contenedor de pago
+            pagoElement.appendChild(pago1Div);
+            pagoElement.appendChild(pago2Div);
+
+
+            function renderMorningRoutine() {
+                const morningRoutineDiv = document.querySelector('.morning-routine');
+                morningRoutineDiv.innerHTML = ''; // Limpiar el contenido antes de renderizar
+
+                // Crear el contenedor del título "POR LA MAÑANA" con la imagen del sol
+                const titleDiv = document.createElement('div');
+                titleDiv.classList.add('routine-morning-title'); // Añadimos una clase para aplicarle estilo
+
+                // Crear la imagen del sol
+                const imgSol = document.createElement('img');
+                imgSol.src = '../assets/sol.webp'; // Ruta de la imagen (asegúrate de que sea correcta)
+                imgSol.alt = 'Sol'; // Texto alternativo para la imagen
+                imgSol.classList.add('sun-image'); // Clase para el estilo de la imagen
+
+                // Crear el texto "POR LA MAÑANA"
+                const textTitle = document.createElement('p');
+                textTitle.textContent = 'POR LA MAÑANA';
+                textTitle.classList.add('morning-title-text'); // Clase para el estilo del texto
+
+                // Añadir la imagen y el texto al div
+                titleDiv.appendChild(imgSol);
+                titleDiv.appendChild(textTitle);
+
+                // Añadir el contenedor de título al div principal
+                morningRoutineDiv.appendChild(titleDiv);
+
+                // Ordenar actualKit según la propiedad 'turno'
+                const actualKitOrdenado = [...pedidoActual.actualKit].sort((a, b) => a.turno - b.turno);
+
+                // Filtrar los productos que tienen 'M' o 'MN' en la propiedad 'tiempo'
+                const productosMorning = actualKitOrdenado.filter(producto => producto.tiempo === 'M' || producto.tiempo === 'MN');
+
+                if (productosMorning.length === 0) {
+                    const descansoP = document.createElement('p');
+                    descansoP.classList.add('descanso-mañana');
+                    descansoP.innerHTML = 'Limpiar con agua tibia <br>será suficiente';
+                    morningRoutineDiv.appendChild(descansoP);
+                    return; // Salir de la función
+                }
+
+                const tieneLimpiador = productosMorning.some(producto => producto.categoria === 'LIMPIADOR');
+
+                // Si no hay productos con categoría "LIMPIADOR", agregar el mensaje de agua tibia
+                if (!tieneLimpiador) {
+                    const aguaTibiaDiv = document.createElement('div');
+                    aguaTibiaDiv.classList.add('agua-tibia'); // Clase para aplicar estilo al div
+
+                    const aguaTibiaP = document.createElement('p');
+                    aguaTibiaP.textContent = 'Por las mañanas límpiate solo con agua tibia.';
+
+                    // Añadir el p al div
+                    aguaTibiaDiv.appendChild(aguaTibiaP);
+
+                    // Añadir el div al contenedor principal antes de los productos
+                    morningRoutineDiv.appendChild(aguaTibiaDiv);
+                }
+
+                // Renderizar los productos filtrados
+                const orden = ['PRIMERO', 'SEGUNDO', 'TERCERO', 'CUARTO', 'QUINTO'];
+                let inicioIndex = tieneLimpiador ? 0 : 1; // Si no hay limpiador, el índice inicial será 1 (SEGUNDO)
+
+                productosMorning.forEach((producto, index) => {
+                    // Crear un contenedor para cada producto
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product-item-2');
+
+                    // Texto que indica el orden de los productos
+                    const ordenTexto = orden[index + inicioIndex] || `${index + 1 + inicioIndex}º`;
+
+                    // Renderizar el texto de orden
+                    const ordenP = document.createElement('p');
+                    ordenP.classList.add('orden-producto');
+                    ordenP.textContent = ordenTexto;
+                    productDiv.appendChild(ordenP);
+
+                    // Mostrar la categoría del producto
+                    const categoriaP = document.createElement('p');
+                    categoriaP.classList.add('categoria-producto'); // Clase para el estilo de la categoría
+                    categoriaP.textContent = producto.categoria; // Asegúrate de que "categoria" existe en el objeto producto
+                    productDiv.appendChild(categoriaP);
+
+                    // Mostrar solo el nombre del producto
+                    const nombreP = document.createElement('p');
+                    nombreP.classList.add('nombre-producto');
+                    nombreP.textContent = producto.nombre;
+                    productDiv.appendChild(nombreP);
+
+                    // Si el producto tiene un 'alert' no vacío, mostrarlo debajo del nombre
+                    if (producto.alert !== '') {
+                        const alertP = document.createElement('p');
+                        alertP.classList.add('alert-message');
+                        alertP.textContent = producto.alert;
+                        productDiv.appendChild(alertP);
+                    }
+
+                    // Añadir el producto al contenedor de morning-routine
+                    morningRoutineDiv.appendChild(productDiv);
+
+                    // Añadir el separador si no es el último producto
+                    if (index < productosMorning.length - 1) {
+                        const separadorDiv = document.createElement('div');
+                        separadorDiv.classList.add('separador-routine');
+                        morningRoutineDiv.appendChild(separadorDiv);
+                    }
+                });
+            }
+
+            function renderNightRoutine() {
+                const nightRoutineDiv = document.querySelector('.night-routine');
+                nightRoutineDiv.innerHTML = ''; // Limpiar el contenido antes de renderizar
+
+                // Crear el contenedor del título "POR LA NOCHE" con la imagen de la luna
+                const titleDiv = document.createElement('div');
+                titleDiv.classList.add('routine-night-title'); // Reutilizamos la clase para aplicar el mismo estilo
+
+                // Crear la imagen de la luna
+                const imgLuna = document.createElement('img');
+                imgLuna.src = '../assets/luna.webp'; // Ruta de la imagen de la luna
+                imgLuna.alt = 'Luna'; // Texto alternativo para la imagen
+                imgLuna.classList.add('sun-image'); // Reutilizamos la clase de la imagen para mantener los estilos
+
+                // Crear el texto "POR LA NOCHE"
+                const textTitle = document.createElement('p');
+                textTitle.textContent = 'POR LA NOCHE';
+                textTitle.classList.add('morning-title-text'); // Reutilizamos el estilo del texto
+
+                // Añadir la imagen y el texto al div del título
+                titleDiv.appendChild(imgLuna);
+                titleDiv.appendChild(textTitle);
+
+                // Añadir el contenedor de título al div principal
+                nightRoutineDiv.appendChild(titleDiv);
+
+                const makeupDiv = document.createElement('div');
+                makeupDiv.classList.add('makeup'); // Clase para personalizar estilos
+                makeupDiv.textContent = 'Si te maquillas, retíralo como normalmente lo haces antes de aplicar la rutina.';
+                nightRoutineDiv.appendChild(makeupDiv); // Añadir el contenedor al div principal
+
+                // Ordenar actualKit según la propiedad 'turno'
+                const actualKitOrdenado = [...pedidoActual.actualKit].sort((a, b) => a.turno - b.turno);
+
+                // Filtrar los productos que tienen 'N' o 'MN' en la propiedad 'tiempo'
+                const productosNight = actualKitOrdenado.filter(producto => producto.tiempo === 'N' || producto.tiempo === 'MN');
+
+                if (productosNight.length === 0) {
+                    // Si no hay productos con tiempo 'M' o 'MN', mostrar el mensaje "Por la mañana puedes descansar"
+                    const descansoN = document.createElement('p');
+                    descansoN.classList.add('descanso-noche');
+                    descansoN.innerHTML = 'Por la noche puedes <br>descansar...';
+                    nightRoutineDiv.appendChild(descansoN);
+                    return; // Salir de la función
+                }
+
+                // Renderizar los productos filtrados
+                productosNight.forEach((producto, index) => {
+                    // Crear un contenedor para cada producto
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product-item-2');
+
+                    // Texto que indica el orden de los productos (PRIMERO, SEGUNDO, etc.)
+                    const orden = ['PRIMERO', 'SEGUNDO', 'TERCERO', 'CUARTO', 'QUINTO'];
+                    const ordenTexto = orden[index] || `${index + 1}º`;
+
+                    // Renderizar el texto de orden
+                    const ordenP = document.createElement('p');
+                    ordenP.classList.add('orden-producto');
+                    ordenP.textContent = ordenTexto;
+                    productDiv.appendChild(ordenP);
+
+                    // Mostrar la categoría del producto
+                    const categoriaP = document.createElement('p');
+                    categoriaP.classList.add('categoria-producto'); // Clase para el estilo de la categoría
+                    categoriaP.textContent = producto.categoria; // Asegúrate de que "categoria" existe en el objeto producto
+                    productDiv.appendChild(categoriaP);
+
+                    // Mostrar solo el nombre del producto
+                    const nombreP = document.createElement('p');
+                    nombreP.classList.add('nombre-producto');
+                    nombreP.textContent = producto.nombre;
+                    productDiv.appendChild(nombreP);
+
+                    // Si el producto tiene un 'alert' no vacío, mostrarlo debajo del nombre
+                    if (producto.alert !== '') {
+                        const alertP = document.createElement('p');
+                        alertP.classList.add('alert-message');
+                        alertP.textContent = producto.alert;
+                        productDiv.appendChild(alertP);
+                    }
+
+                    // Añadir el producto al contenedor de night-routine
+                    nightRoutineDiv.appendChild(productDiv);
+
+                    // Añadir el separador si no es el último producto
+                    if (index < productosNight.length - 1) {
+                        const separadorDiv = document.createElement('div');
+                        separadorDiv.classList.add('separador-routine');
+                        nightRoutineDiv.appendChild(separadorDiv);
+                    }
+                });
+            }
+
+            window.onload = function () {   // Actualiza la fecha
+                renderMorningRoutine();  // Renderiza la rutina de la mañana
+                renderNightRoutine();
+            };
         });
+    </script>
+
+    <script>
+        function checkScreen() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const isLandscape = width > height; // Verifica si está en landscape
+            const isDesktop = width > 1024; // Define un ancho para pantallas grandes
+
+            const modalLandscape = document.getElementById('modal-landscape');
+            const modalDesktop = document.getElementById('modal-desktop');
+
+            // Ocultar todos los modales inicialmente
+            modalLandscape.style.display = 'none';
+            modalDesktop.style.display = 'none';
+
+            // Mostrar modal de landscape si está en horizontal
+            if (isLandscape) {
+                modalLandscape.style.display = 'flex';
+            }
+
+            // Mostrar modal de desktop si es una pantalla grande
+            if (isDesktop) {
+                modalDesktop.style.display = 'flex';
+            }
+        }
+
+        // Ejecuta la función al cargar y al cambiar el tamaño/orientación
+        window.addEventListener('load', checkScreen);
+        window.addEventListener('resize', checkScreen);
+        window.addEventListener('orientationchange', checkScreen);
+
     </script>
 
 </body>

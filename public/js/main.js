@@ -2,17 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const dynamicBlock = document.getElementById("dynamic-block");
     const contentArray = [
         `
-            <p class="text-1">La rutina puede tener hasta 4 pasos</p>
+            <p class="text-1">La rutina puede tener hasta 4 pasos,</p>
             <p class="text-2">
-            De cada uno podrás escoger entre un <br> producto 
+            En cada uno podrás escoger entre un <br> producto 
             <span class="hb-font estandar">Estándar</span>,
-            uno <span class="hb-font premium">Premium</span> u omitirlo.
+            uno <span class="hb-font premium">Premium</span> u <span class="hb-font omitir">Omitirlo</span>
             </p>
         `,
         `
-            <p class="text-1">Productos personalizados para ti.</p>
+            <p class="text-1">Apto para cualquier presupuesto.</p>
             <p class="text-2">
-                <span class="hb-font">Los productos que te mostramos los <br>escogemos según tus respuestas.</span>
+                <span class="hb-font">Lo anterior te permite escoger en que pasos gastar más y en cuales menos.</span>
             </p>
         `,
     ];
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
             foto: "espuma",
             tiempo: "N",
             turno: 10,
-            alert: "",
+            alert: "CADA DOS DÍAS, EL RESTO SOLO AGUA TIBIA",
             replace: 13,
             calidad: 'E',
             configuraciones: ['G-HS.-N', 'G-HS.-S', 'G-A.-N', 'G-A.-S', 'G-HS.A.-N', 'G-HS.A.-S']
@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
             foto: "espuma",
             tiempo: "N",
             turno: 10,
-            alert: "",
+            alert: "CADA DOS DÍAS, EL RESTO SOLO AGUA TIBIA",
             replace: 29,
             calidad: 'E',
             configuraciones: ['G-RA.-S', 'G-TCM.-S', 'G-RA.HS.-S', 'G-RA.A.-S', 'G-RA.TCM.-S', 'G-HS.TCM.-S', 'G-A.TCM.-S', 'G-RA.HS.A.-S', 'G-RA.HS.TCM.-S', 'G-RA.A.TCM.-S', 'G-HS.A.TCM.-S', 'G-RA.HS.A.TCM.-S', 'M-RA.-S', 'M-TCM.-S',
@@ -371,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
             foto: "espuma",
             tiempo: "N",
             turno: 10,
-            alert: "",
+            alert: "CADA DOS DÍAS, EL RESTO SOLO AGUA TIBIA",
             replace: 35,
             calidad: 'E',
             configuraciones: ['M-HS.-N', 'M-HS.-S', 'M-A.-S', 'M-HS.A.-S', 'M-HS.TCM.-S', 'M-HS.A.TCM.-S', 'S-RA.-S', 'S-A.-N', 'S-A.-S', 'S-TCM.-S', 'S-RA.HS.-S', 'S-RA.A.-S', 'S-RA.TCM.-S', 'S-HS.A.-N', 'S-HS.A.-S', 'S-HS.TCM.-N',
@@ -387,7 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
             foto: "espuma",
             tiempo: "MN",
             turno: 10,
-            alert: "",
+            alert: "CADA DOS DÍAS, EL RESTO SOLO AGUA TIBIA",
             replace: 37,
             calidad: 'E',
             configuraciones: ['M-A.-N', 'M-HS.A.-N', 'M-HS.TCM.-N', 'M-HS.A.TCM.-N', 'S-TCM.-N', 'S-RA.HS.-N', 'S-RA.A.-N', 'S-RA.TCM.-N', 'S-RA.A.TCM.-N', 'S-RA.HS.A.TCM.-N']
@@ -952,7 +952,7 @@ document.addEventListener('DOMContentLoaded', () => {
             foto: "to-niacinamida",
             tiempo: "N",
             turno: 15,
-            alert: "DÍA DE POR MEDIO",
+            alert: "CADA 2 O 3 DÍAS",
             replace: 10,
             calidad: 'P',
             configuraciones: ['G-RA.-S', 'G-RA.HS.-S', 'G-RA.A.-S', 'G-RA.TCM.-S', 'M-RA.-S', 'M-RA.HS.-N', 'M-RA.HS.-S', 'M-RA.A.-S', 'M-RA.TCM.-S', 'M-RA.HS.A.-S', 'M-RA.HS.TCM.-S', 'M-RA.A.TCM.-S', 'M-RA.HS.A.TCM.-S', 'S-RA.-S',
@@ -1071,7 +1071,7 @@ document.addEventListener('DOMContentLoaded', () => {
             foto: "to-glycolyc",
             tiempo: "N",
             turno: 15,
-            alert: "DÍA DE POR MEDIO",
+            alert: "DOS VECES POR SEMANA",
             replace: 50,
             calidad: 'P',
             configuraciones: ['S-RA.TCM.-N']

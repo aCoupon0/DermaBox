@@ -433,11 +433,12 @@ function envioFormulario() {
     const city = document.getElementById('city').value.trim();
     const address = document.getElementById('address').value.trim();
     const cobroFinal = document.querySelector('.cobro-final');
+    const fechaLLegada = document.querySelector(".duration-2");
 
     // Verificar que los inputs no estén vacíos y que tengan una longitud mínima
     if (!name || name.length < 5 || !phone || phone.length < 5 || 
         !city || city.length < 5 || !address || address.length < 5) {
-        alert('Por favor, rellena todos los campos con al menos 5 caracteres.');
+        alert('Por favor, rellena todos los campos.');
         return;
     }
 
@@ -464,7 +465,7 @@ function envioFormulario() {
     }
 
     // Crear un arreglo solo con los nombres de cada objeto en actualKit
-    const actualKitNombres = actualKit.map(item => item.nombre);
+    const actualKitPodada = actualKit.map(({ cantidad, valor, foto, replace, calidad, configuraciones, ...rest }) => rest);
 
     // Enviar los datos al servidor
     fetch('/send-message', {
@@ -474,12 +475,13 @@ function envioFormulario() {
         },
         body: JSON.stringify({
             messageBody: {
-                actualKit: actualKitNombres,  // Solo los nombres del actualKit
+                actualKit: actualKitPodada,  // Solo los nombres del actualKit
                 casoParticular: casoParticular,
                 combinacion: combinacion,
                 paymentMethod: paymentMethod,
                 cobroFinal: cobroFinal ? cobroFinal.textContent : null,
-                datosClientes: datosClientes // Enviar el string datosClientes
+                datosClientes: datosClientes, // Enviar el string datosClientes
+                fechaLLegada: fechaLLegada
             }
         }),
     })

@@ -38,12 +38,12 @@ app.post('/send-message', (req, res) => {
         return res.status(400).send('Datos incompletos o incorrectos');
     }
 
-    const { actualKit, casoParticular, combinacion, paymentMethod, cobroFinal, datosClientes } = req.body.messageBody; // Obtener el cuerpo de la solicitud
+    const { actualKit, casoParticular, combinacion, paymentMethod, cobroFinal, datosClientes, fechaLlegada } = req.body.messageBody; // Obtener el cuerpo de la solicitud
 
     // Crear y enviar el mensaje de WhatsApp
     client.messages
         .create({
-            body: `ActualKit: ${JSON.stringify(actualKit)}\nCaso Particular: ${JSON.stringify(casoParticular)}\nCombinación: ${combinacion}\nMétodo de Pago: ${paymentMethod}\nCobro Total: ${cobroFinal}\nDatos del Cliente: ${datosClientes}`, // Mensaje actualizado con saltos de línea
+            body: `ActualKit: ${JSON.stringify(actualKit)}\nCaso Particular: ${JSON.stringify(casoParticular)}\nCombinación: ${combinacion}\nMétodo de Pago: ${paymentMethod}\nCobro Total: ${cobroFinal}\nDatos del Cliente: ${datosClientes} \nFecha: ${fechaLlegada}`, // Mensaje actualizado con saltos de línea
             from: 'whatsapp:+14155238886', // Número de Twilio para WhatsApp
             to: 'whatsapp:+573058376094' // Tu número de teléfono
         })

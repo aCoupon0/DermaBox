@@ -111,7 +111,7 @@
             <div class="option" data-index="S">
                 <p class="no-description-option">SECA</p>
                 <p class="description-option">No tiene grasa y es áspera al tacto, suele irritarse y resecarse con
-                    facilidad.</p>
+                    facilidad. <span class="alert">Selecciona si estás tomando Isotretinoina / Roacutan.</span></p>
             </div>
             <div class="option last-option" data-index="N">
                 <p class="no-description-option">NORMAL</p>
@@ -132,15 +132,20 @@
             </div>
             <div class="option" data-index="RA.">
                 <p class="no-description-option">Reducir Acné</p>
+                <p class="description-option"><span class="alert">No lo selecciones si ya estás tomando Isotretinoina / Roacutan.</span></p>
             </div>
             <div class="option" data-index="HS.">
                 <p class="no-description-option">Hidratar y sanar</p>
+                <p class="description-option">Selecciona si lo deseas o <span class="alert">si estás en tratamiento con Isotretinoina /
+                    Roacutan.</span></p>
             </div>
             <div class="option" data-index="A.">
                 <p class="no-description-option">Antienvejecimiento</p>
+                <p class="description-option">Controlar y reducir apariencia de arrugas.</p>
             </div>
             <div class="option last-option" data-index="TCM.">
-                <p class="no-description-option">Reducir textura y manchas</p>
+                <p class="no-description-option">Reducir textura</p>
+                <p class="description-option">Como manchas, cicatrices o comedones.</p>
             </div>
             <button class="scrollButton" onclick="handleScroll(event)">Siguiente</button>
         </div>
@@ -158,7 +163,8 @@
             </div>
             <div class="option" data-index="S">
                 <p class="no-description-option">SI</p>
-                <p class="description-option">Si estas en tratamiento por Isotretinoina / Roacutan. O si te irritas y quemas con facilidad.</p>
+                <p class="description-option"><span class="alert">Si estás en tratamiento por Isotretinoina / Roacutan.</span> O si te irritas y
+                    quemas con facilidad.</p>
             </div>
             <div class="option" data-index="S">
                 <p class="no-description-option">MÁS O MENOS</p>
@@ -182,20 +188,119 @@
                 <p>Tu rutina ha sido creada <br> exitosamente!</p>
             </div>
             <div class="exp-container">
-                <div class="exp-1">
-                    <p>Ahora pasarás a escoger entre las <br> dos opciones para cada paso.</p>
+                <div class="disclaimer-title">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
                 </div>
-                <div class="exp-img">
-                    <img src="assets/rutina.webp" alt="">
+                <div class="disclaimer-exp">
+                    <p>El Skincare no cura enfermedades, solo te hace mas bello. <br> <span class="exp-second">Si tienes
+                            algún problema grave como:</span></p>
                 </div>
-                <div class="exp-2">Ambas te sirven, la diferencia está <br>en la pureza y el precio</div>
-                <button id="endButton">Entendido</button>
+                <div class="disclaimer-symptom">
+                    <p class="first-symptom">DERMATITIS O ECCEMAS</p>
+                    <p class="second-symptom">Inflamación o irritación excesiva de la piel.</p>
+                </div>
+                <div class="disclaimer-symptom">
+                    <p class="first-symptom">ACNÉ INTENSO</p>
+                    <p class="second-symptom">Brotes muy agresivos o quistes dolorosos.</p>
+                </div>
+                <div class="disclaimer-symptom">
+                    <p class="first-symptom">ENFERMEDADES CRÓNICAS</p>
+                    <p class="second-symptom">Como Lupus, Vitiligo, o incluso lesiones cutáneas profundas</p>
+                </div>
+                <div class="disclaimer-advice">NO CONTINÚES Y <br>ACUDE AL DERMATÓLOGO</div>
+                <button id="endButton">Continuar</button>
             </div>
 
         </div>
     </section>
 
-    <script src="js/main.js"></script>
+    <div id="modal-landscape" class="modal-fullscreen">
+        <div class="modal-container">
+            <div class="circle-rotation">
+                <img src="assets/rotation.webp" alt="">
+            </div>
+            <p>DermaBox se ve mejor con el <br> celular en vertical</p>
+        </div>
+    </div>
+
+    <div id="modal-desktop" class="modal-fullscreen">
+        <div class="modal-container-desktop">
+            <div class="circle-rotation">
+                <img src="assets/no-rotation.webp" alt="">
+            </div>
+            <p>DermaBox se experimenta mejor desde el celular. <br> Solo ingresa a www.dermabox.co</p>
+        </div>
+    </div>
+
+    <div class="modal-18">
+        <div class="modal-content-18">
+            <div class="circle-18">+18</div>
+            <p>Si tienes menos de 18 años, visita al dermatólogo antes de iniciar cualquier rutina.</p>
+            <div class="buttons-18">
+                <button class="close-18">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+
+    <script>
+        function checkScreen() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const isLandscape = width > height; // Verifica si está en landscape
+            const isDesktop = width > 1024; // Define un ancho para pantallas grandes
+
+            const modalLandscape = document.getElementById('modal-landscape');
+            const modalDesktop = document.getElementById('modal-desktop');
+
+            // Ocultar todos los modales inicialmente
+            modalLandscape.style.display = 'none';
+            modalDesktop.style.display = 'none';
+
+            // Mostrar modal de landscape si está en horizontal
+            if (isLandscape) {
+                modalLandscape.style.display = 'flex';
+            }
+
+            // Mostrar modal de desktop si es una pantalla grande
+            if (isDesktop) {
+                modalDesktop.style.display = 'flex';
+            }
+        }
+
+        // Ejecuta la función al cargar y al cambiar el tamaño/orientación
+        window.addEventListener('load', checkScreen);
+        window.addEventListener('resize', checkScreen);
+        window.addEventListener('orientationchange', checkScreen);
+
+    </script>
+
+    <script>
+        // Mostrar el modal automáticamente al cargar la página
+        window.onload = function () {
+            const modal = document.querySelector('.modal-18');
+            modal.style.display = 'flex';
+        };
+
+        // Función para cerrar el modal
+        function closeModal() {
+            const modal = document.querySelector('.modal-18');
+            modal.style.display = 'none';
+        }
+
+        // Función para regresar a la página anterior
+        function goBack() {
+            window.history.back();
+        }
+
+        // Asignar las funciones a los botones
+        document.querySelector('.close-18').addEventListener('click', closeModal);
+        document.querySelector('.back-18').addEventListener('click', goBack);
+
+
+    </script>
+
 </body>
 
 </html>

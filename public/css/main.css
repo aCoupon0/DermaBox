@@ -246,6 +246,10 @@ button.disabled {
     /* Color dorado para la versión premium */
 }
 
+.omitir {
+    color: #00d9bc;
+}
+
 .bloque-4 {
     width: 100%;
     padding: 2vw;
@@ -270,13 +274,14 @@ button.disabled {
     padding-bottom: 2vw;
     padding-left: 13vw;
     padding-right: 13vw;
-    background-color: #ffffff2f;
-    color: #ffffff;
+    background-color: #6afff8e7;
+    color: #003835;
     border-radius: 15vw;
     width: auto;
     height: auto;
-    font-size: 1.2rem;
+    font-size: 5vw;
     font-family: 'hb';
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.327), 0px 4px 15px rgba(173, 216, 230, 0.194);
 }
 
 .bloque-quiz {
@@ -457,7 +462,7 @@ button.disabled {
 }
 
 .option {
-    width: 80%;
+    width: 83%;
     margin: 1vh 0;
     background-color: rgba(0, 0, 0, 0.594);
     border: 2px solid rgba(255, 255, 255, 0.156);
@@ -468,11 +473,12 @@ button.disabled {
     flex-direction: column;
     cursor: pointer;
     transition: background-color 0.3s, border 0.3s;
-    border-radius: 10vw;
+    border-radius: 6vw;
     padding-left: 6vw;
     padding-right: 6vw;
-    padding-top: 3vw;
-    padding-bottom: 3vw;
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+    line-height: 5vw;
 }
 
 .last-option {
@@ -482,13 +488,15 @@ button.disabled {
 .option.selected {
     background-color: #3642318b;
     border-color: #B0F691;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.327), 0px 4px 15px rgba(173, 216, 230, 0.194);
 }
 
 .no-description-option {
     font-family: 'hb';
-    font-size: 5vw;
+    font-size: 5.2vw;
     margin-bottom: 0vw;
     margin-top: 0vw;
+    color: #ffffff;
 }
 
 .description-option {
@@ -496,6 +504,12 @@ button.disabled {
     font-size: 4vw;
     margin-bottom: 0vw;
     margin-top: 1vw;
+    color: rgba(255, 255, 255, 0.769);
+}
+
+.alert {
+    color: #ff6d6d;
+    font-family: "hb";
 }
 
 
@@ -533,13 +547,17 @@ button.disabled {
 }
 
 #endButton {
-    color: black !important;
-    background-color: rgba(255, 255, 255, 0.961) !important;
+    color: rgb(255, 255, 255) !important;
+    background-color: rgba(0, 0, 0, 0.961) !important;
+    width: auto !important;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.327), 0px 4px 15px rgba(173, 216, 230, 0.194);
+    padding-right: 10vw;
+    padding-left: 10vw;
 }
 
 .bloque-carga {
     width: 100%;
-    height: 17%;
+    height: 13%;
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
@@ -547,15 +565,15 @@ button.disabled {
     padding-left: 13%;
     text-align: left;
     font-family: 'hb';
-    color: rgb(226, 255, 193);
+    color: rgb(255, 255, 255);
     font-size: 5vw;
     line-height: 1.3rem;
-    background-color: #00000000;
+    background-color: #000000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.251);
 }
 
 .bloque-carga img {
-    height: 35%;
+    height: 45%;
     width: auto;
 }
 
@@ -563,7 +581,7 @@ button.disabled {
 .separador-bloque-carga {
     height: 34%;
     width: 3px;
-    background-color: rgba(218, 255, 178, 0.731);
+    background-color: rgba(239, 239, 239, 0.731);
     margin-left: 5vw;
     margin-right: 5vw;
     border-radius: 5vw;
@@ -571,55 +589,90 @@ button.disabled {
 
 .exp-container {
     width: 100%;
-    height: 83%;
+    height: 87%;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.exp-1 {
+.disclaimer-title {
     width: 100%;
-    height: 12%;
+    height: 8%;
+    color: #FF8672;
     display: flex;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    line-height: 6.5vw;
-    margin-top: 5vw;
-    margin-bottom: 5vw;
+    justify-content: center;
+    font-family: "hb";
+    font-size: 8vw;
+    flex-direction: row;
+    gap: 2vw;
+    padding-top: 2vw;
 }
 
-.exp-1 p {
-    font-family: 'hb';
-    color: white;
+.disclaimer-exp {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 8vw;
+    font-family: "hb";
+    flex-direction: column;
+    line-height: 5vw;
+    text-align: left;
+    gap: 0px;
+
+}
+
+.disclaimer-exp p {
+    color: #B0F691;
     font-size: 5vw;
 }
 
-.exp-img {
+.exp-second {
+    color: #ffffff;
+    font-size: 4.5vw;
+}
+
+.disclaimer-symptom {
     width: 100%;
-    height: 42%;
+    height: 14%;
     display: flex;
+    align-items: flex-start;
     justify-content: center;
-    align-items: center;
+    line-height: 6vw;
+    flex-direction: column;
+    gap: 0px;
 }
 
-.exp-img img {
-    width: auto;
-    height: 95%;
-}
-
-.exp-2 {
-    font-family: 'hb';
-    color: white;
+.first-symptom {
+    font-family: "hb";
+    color: #FF8672;
+    margin-left: 8vw;
     font-size: 5vw;
+    margin-bottom: 0px;
+}
+
+.second-symptom {
+    font-family: "h";
+    color: #ffffff;
+    margin-left: 12vw;
+    font-size: 4.5vw;
+    margin-top: 0px;
+    text-align: left;
+}
+
+.disclaimer-advice {
     width: 100%;
-    height: 12%;
+    height: 15%;
+    margin-top: 6vw;
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    font-family: "hb";
+    font-size: 6vw;
+    color: #B0F691;
     line-height: 7vw;
-    margin-bottom: 8vw;
 }
 
 
@@ -770,3 +823,176 @@ button.disabled {
     margin: 1% auto;
     /* Centramos el separador y añadimos un pequeño margen */
 }
+
+
+
+
+
+
+
+
+.modal-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000, #012529);
+    color: white;
+    display: none; /* Ocultos por defecto */
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Asegúrate de que estén por encima de todo */
+    pointer-events: none; /* Evita la interacción */
+}
+
+.modal-fullscreen p {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+body.modal-active {
+    overflow: hidden; /* Evita el scroll en el fondo */
+}
+
+.modal-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 7vw;
+}
+
+.circle-rotation {
+    height: 20vw;
+    width: 20vw;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.495);
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.327), 0px 4px 15px rgba(173, 216, 230, 0.194);
+}
+
+.circle-rotation img {
+    width: auto;
+    height: 70%;
+}
+
+.modal-container p {
+    text-align: left;
+    font-size: 3.4vw;
+    color: white;
+    font-family: "h";
+    line-height: 4vw;
+}
+
+.modal-container-desktop {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5vw;
+}
+
+.modal-container-desktop p {
+    text-align: left;
+    font-size: 2.5vw;
+    color: white;
+    font-family: "h";
+    line-height: 4vw;
+}
+
+
+
+
+
+
+
+/* Estilos generales del modal */
+.modal-18 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que el modal esté por encima de todo */
+    pointer-events: auto; /* Asegura que no se pueda interactuar con el fondo */
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+}
+
+.modal-content-18 {
+    background-color: white;
+    padding-top: 6vw;
+    padding-bottom: 6vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    border-radius: 8vw;
+    text-align: center;
+    width: 85%;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.buttons-18 {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.buttons-18 button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-18 {
+    background-color: #053a00;
+    color: white;
+}
+
+.back-18 {
+    background-color: #480000;
+    color: white;
+}
+
+.circle-18 {
+    width: 25vw;
+    height: 25vw;
+    border-radius: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.39); /* Sombra suave */
+    font-family: "hb";
+    font-size: 10vw;
+    color: rgb(90, 90, 90);
+    display: FLEX;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content-18 p {
+    font-family: "hb";
+    color: rgb(55, 55, 55);
+    font-size: 5vw;
+    text-align: center;
+    margin-top: 4vw;
+    margin-bottom: 4vw;
+    line-height: 6vw;
+}
+
