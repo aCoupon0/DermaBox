@@ -9,6 +9,7 @@
     <title>Rutina de Skincare Personalizada | Creador Personalizado</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet">
     <link rel="preload" href="assets/exp.webp" as="image">
     <link rel="preload" href="assets/rutina.webp" as="image">
     <link rel="preload" href="assets/carga.webp" as="image">
@@ -31,6 +32,89 @@
 
 <body>
     <section id="section1">
+        <div class="overlay">
+            <div class="overlay-1">
+                <p>El proceso completo</p>
+                <div class="overlay-1-btn">Cerrar</div>
+            </div>
+
+            <div class="overlay-3 yellow">
+                <p>Las rutinas no tienen porque ser larguísimas y costosas.</p>
+            </div>
+            
+            <div class="overlay-3 red">
+                <p>Casi nadie <span class="no-bold">necesita</span> 15 pasos diferentes</p>
+            </div>
+           
+            <div class="overlay-4 green">
+                <p>Solo <span class="no-bold">necesitas</span> lo que de verdad le hace falta a tu piel</p>
+            </div>
+            <div class="overlay-5">
+                <div class="overlay-6">
+                    <div class="overlay-6-1">Así que solo incluiremos los <span class="bold">4 pasos
+                            esenciales</span></div>
+                    <div class="overlay-6-2">Podrás omitir el que no te interese</div>
+                    <div class="overlay-6-3">
+                        <i class="fas fa-soap"></i>
+                        <p>Limpiador</p>
+                    </div>
+                    <div class="overlay-6-3">
+                        <i class="fas fa-tint"></i>
+                        <p>Hidratante</p>
+                    </div>
+                    
+                    <div class="overlay-6-3">
+                        <i class="fas fa-sun"></i>
+                        <p>Bloqueador</p>
+                    </div>
+                    <div class="overlay-6-3">
+                        <i class="fas fa-rocket"></i>
+                        <p>Potenciador</p>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay-7">
+                <p class="overlay-7-title">Según tus respuestas...</p>
+                <p class="overlay-7-exp">Escogeremos <span class="bold">dos posibles productos</span> para cada uno de los pasos</p>
+                <p class="overlay-7-example">Verás algo como esto:</p>
+            </div>
+
+            <div class="overlay-8">
+                <img src="assets/example.webp" alt="">
+            </div>
+
+            <div class="overlay-7">
+                <p class="overlay-7-title">Abajo habrá una comparación</p>
+                <p class="overlay-7-exp">Para que <span class="bold">decidas</span> cual incluir en tu rutina.</p>
+                <p class="overlay-7-skip">O si prefieres omitir y no incluir ese paso</p>
+            </div>
+
+            <div class="overlay-9">
+                <p class="overlay-9-title">Cuando hayas escogido tus productos</p>
+                <p class="overlay-9-exp"><i class="fas fa-list-check"></i> Te mostraremos cuándo y en qué orden aplicarlos</p>
+                
+                <p class="overlay-9-exp"><span class="flag-icon flag-icon-co"></span> Podrás ordenar la rutina y recibirla en cualquier parte de Colombia.</p>
+            </div>
+
+            <div class="overlay-10">
+                <div class="overlay-10-1">
+                    <img src="assets/complete-process-2.webp" alt="">
+                </div>
+            </div>
+
+            <div class="overlay-11">
+                <div class="overlay-11-1">
+                    <p class="overlay-11-1-exp">Así, comprarás solo lo que realmente necesitas.</p>
+                </div>
+            </div>
+
+            <div class="overlay-2">
+                <img src="assets/marcas/roche.webp" alt="" class="fade-image">
+            </div>
+            
+            <div class="overlay-bottom"></div>
+        </div>
+
         <div class="bloque-1">
             <img src="assets/logo.webp" alt="" class="logo">
             <p class="logo-txt-1">DERMA</p>
@@ -41,53 +125,26 @@
         </div>
         <div class="bloque-3">
             <div class="bloque-3-1">
-                <p class="text-1">Solo debes responder el cuestionario,</p>
+                <p class="text-1">Solo debes responder 3 preguntas.</p>
                 <p class="text-2">
-                    <span class="hb-font">y el algoritmo escogerá los productos, paso a paso.
+                    <span class="hb-font">Y el algoritmo escogerá los productos, paso a paso.
                 </p>
             </div>
             <div class="separador"></div>
             <div class="bloque-3-1" id="dynamic-block"></div>
         </div>
-        <div class="bloque-how">
-            <button class="how-button">¿Cómo funciona?</button>
-        </div>
+
         <div class="bloque-quiz">
             <p>¡Empecemos a crear tu rutina!</p>
-            <p>Si ya estás listo, dale a <b>Empezar</b> <br> para contestar el cuestionario</p>
+            <p><i class="fa fa-chevron-down"></i></p>
         </div>
         <div class="bloque-4">
-            <button class="scrollButton">Empezar</button>
+            <button class="scrollButton button">Iniciar cuestionario</button>
         </div>
-
-
-        <!-- Modal Overlay -->
-        <div id="modal-overlay" class="modal-overlay">
-            <div class="modal-content">
-                <div class="modal-section section-1">
-                    <img src="assets/1.webp" alt="Imagen 1" class="modal-image">
-                </div>
-
-                <!-- Separador entre secciones -->
-                <div class="separator"></div>
-
-                <div class="modal-section section-2">
-                    <img src="assets/2.webp" alt="Imagen 2" class="modal-image">
-                </div>
-
-                <!-- Separador entre secciones -->
-                <div class="separator"></div>
-
-                <div class="modal-section section-3">
-                    <img src="assets/3.webp" alt="Imagen 3" class="modal-image">
-                </div>
-
-                <button class="close-modal">Entendido</button>
-            </div>
-        </div>
-
 
     </section>
+
+
 
     <section id="section2">
         <!-- Sección 3 -->
@@ -111,13 +168,13 @@
             <div class="option" data-index="S">
                 <p class="no-description-option">SECA</p>
                 <p class="description-option">No tiene grasa y es áspera al tacto, suele irritarse y resecarse con
-                    facilidad. <span class="alert">Selecciona si estás tomando Isotretinoina / Roacutan.</span></p>
+                    facilidad.</p>
             </div>
             <div class="option last-option" data-index="N">
                 <p class="no-description-option">NORMAL</p>
                 <p class="description-option">No es ni grasosa ni seca, con poros pequeños y sin areas asperas.</p>
             </div>
-            <button class="scrollButton" onclick="handleScroll(event)">Siguiente</button>
+            <button class="scrollButton button" onclick="handleScroll(event)">Siguiente</button>
         </div>
     </section>
 
@@ -132,12 +189,11 @@
             </div>
             <div class="option" data-index="RA.">
                 <p class="no-description-option">Reducir Acné</p>
-                <p class="description-option"><span class="alert">No lo selecciones si ya estás tomando Isotretinoina / Roacutan.</span></p>
+                <p class="description-option">Reducir la apariencia y el tamaño de brotes.</p>
             </div>
             <div class="option" data-index="HS.">
                 <p class="no-description-option">Hidratar y sanar</p>
-                <p class="description-option">Selecciona si lo deseas o <span class="alert">si estás en tratamiento con Isotretinoina /
-                    Roacutan.</span></p>
+                <p class="description-option">Curar y calmar la irritación y descamación.</p>
             </div>
             <div class="option" data-index="A.">
                 <p class="no-description-option">Antienvejecimiento</p>
@@ -147,7 +203,7 @@
                 <p class="no-description-option">Reducir textura</p>
                 <p class="description-option">Como manchas, cicatrices o comedones.</p>
             </div>
-            <button class="scrollButton" onclick="handleScroll(event)">Siguiente</button>
+            <button class="scrollButton button" onclick="handleScroll(event)">Siguiente</button>
         </div>
     </section>
 
@@ -161,10 +217,15 @@
                     ¿TIENES LA PIEL SENSIBLE?
                 </p>
             </div>
+            <div class="option" data-index="I">
+                <p class="no-description-option iso">ESTOY EN TRATAMIENTO POR ISOTRETINOINA</p>
+                <p class="description-option">Este medicamento irrita y seca la piel, por lo que es importante que te
+                    preguntemos.</p>
+            </div>
+            <div class="separador-opciones"></div>
             <div class="option" data-index="S">
                 <p class="no-description-option">SI</p>
-                <p class="description-option"><span class="alert">Si estás en tratamiento por Isotretinoina / Roacutan.</span> O si te irritas y
-                    quemas con facilidad.</p>
+                <p class="description-option">Si te irritas y quemas con facilidad.</p>
             </div>
             <div class="option" data-index="S">
                 <p class="no-description-option">MÁS O MENOS</p>
@@ -174,7 +235,7 @@
                 <p class="no-description-option">NO</p>
                 <p class="description-option">Es muy raro que se irrite y se enrojezca, solo si me quemo con el sol.</p>
             </div>
-            <button class="scrollButton" onclick="handleScroll(event)" id="lastScroll">Terminar</button>
+            <button class="scrollButton button" onclick="handleScroll(event)" id="lastScroll">Terminar</button>
         </div>
     </section>
 
@@ -183,8 +244,7 @@
         <!-- Sección 7 -->
         <div class="bloque-10">
             <div class="bloque-carga">
-                <img src="assets/carga.webp" alt="rutina-creada">
-                <div class="separador-bloque-carga"></div>
+                <i class="fa-solid fa-hammer"></i>
                 <p>Tu rutina ha sido creada <br> exitosamente!</p>
             </div>
             <div class="exp-container">
@@ -204,11 +264,11 @@
                     <p class="second-symptom">Brotes muy agresivos o quistes dolorosos.</p>
                 </div>
                 <div class="disclaimer-symptom">
-                    <p class="first-symptom">ENFERMEDADES CRÓNICAS</p>
-                    <p class="second-symptom">Como Lupus, Vitiligo, o incluso lesiones cutáneas profundas</p>
+                    <p class="first-symptom">SINTOMAS EXTRAÑOS</p>
+                    <p class="second-symptom">Cualquier sintoma nuevo, extraño y/o desconocido.</p>
                 </div>
                 <div class="disclaimer-advice">NO CONTINÚES Y <br>ACUDE AL DERMATÓLOGO</div>
-                <button id="endButton">Continuar</button>
+                <button id="endButton" class="endButton">No es mi caso</button>
             </div>
 
         </div>
@@ -237,7 +297,7 @@
             <div class="circle-18">+18</div>
             <p>Si tienes menos de 18 años, visita al dermatólogo antes de iniciar cualquier rutina.</p>
             <div class="buttons-18">
-                <button class="close-18">Entendido</button>
+                <button class="close-18 button">Entendido</button>
             </div>
         </div>
     </div>

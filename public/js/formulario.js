@@ -84,9 +84,15 @@ function calcularTotalYEnvio() {
     let costoEnvio = 0;
     if (actualKit.length > 2) {
         envioElement.innerText = 'ENVÍO GRATIS';
-    } else {
+    } else if (actualKit.length === 2) {
         costoEnvio = 6000;
-        envioElement.innerHTML = `Envío: <span style="font-size: 0.9rem;  color: white">$</span> 6.000`;
+        envioElement.innerHTML = `Envío <span style="font-size: 0.9rem;  color: white">$</span> 6.000`;
+    } else if (actualKit.length === 1){
+        costoEnvio = 9000
+        envioElement.innerHTML = `Envío <span style="font-size: 0.9rem;  color: white">$</span> 9.000`;
+    } else {
+        costoEnvio = 0
+        envioElement.innerHTML = ``;
     }
 
     // Mostrar el total formateado con el símbolo $ dentro de un span con estilos en línea
@@ -433,7 +439,7 @@ function envioFormulario() {
     const city = document.getElementById('city').value.trim();
     const address = document.getElementById('address').value.trim();
     const cobroFinal = document.querySelector('.cobro-final');
-    const fechaLLegada = document.querySelector(".duration-2");
+    const fechaLLegada = document.querySelector(".duration-2").innerHTML;
 
     // Verificar que los inputs no estén vacíos y que tengan una longitud mínima
     if (!name || name.length < 5 || !phone || phone.length < 5 || 

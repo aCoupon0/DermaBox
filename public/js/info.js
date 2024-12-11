@@ -88,6 +88,9 @@ infoLimpiadores = [
         <p class="subtitle">Para Control y Reducción de Acné</p>
         <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Fitosfingosina</p>
         <p class="info-txt">Inhibe el crecimiento de Propionibacterium acne, la bacteria que causa el acné. <a href="https://read.qxmd.com/read/18489348/anti-microbial-and-inflammatory-activity-and-efficacy-of-phytosphingosine-an-in-vitro-and-in-vivo-study-addressing-acne-vulgaris" target="_blank">Medscape</a></p>
+        <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Compatible con la Isotretinoina</p>
+        <p class="info-txt">Si estás en tratamiento con Isotretinoina, un limpiador que despeje los poros sin irritar es ideal.</p>
+        
     `,
         HS: `
         <p class="subtitle">Para Hidratar y Sanar</p>
@@ -277,7 +280,7 @@ infoLimpiadores = [
         nombre: 'Limpiador Milk Hidrolizada de Sadoer',
         queEs: `
         <p class="title">¿QUÉ ES?</p>
-        <p class="info-description">Leche nutritiva y restauradora formulada con ceramidas. Enfocado en hidratar y nutrir profundamente, reforzando su barrera y suavizando la textura para una piel más saludable.</p>   
+        <p class="info-description">Leche nutritiva y restauradora formulada con ceramidas. Enfocada en hidratar y nutrir, refuerza la barrera de la piel y recupera una apariencia viva y saludable..</p>   
         <p class="title">INGREDIENTES RELEVANTES</p>
         `,
         RA: `
@@ -285,20 +288,22 @@ infoLimpiadores = [
         <p class="subtitle">Para Control y Reducción de Acné</p>
         <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Benzalkonium</p>
         <p class="info-txt">Agente antimicrobiano que ayuda a limpiar la piel, controlando bacterias e impurezas. <a href="https://www.drugs.com/cdi/benzalkonium-chloride.html" target="_blank">Drugs.com</a></p>
+        <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Complementa a la Isotretinoina</p>
+        <p class="info-txt">Del acné ya se encarga tu tratamiento con Isotretinoina. Un limpiador que hidrate y solo se encargue de despejar y purificar la piel es ideal.</p>
     `,
         HS: `
         <p class="subtitle">Para Hidratar y Sanar</p>
         <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Extracto de Leche</p>
-        <p class="info-txt">Fuente de proteínas y lípidos que nutren intensamente la piel y la hidratan, promoviendo su elasticidad y suavidad. <a href="https://www.mdpi.com/2076-3417/14/7/2862" target="_blank">MDPI</a></p>
+        <p class="info-txt">Fuente de proteínas y lípidos que nutren e hidratan intensamente la piel. <a href="https://www.mdpi.com/2076-3417/14/7/2862" target="_blank">MDPI</a></p>
         <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Ceramida NP</p>
-        <p class="info-txt">Fortalece la barrera cutánea y retiene la humedad, promoviendo una hidratación duradera y la reparación profunda de la piel. <a href="https://www.mdpi.com/2079-9284/6/3/52" target="_blank">MDPI</a></p>
+        <p class="info-txt">Fortalece la barrera cutánea y retiene la humedad, dando hidratación duradera y reparación. <a href="https://www.mdpi.com/2079-9284/6/3/52" target="_blank">MDPI</a></p>
         <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Carbomer</p>
-        <p class="info-txt">Mejora la distribución, absorción y efecto de los ingredientes hidratantes mencionados arriba. <a href="https://www.mdpi.com/1999-4923/16/8/1001/xml" target="_blank">MDPI</a></p>
+        <p class="info-txt">Mejora la absorción y el efecto de los ingredientes hidratantes mencionados arriba. <a href="https://www.mdpi.com/1999-4923/16/8/1001/xml" target="_blank">MDPI</a></p>
     `,
         A: `   
         <p class="subtitle">Para Antienvejecimiento</p>
         <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Ceramidas (NP)</p>
-        <p class="info-txt"> Ayuda a mantener la integridad de la barrera cutánea, previniendo la pérdida de hidratación y contribuyendo a la firmeza de la piel. <a href="https://www.mdpi.com/2079-9284/6/3/52" target="_blank">MDPI</a></p>
+        <p class="info-txt"> Ayuda a mantener la salud de la barrera cutánea, previniendo la pérdida de hidratación y contribuyendo a la firmeza de la piel. <a href="https://www.mdpi.com/2079-9284/6/3/52" target="_blank">MDPI</a></p>
     `,
         TCM: `   
         <p class="subtitle">Para Suavizar Textura y Manchas</p>
@@ -859,7 +864,8 @@ infoPotenciadores = [
         RA: `
         <!-- Ingredientes para Control y Reducción de Acné -->
         <p class="subtitle">Para Control y Reducción de Acné</p>
-        <p class="info-txt">No contiene ingredientes específicos para tratar el acné.</p>
+        <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Complementa a la Isotretinoina</p>
+        <p class="info-txt">La Isotretinoina reseca intensamente, con este serúm potencias los efectos de tu tratamiento al tratar la resequedad.</p>
 `,
         HS: `
         <p class="subtitle">Para Hidratar y Sanar</p>
@@ -874,7 +880,8 @@ infoPotenciadores = [
 `,
         A: `   
         <p class="subtitle">Para Antienvejecimiento</p>
-        <p class="info-txt">No contiene ingredientes específicos para antiage.</p>
+        <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Ácido Hialurónico</p>
+        <p class="info-txt">Atrae y retiene agua en la piel, rellenando líneas finas y proporcionando un efecto de piel tersa. <a href="https://www.ncbi.nlm.nih.gov/pubmed/30287361" target="_blank">NIH</a></p>
 `,
         TCM: `   
         <p class="subtitle">Para Suavizar Textura y Manchas</p>
@@ -1286,7 +1293,8 @@ infoPotenciadores = [
         RA: `
         <!-- Ingredientes para Control y Reducción de Acné -->
         <p class="subtitle">Para Control y Reducción de Acné</p>
-        <p class="info-txt">No contiene ingredientes específicos para tratar el acné.</p>
+        <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Complementa a la Isotretinoina</p>
+        <p class="info-txt">La Isotretinoina reseca intensamente, con este serúm potencias los efectos de tu tratamiento al tratar la resequedad.</p>
 `,
         HS: `
         <p class="subtitle">Para Hidratar y Sanar</p>
@@ -1299,7 +1307,8 @@ infoPotenciadores = [
 `,
         A: `   
         <p class="subtitle">Para Antienvejecimiento</p>
-        <p class="info-txt">No contiene ingredientes específicos para antiage.</p>
+        <p class="ingrediente"><i class="fa-solid fa-o circle"></i>Ácido Hialurónico</p>
+        <p class="info-txt">Atrae y retiene agua en la piel, rellenando líneas finas y proporcionando un efecto de piel tersa. <a href="https://www.ncbi.nlm.nih.gov/pubmed/30287361" target="_blank">NIH</a></p>
 `,
         TCM: `   
         <p class="subtitle">Para Suavizar Textura y Manchas</p>

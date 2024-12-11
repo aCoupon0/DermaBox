@@ -759,3 +759,45 @@ body.modal-active {
     font-family: "h";
     line-height: 4vw;
 }
+
+ /* Contenedor del indicador */
+ .scroll-indicator {
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    width: 100%;
+    background-color: #ffc4c4;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+
+/* Texto del indicador */
+.scroll-indicator .text {
+    font-size: 5vw;
+    color: #520000;
+    margin-right: 6vw;
+    font-family: "hb";
+}
+
+/* Flecha con efecto de rebote */
+.scroll-indicator .arrow {
+    font-size: 5vw;
+    color: #370000; /* Azul elegante */
+    animation: bounce 1s infinite;
+}
+
+/* Animación bounce */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}

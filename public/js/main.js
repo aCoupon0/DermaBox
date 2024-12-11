@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dynamicBlock = document.getElementById("dynamic-block");
     const contentArray = [
         `
-            <p class="text-1">La rutina puede tener hasta 4 pasos,</p>
+            <p class="text-1">La rutina puede tener hasta 4 pasos.</p>
             <p class="text-2">
             En cada uno podrás escoger entre un <br> producto 
             <span class="hb-font estandar">Estándar</span>,
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `
             <p class="text-1">Apto para cualquier presupuesto.</p>
             <p class="text-2">
-                <span class="hb-font">Lo anterior te permite escoger en que pasos gastar más y en cuales menos.</span>
+                <span class="hb-font">Lo anterior te permite escoger en que pasos invertir más y en cuales menos.</span>
             </p>
         `,
     ];
@@ -40,6 +40,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Repetir cada 6 segundos (5 segundos de contenido visible + 1 segundo de animación)
     setInterval(swapContent, 5000);
 
+    // Seleccionamos el elemento de la imagen dentro del div
+
+    // Lista (arreglo) de strings
+    let imageArray = ["roche", "cerave", "bioaqua", "ordinary", "neutrogena", "vibrant", "eucerin"]; // Ajusta según las imágenes disponibles
+    let currentImage = 0;  // Índice inicial
+    let image = document.querySelector(".overlay-2 img"); // La única imagen mostrada
+    let timeoutDuration = 4000;  // Duración del intervalo para cambiar de imagen
+
+    // Inicializar la imagen
+    image.src = `assets/marcas/${imageArray[currentImage]}.webp`;
+    image.classList.add("visible"); // Asegurarse de que la primera imagen es visible
+
+    // Función que cambia las imágenes con un fade out antes de hacer el fade in
+    function changeImage() {
+        // Hacer fade out de la imagen actual
+        image.classList.remove("visible");
+
+        // Esperar a que termine el fade out antes de cambiar la fuente de la imagen
+        setTimeout(() => {
+            // Cambiar la fuente de la imagen (es decir, la imagen misma)
+            currentImage = (currentImage + 1) % imageArray.length; // Ciclo a través de las imágenes
+
+            // Actualizar el src de la imagen
+            image.src = `assets/marcas/${imageArray[currentImage]}.webp`;
+
+            // Hacer fade in de la nueva imagen
+            setTimeout(() => {
+                image.classList.add("visible");
+            }, 50); // Le damos un pequeño retraso para asegurarnos de que la fuente cambió antes del fade in
+        }, 1000); // El tiempo del fade out (1 segundo), que coincide con la transición de opacidad
+    }
+
+    // Cambiar la imagen cada 4 segundos
+    setInterval(changeImage, timeoutDuration);
+
     // Verificar si 'actualKit' en localStorage tiene más de un elemento
     const actualKit = JSON.parse(localStorage.getItem('actualKit')) || [];
 
@@ -53,29 +88,61 @@ document.addEventListener('DOMContentLoaded', () => {
     const endButton = document.getElementById('endButton');
     let casoParticular = [['0'], ['0'], ['0']]; // Mantener tres elementos en el arreglo
 
-    // Orden específico para la segunda sección (sección 3)
-    const order = ['RA.', 'HS.', 'A.', 'TCM.'];
 
-    const modalOverlay = document.getElementById('modal-overlay');
-    const howButton = document.querySelector('.how-button');
-    const closeModalButton = document.querySelector('.close-modal');
+    let overlay = document.querySelector('.overlay');
+    let startTouch;
+    let isSliding = false;
+    let botonCerrar = document.querySelector('.overlay-1-btn')
 
-    // Abrir el modal con fade-in
-    howButton.addEventListener('click', () => {
-        modalOverlay.classList.add('active');
+    document.addEventListener('touchstart', function (e) {
+        // Guardamos la posición inicial del toque
+        startTouch = e.touches[0].clientY;
     });
 
-    // Cerrar el modal con fade-out
-    closeModalButton.addEventListener('click', () => {
-        modalOverlay.classList.remove('active');
-    });
-
-    // Cerrar modal al hacer clic fuera del contenido
-    modalOverlay.addEventListener('click', (e) => {
-        if (e.target === modalOverlay) {
-            modalOverlay.classList.remove('active');
+    document.addEventListener('touchmove', function (e) {
+        // Detectamos el deslizamiento hacia arriba
+        let moveTouch = e.touches[0].clientY;
+        if (startTouch > moveTouch && !isSliding) {
+            // Si el usuario está deslizando hacia arriba y aún no hemos movido el overlay
+            isSliding = true;
+            overlay.style.top = '20vh';
+            botonCerrar.style.opacity = '1';
         }
     });
+
+    document.addEventListener('touchend', function () {
+        // Ya no necesitamos hacer nada al final del toque, el overlay se queda en 20vh de forma indefinida
+    });
+
+    // Eventos para los bloques específicos (bloque-1 y bloque-2)
+    let bloque1 = document.querySelector('.bloque-1');
+    let bloque2 = document.querySelector('.bloque-2');
+
+
+    // Cuando el usuario toque en bloque-1, restablecer el overlay a 80vh
+    bloque1.addEventListener('touchstart', function () {
+        overlay.style.top = '75vh';
+        botonCerrar.style.opacity = '0';
+        isSliding = false;  // Reiniciar el flag
+    });
+
+    // Cuando el usuario toque en bloque-2, restablecer el overlay a 80vh
+    bloque2.addEventListener('touchstart', function () {
+        overlay.style.top = '75vh';
+        botonCerrar.style.opacity = '0';
+        isSliding = false;  // Reiniciar el flag
+    });
+
+    botonCerrar.addEventListener('touchstart', function () {
+        overlay.style.top = '75vh';
+        botonCerrar.style.opacity = '0';
+        isSliding = false;  // Reiniciar el flag
+    });
+
+
+
+    // Orden específico para la segunda sección (sección 3)
+    const order = ['RA.', 'HS.', 'A.', 'TCM.'];
 
     // Función para desplazar a la siguiente sección
     function scrollToNextSection(button) {
@@ -92,6 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const button = event.target;
         const currentSection = button.closest('section');
         const sectionIndex = Array.from(sections).indexOf(currentSection) - 1;
+
+        if (overlay && getComputedStyle(overlay).display === 'block') {
+            overlay.style.display = 'none'; // Cambiar a none si el display es block
+        }
 
         // Permitir desplazamiento sin restricciones en la primera sección
         if (sectionIndex < 0) {
@@ -117,11 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }, button.id === 'lastScroll' ? 3000 : 400); // Ajuste de tiempo, devolverlo a 4000 : 400 cuando se termine
     }
-
-
-
-
-
 
     // Asignar eventos a los botones
     buttons.forEach((button, index) => {
@@ -406,7 +472,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert: "",
             replace: 45,
             calidad: 'E',
-            configuraciones: ['S-HS.-N', 'S-HS.-S']
+            configuraciones: ['S-HS.-N', 'S-HS.-S', 'G-RA.-I', 'G-TCM.-I', 'G-RA.HS.-I', 'G-RA.A.-I', 'G-RA.TCM.-I', 'G-HS.TCM.-I', 'M-RA.TCM.-I',
+                'M-RA.HS.A.TCM.-I', 'G-HS.-I', 'G-A.-I', 'G-HS.A.-I', 'G-A.TCM.-I', 'G-RA.HS.A.-I', 'G-RA.HS.TCM.-I', 'G-RA.A.TCM.-I',
+                'G-HS.A.TCM.-I', 'G-RA.HS.A.TCM.-I', 'M-RA.-I', 'M-TCM.-I', 'M-RA.HS.-I', 'M-RA.A.-I', 'M-A.TCM.-I', 'M-RA.HS.A.-I', 'M-RA.HS.TCM.-I', 'M-RA.A.TCM.-I', 'S-RA.-I', 'M-HS.-I',
+                'M-A.-I', 'S-A.-I', 'S-HS.A.-I', 'S-HS.TCM.-I', 'S-A.TCM.-I', 'S-RA.HS.A.-I', 'S-RA.HS.TCM.-I', 'S-HS.A.TCM.-I', 'M-HS.A.-I', 'M-HS.TCM.-I', 'M-HS.A.TCM.-I',
+                'S-TCM.-I', 'S-RA.HS.-I', 'S-RA.A.-I', 'S-RA.TCM.-I', 'S-RA.A.TCM.-I', 'S-RA.HS.A.TCM.-I', 'S-RA.HS.A.-I']
         },
     ]
 
@@ -502,7 +572,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert: "",
             replace: 44,
             calidad: 'P',
-            configuraciones: ['S-HS.-N', 'S-HS.-S']
+            configuraciones: ['S-HS.-N', 'S-HS.-S', 'G-RA.-I', 'G-TCM.-I', 'G-RA.HS.-I', 'G-RA.A.-I', 'G-RA.TCM.-I', 'G-HS.TCM.-I', 'M-RA.TCM.-I',
+                'M-RA.HS.A.TCM.-I', 'G-HS.-I', 'G-A.-I', 'G-HS.A.-I', 'G-A.TCM.-I', 'G-RA.HS.A.-I', 'G-RA.HS.TCM.-I', 'G-RA.A.TCM.-I',
+                'G-HS.A.TCM.-I', 'G-RA.HS.A.TCM.-I', 'M-RA.-I', 'M-TCM.-I', 'M-RA.HS.-I', 'M-RA.A.-I', 'M-A.TCM.-I', 'M-RA.HS.A.-I', 'M-RA.HS.TCM.-I', 'M-RA.A.TCM.-I', 'S-RA.-I', 'M-HS.-I',
+                'M-A.-I', 'S-A.-I', 'S-HS.A.-I', 'S-HS.TCM.-I', 'S-A.TCM.-I', 'S-RA.HS.A.-I', 'S-RA.HS.TCM.-I', 'S-HS.A.TCM.-I', 'M-HS.A.-I', 'M-HS.TCM.-I', 'M-HS.A.TCM.-I',
+                'S-TCM.-I', 'S-RA.HS.-I', 'S-RA.A.-I', 'S-RA.TCM.-I', 'S-RA.A.TCM.-I', 'S-RA.HS.A.TCM.-I', 'S-RA.HS.A.-I']
         },
     ]
 
@@ -580,7 +654,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert: "",
             replace: 47,
             calidad: 'E',
-            configuraciones: ['S-HS.-N', 'S-HS.-S', 'S-A.-N', 'S-A.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N', 'S-RA.HS.A.TCM.-S']
+            configuraciones: ['S-HS.-N', 'S-HS.-S', 'S-A.-N', 'S-A.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N', 'S-RA.HS.A.TCM.-S', 'G-RA.-I', 'G-TCM.-I', 'G-RA.HS.-I', 'G-RA.A.-I', 'G-RA.TCM.-I', 'G-HS.TCM.-I', 'M-RA.TCM.-I',
+                'M-RA.HS.A.TCM.-I', 'G-HS.-I', 'G-A.-I', 'G-HS.A.-I', 'G-A.TCM.-I', 'G-RA.HS.A.-I', 'G-RA.HS.TCM.-I', 'G-RA.A.TCM.-I',
+                'G-HS.A.TCM.-I', 'G-RA.HS.A.TCM.-I', 'M-RA.-I', 'M-TCM.-I', 'M-RA.HS.-I', 'M-RA.A.-I', 'M-A.TCM.-I', 'M-RA.HS.A.-I', 'M-RA.HS.TCM.-I', 'M-RA.A.TCM.-I', 'S-RA.-I', 'M-HS.-I',
+                'M-A.-I', 'S-A.-I', 'S-HS.A.-I', 'S-HS.TCM.-I', 'S-A.TCM.-I', 'S-RA.HS.A.-I', 'S-RA.HS.TCM.-I', 'S-HS.A.TCM.-I', 'M-HS.A.-I', 'M-HS.TCM.-I', 'M-HS.A.TCM.-I',
+                'S-TCM.-I', 'S-RA.HS.-I', 'S-RA.A.-I', 'S-RA.TCM.-I', 'S-RA.A.TCM.-I', 'S-RA.HS.A.TCM.-I', 'S-RA.HS.A.-I']
         },
 
         //ESTE SE INTERCAMBIA POR EL NEUTROGENA HYDROBOOST
@@ -674,7 +752,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert: "",
             replace: 42,
             calidad: 'P',
-            configuraciones: ['S-HS.-N', 'S-HS.-S', 'S-A.-N', 'S-A.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N', 'S-RA.HS.A.TCM.-S']
+            configuraciones: ['S-HS.-N', 'S-HS.-S', 'S-A.-N', 'S-A.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N', 'S-RA.HS.A.TCM.-S', 'G-RA.-I', 'G-TCM.-I', 'G-RA.HS.-I', 'G-RA.A.-I', 'G-RA.TCM.-I', 'G-HS.TCM.-I', 'M-RA.TCM.-I',
+                'M-RA.HS.A.TCM.-I', 'G-HS.-I', 'G-A.-I', 'G-HS.A.-I', 'G-A.TCM.-I', 'G-RA.HS.A.-I', 'G-RA.HS.TCM.-I', 'G-RA.A.TCM.-I',
+                'G-HS.A.TCM.-I', 'G-RA.HS.A.TCM.-I', 'M-RA.-I', 'M-TCM.-I', 'M-RA.HS.-I', 'M-RA.A.-I', 'M-A.TCM.-I', 'M-RA.HS.A.-I', 'M-RA.HS.TCM.-I', 'M-RA.A.TCM.-I', 'S-RA.-I', 'M-HS.-I',
+                'M-A.-I', 'S-A.-I', 'S-HS.A.-I', 'S-HS.TCM.-I', 'S-A.TCM.-I', 'S-RA.HS.A.-I', 'S-RA.HS.TCM.-I', 'S-HS.A.TCM.-I', 'M-HS.A.-I', 'M-HS.TCM.-I', 'M-HS.A.TCM.-I',
+                'S-TCM.-I', 'S-RA.HS.-I', 'S-RA.A.-I', 'S-RA.TCM.-I', 'S-RA.A.TCM.-I', 'S-RA.HS.A.TCM.-I', 'S-RA.HS.A.-I']
         },
 
         //ESTE SE INTERCAMBIA POR EL SEA FENNEL
@@ -725,7 +807,11 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'E',
             configuraciones: ['S-RA.-N', 'S-RA.-S', 'S-HS.-N', 'S-HS.-S', 'S-A.-N', 'S-A.-S', 'S-TCM.-N', 'S-TCM.-S', 'S-RA.HS.-N', 'S-RA.HS.-S', 'S-RA.A.-N', 'S-RA.A.-S', 'S-RA.TCM.-N', 'S-RA.TCM.-S', 'S-HS.A.-N', 'S-HS.A.-S',
                 'S-HS.TCM.-N', 'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N',
-                'S-RA.HS.A.TCM.-S']
+                'S-RA.HS.A.TCM.-S', 'G-RA.-I', 'G-TCM.-I', 'G-RA.HS.-I', 'G-RA.A.-I', 'G-RA.TCM.-I', 'G-HS.TCM.-I', 'M-RA.TCM.-I',
+                'M-RA.HS.A.TCM.-I', 'G-HS.-I', 'G-A.-I', 'G-HS.A.-I', 'G-A.TCM.-I', 'G-RA.HS.A.-I', 'G-RA.HS.TCM.-I', 'G-RA.A.TCM.-I',
+                'G-HS.A.TCM.-I', 'G-RA.HS.A.TCM.-I', 'M-RA.-I', 'M-TCM.-I', 'M-RA.HS.-I', 'M-RA.A.-I', 'M-A.TCM.-I', 'M-RA.HS.A.-I', 'M-RA.HS.TCM.-I', 'M-RA.A.TCM.-I', 'S-RA.-I', 'M-HS.-I',
+                'M-A.-I', 'S-A.-I', 'S-HS.A.-I', 'S-HS.TCM.-I', 'S-A.TCM.-I', 'S-RA.HS.A.-I', 'S-RA.HS.TCM.-I', 'S-HS.A.TCM.-I', 'M-HS.A.-I', 'M-HS.TCM.-I', 'M-HS.A.TCM.-I',
+                'S-TCM.-I', 'S-RA.HS.-I', 'S-RA.A.-I', 'S-RA.TCM.-I', 'S-RA.A.TCM.-I', 'S-RA.HS.A.TCM.-I', 'S-RA.HS.A.-I']
         }
     ]
 
@@ -761,7 +847,11 @@ document.addEventListener('DOMContentLoaded', () => {
             calidad: 'P',
             configuraciones: ['S-RA.-N', 'S-RA.-S', 'S-HS.-N', 'S-HS.-S', 'S-A.-N', 'S-A.-S', 'S-TCM.-N', 'S-TCM.-S', 'S-RA.HS.-N', 'S-RA.HS.-S', 'S-RA.A.-N', 'S-RA.A.-S', 'S-RA.TCM.-N', 'S-RA.TCM.-S', 'S-HS.A.-N', 'S-HS.A.-S',
                 'S-HS.TCM.-N', 'S-HS.TCM.-S', 'S-A.TCM.-N', 'S-A.TCM.-S', 'S-RA.HS.A.-N', 'S-RA.HS.A.-S', 'S-RA.HS.TCM.-N', 'S-RA.HS.TCM.-S', 'S-RA.A.TCM.-N', 'S-RA.A.TCM.-S', 'S-HS.A.TCM.-N', 'S-HS.A.TCM.-S', 'S-RA.HS.A.TCM.-N',
-                'S-RA.HS.A.TCM.-S']
+                'S-RA.HS.A.TCM.-S', 'G-RA.-I', 'G-TCM.-I', 'G-RA.HS.-I', 'G-RA.A.-I', 'G-RA.TCM.-I', 'G-HS.TCM.-I', 'M-RA.TCM.-I',
+                'M-RA.HS.A.TCM.-I', 'G-HS.-I', 'G-A.-I', 'G-HS.A.-I', 'G-A.TCM.-I', 'G-RA.HS.A.-I', 'G-RA.HS.TCM.-I', 'G-RA.A.TCM.-I',
+                'G-HS.A.TCM.-I', 'G-RA.HS.A.TCM.-I', 'M-RA.-I', 'M-TCM.-I', 'M-RA.HS.-I', 'M-RA.A.-I', 'M-A.TCM.-I', 'M-RA.HS.A.-I', 'M-RA.HS.TCM.-I', 'M-RA.A.TCM.-I', 'S-RA.-I', 'M-HS.-I',
+                'M-A.-I', 'S-A.-I', 'S-HS.A.-I', 'S-HS.TCM.-I', 'S-A.TCM.-I', 'S-RA.HS.A.-I', 'S-RA.HS.TCM.-I', 'S-HS.A.TCM.-I', 'M-HS.A.-I', 'M-HS.TCM.-I', 'M-HS.A.TCM.-I',
+                'S-TCM.-I', 'S-RA.HS.-I', 'S-RA.A.-I', 'S-RA.TCM.-I', 'S-RA.A.TCM.-I', 'S-RA.HS.A.TCM.-I', 'S-RA.HS.A.-I']
         }
     ]
 
@@ -807,7 +897,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert: "",
             replace: 15,
             calidad: 'E',
-            configuraciones: ['G-HS.-N', 'G-HS.-S', 'M-HS.-N', 'M-HS.-S', 'S-HS.-N', 'S-HS.-S']
+            configuraciones: ['G-HS.-N', 'G-HS.-S', 'M-HS.-N', 'M-HS.-S', 'S-HS.-N', 'S-HS.-S', 'G-RA.-I', 'G-TCM.-I', 'G-RA.HS.-I', 'G-RA.A.-I', 'G-RA.TCM.-I', 'G-HS.TCM.-I', 'M-RA.TCM.-I',
+                'M-RA.HS.A.TCM.-I', 'G-HS.-I', 'G-A.-I', 'G-HS.A.-I', 'G-A.TCM.-I', 'G-RA.HS.A.-I', 'G-RA.HS.TCM.-I', 'G-RA.A.TCM.-I',
+                'G-HS.A.TCM.-I', 'G-RA.HS.A.TCM.-I', 'M-RA.-I', 'M-TCM.-I', 'M-RA.HS.-I', 'M-RA.A.-I', 'M-A.TCM.-I', 'M-RA.HS.A.-I', 'M-RA.HS.TCM.-I', 'M-RA.A.TCM.-I', 'S-RA.-I', 'M-HS.-I',
+                'M-A.-I', 'S-A.-I', 'S-HS.A.-I', 'S-HS.TCM.-I', 'S-A.TCM.-I', 'S-RA.HS.A.-I', 'S-RA.HS.TCM.-I', 'S-HS.A.TCM.-I', 'M-HS.A.-I', 'M-HS.TCM.-I', 'M-HS.A.TCM.-I',
+                'S-TCM.-I', 'S-RA.HS.-I', 'S-RA.A.-I', 'S-RA.TCM.-I', 'S-RA.A.TCM.-I', 'S-RA.HS.A.TCM.-I', 'S-RA.HS.A.-I']
         },
 
         //Su pareja es el the ordinary retinol, este es el que es usa dos veces por semana
@@ -969,7 +1063,11 @@ document.addEventListener('DOMContentLoaded', () => {
             alert: "",
             replace: 14,
             calidad: 'P',
-            configuraciones: ['G-HS.-N', 'G-HS.-S', 'M-HS.-N', 'M-HS.-S', 'S-HS.-N', 'S-HS.-S']
+            configuraciones: ['G-HS.-N', 'G-HS.-S', 'M-HS.-N', 'M-HS.-S', 'S-HS.-N', 'S-HS.-S', 'G-RA.-I', 'G-TCM.-I', 'G-RA.HS.-I', 'G-RA.A.-I', 'G-RA.TCM.-I', 'G-HS.TCM.-I', 'M-RA.TCM.-I',
+                'M-RA.HS.A.TCM.-I', 'G-HS.-I', 'G-A.-I', 'G-HS.A.-I', 'G-A.TCM.-I', 'G-RA.HS.A.-I', 'G-RA.HS.TCM.-I', 'G-RA.A.TCM.-I',
+                'G-HS.A.TCM.-I', 'G-RA.HS.A.TCM.-I', 'M-RA.-I', 'M-TCM.-I', 'M-RA.HS.-I', 'M-RA.A.-I', 'M-A.TCM.-I', 'M-RA.HS.A.-I', 'M-RA.HS.TCM.-I', 'M-RA.A.TCM.-I', 'S-RA.-I', 'M-HS.-I',
+                'M-A.-I', 'S-A.-I', 'S-HS.A.-I', 'S-HS.TCM.-I', 'S-A.TCM.-I', 'S-RA.HS.A.-I', 'S-RA.HS.TCM.-I', 'S-HS.A.TCM.-I', 'M-HS.A.-I', 'M-HS.TCM.-I', 'M-HS.A.TCM.-I',
+                'S-TCM.-I', 'S-RA.HS.-I', 'S-RA.A.-I', 'S-RA.TCM.-I', 'S-RA.A.TCM.-I', 'S-RA.HS.A.TCM.-I', 'S-RA.HS.A.-I']
         },
         {
             nombre: 'The Ordinary Retinol 0.2% in Squalane',

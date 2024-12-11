@@ -651,6 +651,22 @@ html, body {
     /* Para centrar y dar algo de espacio */
 }
 
+.descanso-mañana {
+    font-family: "hb";
+    color: #ffcc009e;
+    font-size: 5vw;
+    text-align: center;
+    line-height: 1.5rem;
+ }
+
+ .descanso-noche {
+    font-family: "hb";
+    color: #5ee7ffac;
+    font-size: 5vw;
+    text-align: center;
+    line-height: 1.5rem;
+ }
+
 
 
 

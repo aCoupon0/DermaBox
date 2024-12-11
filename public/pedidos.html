@@ -44,7 +44,7 @@
     </div>
 
     <div class="routine-title">
-        <p>Recuerda tu rutina</p>
+        <p>Recuerda como aplicarla</p>
     </div>
     <div class="capture" id="capture">
         <div class="morning-routine"></div>
@@ -58,10 +58,10 @@
         <ol>
             <li>
                 <span class="bold">EMPIEZA DE A POCO.</span>
-                No inicies todos los productos al mismo tiempo, aplica uno y mira cómo responde tu piel.
+                Cada piel es única, así que es probable que cualquier producto te irrite. Empieza con cuidado y paciencia. 
             </li>
 
-            <li>Escucha a tu piel, si duele o se siente sensible, déjala descansar.</li>
+            <li>Introduce los productos uno a uno, no inicies toda la rutina en un solo día.</li>
 
             <li>Evita zonas sensibles, con acné intenso, heridas o irritadas. Deja que se curen solas.</li>
         </ol>
@@ -97,9 +97,11 @@
             // Lista de pedidos
             const pedidos = [
                 {
-                    codigo: "1903",
+                    codigo: 1903,
                     nombre: "Claudia Baquero",
+                    cedula: "51903632",
                     estado: "En proceso",
+                    casoParticular: [["S"],["HS.","A."],["I"]],
                     contenido: [["Espuma 4 en 1 de Carvenchy", "29.900"], ["Tónico de Hinojo Marino", "17.900"], ["Serum Retinol Vibrant Glamour", "32.000"], ["Envío", "GRATIS"]],
                     pago: ["Pago por Nequi", "Recibido"],
                     fechaPedido: "28 de Nov.",
@@ -107,7 +109,7 @@
                         {
                             "nombre": "Espuma 4 en 1 de Carvenchy",
                             "categoria": "LIMPIADOR",
-                            "tiempo": "MN",
+                            "tiempo": "N",
                             "turno": 10,
                             "alert": ""
                         },

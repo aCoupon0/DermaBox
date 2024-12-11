@@ -93,6 +93,11 @@
         </div>
     </div>
 
+    <div class="scroll-indicator" id="scroll-indicator">
+        <div class="text">Desliza para ver comparaciones</div>
+        <i class="fas fa-chevron-down arrow"></i>
+    </div>
+
     <script src="js/product.js"></script>
     <script src="js/info.js"></script>
     <script defer>
@@ -393,22 +398,15 @@
             };
         }
 
-        function mostrarScroll() {
-            // Desplazar hacia abajo suavemente a 300px (distancia más pequeña)
-            window.scrollTo({ top: 350, behavior: 'smooth' });
-
-            // Después de llegar a 300px, regresar inmediatamente al principio
-            setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }, 1000);  // 0.8 segundos de espera antes de volver al inicio
-        }
-
 
         window.onload = function () {
             renderizarProductos();
             renderizarInformaciones();
             renderizarComparaciones();
-            mostrarScroll()
+            setTimeout(() => {
+                const indicator = document.getElementById('scroll-indicator');
+                indicator.style.opacity = '0'; // Transición suave
+            }, 5000);
         };
     </script>
 
@@ -443,6 +441,9 @@
         window.addEventListener('orientationchange', checkScreen);
 
     </script>
+
+
+
 </body>
 
 </html>
