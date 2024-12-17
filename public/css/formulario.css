@@ -841,8 +841,6 @@ input::placeholder {
     border-bottom: 1px solid rgba(255, 245, 211, 0.725);
  }
 
-
-
  .modal-fullscreen {
     position: fixed;
     top: 0;

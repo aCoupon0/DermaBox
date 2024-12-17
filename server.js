@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Ruta dinámica para pedidos
-app.get("/pedidos/:id", (req, res) => {
+app.get("/user/:id", (req, res) => {
     // Sirve siempre el mismo archivo HTML
     res.sendFile(path.join(__dirname, "public/pedidos.html"));
 });
@@ -35,8 +35,8 @@ app.post('/send-message', (req, res) => {
 
     // Crear el mensaje de WhatsApp con los datos recibidos
     const messageBody = [
-        [actualKit],               // Primera posición: arreglo con actualKit
-        [datosClientes],           // Segunda posición: arreglo con datos del cliente
+        actualKit,               // Primera posición: arreglo con actualKit
+        datosClientes,           // Segunda posición: arreglo con datos del cliente
         "",                        // Tercera posición: un string vacío
         cobroFinal,                // Cuarta posición: cobroFinal
         paymentMethod              // Quinta posición: paymentMethod

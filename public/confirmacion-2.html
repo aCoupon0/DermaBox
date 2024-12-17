@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de confirmación</title>
+    <link rel="stylesheet" href="/css/confirmacion.css">
+    <meta name="robots" content="noindex, nofollow">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZLV64FXNRZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZLV64FXNRZ');
+    </script>
+</head>
+
+<body>
+    <div class="background"></div> <!-- Capa de fondo -->
+    <div class="container">
+        <img src="assets/logo.webp" alt="" class="logo">
+        <h1>¡Que bueno verte acá!</h1>
+        <p class="txt-1">Continuaste el viaje y sigues <br>cuidando tu piel.</p>
+        <div class="separador"></div>
+        <p class="txt-2">Como la primera vez, durante el transcurso <br>del día te escribiremos para confirmar el pedido.</b></p>
+        <h2>Hasta pronto!</h2>
+    </div>
+
+
+
+
+
+    <div id="modal-landscape" class="modal-fullscreen">
+        <div class="modal-container">
+            <div class="circle-rotation">
+                <img src="assets/rotation.webp" alt="">
+            </div>
+            <p>DermaBox se ve mejor con el <br> celular en vertical</p>
+        </div>
+    </div>
+
+    <div id="modal-desktop" class="modal-fullscreen">
+        <div class="modal-container-desktop">
+            <div class="circle-rotation">
+                <img src="assets/no-rotation.webp" alt="">
+            </div>
+            <p>DermaBox se experimenta mejor desde el celular. <br> Solo ingresa a www.dermabox.co</p>
+        </div>
+    </div>
+
+
+    <script>
+        function checkScreen() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const isLandscape = width > height; // Verifica si está en landscape
+            const isDesktop = width > 1024; // Define un ancho para pantallas grandes
+
+            const modalLandscape = document.getElementById('modal-landscape');
+            const modalDesktop = document.getElementById('modal-desktop');
+
+            // Ocultar todos los modales inicialmente
+            modalLandscape.style.display = 'none';
+            modalDesktop.style.display = 'none';
+
+            // Mostrar modal de landscape si está en horizontal
+            if (isLandscape) {
+                modalLandscape.style.display = 'flex';
+            }
+
+            // Mostrar modal de desktop si es una pantalla grande
+            if (isDesktop) {
+                modalDesktop.style.display = 'flex';
+            }
+        }
+
+        // Ejecuta la función al cargar y al cambiar el tamaño/orientación
+        window.addEventListener('load', checkScreen);
+        window.addEventListener('resize', checkScreen);
+        window.addEventListener('orientationchange', checkScreen);
+
+    </script>
+</body>
+
+</html>

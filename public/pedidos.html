@@ -58,7 +58,8 @@
         <ol>
             <li>
                 <span class="bold">EMPIEZA DE A POCO.</span>
-                Cada piel es única, así que es probable que cualquier producto te irrite. Empieza con cuidado y paciencia. 
+                Cada piel es única, así que es probable que cualquier producto te irrite. Empieza con cuidado y
+                paciencia.
             </li>
 
             <li>Introduce los productos uno a uno, no inicies toda la rutina en un solo día.</li>
@@ -88,75 +89,43 @@
             <p>DermaBox se experimenta mejor desde el celular. <br> Solo ingresa a www.dermabox.co</p>
         </div>
     </div>
-    <script defer>
+    <script src="/info/users.js"></script>
+    <script>
+
         document.addEventListener("DOMContentLoaded", () => {
             // Obtén el parámetro desde la URL
             const currentUrl = window.location.pathname; // Ejemplo: "/pedidos/1903"
-            const pedidoId = currentUrl.split("/")[2]; // Obtén "1903"
+            const userId = currentUrl.split("/")[2]; // Obtén "1903"
 
-            // Lista de pedidos
-            const pedidos = [
-                {
-                    codigo: 1903,
-                    nombre: "Claudia Baquero",
-                    cedula: "51903632",
-                    estado: "En proceso",
-                    casoParticular: [["S"],["HS.","A."],["I"]],
-                    contenido: [["Espuma 4 en 1 de Carvenchy", "29.900"], ["Tónico de Hinojo Marino", "17.900"], ["Serum Retinol Vibrant Glamour", "32.000"], ["Envío", "GRATIS"]],
-                    pago: ["Pago por Nequi", "Recibido"],
-                    fechaPedido: "28 de Nov.",
-                    actualKit: [
-                        {
-                            "nombre": "Espuma 4 en 1 de Carvenchy",
-                            "categoria": "LIMPIADOR",
-                            "tiempo": "N",
-                            "turno": 10,
-                            "alert": ""
-                        },
-                        {
-                            "nombre": "Facial Moisturising Lotion PM",
-                            "categoria": "HIDRATANTE",
-                            "tiempo": "N",
-                            "turno": 20,
-                            "alert": ""
-                        },
-                        {
-                            "nombre": "Sérum Retinol de Vibrant Glamoúr",
-                            "categoria": "POTENCIADOR",
-                            "tiempo": "N",
-                            "turno": 15,
-                            "alert": "SOLO DOS VECES POR SEMANA"
-                        }]
-                },
-            ];
+
 
             // Busca el pedido correspondiente
-            const pedidoActual = pedidos.find((pedido) => String(pedido.codigo) === pedidoId);
+            const userActual = users.find((user) => String(user.cedula) === userId);
 
             // Llenar los datos en el HTML
-            if (pedidoActual) {
+            if (userActual) {
                 // Actualizar el número del pedido con el formato correcto
                 const numeralElement = document.getElementById("numeral");
                 const pedidoElement = document.getElementById("pedido-id");
                 numeralElement.textContent = "#"; // Asegura que el numeral esté siempre visible
-                pedidoElement.textContent = pedidoId; // Asigna el número del pedido
+                pedidoElement.textContent = userId; // Asigna el número del pedido
 
                 // Actualizar el nombre del cliente en el span con id="nombre"
                 const nombreElement = document.getElementById("nombre");
-                nombreElement.textContent = pedidoActual.nombre;
+                nombreElement.textContent = userActual.nombre;
 
                 // Actualizar el nombre del cliente en el span con id="nombre"
                 const estadoElement = document.getElementById("estado");
-                estadoElement.textContent = pedidoActual.estado;
+                estadoElement.textContent = userActual.estado;
 
                 // Cambiar el color del estado según el valor de "estado"
-                if (pedidoActual.estado === "Entregado") {
+                if (userActual.estado === "Entregado") {
                     estadoElement.style.color = "#A0FFB0"; // Color azul para "En preparación"
-                } else if (pedidoActual.estado === "Enviado") {
+                } else if (userActual.estado === "Enviado") {
                     estadoElement.style.color = "#E7D30D"; // Puedes cambiar el color para otros estados si lo deseas
-                } else if (pedidoActual.estado === "En proceso") {
+                } else if (userActual.estado === "En proceso") {
                     estadoElement.style.color = "#00E8CC"; // Color naranja para "En proceso"
-                } else if (pedidoActual.estado === "Pendiente de pago") {
+                } else if (userActual.estado === "Pendiente de pago") {
                     estadoElement.style.color = "#FF7140"; // Color naranja para "En proceso"
                 } else {
                     estadoElement.style.color = "white"; // Color por defecto si no hay coincidencias
@@ -164,17 +133,17 @@
 
                 // Actualizar el nombre del cliente en el span con id="nombre"
                 const entregaElement = document.getElementById("entrega");
-                entregaElement.textContent = pedidoActual.fechaPedido;
+                entregaElement.textContent = userActual.fechaPedido;
 
                 // Asignar el pedidoId como variable global para el botón
-                window.pedidoId = pedidoId;
+                window.userId = userId;
             } else {
                 document.body.innerHTML = "<h1>Pedido no encontrado</h1>";
             }
 
             let total = 0;
 
-            pedidoActual.contenido.forEach(([_, value]) => {
+            userActual.contenido.forEach(([_, value]) => {
                 // Elimina puntos y conviértelo a número, si es posible
                 const numericValue = parseFloat(value.replace(/\./g, "")) || 0; // Si no es un número válido, usa 0
                 total += numericValue;
@@ -221,15 +190,15 @@
             }
 
             // Llenar los datos en el HTML
-            if (pedidoActual) {
-                renderCarrito(pedidoActual.contenido);
+            if (userActual) {
+                renderCarrito(userActual.contenido);
             } else {
                 document.body.innerHTML = "<h1>Pedido no encontrado</h1>";
             }
 
             // Actualizar el pago
             const pagoElement = document.querySelector(".pago");
-            const [metodoPago, estadoPago] = pedidoActual.pago;
+            const [metodoPago, estadoPago] = userActual.pago;
 
             // Crear las divisiones de pago
             const pago1Div = document.createElement("div");
@@ -278,7 +247,7 @@
                 morningRoutineDiv.appendChild(titleDiv);
 
                 // Ordenar actualKit según la propiedad 'turno'
-                const actualKitOrdenado = [...pedidoActual.actualKit].sort((a, b) => a.turno - b.turno);
+                const actualKitOrdenado = [...userActual.actualKit].sort((a, b) => a.turno - b.turno);
 
                 // Filtrar los productos que tienen 'M' o 'MN' en la propiedad 'tiempo'
                 const productosMorning = actualKitOrdenado.filter(producto => producto.tiempo === 'M' || producto.tiempo === 'MN');
@@ -390,7 +359,7 @@
                 nightRoutineDiv.appendChild(makeupDiv); // Añadir el contenedor al div principal
 
                 // Ordenar actualKit según la propiedad 'turno'
-                const actualKitOrdenado = [...pedidoActual.actualKit].sort((a, b) => a.turno - b.turno);
+                const actualKitOrdenado = [...userActual.actualKit].sort((a, b) => a.turno - b.turno);
 
                 // Filtrar los productos que tienen 'N' o 'MN' en la propiedad 'tiempo'
                 const productosNight = actualKitOrdenado.filter(producto => producto.tiempo === 'N' || producto.tiempo === 'MN');

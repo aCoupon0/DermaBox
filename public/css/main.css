@@ -465,15 +465,39 @@ section {
 }
 
 .bloque-1 {
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Espacio automático para el contenido izquierdo y el botón */
+    align-items: center; /* Alinear verticalmente */
     width: 100%;
     height: 9vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-left: 11vw;
+    padding: 0 11vw 0 11vw; /* Padding horizontal para que todo se vea bien */
     font-family: 'j', sans-serif;
     font-size: 5vw;
     margin-top: 1vh;
+}
+
+/* Grupo de elementos en el lado izquierdo */
+.bloque-izquierdo {
+    display: flex;
+    align-items: center;
+    gap: 0vw; /* Espaciado entre los elementos del lado izquierdo */
+}
+
+/* Botón circular en el lado derecho */
+.boton-circular {
+    width: 5vh; /* Tamaño del botón */
+    height: 5vh;
+    border-radius: 50%; /* Hacerlo circular */
+    background-color: #ffffff; /* Color de fondo */
+    color: rgb(0, 0, 2);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 90%;
+    justify-self: end; /* Alinear al final de la columna */
+    margin-right: 4vw;
 }
 
 .logo-txt-2 {
@@ -481,8 +505,9 @@ section {
 }
 
 .logo {
-    height: 80%;
-    width: auto;
+    height: auto;
+    width: 16%;
+    margin-left: 5%;
 }
 
 .bloque-2 {
@@ -1100,6 +1125,90 @@ section {
     margin-bottom: 3vw;
     margin-top: 3vw;
 }
+
+
+.sliding-div {
+    position: absolute;
+    top: 10vh; /* Deja un poco de espacio desde la parte superior */
+    right: -59vw; /* Empieza oculto hacia la derecha */
+    width: 59vw;
+    height: 30vh; /* Ajusta según el contenido */
+    background-color: #f5f5f5; /* Color de fondo */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+    border-top-left-radius: 10vw; /* Bordes redondeados */
+    border-bottom-left-radius: 10vw;
+    transition: right 0.3s ease; /* Animación suave */
+    z-index: 7;
+    display: flex;
+    flex-direction: column;
+}
+
+.sliding-div-title {
+    width: 100%;
+    height: 23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-family: "hb";
+    font-size: 5vw;
+    color: black;
+    gap: 4vw;
+}
+
+.sliding-div-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaciado entre los inputs */
+    padding: 10px 0; /* Espaciado superior e inferior */
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.input-field {
+    width: 75%; /* Ajusta según el diseño deseado */
+    padding: 8px 12px; /* Tamaño interno del input */
+    font-size: 4vw;
+    border: 1px solid #00000023; /* Borde sutil */
+    border-radius: 5vw; /* Bordes redondeados */
+    outline: none; /* Sin borde azul al enfocarse */
+    transition: border 0.3s;
+    text-align: center;
+    font-family: "hb";
+    letter-spacing: 1px;
+}
+
+.input-field:focus {
+    border: 2px solid #00879D; /* Cambia el color del borde al enfocar */
+}
+
+.log-in-button {
+    width: 100%;
+    height: 27%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-in {
+    width: 65%;
+    height: 68%;
+    border-radius: 4vw;
+    background-color: #9CEFFD ;
+    color: #004a56;
+    font-family: "hb";
+    font-size: 4vw;
+}
+
+.reverse-button {
+    display: none;
+}
+
+.reverse-button:hover {
+    background-color: #0056b3; /* Color en hover */
+}
+
 
 
 

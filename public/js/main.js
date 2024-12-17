@@ -141,6 +141,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+    // Selección de elementos
+    const slidingDiv = document.querySelector('.sliding-div');
+    const toggleButton = document.querySelector('.boton-circular'); // Botón principal
+    const reverseButton = document.querySelector('.reverse-button'); // Botón dentro del sliding-div
+
+    // Estado para rastrear si el div está visible o no
+    let isVisible = false;
+
+    // Función para mostrar el div
+    toggleButton.addEventListener('click', (e) => {
+        if (!isVisible) {
+            slidingDiv.style.right = '0'; // Mover el div hacia la izquierda (dentro de la vista)
+            isVisible = true;
+
+            // Evitar que el clic en el botón cierre inmediatamente el div
+            e.stopPropagation();
+        }
+    });
+
+    // Función para ocultar el div
+    reverseButton.addEventListener('click', () => {
+        closeSlidingDiv();
+    });
+
+    // Función para cerrar el div
+    function closeSlidingDiv() {
+        slidingDiv.style.right = '-59vw'; // Mover el div hacia la derecha (fuera de la vista)
+        isVisible = false;
+    }
+
+    // Detectar clics fuera del div
+    document.addEventListener('click', (e) => {
+        if (isVisible && !slidingDiv.contains(e.target) && !toggleButton.contains(e.target)) {
+            closeSlidingDiv(); // Cerrar el div si el clic ocurre fuera
+        }
+    });
+
+
+
     // Orden específico para la segunda sección (sección 3)
     const order = ['RA.', 'HS.', 'A.', 'TCM.'];
 
