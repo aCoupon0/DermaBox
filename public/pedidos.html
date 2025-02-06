@@ -6,71 +6,332 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle del Pedido</title>
     <link rel="stylesheet" href="/css/pedidos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
+    <div class="zona-confirmacion" id="zona-confirmacion">
+        <div class="zona-confirmacion-1">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="zona-confirmacion-2">
+            <p>Pedido creado exitosamente</p>
+            <p>En breves nos pondremos en contacto para confirmar</p>
+        </div>
+    </div>
+
     <div class="zona-logo">
-        <img src="/assets/logo.webp" alt="" class="logo">
+        <p>DERMABOX</p>
     </div>
-    <div class="zona-pedido">
-        <p>Pedido </p>
-        <p><span id="numeral">#</span><span id="pedido-id"></span></p>
-    </div>
-    <div class="separador-container">
-        <div class="separador"></div>
-    </div>
-    <div class="primary-info">
-        <div class="info-container">
-            <span class="info-title">Cliente</span>
-            <span class="simple-info" id="nombre"></span>
+
+    <div class="content active" id="content1">
+        <div class="profile-name">
+            <i class="fas fa-user"></i>
+            <p class="name" id="name"></p>
         </div>
-        <div class="info-container">
-            <span class="info-title">Estado</span>
-            <span class="simple-info" id="estado"></span>
+        <div class="profile-skin-type">
+            <div class="skin-type" id="skin-type">
+
+            </div>
         </div>
-        <div class="info-container">
-            <span class="info-title">Entrega estimada</span>
-            <span class="simple-info" id="entrega"></span>
+        <div class="goals-container" id="goals-container"></div>
+        <div class="sensibility-container" id="sensibility-container"></div>
+        <div class="last-purchase-main">
+            <div class="last-purchase" id="last-purchase">
+                <div class="purchase-state" id="purchase-state"></div>
+                <div class="purchase-first-details" id="purchase-first-details">
+                    <div class="purchase-detail" id="purchase-detail-1"></div>
+                    <div class="purchase-detail" id="purchase-detail-2"></div>
+                    <div class="purchase-detail" id="purchase-detail-5"></div>
+                </div>
+                <div class="secondary-divider"></div>
+                <div class="purchase-list-container" id="purchase-list-container"></div>
+                <div class="secondary-divider"></div>
+                <div class="purchase-first-details pfd-last" id="purchase-first-details">
+                    <div class="purchase-detail" id="purchase-detail-3"></div>
+                    <div class="delivery-price-divider"></div>
+                    <div class="purchase-detail" id="purchase-detail-4"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Aqui debes renderizar una copia del localStorage o un mecanismo similar del ultimo pedido ingresado en la lista de pedidos del user, esa debe ser la renderizada, asi, cuando haga un nuevo pedido, podemos hacer la actualizacion inmediata y redirgirlo aqui con el pedido nuevo activo -->
+
+    </div>
+
+    <div class="content" id="content2">
+
+        <div class="routine-title">Actualizate</div>
+
+        <div class="to-do-container">
+            <button class="next-purchase">
+                <div class="next-purchase-1">
+                    <img src="/assets/logo.webp" alt="">
+                </div>
+                <div class="next-purchase-2">
+                    <p class="next-purchase-2-title">Pedir nueva Dermabox</p>
+                    <p class="next-purchase-2-description">Reponte de los productos de tu rutina y/o pide los que
+                        omitiste</p>
+                </div>
+            </button>
+        </div>
+
+        <div class="to-do-container">
+            <button class="to-do" id="to-do"></button>
+        </div>
+
+        <div class="routine-divider"></div>
+
+        <div class="routine-title">Tu rutina</div>
+
+        <div class="routine" id="routine"></div>
+
+    </div>
+
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <div class="step" onclick="showContent('content1')">
+            <i class="fas fa-user"></i>
+            <span>Perfil</span>
+        </div>
+        <div class="step not-selected" onclick="showContent('content2')">
+            <i class="fas fa-box-open"></i>
+            <span>Rutina</span>
         </div>
     </div>
-    <div class="separador-container">
-        <div class="separador"></div>
-    </div>
-    <div class="pago"></div>
-    <div id="carrito"></div>
-    <div class="total">
-        <p class="total-txt">TOTAL</p>
-        <p class="total-number"></p>
-    </div>
 
-    <div class="routine-title">
-        <p>Recuerda como aplicarla</p>
-    </div>
-    <div class="capture" id="capture">
-        <div class="morning-routine"></div>
-        <div class="night-routine"></div>
-    </div>
+    <div class="modal-to-do">
+        <div class="nav-to-do">
+            <button class="close">
+                <i class="fa fa-arrow-left"></i>
+            </button>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <span class="progress-percentage">0%</span>
+                </div>
+            </div>
+        </div>
 
-    <div class="precauciones-title">
-        Precauciones Recomendadas
-    </div>
-    <div class="precauciones-zone">
-        <ol>
-            <li>
-                <span class="bold">EMPIEZA DE A POCO.</span>
-                Cada piel es única, así que es probable que cualquier producto te irrite. Empieza con cuidado y
-                paciencia.
-            </li>
-
-            <li>Introduce los productos uno a uno, no inicies toda la rutina en un solo día.</li>
-
-            <li>Evita zonas sensibles, con acné intenso, heridas o irritadas. Deja que se curen solas.</li>
-        </ol>
+        <div class="step-main-container">
+            <div class="step-1"></div>
+            <div class="step-2"></div>
+            <div class="step-3"></div>
+        </div>
+        <div class="zona-foto"></div>
+        <div class="button-zone">
+            <button class="previous-step">
+                <i class="fa fa-arrow-left"></i>
+                <p>Anterior</p>
+            </button>
+            <button class="next-step">
+                <p>Siguiente</p>
+                <i class="fa fa-arrow-right"></i>
+            </button>
+        </div>
     </div>
 
+    <div class="modal-new-order" id="modal-new-order">
+        <div class="modal-img-bg">
+            <div class="modal-new-order-logo-zone">
+                <button class="close-modal-new-order" id="close-modal-new-order">
+                    <i class="fa fa-arrow-left"></i>
+                </button>
+                <p>Pedir siguiente DermaBox</p>
+            </div>
+            <div class="modal-new-order-description-zone">
+                Reabastécete de tus productos. <br>O pide aquellos que omitiste en un principio.
+            </div>
+        </div>
+        <div class="product-title">La rutina que creamos para ti</div>
+        <div class="product-zone">
+            <!-- Div para Limpiador -->
+            <div class="product-category" id="cleanser">
+                <button class="toggle-button" data-category="cleanser">Limpiador <i class="arrow-right"
+                        id="arrow-cleanser"></i></button>
+                <div class="product-content" id="Limpiador">
+                    <!-- Contenido dinámico para el limpiador -->
+                </div>
+            </div>
+
+            <!-- Div para Hidratante -->
+            <div class="product-category" id="moisturizer">
+                <button class="toggle-button" data-category="moisturizer">Hidratante <i class="arrow-right"
+                        id="arrow-moisturizer"></i></button>
+                <div class="product-content" id="Hidratante">
+
+                </div>
+            </div>
+
+            <!-- Div para Bloqueador -->
+            <div class="product-category" id="sunscreen">
+                <button class="toggle-button" data-category="sunscreen">Bloqueador <i class="arrow-right"
+                        id="arrow-sunscreen"></i></button>
+                <div class="product-content" id="Bloqueador">
+
+                </div>
+            </div>
+
+            <!-- Div para Potenciador -->
+            <div class="product-category" id="booster">
+                <button class="toggle-button" data-category="booster">Potenciador <i class="arrow-right"
+                        id="arrow-booster"></i></button>
+                <div class="product-content" id="Potenciador">
+
+                </div>
+            </div>
+        </div>
+        <div class="details-zone">
+            <div class="price-bar">
+                <div class="price-bar-delivery">
+                    <p class="price-label">ENVÍO</p>
+                    <p class="delivery-cost"></p>
+                </div>
+                <div class="price-bar-total">
+                    <p class="price-label">TOTAL</p>
+                    <p class="packet-price"></p>
+                </div>
+                <div class="price-bar-final">
+                    <button class="purchase-btn" id="purchase-btn">Pedir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-product-choosing" id="modal-product-choosing">
+
+        <div class="tipo-producto">
+            <button id="close-modal-product-choosing" onclick="closeModalChoosing()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <p class="tipo-producto-txt" id="tipo-producto-txt"></p>
+        </div>
+
+        <div class="zona-productos" id="zona-productos">
+            <div class="producto primer-producto">
+                <div class="zona-foto-choosing" id="primera-foto">
+
+                </div>
+                <div class="zona-tipo-1" id="primer-tipo">Estándar</div>
+                <div class="zona-nombre" id="primer-nombre">
+                    <!-- Aqui iran los nombres correspondientes seguidos de un br y el span con el ml -->
+                </div>
+                <div class="zona-cantidad">
+                    <p id="primer-precio"></p>
+                </div>
+                <div class="zona-eleccion" id="primera-zona-eleccion">
+                    <!-- Aqui iran los botones con diferentes ids, para incluir el primero del copiaRutina[x] correspondiente -->
+                </div>
+            </div>
+
+            <div class="producto">
+                <div class="zona-foto-choosing" id="segunda-foto">
+
+                </div>
+                <div class="zona-tipo-2" id="segundo-tipo">Premium</div>
+                <div class="zona-nombre" id="segundo-nombre">
+                    <!-- Aqui iran los nombres correspondientes seguidos de un br y el span con el ml -->
+                </div>
+                <div class="zona-cantidad">
+                    <p id="segundo-precio"></p>
+                </div>
+                <div class="zona-eleccion" id="segunda-zona-eleccion">
+                    <!-- Aqui iran los botones con diferentes ids, para incluir el segundo del copiaRutina[x] correspondiente -->
+                </div>
+            </div>
+        </div>
+        <div class="comparacion-titulo">COMPARACIÓN</div>
+        <div class="comparacion-zona">
+            <div class="comparacion-zona-bloque-1">
+                <p id="first-product"></p>
+                <p id="second-product"></p>
+            </div>
+            <div class="bloque-comparativo">
+                <div class="titulo-comparativo">
+                    <i class="fa-solid fa-crown icono-crown"></i>
+                    <p>Pureza</p>
+                </div>
+                <div class="valores-comparativos">
+                    <p class="first-purity" id="first-purity"></p>
+                    <div class="separador-valores"></div>
+                    <p class="second-purity" id="second-purity"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion-desplegable" id="info1">
+            <div class="titulo-desplegable">
+                <p class="texto-titulo">Información del <span
+                        style="font-family: 'hb'; font-weight: 400; color: #dbfd7e;" id="span-P1"></span></p>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="contenido1" class="contenido-desplegable">
 
 
+            </div>
+        </div>
 
+        <div class="seccion-desplegable" id="info2">
+            <div class="titulo-desplegable-2">
+                <p class="texto-titulo">Información del <span
+                        style="font-family: 'hb'; font-weight: 400; color: #ffe23e;" id="span-P2"></span></p>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="contenido2" class="contenido-desplegable">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-final-data" id="modal-final-data">
+        <div class="modal-final-data-1">
+            <button class="close-final-purchase-modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <p>Confirmación de pedido</p>
+        </div>
+
+        <div class="modal-final-data-2" id="modal-final-data-2"></div>
+        <div class="modal-final-data-3" id="modal-final-data-3"></div>
+        <div class="address-container">
+            <!-- Ciudad -->
+            <div class="input-container">
+                <div class="input-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <input type="text" class="input-field" placeholder="Ciudad" id="input-1">
+            </div>
+
+            <!-- Dirección -->
+            <div class="input-container">
+                <div class="input-icon">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+                <input type="text" class="input-field" placeholder="Dirección" id="input-2">
+            </div>
+
+            <!-- Detalles de Dirección -->
+            <div class="input-container">
+                <div class="input-icon">
+                    <i class="fa-solid fa-house"></i>
+                </div>
+                <input type="text" class="input-field" placeholder="Detalles de dirección" id="input-3">
+            </div>
+        </div>
+
+        <div class="modal-final-data-4" id="modal-final-data-4">
+            <button class="payment-option" id="c">
+                <i class="fa-solid fa-money-bill-1-wave"></i>
+                <p>Contraentrega</p>
+            </button>
+            <button class="payment-option" id="n">
+                <i class="fa-solid fa-credit-card"></i>
+                <p>Nequi</p>
+            </button>
+        </div>
+
+        <button class="final-btn" id="final-btn">Pedir</button>
+    </div>
 
     <div id="modal-landscape" class="modal-fullscreen">
         <div class="modal-container">
@@ -89,343 +350,1840 @@
             <p>DermaBox se experimenta mejor desde el celular. <br> Solo ingresa a www.dermabox.co</p>
         </div>
     </div>
-    <script src="/info/users.js"></script>
-    <script>
 
+    <script>
+        // Función para mostrar el contenido correspondiente y actualizar clases
+        function showContent(contentId) {
+            const contents = document.querySelectorAll('.content');
+            const steps = document.querySelectorAll('.step');
+
+            // Eliminar la clase activa de todos los divs de contenido
+            contents.forEach((content) => {
+                content.classList.remove('active');
+            });
+
+            // Mostrar el div seleccionado
+            document.getElementById(contentId).classList.add('active');
+
+            // Gestionar las clases 'not-selected' en los pasos
+            steps.forEach((step) => {
+                if (step.onclick.toString().includes(contentId)) {
+                    step.classList.remove('not-selected');
+                } else {
+                    step.classList.add('not-selected');
+                }
+            });
+        }
+    </script>
+
+    <script src="/info/users.js" defer></script>
+    <script src="/js/info.js"></script>
+    <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Obtén el parámetro desde la URL
             const currentUrl = window.location.pathname; // Ejemplo: "/pedidos/1903"
             const userId = currentUrl.split("/")[2]; // Obtén "1903"
 
-
-
             // Busca el pedido correspondiente
-            const userActual = users.find((user) => String(user.cedula) === userId);
+            const userActual = users.find((user) => String(user.datosCliente[1]) === userId);
 
-            // Llenar los datos en el HTML
             if (userActual) {
-                // Actualizar el número del pedido con el formato correcto
-                const numeralElement = document.getElementById("numeral");
-                const pedidoElement = document.getElementById("pedido-id");
-                numeralElement.textContent = "#"; // Asegura que el numeral esté siempre visible
-                pedidoElement.textContent = userId; // Asigna el número del pedido
-
-                // Actualizar el nombre del cliente en el span con id="nombre"
-                const nombreElement = document.getElementById("nombre");
-                nombreElement.textContent = userActual.nombre;
-
-                // Actualizar el nombre del cliente en el span con id="nombre"
-                const estadoElement = document.getElementById("estado");
-                estadoElement.textContent = userActual.estado;
-
-                // Cambiar el color del estado según el valor de "estado"
-                if (userActual.estado === "Entregado") {
-                    estadoElement.style.color = "#A0FFB0"; // Color azul para "En preparación"
-                } else if (userActual.estado === "Enviado") {
-                    estadoElement.style.color = "#E7D30D"; // Puedes cambiar el color para otros estados si lo deseas
-                } else if (userActual.estado === "En proceso") {
-                    estadoElement.style.color = "#00E8CC"; // Color naranja para "En proceso"
-                } else if (userActual.estado === "Pendiente de pago") {
-                    estadoElement.style.color = "#FF7140"; // Color naranja para "En proceso"
-                } else {
-                    estadoElement.style.color = "white"; // Color por defecto si no hay coincidencias
+                // Rellenar el nombre del usuario
+                const name = document.getElementById("name");
+                if (name) {
+                    name.textContent = userActual.datosCliente[0];
                 }
 
-                // Actualizar el nombre del cliente en el span con id="nombre"
-                const entregaElement = document.getElementById("entrega");
-                entregaElement.textContent = userActual.fechaPedido;
+                // Rellenar el tipo de piel
+                const skinType = document.getElementById("skin-type");
+                if (skinType) {
+                    const skinMapping = {
+                        S: "Piel Seca",
+                        M: "Piel Mixta / Normal",
+                        G: "Piel Grasa"
+                    };
 
-                // Asignar el pedidoId como variable global para el botón
-                window.userId = userId;
+                    const skinValue = userActual.casoParticular[0];
+                    if (skinMapping[skinValue]) {
+                        skinType.textContent = skinMapping[skinValue];
+                    } else {
+                        console.error("Tipo de piel no reconocido:", skinValue);
+                    }
+                }
+
+                const goalsMapping = {
+                    "RA.": "Reducir Acné",
+                    "HS.": "Hidratar y Sanar",
+                    "A.": "Antiedad",
+                    "TCM.": "Textura y Manchas"
+                };
+
+                const goalsContainer = document.getElementById("goals-container");
+                if (goalsContainer) {
+                    const goalsList = userActual.casoParticular[1]; // Segundo elemento del array
+
+                    goalsList.forEach((goalCode) => {
+                        const goalText = goalsMapping[goalCode] || "Objetivo Desconocido";
+
+                        // Crear el elemento `goal`
+                        const goalElement = document.createElement("div");
+                        goalElement.classList.add("goal");
+                        goalElement.id = `goal-${goalCode}`;
+
+                        // Crear el ícono y el texto
+                        const iconElement = document.createElement("i");
+                        iconElement.classList.add("fas", "fa-bullseye"); // Ícono de diana de Font Awesome
+
+                        const textElement = document.createElement("span");
+                        textElement.textContent = goalText;
+
+                        // Agregar ícono y texto al `goal`
+                        goalElement.appendChild(iconElement);
+                        goalElement.appendChild(textElement);
+
+                        // Agregar el `goal` al contenedor
+                        goalsContainer.appendChild(goalElement);
+                    });
+                }
+
             } else {
-                document.body.innerHTML = "<h1>Pedido no encontrado</h1>";
+                console.error("Usuario no encontrado en la lista de usuarios.");
             }
 
-            let total = 0;
+            const sensibilityContainer = document.getElementById("sensibility-container");
+            if (sensibilityContainer) {
+                const sensibilityValue = userActual.casoParticular[2];
 
-            userActual.contenido.forEach(([_, value]) => {
-                // Elimina puntos y conviértelo a número, si es posible
-                const numericValue = parseFloat(value.replace(/\./g, "")) || 0; // Si no es un número válido, usa 0
-                total += numericValue;
+                if (sensibilityValue === "S" || sensibilityValue === "N") {
+                    // Crear elementos para "Sensibilidad" y "Sí/No"
+                    const titleElement = document.createElement("p");
+                    titleElement.classList.add("sens-title");
+                    titleElement.textContent = "Sensibilidad";
+
+                    const descriptionElement = document.createElement("p");
+                    descriptionElement.classList.add("sens-description");
+                    descriptionElement.textContent = sensibilityValue === "S" ? "Sí" : "No";
+
+                    // Añadir elementos al contenedor
+                    sensibilityContainer.appendChild(titleElement);
+                    sensibilityContainer.appendChild(descriptionElement);
+
+                } else if (sensibilityValue === "I") {
+                    // Crear elementos para Isotretinoína
+                    const iconElement = document.createElement("i");
+                    iconElement.classList.add("fas", "fa-capsules"); // Ícono de pastilla de Font Awesome
+
+                    const isoElement = document.createElement("p");
+                    isoElement.classList.add("sens-iso");
+                    isoElement.textContent = "Isotretinoína";
+
+                    // Añadir elementos al contenedor
+                    sensibilityContainer.appendChild(iconElement);
+                    sensibilityContainer.appendChild(isoElement);
+                } else {
+                    console.error("Valor de sensibilidad no reconocido:", sensibilityValue);
+                }
+            }
+
+            let ordenActual = userActual.pedidos[0]
+
+            // Obtén el elemento lastOrder
+            const lastOrder = document.getElementById("last-purchase");
+            if (lastOrder) {
+                renderLastOrder(); // Llama a la función si lastOrder existe
+            }
+
+            // Define la función renderLastOrder
+            function renderLastOrder() {
+                // Obtén la orden actual desde el localStorage
+                if (!ordenActual) {
+                    alert("No se encontro la orden actual")
+                    return;
+                }
+
+                // Obtén el div con id "purchase-state"
+                const purchaseState = document.getElementById("purchase-state");
+                if (!purchaseState) {
+                    console.error("No se encontró el elemento con id 'purchase-state'.");
+                    return;
+                }
+
+                // Limpia cualquier contenido previo del div
+                purchaseState.innerHTML = "";
+
+                // Crear el primer p
+                const firstP = document.createElement("p");
+                if (ordenActual.activo === false) {
+                    firstP.textContent = "Último Pedido";
+                    firstP.classList.add("order-inactive");
+                } else if (ordenActual.activo === true) {
+                    firstP.textContent = "Pedido Activo";
+                    firstP.classList.add("order-active");
+                }
+
+                // Crear el segundo p
+                const secondP = document.createElement("p");
+                secondP.textContent = `#${ordenActual.codigo}`;
+                secondP.classList.add("order-code");
+
+                // Agregar los elementos al div
+                purchaseState.appendChild(firstP);
+                purchaseState.appendChild(secondP);
+
+                const purchaseDetail1 = document.getElementById("purchase-detail-1");
+                if (purchaseDetail1) {
+                    // Limpiar contenido previo
+                    purchaseDetail1.innerHTML = "";
+
+                    // Crear el ícono de viñeta
+                    const infoIcon = document.createElement("i");
+                    infoIcon.classList.add("fa", "fa-circle-info"); // Ícono de contorno de círculo (viñeta simple)
+
+                    // Crear el párrafo con clase y contenido basado en ordenActual.estado
+                    const statusP = document.createElement("p");
+                    if (ordenActual.estado === "entregado") {
+                        statusP.textContent = "Entregado";
+                        statusP.classList.add("delivered");
+                        infoIcon.classList.add("i-delivered"); // Clase específica para el estado "entregado"
+                    } else if (ordenActual.estado === "pendiente") {
+                        statusP.textContent = "Pago pendiente";
+                        statusP.classList.add("pending");
+                        infoIcon.classList.add("i-pending"); // Clase específica para el estado "pendiente"
+                    } else if (ordenActual.estado === "enviado") {
+                        statusP.textContent = "Enviado";
+                        statusP.classList.add("sended");
+                        infoIcon.classList.add("i-sended"); // Clase específica para el estado "enviado"
+                    } else if (ordenActual.estado === "proceso") {
+                        statusP.textContent = "En proceso";
+                        statusP.classList.add("sended");
+                        infoIcon.classList.add("i-sended"); // Clase específica para el estado "enviado"
+                    } else if (ordenActual.estado === "nuevo") {
+                        statusP.textContent = "Nuevo pedido";
+                        statusP.classList.add("new");
+                        infoIcon.classList.add("i-new"); // Clase específica para el estado "enviado"
+                    }
+
+                    // Agregar los elementos al div
+                    purchaseDetail1.appendChild(infoIcon);
+                    purchaseDetail1.appendChild(statusP);
+                } else {
+                    console.error("No se encontró el elemento con id 'purchase-detail-1'.");
+                }
+
+                // Modificar el div con id "purchase-detail-2"
+                const purchaseDetail2 = document.getElementById("purchase-detail-2");
+                if (purchaseDetail2) {
+                    // Limpiar contenido previo
+                    purchaseDetail2.innerHTML = "";
+
+                    // Crear el ícono de billetera
+                    const walletIcon = document.createElement("i");
+                    walletIcon.classList.add("fa", "fa-wallet"); // Ícono de billetera
+
+                    // Crear el párrafo con contenido basado en ordenActual.pago
+                    const paymentP = document.createElement("p");
+                    if (ordenActual.pago === "c") {
+                        paymentP.textContent = "Contraentrega";
+                    } else if (ordenActual.pago === "n") {
+                        paymentP.textContent = "Nequi";
+                    }
+
+                    // Agregar los elementos al div
+                    purchaseDetail2.appendChild(walletIcon);
+                    purchaseDetail2.appendChild(paymentP);
+                } else {
+                    console.error("No se encontró el elemento con id 'purchase-detail-2'.");
+                }
+
+
+                const purchaseListContainer = document.getElementById("purchase-list-container");
+                if (purchaseListContainer) {
+                    purchaseListContainer.innerHTML = ""; // Limpiar contenido previo
+
+                    if (Array.isArray(ordenActual.contenido)) {
+                        ordenActual.contenido.forEach((item) => {
+                            // Crear el div con clase purchase-list-product
+                            const productDiv = document.createElement("div");
+                            productDiv.classList.add("purchase-list-product");
+
+                            // Crear el ícono de punto simple
+                            const bulletIcon = document.createElement("i");
+                            bulletIcon.classList.add("fa", "fa-circle");
+
+                            // Crear el párrafo con el contenido
+                            const productP = document.createElement("p");
+                            productP.textContent = item;
+
+                            // Agregar el ícono y el párrafo al div
+                            productDiv.appendChild(bulletIcon);
+                            productDiv.appendChild(productP);
+
+                            // Agregar el div al contenedor principal
+                            purchaseListContainer.appendChild(productDiv);
+                        });
+                    } else {
+                        console.error("El contenido de la orden no es un arreglo.");
+                    }
+                } else {
+                    console.error("No se encontró el elemento con id 'purchase-list-container'.");
+                }
+
+
+                const purchaseDetail3 = document.getElementById("purchase-detail-3");
+                const purchaseDetail4 = document.getElementById("purchase-detail-4");
+                const purchaseDetail5 = document.getElementById("purchase-detail-5");
+
+                if (purchaseDetail3) {
+                    // Limpiar contenido previo
+                    purchaseDetail3.innerHTML = "";
+
+                    // Crear los párrafos para purchase-detail-3
+                    const envioLabel = document.createElement("p");
+                    envioLabel.textContent = "Envío";
+                    envioLabel.classList.add("grey-txt");
+
+                    const envioValue = document.createElement("p");
+                    envioValue.textContent = `$${formatWithThousands(ordenActual.envio)}`;
+                    envioValue.classList.add("full-txt");
+
+                    // Agregar los elementos
+                    purchaseDetail3.appendChild(envioLabel);
+                    purchaseDetail3.appendChild(envioValue);
+                }
+
+                if (purchaseDetail4) {
+                    // Limpiar contenido previo
+                    purchaseDetail4.innerHTML = "";
+
+                    // Crear los párrafos para purchase-detail-4
+
+
+                    const totalValue = document.createElement("p");
+                    totalValue.textContent = `$${formatWithThousands(ordenActual.total)}`;
+                    totalValue.classList.add("price");
+
+                    purchaseDetail4.appendChild(totalValue);
+                }
+
+                if (purchaseDetail5) {
+                    // Limpiar contenido previo
+                    purchaseDetail5.innerHTML = "";
+
+                    // Crear los párrafos para purchase-detail-5
+                    const entregaLabel = document.createElement("p");
+                    entregaLabel.textContent = "Entrega estimada";
+                    entregaLabel.classList.add("grey-txt");
+
+                    const entregaValue = document.createElement("p");
+                    entregaValue.textContent = ordenActual.entregaEstimada;
+                    entregaValue.classList.add("full-txt");
+
+                    // Agregar los elementos
+                    purchaseDetail5.appendChild(entregaLabel);
+                    purchaseDetail5.appendChild(entregaValue);
+                }
+
+                // Función para formatear números con puntos de miles
+                function formatWithThousands(value) {
+                    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                }
+            }
+
+            const toDoButton = document.getElementById("to-do")
+            if (toDoButton) {
+                const currentDate = new Date();
+                const currentHour = currentDate.getHours();
+                const currentMinutes = currentDate.getMinutes();
+
+                const calendarIcon = document.createElement("i");
+                calendarIcon.className = "fa fa-calendar"; // Asegúrate de que Font Awesome esté incluido
+
+                if (currentHour < 16 || (currentHour === 16 && currentMinutes === 0)) {
+                    toDoButton.classList.add("morning");
+                    toDoButton.innerHTML = ""; // Limpia el contenido existente
+                    toDoButton.appendChild(calendarIcon);
+                    toDoButton.innerHTML += " ¿Qué hacer esta mañana?";
+                } else if (currentHour >= 16 || currentHour < 4 || (currentHour === 4 && currentMinutes < 30)) {
+                    toDoButton.classList.add("night");
+                    toDoButton.innerHTML = ""; // Limpia el contenido existente
+                    toDoButton.appendChild(calendarIcon);
+                    toDoButton.innerHTML += " ¿Qué hacer esta noche?";
+                }
+            }
+
+            const routineContainer = document.getElementById("routine")
+            if (routineContainer) {
+                userActual.rutinaActual.forEach((item) => {
+                    if (item.render) {
+                        // Si render es true
+                        const includedDiv = document.createElement("div");
+                        includedDiv.className = "routine-included";
+
+                        const includedDiv1 = document.createElement("div");
+                        includedDiv1.className = "routine-included-1";
+
+                        const includedImg = document.createElement("img");
+                        includedImg.src = `/assets/productos/${item.primero.foto}.webp`;
+                        includedDiv1.appendChild(includedImg);
+
+                        const includedDiv2 = document.createElement("div");
+                        includedDiv2.className = "routine-included-2";
+
+                        const categoryP = document.createElement("p");
+                        categoryP.className = "routine-included-2-category";
+                        categoryP.textContent = item.categoria;
+                        includedDiv2.appendChild(categoryP);
+
+                        const nameP = document.createElement("p");
+                        nameP.className = "routine-included-2-name";
+                        nameP.textContent = item.primero.nombre;
+                        includedDiv2.appendChild(nameP);
+
+                        includedDiv.appendChild(includedDiv1);
+                        includedDiv.appendChild(includedDiv2);
+                        routineContainer.appendChild(includedDiv);
+                    } else {
+                        // Si render es false
+                        const notIncludedDiv = document.createElement("div");
+                        notIncludedDiv.className = "routine-not-included";
+
+                        const notIncludedDiv1 = document.createElement("div");
+                        notIncludedDiv1.className = "routine-not-included-1";
+
+                        const categoryP = document.createElement("p");
+                        categoryP.className = "routine-not-included-1-category";
+                        categoryP.textContent = item.categoria;
+                        notIncludedDiv1.appendChild(categoryP);
+
+                        const notIncludedNameP = document.createElement("p");
+                        notIncludedNameP.className = "routine-not-included-1-name";
+                        notIncludedNameP.textContent = "Aún no incluido";
+                        notIncludedDiv1.appendChild(notIncludedNameP);
+
+                        const notIncludedDiv2 = document.createElement("div");
+                        notIncludedDiv2.className = "routine-not-included-2";
+
+                        notIncludedDiv.appendChild(notIncludedDiv1);
+                        notIncludedDiv.appendChild(notIncludedDiv2);
+                        routineContainer.appendChild(notIncludedDiv);
+                    }
+                });
+            }
+
+            const modal = document.querySelector('.modal-to-do');
+            const openModalButton = document.querySelector('.to-do');
+            const closeModalButton = document.querySelector('.close');
+
+            const stringsPasos = ["PRIMER PASO", "SEGUNDO PASO", "TERCER PASO", "CUARTO PASO"];
+
+            // Molde inicial
+            const moldeRutina = [
+                { step2: "", step3: "", render: null, tiempo: "", tipo: "", foto: "" },
+                { step2: "", step3: "", render: null, tiempo: "", tipo: "", foto: "" },
+                { step2: "", step3: "", render: null, tiempo: "", tipo: "", foto: "" },
+                { step2: "", step3: "", render: null, tiempo: "", tipo: "", foto: "" },
+            ];
+
+            // Filtro para preparar moldeRutinaFiltrado
+            function prepareModalData() {
+                const rutinaActualSorted = [...userActual.rutinaActual].sort((a, b) => a.primero.turno - b.primero.turno);
+
+                rutinaActualSorted.forEach((item, index) => {
+                    if (index < moldeRutina.length) {
+                        const { primero } = item; // Extract 'primero' object
+                        moldeRutina[index].step2 = primero.nombre; // Name of the product
+                        moldeRutina[index].step3 = primero.alert || ""; // Alert message or empty string
+                        moldeRutina[index].render = item.render; // Render flag
+                        moldeRutina[index].tiempo = primero.tiempo; // Time property
+                        moldeRutina[index].tipo = primero.categoria;
+                        moldeRutina[index].foto = primero.foto;
+                    }
+                });
+            }
+
+            // Filtrar el molde según el tiempo
+            function filterRutina(isMorning) {
+                return moldeRutina.filter(item => isMorning ? item.tiempo === "M" || item.tiempo === "MN" : item.tiempo === "N" || item.tiempo === "MN");
+            }
+
+            let currentStepIndex = 0;
+            let moldeRutinaFiltrado = [];
+
+            // Función para poblar el modal con datos
+            function populateModal(direction) {
+                const currentData = moldeRutinaFiltrado[currentStepIndex];
+                const step1 = document.querySelector('.step-1');
+                const step2 = document.querySelector('.step-2');
+                const step3 = document.querySelector('.step-3');
+                const zonaFoto = document.querySelector('.zona-foto'); // Seleccionar el nuevo div
+
+                step1.textContent = stringsPasos[currentStepIndex]; // Establecer el paso dinámicamente
+
+                // Lógica para tipo LIMPIADOR
+                if (currentData.tipo === "LIMPIADOR") {
+                    if (currentData.render === false) {
+                        // Caso render === false
+                        step2.textContent = "Aplica lo que uses como limpiador, puede ser también un poco de agua tibia.";
+                        step3.textContent = "";
+                        zonaFoto.innerHTML = ""; // Limpiar el contenido del div .zona-foto
+                    } else {
+                        // Caso render === true
+                        if (currentData.step3 === "CADA DOS DÍAS, EL RESTO SOLO AGUA TIBIA") {
+                            const today = new Date().getDate();
+                            if (today % 2 === 0) {
+                                step2.textContent = currentData.step2;
+                                step3.textContent = currentData.step3;
+                                zonaFoto.innerHTML = `<img src="/assets/productos/${currentData.foto}.webp" alt="Producto">`;
+                            } else {
+                                step2.textContent = "Limpiar solo con agua tibia";
+                                step3.textContent = "";
+                                zonaFoto.innerHTML = ""; // Limpiar el contenido del div .zona-foto
+                            }
+                        } else if (!currentData.step3) {
+                            // Si step3 está vacío
+                            step2.textContent = currentData.step2;
+                            step3.textContent = currentData.step3;
+                            zonaFoto.innerHTML = `<img src="/assets/productos/${currentData.foto}.webp" alt="Producto">`;
+                        }
+                    }
+                }
+
+                else {
+                    if (currentData.render === false) {
+                        step2.textContent = currentData.tipo === "HIDRATANTE"
+                            ? "Si tienes, aplica el hidratante de tu preferencia."
+                            : currentData.tipo === "BLOQUEADOR"
+                                ? "Si tienes, aplica el protector solar de tu preferencia."
+                                : "Aquí sería donde aplicarías tu potenciador.";
+                        step3.textContent = currentData.tipo === "POTENCIADOR" ? currentData.step2 : "";
+
+                        // Si es tipo "POTENCIADOR", también actualizamos zonaFoto
+                        if (currentData.tipo === "POTENCIADOR") {
+                            zonaFoto.innerHTML = `<img src="/assets/productos/${currentData.foto}.webp" alt="Producto">`;
+                        } else {
+                            zonaFoto.innerHTML = ""; // Limpiar el contenido si no es potenciador
+                        }
+                    } else {
+                        step2.textContent = currentData.step2;
+                        step3.textContent = currentData.step3;
+                        zonaFoto.innerHTML = `<img src="/assets/productos/${currentData.foto}.webp" alt="Producto">`;
+                    }
+                }
+            }
+            function initializeProgressBar() {
+                const progressBar = document.querySelector('.progress-bar');
+                const progressPercentage = document.querySelector('.progress-percentage');
+
+                if (progressBar && progressPercentage) {
+                    const progress = ((currentStepIndex + 1) / moldeRutinaFiltrado.length) * 100;
+                    progressBar.style.width = `${progress}%`;
+                    progressPercentage.textContent = `${Math.round(progress)}%`;
+                }
+            }
+
+            // Actualizar la barra de progreso al avanzar
+            function updateProgressBar() {
+                const progressBar = document.querySelector('.progress-bar');
+                const progressPercentage = document.querySelector('.progress-percentage');
+
+                if (progressBar && progressPercentage) {
+                    const progress = ((currentStepIndex + 1) / moldeRutinaFiltrado.length) * 100;
+                    progressBar.style.width = `${progress}%`;
+                    progressPercentage.textContent = `${Math.round(progress)}%`;
+                }
+            }
+
+            // Modificar moveToNextStep
+            function moveToNextStep() {
+                const nextStepButton = document.querySelector('.next-step');
+                const buttonText = nextStepButton.querySelector('p');
+                const buttonIcon = nextStepButton.querySelector('i');
+
+                if (currentStepIndex < moldeRutinaFiltrado.length - 1) {
+                    currentStepIndex++;
+                    populateModal("next");
+                    updateProgressBar();
+
+                    // Check if we reached the last step
+                    if (currentStepIndex === moldeRutinaFiltrado.length - 1) {
+                        buttonText.textContent = "Terminar"; // Change text to "Terminar"
+                        buttonIcon.classList.remove('fa-arrow-right'); // Remove the right arrow
+                        buttonIcon.classList.add('fa-flag-checkered'); // Add the down arrow
+                    }
+                } else {
+                    currentStepIndex++
+                    if (currentStepIndex === moldeRutinaFiltrado.length) {
+                        modal.style.opacity = 0;
+                        modal.style.pointerEvents = 'none';
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            modal.classList.remove('morning-modal', 'night-modal');
+                        }, 300);
+                        buttonText.textContent = "Siguiente"; // Reset text to "Siguiente"
+                        buttonIcon.classList.remove('fa-flag-checkered'); // Remove the down arrow
+                        buttonIcon.classList.add('fa-arrow-right'); // Add the right arrow
+                    }
+                }
+            }
+
+            // Modificar moveToPreviousStep
+            function moveToPreviousStep() {
+                const nextStepButton = document.querySelector('.next-step');
+                const buttonText = nextStepButton.querySelector('p');
+                const buttonIcon = nextStepButton.querySelector('i');
+
+                if (currentStepIndex > 0) {
+                    currentStepIndex--;
+                    populateModal("prev");
+                    updateProgressBar();
+
+                    // Reset button text and icon if we're no longer on the last step
+                    if (currentStepIndex < moldeRutinaFiltrado.length - 1) {
+                        buttonText.textContent = "Siguiente"; // Reset text to "Siguiente"
+                        buttonIcon.classList.remove('fa-flag-checkered'); // Remove the down arrow
+                        buttonIcon.classList.add('fa-arrow-right'); // Add the right arrow
+                    }
+                }
+            }
+
+            // Abrir modal
+            openModalButton.addEventListener('click', () => {
+                prepareModalData();
+                const isMorning = openModalButton.classList.contains('morning');
+                moldeRutinaFiltrado = filterRutina(isMorning);
+
+                const tieneLimpiador = moldeRutinaFiltrado.some(item => item.tipo === "LIMPIADOR");
+
+                // Si no tiene ningún elemento con tipo "LIMPIADOR", agregar el objeto especificado
+                if (!tieneLimpiador) {
+                    moldeRutinaFiltrado.unshift({
+                        step2: "Enjuaga solo con agua tibia",
+                        step3: "",
+                        render: true,
+                        tiempo: "",
+                        tipo: "LIMPIADOR",
+                        foto: "drop"
+                    });
+                }
+
+                if (isMorning) {
+                    modal.classList.add('morning-modal');
+                } else {
+                    modal.classList.add('night-modal');
+                }
+
+
+                modal.style.display = 'block';
+                setTimeout(() => {
+                    modal.style.opacity = 1;
+                    modal.style.pointerEvents = 'auto';
+                }, 10);
+
+                currentStepIndex = 0;
+                populateModal();
+                initializeProgressBar();
             });
 
-            // Actualiza el elemento con el total, sin ceros ni signo de peso
-            const totalNumberElement = document.querySelector(".total-number");
-            totalNumberElement.textContent = total
-                .toLocaleString("es-CO") // Formatea con separadores de miles
-                .replace(/\.00$/, ""); // Remueve los decimales, aunque no los incluye al no usarlo
+            // Cerrar modal
+            closeModalButton.addEventListener('click', () => {
+                modal.style.opacity = 0;
+                modal.style.pointerEvents = 'none';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    modal.classList.remove('morning-modal', 'night-modal');
+                }, 300);
+            });
 
-            function renderCarrito(contenido) {
-                const carritoContainer = document.getElementById("carrito");
-                carritoContainer.innerHTML = ""; // Limpia cualquier contenido previo
+            // Botones de navegación
+            document.querySelector('.next-step').addEventListener('click', moveToNextStep);
+            document.querySelector('.previous-step').addEventListener('click', moveToPreviousStep);
 
-                contenido.forEach((producto, index) => {
-                    const productoDiv = document.createElement("div");
-                    productoDiv.classList.add("carrito-producto");
 
-                    // Agrega clases para el primer y último elemento
-                    if (index === 0) {
-                        productoDiv.classList.add("first-item");
+
+            //Ahora la logica para manejar el nuevo pedido
+            const modalNewOrder = document.getElementById('modal-new-order');
+            const nextPurchaseTrigger = document.querySelector('.next-purchase');
+            const closeModalNewOrderButton = document.getElementById('close-modal-new-order');
+
+            let copiaRutina;
+            let cleanserAmount = 0;
+            let moisturizerAmount = 0;
+            let sunscreenAmount = 0;
+            let boosterAmount = 0;
+
+            //Al tenerlo separado podemos activarla fuera de la nextPurchaseTrigger, haciendo visibles los cambios en tiempo real
+            function fillShoppingCart() {
+                // Obtener los elementos de cada categoría
+                const cleanserContent = document.getElementById('Limpiador');
+                const moisturizerContent = document.getElementById('Hidratante');
+                const sunscreenContent = document.getElementById('Bloqueador');
+                const boosterContent = document.getElementById('Potenciador');
+
+                // Limpiador
+                const cleanserData = copiaRutina.find(item => item.categoria === "Limpiador");
+                if (cleanserData && cleanserData.render && !cleanserData.included) {
+                    cleanserContent.innerHTML = `
+        <div class="product-info">
+            <div class="product-info-photo">
+                <img src="/assets/productos/${cleanserData.primero.foto}.webp" alt="${cleanserData.primero.nombre}">
+            </div>
+            <div class="product-info-description">
+                <p class="product-name">${cleanserData.primero.nombre}</p>
+                <p class="product-quantity">
+                    ${cleanserData.primero.cantidad}ml
+                    <span class="${cleanserData.primero.calidad === 'E' ? 'estandar' : 'premium'}">
+                        ${cleanserData.primero.calidad === 'E' ? 'ESTÁNDAR' : 'PREMIUM'}
+                    </span>
+                </p>
+                <div class="product-functionality-bar">
+                    <p class="product-price">
+                        <span class="dollar-sign">$</span>${new Intl.NumberFormat('es-ES').format(cleanserData.primero.valor)}
+                    </p>
+                    <button class="replace-btn" id="replace-cleanser">
+                        <i class="fas fa-retweet"></i>    
+                    </button>
+                    <button class="add-btn" id="add-cleanser">
+                        Añadir   
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+                } else if (cleanserData && cleanserData.render && cleanserData.included) {
+                    cleanserContent.innerHTML = `
+        <div class="product-info">
+            <div class="product-info-photo">
+                <img src="/assets/productos/${cleanserData.primero.foto}.webp" alt="${cleanserData.primero.nombre}">
+            </div>
+            <div class="product-info-description">
+                <p class="product-name">${cleanserData.primero.nombre}</p>
+                <p class="product-quantity">
+                    ${cleanserData.primero.cantidad}ml
+                    <span class="${cleanserData.primero.calidad === 'E' ? 'estandar' : 'premium'}">
+                        ${cleanserData.primero.calidad === 'E' ? 'ESTÁNDAR' : 'PREMIUM'}
+                    </span>
+                </p>
+                <div class="product-functionality-bar">
+                    <p class="product-price">
+                        <span class="dollar-sign">$</span>${new Intl.NumberFormat('es-ES').format(cleanserData.primero.valor)}
+                    </p>
+                    <button class="replace-btn" id="replace-cleanser">
+                        <i class="fas fa-retweet"></i>    
+                    </button>
+                    <div class="quantity-zone">
+                        <div class="minus" id="minus-cleanser">-</div>   
+                        <div class="quantity">${cleanserAmount}</div> 
+                        <div class="plus" id="plus-cleanser">+</div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+                } else {
+                    cleanserContent.innerHTML = `
+        <div class="product-empty">
+            <p class="product-empty-info">Aún no escoges este producto</p>
+            <button class="product-empty-btn" id="empty-cleanser">Elegir</p>
+        </div>
+    `;;
+                }
+
+                // Hidratante
+                const moisturizerData = copiaRutina.find(item => item.categoria === "Hidratante");
+                if (moisturizerData && moisturizerData.render && !moisturizerData.included) {
+                    moisturizerContent.innerHTML = `
+        <div class="product-info">
+            <div class="product-info-photo">
+                <img src="/assets/productos/${moisturizerData.primero.foto}.webp" alt="${moisturizerData.primero.nombre}">
+            </div>
+            <div class="product-info-description">
+                <p class="product-name">${moisturizerData.primero.nombre}</p>
+                <p class="product-quantity">
+                    ${moisturizerData.primero.cantidad}ml
+                    <span class="${moisturizerData.primero.calidad === 'E' ? 'estandar' : 'premium'}">
+                        ${moisturizerData.primero.calidad === 'E' ? 'ESTÁNDAR' : 'PREMIUM'}
+                    </span>
+                </p>
+                <div class="product-functionality-bar">
+                    <p class="product-price">
+                        <span class="dollar-sign">$</span>${new Intl.NumberFormat('es-ES').format(moisturizerData.primero.valor)}
+                    </p>
+                    <button class="replace-btn" id="replace-moisturizer">
+                        <i class="fas fa-retweet"></i>    
+                    </button>
+                    <button class="add-btn" id="add-moisturizer">
+                        Añadir   
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+                } else if (moisturizerData && moisturizerData.render && moisturizerData.included) {
+                    moisturizerContent.innerHTML = `
+        <div class="product-info">
+            <div class="product-info-photo">
+                <img src="/assets/productos/${moisturizerData.primero.foto}.webp" alt="${moisturizerData.primero.nombre}">
+            </div>
+            <div class="product-info-description">
+                <p class="product-name">${moisturizerData.primero.nombre}</p>
+                <p class="product-quantity">
+                    ${moisturizerData.primero.cantidad}ml
+                    <span class="${moisturizerData.primero.calidad === 'E' ? 'estandar' : 'premium'}">
+                        ${moisturizerData.primero.calidad === 'E' ? 'ESTÁNDAR' : 'PREMIUM'}
+                    </span>
+                </p>
+                <div class="product-functionality-bar">
+                    <p class="product-price">
+                        <span class="dollar-sign">$</span>${new Intl.NumberFormat('es-ES').format(moisturizerData.primero.valor)}
+                    </p>
+                    <button class="replace-btn" id="replace-moisturizer">
+                        <i class="fas fa-retweet"></i>    
+                    </button>
+                    <div class="quantity-zone">
+                        <div class="minus" id="minus-moisturizer">-</div>   
+                        <div class="quantity">${moisturizerAmount}</div> 
+                        <div class="plus" id="plus-moisturizer">+</div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+                } else {
+                    moisturizerContent.innerHTML = `
+        <div class="product-empty">
+            <p class="product-empty-info">Aún no escoges este producto</p>
+            <button class="product-empty-btn" id="empty-moisturizer">Elegir</p>
+        </div>
+    `;;
+                }
+
+
+
+
+                // Bloqueador
+                const sunscreenData = copiaRutina.find(item => item.categoria === "Bloqueador");
+                if (sunscreenData && sunscreenData.render && !sunscreenData.included) {
+                    sunscreenContent.innerHTML = `
+        <div class="product-info">
+            <div class="product-info-photo">
+                <img src="/assets/productos/${sunscreenData.primero.foto}.webp" alt="${sunscreenData.primero.nombre}">
+            </div>
+            <div class="product-info-description">
+                <p class="product-name">${sunscreenData.primero.nombre}</p>
+                <p class="product-quantity">
+                    ${sunscreenData.primero.cantidad}ml
+                    <span class="${sunscreenData.primero.calidad === 'E' ? 'estandar' : 'premium'}">
+                        ${sunscreenData.primero.calidad === 'E' ? 'ESTÁNDAR' : 'PREMIUM'}
+                    </span>
+                </p>
+                <div class="product-functionality-bar">
+                    <p class="product-price">
+                        <span class="dollar-sign">$</span>${new Intl.NumberFormat('es-ES').format(sunscreenData.primero.valor)}
+                    </p>
+                    <button class="replace-btn" id="replace-sunscreen">
+                        <i class="fas fa-retweet"></i>    
+                    </button>
+                    <button class="add-btn" id="add-sunscreen">
+                        Añadir   
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+                } else if (sunscreenData && sunscreenData.render && sunscreenData.included) {
+                    sunscreenContent.innerHTML = `
+        <div class="product-info">
+            <div class="product-info-photo">
+                <img src="/assets/productos/${sunscreenData.primero.foto}.webp" alt="${sunscreenData.primero.nombre}">
+            </div>
+            <div class="product-info-description">
+                <p class="product-name">${sunscreenData.primero.nombre}</p>
+                <p class="product-quantity">
+                    ${sunscreenData.primero.cantidad}ml
+                    <span class="${sunscreenData.primero.calidad === 'E' ? 'estandar' : 'premium'}">
+                        ${sunscreenData.primero.calidad === 'E' ? 'ESTÁNDAR' : 'PREMIUM'}
+                    </span>
+                </p>
+                <div class="product-functionality-bar">
+                    <p class="product-price">
+                        <span class="dollar-sign">$</span>${new Intl.NumberFormat('es-ES').format(sunscreenData.primero.valor)}
+                    </p>
+                    <button class="replace-btn" id="replace-sunscreen">
+                        <i class="fas fa-retweet"></i>    
+                    </button>
+                    <div class="quantity-zone">
+                        <div class="minus" id="minus-sunscreen">-</div>   
+                        <div class="quantity">${sunscreenAmount}</div> 
+                        <div class="plus" id="plus-sunscreen">+</div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+                } else {
+                    sunscreenContent.innerHTML = `
+        <div class="product-empty">
+            <p class="product-empty-info">Aún no escoges este producto</p>
+            <button class="product-empty-btn" id="empty-sunscreen">Elegir</p>
+        </div>
+    `;
+                }
+
+                // Potenciador
+                const boosterData = copiaRutina.find(item => item.categoria === "Potenciador");
+                if (boosterData && boosterData.render && !boosterData.included) {
+                    boosterContent.innerHTML = `
+        <div class="product-info">
+            <div class="product-info-photo">
+                <img src="/assets/productos/${boosterData.primero.foto}.webp" alt="${boosterData.primero.nombre}">
+            </div>
+            <div class="product-info-description">
+                <p class="product-name">${boosterData.primero.nombre}</p>
+                <p class="product-quantity">
+                    ${boosterData.primero.cantidad}ml
+                    <span class="${boosterData.primero.calidad === 'E' ? 'estandar' : 'premium'}">
+                        ${boosterData.primero.calidad === 'E' ? 'ESTÁNDAR' : 'PREMIUM'}
+                    </span>
+                </p>
+                <div class="product-functionality-bar">
+                    <p class="product-price">
+                        <span class="dollar-sign">$</span>${new Intl.NumberFormat('es-ES').format(boosterData.primero.valor)}
+                    </p>
+                    <button class="replace-btn" id="replace-booster">
+                        <i class="fas fa-retweet"></i>    
+                    </button>
+                    <button class="add-btn" id="add-booster">
+                        Añadir   
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+                } else if (boosterData && boosterData.render && boosterData.included) {
+                    boosterContent.innerHTML = `
+        <div class="product-info">
+            <div class="product-info-photo">
+                <img src="/assets/productos/${boosterData.primero.foto}.webp" alt="${boosterData.primero.nombre}">
+            </div>
+            <div class="product-info-description">
+                <p class="product-name">${boosterData.primero.nombre}</p>
+                <p class="product-quantity">
+                    ${boosterData.primero.cantidad}ml
+                    <span class="${boosterData.primero.calidad === 'E' ? 'estandar' : 'premium'}">
+                        ${boosterData.primero.calidad === 'E' ? 'ESTÁNDAR' : 'PREMIUM'}
+                    </span>
+                </p>
+                <div class="product-functionality-bar">
+                    <p class="product-price">
+                        <span class="dollar-sign">$</span>${new Intl.NumberFormat('es-ES').format(boosterData.primero.valor)}
+                    </p>
+                    <button class="replace-btn" id="replace-booster">
+                        <i class="fas fa-retweet"></i>    
+                    </button>
+                    <div class="quantity-zone">
+                        <div class="minus" id="minus-booster">-</div>   
+                        <div class="quantity">${boosterAmount}</div> 
+                        <div class="plus" id="plus-booster">+</div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+                } else {
+                    boosterContent.innerHTML = `
+        <div class="product-empty">
+            <p class="product-empty-info">Aún no escoges este producto</p>
+            <button class="product-empty-btn" id="empty-booster">Elegir</p>
+        </div>
+    `;
+                }
+
+                let totalItems = cleanserAmount + moisturizerAmount + sunscreenAmount + boosterAmount;
+                let deliveryCostElement = document.querySelector(".delivery-cost");
+                let packetPriceElement = document.querySelector(".packet-price");
+
+                // Definir el costo de envío según la cantidad de productos
+                let deliveryCost;
+                if (totalItems === 0) {
+                    deliveryCost = "$0";
+                } else if (totalItems === 1) {
+                    deliveryCost = "$9.000";
+                } else if (totalItems === 2) {
+                    deliveryCost = "$6.000";
+                } else {
+                    deliveryCost = "GRATIS";
+                }
+
+                // Calcular el precio total de los productos
+                let totalPrice =
+                    (copiaRutina[0].primero.valor * cleanserAmount) +
+                    (copiaRutina[1].primero.valor * moisturizerAmount) +
+                    (copiaRutina[2].primero.valor * sunscreenAmount) +
+                    (copiaRutina[3].primero.valor * boosterAmount);
+
+                let deliveryCostNumber = deliveryCost === "GRATIS" ? 0 : parseInt(deliveryCost.replace(/\D/g, ""), 10);
+
+                // Calcular el precio final incluyendo el envío
+                let finalPrice = totalPrice + deliveryCostNumber;
+
+                // Actualizar el contenido en el HTML
+                deliveryCostElement.textContent = deliveryCost;
+                packetPriceElement.textContent = `$${new Intl.NumberFormat('es-ES').format(finalPrice)}`;
+
+
+            }
+
+            // Evento para abrir el modal
+            nextPurchaseTrigger.addEventListener('click', () => {
+                copiaRutina = [...userActual.rutinaActual];
+
+                fillShoppingCart()
+
+                modalNewOrder.classList.add('active');
+            });
+
+            document.querySelector('.product-zone').addEventListener('click', (e) => {
+                if (e.target.classList.contains('toggle-button')) {
+                    const category = e.target.getAttribute('data-category');
+                    const activeCategory = document.querySelector('.product-category.active');
+
+                    // Si ya hay un div abierto, lo cerramos
+                    if (activeCategory && activeCategory.id !== category) {
+                        activeCategory.classList.remove('active');
+                        const previousButton = activeCategory.querySelector('.toggle-button');
+                        previousButton.querySelector('.arrow-right').classList.remove('arrow-active'); // Quita rotación previa
                     }
-                    if (index === contenido.length - 1) {
-                        productoDiv.classList.add("last-item");
+
+                    // Alternamos el estado del div seleccionado
+                    const selectedCategory = document.getElementById(category);
+                    selectedCategory.classList.toggle('active');
+
+                    // Definir variable de cantidad según la categoría
+                    let amount = 0;
+                    if (category === "cleanser") {
+                        amount = cleanserAmount;
+                    } else if (category === "moisturizer") {
+                        amount = moisturizerAmount;
+                    } else if (category === "sunscreen") {
+                        amount = sunscreenAmount;
+                    } else if (category === "booster") {
+                        amount = boosterAmount;
                     }
 
-                    // Crea los divs internos
-                    const leftDiv = document.createElement("div");
-                    leftDiv.classList.add("left");
-                    leftDiv.textContent = producto[0]; // Nombre del producto
+                    // Girar la flecha solo si la cantidad es 0
+                    if (amount === 0) {
+                        const arrowIcon = e.target.querySelector('.arrow-right');
+                        arrowIcon.classList.toggle('arrow-active'); // Añade o quita la clase para girar
+                    }
+                }
+            });
 
-                    const rightDiv = document.createElement("div");
-                    rightDiv.classList.add("right");
-                    rightDiv.textContent = producto[1]; // Precio del producto
+            document.addEventListener("click", function (event) {
+                if (event.target.closest("#replace-cleanser")) {
+                    console.log("Replace Cleanser Clicked");
+                    let temp = { ...copiaRutina[0] };
+                    copiaRutina[0].primero = temp.segundo;
+                    copiaRutina[0].segundo = temp.primero;
 
-                    // Añade los divs internos al producto
-                    productoDiv.appendChild(leftDiv);
-                    productoDiv.appendChild(rightDiv);
+                    fillShoppingCart();
+                } else if (event.target.closest("#replace-moisturizer")) {
+                    console.log("Replace Moisturizer Clicked");
+                    let temp = { ...copiaRutina[1] };
+                    copiaRutina[1].primero = temp.segundo;
+                    copiaRutina[1].segundo = temp.primero;
 
-                    // Añade el producto al carrito
-                    carritoContainer.appendChild(productoDiv);
+                    fillShoppingCart();
+                } else if (event.target.closest("#replace-sunscreen")) {
+                    console.log("Replace Sunscreen Clicked");
+                    let temp = { ...copiaRutina[2] };
+                    copiaRutina[2].primero = temp.segundo;
+                    copiaRutina[2].segundo = temp.primero;
+
+                    fillShoppingCart();
+                } else if (event.target.closest("#replace-booster")) {
+                    console.log("Replace Booster Clicked");
+                    let temp = { ...copiaRutina[3] };
+                    copiaRutina[3].primero = temp.segundo;
+                    copiaRutina[3].segundo = temp.primero;
+
+                    fillShoppingCart();
+                }
+            });
+
+            document.addEventListener("click", function (event) {
+                if (event.target.closest("#add-cleanser")) {
+                    console.log("Add Cleanser Clicked");
+                    copiaRutina[0].included = true;
+                    cleanserAmount = 1;
+                    fillShoppingCart();
+                    document.getElementById("arrow-cleanser").className = "fa-solid fa-circle-check";
+                } else if (event.target.closest("#add-moisturizer")) {
+                    console.log("Add Moisturizer Clicked");
+                    copiaRutina[1].included = true;
+                    moisturizerAmount = 1;
+                    fillShoppingCart();
+                    document.getElementById("arrow-moisturizer").className = "fa-solid fa-circle-check";
+                } else if (event.target.closest("#add-sunscreen")) {
+                    console.log("Add Sunscreen Clicked");
+                    copiaRutina[2].included = true;
+                    sunscreenAmount = 1;
+                    fillShoppingCart();
+                    document.getElementById("arrow-sunscreen").className = "fa-solid fa-circle-check";
+                } else if (event.target.closest("#add-booster")) {
+                    console.log("Add Booster Clicked");
+                    copiaRutina[3].included = true;
+                    boosterAmount = 1;
+                    fillShoppingCart();
+                    document.getElementById("arrow-booster").className = "fa-solid fa-circle-check";
+                }
+            });
+
+
+            document.addEventListener("click", function (event) {
+                if (event.target.closest("#minus-cleanser")) {
+                    console.log("Minus Cleanser Clicked");
+                    if (cleanserAmount > 0) {
+                        cleanserAmount--;
+                        if (cleanserAmount === 0) {
+                            copiaRutina[0].included = false;
+                            document.getElementById("arrow-cleanser").className = "arrow-right";
+                        }
+                        fillShoppingCart();
+                    }
+                } else if (event.target.closest("#plus-cleanser")) {
+                    console.log("Plus Cleanser Clicked");
+                    cleanserAmount++;
+                    copiaRutina[0].included = true;
+                    fillShoppingCart();
+                } else if (event.target.closest("#minus-moisturizer")) {
+                    console.log("Minus Moisturizer Clicked");
+                    if (moisturizerAmount > 0) {
+                        moisturizerAmount--;
+                        if (moisturizerAmount === 0) {
+                            copiaRutina[1].included = false;
+                            document.getElementById("arrow-moisturizer").className = "arrow-right";
+                        }
+                        fillShoppingCart();
+                    }
+                } else if (event.target.closest("#plus-moisturizer")) {
+                    console.log("Plus Moisturizer Clicked");
+                    moisturizerAmount++;
+                    copiaRutina[1].included = true;
+                    fillShoppingCart();
+                } else if (event.target.closest("#minus-sunscreen")) {
+                    console.log("Minus Sunscreen Clicked");
+                    if (sunscreenAmount > 0) {
+                        sunscreenAmount--;
+                        if (sunscreenAmount === 0) {
+                            copiaRutina[2].included = false;
+                            document.getElementById("arrow-sunscreen").className = "arrow-right";
+                        }
+                        fillShoppingCart();
+                    }
+                } else if (event.target.closest("#plus-sunscreen")) {
+                    console.log("Plus Sunscreen Clicked");
+                    sunscreenAmount++;
+                    copiaRutina[2].included = true;
+                    fillShoppingCart();
+                } else if (event.target.closest("#minus-booster")) {
+                    console.log("Minus Booster Clicked");
+                    if (boosterAmount > 0) {
+                        boosterAmount--;
+                        if (boosterAmount === 0) {
+                            copiaRutina[3].included = false;
+                            document.getElementById("arrow-booster").className = "arrow-right";
+                        }
+                        fillShoppingCart();
+                    }
+                } else if (event.target.closest("#plus-booster")) {
+                    console.log("Plus Booster Clicked");
+                    boosterAmount++;
+                    copiaRutina[3].included = true;
+                    fillShoppingCart();
+                }
+            });
+
+            // Evento para cerrar el modal
+            closeModalNewOrderButton.addEventListener('click', () => {
+                modalNewOrder.classList.remove('active'); // Remueve la clase "active" del modal
+            });
+
+
+            //Ahora proseguimos con la lógica para el modal de escoger producto
+            const purezaProductos = [
+                ["Espuma 4 en 1 de Carvenchy", 80],
+                ["Limpiador Milk Hidrolizada de Sadoer", 75],
+                ["Smoothing SA Cleanser de CeraVe", 90],
+                ["La Roche-Posay Effaclar Puryfing", 95],
+                ["Limpiador Hidratante de CeraVe", 93],
+                ["Tónico Centella Asiatica", 75],
+                ["Tónico de Hinojo Marino", 83],
+                ["Neutrogena Hydroboost", 90],
+                ["Facial Moisturising Lotion PM", 92],
+                ["Crema Hidratante de Cerave", 95],
+                ["Aloe Vera Sunscreen FPS+60 de Bioaqua", 75],
+                ["Eucerin Oil Control FPS+50", 93],
+                ["ISDIN Fusion Water Magic SPF 50", 90],
+                ["Serum Niacinamida de Bioaqua", 80],
+                ["Sérum Hialurónico de Bioaqua", 78],
+                ["Sérum Retinol de Vibrant Glamoúr", 85],
+                ["Sérum de Vitamina C Bioaqua", 80],
+                ["Pads Ácido Glicólico de Elaimei", 80],
+                ["Differin Adapalene 0.1%", 96],
+                ["The Ordinary Niacinamida 10% + Zinc 1%", 93],
+                ["Sérum Hialurónico 2% + B5 The Ordinary", 93],
+                ["The Ordinary Retinol 0.2% in Squalane", 90],
+                ["CeraVe Skin Renewing Vitamin C Serum", 90],
+                ["The Ordinary Ácido Glicólico 7% Toning Solution", 93],
+                ["Ácido Láctico 10% de The Ordinary", 92],
+            ]
+
+            document.addEventListener("click", function (event) {
+                const modal = document.getElementById("modal-product-choosing");
+                const modalText = document.getElementById("tipo-producto-txt");
+                const primeraFoto = document.getElementById("primera-foto");
+                const segundaFoto = document.getElementById("segunda-foto");
+                const primerNombre = document.getElementById("primer-nombre");
+                const segundoNombre = document.getElementById("segundo-nombre");
+                const primerPrecio = document.getElementById("primer-precio");
+                const segundoPrecio = document.getElementById("segundo-precio");
+                const primeraZonaEleccion = document.getElementById("primera-zona-eleccion");
+                const segundaZonaEleccion = document.getElementById("segunda-zona-eleccion");
+
+                const firstProduct = document.getElementById("first-product");
+                const secondProduct = document.getElementById("second-product");
+
+                const firstPurity = document.getElementById("first-purity");
+                const secondPurity = document.getElementById("second-purity");
+
+                let x = -1; // Para identificar qué categoría se selecciona
+
+                if (event.target.id === "empty-cleanser") {
+                    modalText.textContent = "LIMPIADOR";
+                    x = 0;
+                } else if (event.target.id === "empty-moisturizer") {
+                    modalText.textContent = "HIDRATANTE";
+                    x = 1;
+                } else if (event.target.id === "empty-sunscreen") {
+                    modalText.textContent = "BLOQUEADOR";
+                    x = 2;
+                } else if (event.target.id === "empty-booster") {
+                    modalText.textContent = "POTENCIADOR";
+                    x = 3;
+                } else if (event.target.id === "close-modal-product-choosing") {
+                    modal.classList.remove("active");
+                    return;
+                }
+
+                if (x !== -1) {
+                    modal.classList.add("active");
+
+                    // Rellenar zona-foto con imágenes
+                    primeraFoto.innerHTML = `<img src="/assets/productos/${copiaRutina[x].primero.foto}.webp" alt="Producto 1">`;
+                    segundaFoto.innerHTML = `<img src="/assets/productos/${copiaRutina[x].segundo.foto}.webp" alt="Producto 2">`;
+
+                    // Rellenar zona-nombre con nombre y cantidad
+                    primerNombre.innerHTML = `${copiaRutina[x].primero.nombre}<br><span style="font-family: 'h'; font-size: 4.5vw; color: #ffffffe0; margin-top: 1.5vw">${copiaRutina[x].primero.cantidad}ml</span>`;
+                    segundoNombre.innerHTML = `${copiaRutina[x].segundo.nombre}<br><span style="font-family: 'h'; font-size: 4.5vw; color: #ffffffe0; margin-top: 1.5vw">${copiaRutina[x].segundo.cantidad}ml</span>`;
+
+                    // Rellenar zona-precio con valores formateados
+                    primerPrecio.textContent = `$ ${new Intl.NumberFormat('es-ES').format(copiaRutina[x].primero.valor)}`;
+                    segundoPrecio.textContent = `$ ${new Intl.NumberFormat('es-ES').format(copiaRutina[x].segundo.valor)}`;
+
+                    // Actualizar la zona de comparación
+                    firstProduct.textContent = copiaRutina[x].primero.nombre;
+                    secondProduct.textContent = copiaRutina[x].segundo.nombre;
+
+                    const firstProductName = copiaRutina[x].primero.nombre;
+                    const secondProductName = copiaRutina[x].segundo.nombre;
+
+                    //Aqui debemos usar las variables first y second para ejecutar la funcion que rellene los campos de descripción
+                    renderizarInformaciones(firstProductName, secondProductName)
+
+                    document.getElementById("span-P1").textContent = firstProductName;
+                    document.getElementById("span-P2").textContent = secondProductName;
+
+                    // Buscar y asignar pureza para el primer producto
+                    const firstPurityValue = purezaProductos.find(product => product[0] === firstProductName);
+                    if (firstPurityValue) {
+                        firstPurity.textContent = `${firstPurityValue[1]}`;
+                    }
+
+                    // Buscar y asignar pureza para el segundo producto
+                    const secondPurityValue = purezaProductos.find(product => product[0] === secondProductName);
+                    if (secondPurityValue) {
+                        secondPurity.textContent = `${secondPurityValue[1]}`;
+                    }
+
+                    // Crear botones dinámicamente con id según el producto seleccionado
+                    if (x === 0) { // empty-cleanser
+                        primeraZonaEleccion.innerHTML = `<button class="boton-eleccion" id="choose-first-cleanser">Elegir este</button>`;
+                        segundaZonaEleccion.innerHTML = `<button class="boton-eleccion" id="choose-second-cleanser">Elegir este</button>`;
+                    } else if (x === 1) { // empty-moisturizer
+                        primeraZonaEleccion.innerHTML = `<button class="boton-eleccion" id="choose-first-moisturizer">Elegir este</button>`;
+                        segundaZonaEleccion.innerHTML = `<button class="boton-eleccion" id="choose-second-moisturizer">Elegir este</button>`;
+                    } else if (x === 2) { // empty-sunscreen
+                        primeraZonaEleccion.innerHTML = `<button class="boton-eleccion" id="choose-first-sunscreen">Elegir este</button>`;
+                        segundaZonaEleccion.innerHTML = `<button class="boton-eleccion" id="choose-second-sunscreen">Elegir este</button>`;
+                    } else if (x === 3) { // empty-booster
+                        primeraZonaEleccion.innerHTML = `<button class="boton-eleccion" id="choose-first-booster">Elegir este</button>`;
+                        segundaZonaEleccion.innerHTML = `<button class="boton-eleccion" id="choose-second-booster">Elegir este</button>`;
+                    }
+                }
+            });
+
+            function closeModalChoosing() {
+                const modalProductChoosing = document.getElementById('modal-product-choosing');
+                modalProductChoosing.classList.remove('active'); // Remueve la clase "active" del modal
+            }
+
+            //Una vez generado el contenido del modal de forma dinamica, es hora de crear la función para cada posible id en los botones de elegir
+            document.addEventListener("click", function (event) {
+                const modalNewOrder = document.getElementById("modal-new-order"); // Modal donde se cierra
+                let temp; // Variable temporal para intercambio de productos
+
+                if (event.target && event.target.classList.contains("boton-eleccion")) {
+                    const botonId = event.target.id; // Obtenemos el id del botón presionado
+
+                    if (botonId === "choose-first-cleanser") {
+                        // Se elige el primer producto cleanser
+                        copiaRutina[0].render = true;
+                        copiaRutina[0].included = true;
+                        cleanserAmount = 1;
+                        document.getElementById("arrow-cleanser").className = "fa-solid fa-circle-check";
+                        fillShoppingCart(); // Llamar a la función para actualizar el carrito
+                        closeModalChoosing()
+                    } else if (botonId === "choose-second-cleanser") {
+                        // Se elige el segundo producto cleanser, intercambiando posiciones
+                        temp = { ...copiaRutina[0] };
+                        copiaRutina[0].primero = temp.segundo;
+                        copiaRutina[0].segundo = temp.primero;
+                        copiaRutina[0].render = true;
+                        copiaRutina[0].included = true;
+                        cleanserAmount = 1;
+                        document.getElementById("arrow-cleanser").className = "fa-solid fa-circle-check";
+                        fillShoppingCart(); // Llamar a la función para actualizar el carrito
+                        closeModalChoosing()
+                    } else if (botonId === "choose-first-moisturizer") {
+                        // Se elige el primer producto moisturizer
+                        copiaRutina[1].render = true;
+                        copiaRutina[1].included = true;
+                        moisturizerAmount = 1;
+                        document.getElementById("arrow-moisturizer").className = "fa-solid fa-circle-check";
+                        fillShoppingCart(); // Llamar a la función para actualizar el carrito
+                        closeModalChoosing()
+                    } else if (botonId === "choose-second-moisturizer") {
+                        // Se elige el segundo producto moisturizer, intercambiando posiciones
+                        temp = { ...copiaRutina[1] };
+                        copiaRutina[1].primero = temp.segundo;
+                        copiaRutina[1].segundo = temp.primero;
+                        copiaRutina[1].render = true;
+                        copiaRutina[1].included = true;
+                        moisturizerAmount = 1;
+                        document.getElementById("arrow-moisturizer").className = "fa-solid fa-circle-check";
+                        fillShoppingCart(); // Llamar a la función para actualizar el carrito
+                        closeModalChoosing()
+                    } else if (botonId === "choose-first-sunscreen") {
+                        // Se elige el primer producto sunscreen
+                        copiaRutina[2].render = true;
+                        copiaRutina[2].included = true;
+                        sunscreenAmount = 1;
+                        document.getElementById("arrow-sunscreen").className = "fa-solid fa-circle-check";
+                        fillShoppingCart(); // Llamar a la función para actualizar el carrito
+                        closeModalChoosing()
+                    } else if (botonId === "choose-second-sunscreen") {
+                        // Se elige el segundo producto sunscreen, intercambiando posiciones
+                        temp = { ...copiaRutina[2] };
+                        copiaRutina[2].primero = temp.segundo;
+                        copiaRutina[2].segundo = temp.primero;
+                        copiaRutina[2].render = true;
+                        copiaRutina[2].included = true;
+                        sunscreenAmount = 1;
+                        document.getElementById("arrow-sunscreen").className = "fa-solid fa-circle-check";
+                        fillShoppingCart(); // Llamar a la función para actualizar el carrito
+                        closeModalChoosing()
+                    } else if (botonId === "choose-first-booster") {
+                        // Se elige el primer producto booster
+                        copiaRutina[3].render = true;
+                        copiaRutina[3].included = true;
+                        boosterAmount = 1;
+                        document.getElementById("arrow-booster").className = "fa-solid fa-circle-check";
+                        fillShoppingCart(); // Llamar a la función para actualizar el carrito
+                        closeModalChoosing()
+                    } else if (botonId === "choose-second-booster") {
+                        // Se elige el segundo producto booster, intercambiando posiciones
+                        temp = { ...copiaRutina[3] };
+                        copiaRutina[3].primero = temp.segundo;
+                        copiaRutina[3].segundo = temp.primero;
+                        copiaRutina[3].render = true;
+                        copiaRutina[3].included = true;
+                        boosterAmount = 1;
+                        document.getElementById("arrow-booster").className = "fa-solid fa-circle-check";
+                        fillShoppingCart(); // Llamar a la función para actualizar el carrito
+                        closeModalChoosing()
+                    }
+                }
+            });
+
+            //Ahora crearemos la logica para manejar la información desplegada abajo del todo
+            //Primero la función para abrir los contenedores
+            function showInformation(id) {
+                const content = document.getElementById(id);
+                const arrow = content.previousElementSibling.querySelector('i');
+
+
+                // Si el contenido está visible, ciérralo; si está oculto, ábrelo
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                    arrow.style.transform = "rotate(0deg)"; // Flecha hacia abajo
+                } else {
+                    content.style.display = "block";
+                    arrow.style.transform = "rotate(180deg)"; // Flecha hacia arriba
+                }
+            }
+
+            document.querySelectorAll(".titulo-desplegable, .titulo-desplegable-2").forEach((elemento) => {
+                elemento.addEventListener("click", () => {
+                    // Obtener el ID del div que debe mostrarse
+                    const contenido = elemento.nextElementSibling;
+
+                    // Verificar si el siguiente elemento es el div que queremos
+                    if (contenido && contenido.classList.contains("contenido-desplegable")) {
+                        showInformation(contenido.id);
+                    }
+                });
+            });
+
+            //Ahora la funcion que renderiza las informaciones
+            function renderizarInformaciones(P1, P2) {
+                let primerProducto = null;
+                let segundoProducto = null;
+
+                // Buscar en cada arreglo por P1
+                for (let i = 0; i < infoLimpiadores.length; i++) {
+                    if (infoLimpiadores[i].nombre === P1) {
+                        primerProducto = infoLimpiadores[i];
+                        break;
+                    }
+                }
+                if (!primerProducto) {
+                    for (let i = 0; i < infoHidratantes.length; i++) {
+                        if (infoHidratantes[i].nombre === P1) {
+                            primerProducto = infoHidratantes[i];
+                            break;
+                        }
+                    }
+                }
+                if (!primerProducto) {
+                    for (let i = 0; i < infoProtectores.length; i++) {
+                        if (infoProtectores[i].nombre === P1) {
+                            primerProducto = infoProtectores[i];
+                            break;
+                        }
+                    }
+                }
+                if (!primerProducto) {
+                    for (let i = 0; i < infoPotenciadores.length; i++) {
+                        if (infoPotenciadores[i].nombre === P1) {
+                            primerProducto = infoPotenciadores[i];
+                            break;
+                        }
+                    }
+                }
+
+                // Buscar en cada arreglo por P2
+                for (let i = 0; i < infoLimpiadores.length; i++) {
+                    if (infoLimpiadores[i].nombre === P2) {
+                        segundoProducto = infoLimpiadores[i];
+                        break;
+                    }
+                }
+                if (!segundoProducto) {
+                    for (let i = 0; i < infoHidratantes.length; i++) {
+                        if (infoHidratantes[i].nombre === P2) {
+                            segundoProducto = infoHidratantes[i];
+                            break;
+                        }
+                    }
+                }
+                if (!segundoProducto) {
+                    for (let i = 0; i < infoProtectores.length; i++) {
+                        if (infoProtectores[i].nombre === P2) {
+                            segundoProducto = infoProtectores[i];
+                            break;
+                        }
+                    }
+                }
+                if (!segundoProducto) {
+                    for (let i = 0; i < infoPotenciadores.length; i++) {
+                        if (infoPotenciadores[i].nombre === P2) {
+                            segundoProducto = infoPotenciadores[i];
+                            break;
+                        }
+                    }
+                }
+
+                let mensajeContenido1 = '';
+
+                if (primerProducto) {
+                    // Iniciar el mensaje con queEs
+                    mensajeContenido1 += primerProducto.queEs; // Siempre comienza con queEs
+
+                    // Verifica y suma ingredientes según el caso particular
+                    if (userActual.casoParticular[1].includes('RA.')) {
+                        mensajeContenido1 += primerProducto.RA;
+                    }
+                    if (userActual.casoParticular[1].includes('HS.')) {
+                        mensajeContenido1 += primerProducto.HS;
+                    }
+                    if (userActual.casoParticular[1].includes('A.')) {
+                        mensajeContenido1 += primerProducto.A;
+                    }
+                    if (userActual.casoParticular[1].includes('TCM.')) {
+                        mensajeContenido1 += primerProducto.TCM;
+                    }
+
+                    // Sumar siempre BC y queEsperar al final
+                    mensajeContenido1 += primerProducto.BC;
+                    mensajeContenido1 += primerProducto.queEsperar;
+
+                    // Asigna el mensaje al contenido1
+                    document.getElementById('contenido1').innerHTML = mensajeContenido1;
+                } else {
+                    console.warn(`No se encontró un objeto con el nombre especificado`);
+                }
+
+                // Mensaje para contenido2
+                let mensajeContenido2 = '';
+
+                if (segundoProducto) {
+                    // Iniciar el mensaje con queEs
+                    mensajeContenido2 += segundoProducto.queEs; // Siempre comienza con queEs
+
+                    // Verifica y suma ingredientes según el caso particular
+                    if (userActual.casoParticular[1].includes('RA.')) {
+                        mensajeContenido2 += segundoProducto.RA;
+                    }
+                    if (userActual.casoParticular[1].includes('HS.')) {
+                        mensajeContenido2 += segundoProducto.HS;
+                    }
+                    if (userActual.casoParticular[1].includes('A.')) {
+                        mensajeContenido2 += segundoProducto.A;
+                    }
+                    if (userActual.casoParticular[1].includes('TCM.')) {
+                        mensajeContenido2 += segundoProducto.TCM;
+                    }
+
+                    // Sumar siempre BC y queEsperar al final
+                    mensajeContenido2 += segundoProducto.BC;
+                    mensajeContenido2 += segundoProducto.queEsperar;
+
+                    // Asigna el mensaje al contenido2
+                    document.getElementById('contenido2').innerHTML = mensajeContenido2;
+                } else {
+                    console.warn(`No se encontró un objeto con el nombre especificado`);
+                };
+            }
+
+
+            //Con toda la logica para añadir y escoger productos, solo quedaria abrir y cerrar el modal de los ultimos datos y al confirmacion, asi como su logica interior
+            const purchaseBtn = document.getElementById('purchase-btn');
+            const modalFinalData = document.getElementById('modal-final-data');
+            const closeFinalPurchaseModal = modalFinalData.querySelector('.close-final-purchase-modal');
+            let pagoActual = ""
+
+            // Event listener for opening the modal when the purchase button is clicked
+            purchaseBtn.addEventListener('click', () => {
+                //Primero asegurarnos de que el scroll este permitido al bloquear el del body
+                document.body.classList.add('modal-open');
+
+                const modalFinalData2 = document.getElementById('modal-final-data-2'); // Div donde se insertan los productos
+                const modalFinalData3 = document.getElementById('modal-final-data-3'); // Div donde se muestra el total
+                modalFinalData2.innerHTML = ''; // Limpiar contenido previo
+                modalFinalData3.innerHTML = ''; // Limpiar total previo
+
+                let totalItems = cleanserAmount + moisturizerAmount + sunscreenAmount + boosterAmount;
+
+                if (totalItems === 0) {
+                    alert("Incluye al menos un producto")
+                    return;
+                }
+
+                let totalCost = 0;
+
+                const products = [
+                    { amount: cleanserAmount, data: copiaRutina[0] },
+                    { amount: moisturizerAmount, data: copiaRutina[1] },
+                    { amount: sunscreenAmount, data: copiaRutina[2] },
+                    { amount: boosterAmount, data: copiaRutina[3] }
+                ];
+
+                products.forEach(product => {
+                    if (product.amount > 0) {
+                        const totalPrice = product.amount * product.data.primero.valor; // Precio total del producto
+                        totalCost += totalPrice; // Sumar al costo total
+
+                        const cartItem = document.createElement('div');
+                        cartItem.classList.add('cart-content');
+                        cartItem.innerHTML = `
+                <div class="cart-content-1">
+                    <p class="cart-quantity">${product.amount}</p>
+                    <p class="cart-product">${product.data.primero.nombre}</p>
+                </div>
+                <div class="cart-content-2">
+                    <p class="cart-price">$${new Intl.NumberFormat('es-ES').format(totalPrice)}</p>
+                </div>
+            `;
+                        modalFinalData2.appendChild(cartItem);
+                    }
+                });
+
+                // Determinar costo de envío
+                let shippingCost;
+                if (totalItems === 1) {
+                    shippingCost = 9000;
+                } else if (totalItems === 2) {
+                    shippingCost = 6000;
+                } else if (totalItems >= 3) {
+                    shippingCost = 0; // Envío gratis
+                } else {
+                    shippingCost = 0; // Si no hay productos, el envío es 0
+                }
+
+                // Agregar el costo de envío como un elemento más en el carrito
+                const shippingItem = document.createElement('div');
+                shippingItem.classList.add('cart-content');
+                shippingItem.innerHTML = `
+    <div class="cart-content-1">
+        <p class="cart-quantity">1</p>
+        <p class="cart-product">Envío</p>
+    </div>
+    <div class="cart-content-2">
+        <p class="cart-price">${shippingCost === 0 ? 'GRATIS' : `$${Number(shippingCost).toLocaleString('es-ES')}`}</p>
+    </div>
+`;
+                modalFinalData2.appendChild(shippingItem);
+
+                // Sumar el costo de envío al total
+                totalCost += shippingCost;
+
+                // Agregar el total al modalFinalData3
+                const totalElement = document.createElement('p');
+                totalElement.textContent = `$${new Intl.NumberFormat('es-ES').format(totalCost)}`;
+                modalFinalData3.appendChild(totalElement);
+
+                document.getElementById('input-1').value = userActual.datosCliente[4];
+                document.getElementById('input-2').value = userActual.datosCliente[2];
+                document.getElementById('input-3').value = userActual.datosCliente[3];
+
+                pagoActual = userActual.datosCliente[6]
+
+                document.getElementById(pagoActual).classList.add('active');
+                // Ahora abrimos el modal principal
+                modalFinalData.classList.add('active');
+            });
+
+            function cambiarPago(nuevoPago) {
+                if (pagoActual !== nuevoPago) {
+                    // Removemos la clase 'active' del botón actualmente seleccionado
+                    document.getElementById(pagoActual).classList.remove('active');
+
+                    // Actualizamos la variable global
+                    pagoActual = nuevoPago;
+
+                    // Añadimos la clase 'active' al nuevo botón seleccionado
+                    document.getElementById(pagoActual).classList.add('active');
+
+                }
+            }
+
+            document.getElementById("modal-final-data-4").addEventListener("click", function (event) {
+                if (event.target.id === "c") {
+                    cambiarPago("c");
+                } else if (event.target.id === "n") {
+                    cambiarPago("n");
+                }
+            });
+
+
+            // Event listener for closing the modal when the close button is clicked
+            closeFinalPurchaseModal.addEventListener('click', () => {
+                document.body.classList.remove('modal-open');
+                modalFinalData.classList.remove('active');
+            });
+
+            function addBusinessDays(date, days) {
+                let count = 0;
+                while (count < days) {
+                    date.setDate(date.getDate() + 1);
+                    // Si no es sábado (6) o domingo (0), es un día hábil
+                    if (date.getDay() !== 0 && date.getDay() !== 6) {
+                        count++;
+                    }
+                }
+                return date;
+            }
+
+            function crearContenidoPedido() {
+                let contenidoPedido = [];
+
+                // Definir los productos con sus índices en copiaRutina
+                const productos = [
+                    { cantidad: cleanserAmount, rutinaIndex: 0 },
+                    { cantidad: moisturizerAmount, rutinaIndex: 1 },
+                    { cantidad: sunscreenAmount, rutinaIndex: 2 },
+                    { cantidad: boosterAmount, rutinaIndex: 3 }
+                ];
+
+                // Iterar sobre los productos y agregar los que tienen cantidad mayor a 0
+                productos.forEach(producto => {
+                    if (producto.cantidad > 0) {
+                        contenidoPedido.push([
+                            producto.cantidad,
+                            copiaRutina[producto.rutinaIndex].primero.nombre,
+                            copiaRutina[producto.rutinaIndex].primero.valor
+                        ]);
+                    }
+                });
+
+                return contenidoPedido;
+            }
+
+            function createNewLastOrder() {
+                let code = Math.floor(Math.random() * (10000 - 2200 + 1)) + 2200;
+                let contenido = copiaRutina
+                    .filter(item => item.included) // Filtra solo los elementos donde included es true
+                    .map(item => item.primero.nombre);
+
+                let totalProductos = cleanserAmount + moisturizerAmount + sunscreenAmount + boosterAmount;
+                let envio = totalProductos === 1 ? 9000 : totalProductos === 2 ? 6000 : 0
+
+                let total = document.querySelector('#modal-final-data-3 p').textContent;
+                total = total.replace('$', '').replace(/\./g, '');
+
+                // Obtener la fecha de hoy
+                let today = new Date();
+                // Sumar 4 días hábiles
+                let estimatedDate = addBusinessDays(new Date(today), 4);
+
+                // Formatear la fecha como "17 de Dic."
+                let day = estimatedDate.getDate();
+                let month = estimatedDate.toLocaleString('default', { month: 'short' }); // Obtener el mes en formato abreviado
+                month = month.charAt(0).toUpperCase() + month.slice(1); // Capitalizar la primera letra del mes
+
+                let entregaestimada = `${day} de ${month}.`;
+
+                let fechaPedidoDay = today.getDate();
+                let fechaPedidoMonth = today.toLocaleString('default', { month: 'long' }); // Obtener el mes en formato largo
+                let fechaPedidoYear = today.getFullYear();
+
+                let fechaPedido = `${fechaPedidoDay} de ${fechaPedidoMonth}, ${fechaPedidoYear}`;
+
+                return {
+                    activo: true,
+                    codigo: code,
+                    estado: "nuevo",
+                    pago: pagoActual,
+                    contenido: contenido,
+                    envio: envio,
+                    total: total,
+                    entregaEstimada: entregaestimada,
+                    fechaPedido: fechaPedido
+                }
+            }
+
+            function resetNewOrderData() {
+                cleanserAmount = 0;
+                moisturizerAmount = 0;
+                sunscreenAmount = 0;
+                boosterAmount = 0;
+
+                copiaRutina.forEach(item => {
+                    item.included = false;  // Asignar false a la propiedad included
                 });
             }
 
-            // Llenar los datos en el HTML
-            if (userActual) {
-                renderCarrito(userActual.contenido);
-            } else {
-                document.body.innerHTML = "<h1>Pedido no encontrado</h1>";
+            function activarZonaConfirmacion() {
+                var zonaConfirmacion = document.getElementById("zona-confirmacion");
+
+                // Añadir la clase 'active'
+                zonaConfirmacion.classList.add("active");
+
+                // Eliminar la clase 'active' después de 3 segundos
+                setTimeout(function () {
+                    zonaConfirmacion.classList.remove("active");
+                }, 3000); // 3000 milisegundos = 3 segundos
             }
 
-            // Actualizar el pago
-            const pagoElement = document.querySelector(".pago");
-            const [metodoPago, estadoPago] = userActual.pago;
+            document.getElementById('final-btn').addEventListener('click', () => {
+                const finalBtn = document.getElementById('final-btn');
 
-            // Crear las divisiones de pago
-            const pago1Div = document.createElement("div");
-            pago1Div.classList.add("pago-1");
-            pago1Div.textContent = metodoPago;
+                // Obtener los valores de los inputs y eliminar espacios adicionales
+                const input1 = document.getElementById('input-1').value.trim();
+                const input2 = document.getElementById('input-2').value.trim();
+                const input3 = document.getElementById('input-3').value.trim();
+                const modalFinalData3 = document.getElementById('modal-final-data-3').querySelector('p').textContent.trim();
 
-            const pago2Div = document.createElement("div");
-            pago2Div.classList.add("pago-2");
-            pago2Div.textContent = estadoPago;
-
-            if (estadoPago === "Recibido") {
-                pago2Div.style.color = "#3DA700"; // Color verde claro para "Recibido"
-            } else if (estadoPago === "Pendiente") {
-                pago2Div.style.color = "#FF672A"; // Color rojo para "Pendiente"
-            }
-
-            // Agregar las divisiones al contenedor de pago
-            pagoElement.appendChild(pago1Div);
-            pagoElement.appendChild(pago2Div);
-
-
-            function renderMorningRoutine() {
-                const morningRoutineDiv = document.querySelector('.morning-routine');
-                morningRoutineDiv.innerHTML = ''; // Limpiar el contenido antes de renderizar
-
-                // Crear el contenedor del título "POR LA MAÑANA" con la imagen del sol
-                const titleDiv = document.createElement('div');
-                titleDiv.classList.add('routine-morning-title'); // Añadimos una clase para aplicarle estilo
-
-                // Crear la imagen del sol
-                const imgSol = document.createElement('img');
-                imgSol.src = '../assets/sol.webp'; // Ruta de la imagen (asegúrate de que sea correcta)
-                imgSol.alt = 'Sol'; // Texto alternativo para la imagen
-                imgSol.classList.add('sun-image'); // Clase para el estilo de la imagen
-
-                // Crear el texto "POR LA MAÑANA"
-                const textTitle = document.createElement('p');
-                textTitle.textContent = 'POR LA MAÑANA';
-                textTitle.classList.add('morning-title-text'); // Clase para el estilo del texto
-
-                // Añadir la imagen y el texto al div
-                titleDiv.appendChild(imgSol);
-                titleDiv.appendChild(textTitle);
-
-                // Añadir el contenedor de título al div principal
-                morningRoutineDiv.appendChild(titleDiv);
-
-                // Ordenar actualKit según la propiedad 'turno'
-                const actualKitOrdenado = [...userActual.actualKit].sort((a, b) => a.turno - b.turno);
-
-                // Filtrar los productos que tienen 'M' o 'MN' en la propiedad 'tiempo'
-                const productosMorning = actualKitOrdenado.filter(producto => producto.tiempo === 'M' || producto.tiempo === 'MN');
-
-                if (productosMorning.length === 0) {
-                    const descansoP = document.createElement('p');
-                    descansoP.classList.add('descanso-mañana');
-                    descansoP.innerHTML = 'Limpiar con agua tibia <br>será suficiente';
-                    morningRoutineDiv.appendChild(descansoP);
-                    return; // Salir de la función
+                // Validar que todos tengan mínimo 4 caracteres
+                if (input1.length < 4 || input2.length < 4 || input3.length < 4) {
+                    alert('Por favor, completa todos los campos con al menos 4 caracteres.');
+                    return;
                 }
 
-                const tieneLimpiador = productosMorning.some(producto => producto.categoria === 'LIMPIADOR');
+                // Guardar el contenido original del botón
+                const originalContent = finalBtn.innerHTML;
 
-                // Si no hay productos con categoría "LIMPIADOR", agregar el mensaje de agua tibia
-                if (!tieneLimpiador) {
-                    const aguaTibiaDiv = document.createElement('div');
-                    aguaTibiaDiv.classList.add('agua-tibia'); // Clase para aplicar estilo al div
+                // Mostrar el ícono de carga y deshabilitar el botón
+                finalBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i>';
+                finalBtn.disabled = true;
 
-                    const aguaTibiaP = document.createElement('p');
-                    aguaTibiaP.textContent = 'Por las mañanas límpiate solo con agua tibia.';
+                // Crear el mensaje con el formato solicitado
+                const mensaje = [
+                    "Recompra",
+                    [userActual.datosCliente[0], userActual.datosCliente[1], userActual.datosCliente[5]],
+                    userActual.casoParticular,
+                    crearContenidoPedido(),
+                    modalFinalData3,
+                    input1,
+                    input2,
+                    input3,
+                    pagoActual
+                ];
 
-                    // Añadir el p al div
-                    aguaTibiaDiv.appendChild(aguaTibiaP);
+                fetch('/send-second-order', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ messageBody: mensaje }),
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            ordenActual = createNewLastOrder()
+                            renderLastOrder()
+                            resetNewOrderData()
+                            modalFinalData.classList.remove('active');
+                            modalNewOrder.classList.remove('active');
+                            showContent('content1')
+                            activarZonaConfirmacion()
+                        } else {
+                            throw new Error('Error en el envío del mensaje');
+                        }
+                    })
+                    .catch(error => {
+                        alert('Por favor, vuelve a intentarlo: ' + error.message);
+                    })
+                    .finally(() => {
+                        // Restaurar el contenido original del botón y habilitarlo nuevamente
+                        finalBtn.innerHTML = originalContent;
+                        finalBtn.disabled = false;
+                    });
+            });
 
-                    // Añadir el div al contenedor principal antes de los productos
-                    morningRoutineDiv.appendChild(aguaTibiaDiv);
-                }
 
-                // Renderizar los productos filtrados
-                const orden = ['PRIMERO', 'SEGUNDO', 'TERCERO', 'CUARTO', 'QUINTO'];
-                let inicioIndex = tieneLimpiador ? 0 : 1; // Si no hay limpiador, el índice inicial será 1 (SEGUNDO)
-
-                productosMorning.forEach((producto, index) => {
-                    // Crear un contenedor para cada producto
-                    const productDiv = document.createElement('div');
-                    productDiv.classList.add('product-item-2');
-
-                    // Texto que indica el orden de los productos
-                    const ordenTexto = orden[index + inicioIndex] || `${index + 1 + inicioIndex}º`;
-
-                    // Renderizar el texto de orden
-                    const ordenP = document.createElement('p');
-                    ordenP.classList.add('orden-producto');
-                    ordenP.textContent = ordenTexto;
-                    productDiv.appendChild(ordenP);
-
-                    // Mostrar la categoría del producto
-                    const categoriaP = document.createElement('p');
-                    categoriaP.classList.add('categoria-producto'); // Clase para el estilo de la categoría
-                    categoriaP.textContent = producto.categoria; // Asegúrate de que "categoria" existe en el objeto producto
-                    productDiv.appendChild(categoriaP);
-
-                    // Mostrar solo el nombre del producto
-                    const nombreP = document.createElement('p');
-                    nombreP.classList.add('nombre-producto');
-                    nombreP.textContent = producto.nombre;
-                    productDiv.appendChild(nombreP);
-
-                    // Si el producto tiene un 'alert' no vacío, mostrarlo debajo del nombre
-                    if (producto.alert !== '') {
-                        const alertP = document.createElement('p');
-                        alertP.classList.add('alert-message');
-                        alertP.textContent = producto.alert;
-                        productDiv.appendChild(alertP);
-                    }
-
-                    // Añadir el producto al contenedor de morning-routine
-                    morningRoutineDiv.appendChild(productDiv);
-
-                    // Añadir el separador si no es el último producto
-                    if (index < productosMorning.length - 1) {
-                        const separadorDiv = document.createElement('div');
-                        separadorDiv.classList.add('separador-routine');
-                        morningRoutineDiv.appendChild(separadorDiv);
-                    }
-                });
-            }
-
-            function renderNightRoutine() {
-                const nightRoutineDiv = document.querySelector('.night-routine');
-                nightRoutineDiv.innerHTML = ''; // Limpiar el contenido antes de renderizar
-
-                // Crear el contenedor del título "POR LA NOCHE" con la imagen de la luna
-                const titleDiv = document.createElement('div');
-                titleDiv.classList.add('routine-night-title'); // Reutilizamos la clase para aplicar el mismo estilo
-
-                // Crear la imagen de la luna
-                const imgLuna = document.createElement('img');
-                imgLuna.src = '../assets/luna.webp'; // Ruta de la imagen de la luna
-                imgLuna.alt = 'Luna'; // Texto alternativo para la imagen
-                imgLuna.classList.add('sun-image'); // Reutilizamos la clase de la imagen para mantener los estilos
-
-                // Crear el texto "POR LA NOCHE"
-                const textTitle = document.createElement('p');
-                textTitle.textContent = 'POR LA NOCHE';
-                textTitle.classList.add('morning-title-text'); // Reutilizamos el estilo del texto
-
-                // Añadir la imagen y el texto al div del título
-                titleDiv.appendChild(imgLuna);
-                titleDiv.appendChild(textTitle);
-
-                // Añadir el contenedor de título al div principal
-                nightRoutineDiv.appendChild(titleDiv);
-
-                const makeupDiv = document.createElement('div');
-                makeupDiv.classList.add('makeup'); // Clase para personalizar estilos
-                makeupDiv.textContent = 'Si te maquillas, retíralo como normalmente lo haces antes de aplicar la rutina.';
-                nightRoutineDiv.appendChild(makeupDiv); // Añadir el contenedor al div principal
-
-                // Ordenar actualKit según la propiedad 'turno'
-                const actualKitOrdenado = [...userActual.actualKit].sort((a, b) => a.turno - b.turno);
-
-                // Filtrar los productos que tienen 'N' o 'MN' en la propiedad 'tiempo'
-                const productosNight = actualKitOrdenado.filter(producto => producto.tiempo === 'N' || producto.tiempo === 'MN');
-
-                if (productosNight.length === 0) {
-                    // Si no hay productos con tiempo 'M' o 'MN', mostrar el mensaje "Por la mañana puedes descansar"
-                    const descansoN = document.createElement('p');
-                    descansoN.classList.add('descanso-noche');
-                    descansoN.innerHTML = 'Por la noche puedes <br>descansar...';
-                    nightRoutineDiv.appendChild(descansoN);
-                    return; // Salir de la función
-                }
-
-                // Renderizar los productos filtrados
-                productosNight.forEach((producto, index) => {
-                    // Crear un contenedor para cada producto
-                    const productDiv = document.createElement('div');
-                    productDiv.classList.add('product-item-2');
-
-                    // Texto que indica el orden de los productos (PRIMERO, SEGUNDO, etc.)
-                    const orden = ['PRIMERO', 'SEGUNDO', 'TERCERO', 'CUARTO', 'QUINTO'];
-                    const ordenTexto = orden[index] || `${index + 1}º`;
-
-                    // Renderizar el texto de orden
-                    const ordenP = document.createElement('p');
-                    ordenP.classList.add('orden-producto');
-                    ordenP.textContent = ordenTexto;
-                    productDiv.appendChild(ordenP);
-
-                    // Mostrar la categoría del producto
-                    const categoriaP = document.createElement('p');
-                    categoriaP.classList.add('categoria-producto'); // Clase para el estilo de la categoría
-                    categoriaP.textContent = producto.categoria; // Asegúrate de que "categoria" existe en el objeto producto
-                    productDiv.appendChild(categoriaP);
-
-                    // Mostrar solo el nombre del producto
-                    const nombreP = document.createElement('p');
-                    nombreP.classList.add('nombre-producto');
-                    nombreP.textContent = producto.nombre;
-                    productDiv.appendChild(nombreP);
-
-                    // Si el producto tiene un 'alert' no vacío, mostrarlo debajo del nombre
-                    if (producto.alert !== '') {
-                        const alertP = document.createElement('p');
-                        alertP.classList.add('alert-message');
-                        alertP.textContent = producto.alert;
-                        productDiv.appendChild(alertP);
-                    }
-
-                    // Añadir el producto al contenedor de night-routine
-                    nightRoutineDiv.appendChild(productDiv);
-
-                    // Añadir el separador si no es el último producto
-                    if (index < productosNight.length - 1) {
-                        const separadorDiv = document.createElement('div');
-                        separadorDiv.classList.add('separador-routine');
-                        nightRoutineDiv.appendChild(separadorDiv);
-                    }
-                });
-            }
-
-            window.onload = function () {   // Actualiza la fecha
-                renderMorningRoutine();  // Renderiza la rutina de la mañana
-                renderNightRoutine();
-            };
         });
+
+
     </script>
 
     <script>

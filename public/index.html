@@ -41,11 +41,11 @@
             <div class="overlay-3 yellow">
                 <p>Las rutinas no tienen porque ser larguísimas y costosas.</p>
             </div>
-            
+
             <div class="overlay-3 red">
                 <p>Casi nadie <span class="no-bold">necesita</span> 15 pasos diferentes</p>
             </div>
-           
+
             <div class="overlay-4 green">
                 <p>Solo <span class="no-bold">necesitas</span> lo que de verdad le hace falta a tu piel</p>
             </div>
@@ -62,7 +62,7 @@
                         <i class="fas fa-tint"></i>
                         <p>Hidratante</p>
                     </div>
-                    
+
                     <div class="overlay-6-3">
                         <i class="fas fa-sun"></i>
                         <p>Bloqueador</p>
@@ -75,7 +75,8 @@
             </div>
             <div class="overlay-7">
                 <p class="overlay-7-title">Según tus respuestas...</p>
-                <p class="overlay-7-exp">Escogeremos <span class="bold">dos posibles productos</span> para cada uno de los pasos</p>
+                <p class="overlay-7-exp">Escogeremos <span class="bold">dos posibles productos</span> para cada uno de
+                    los pasos</p>
                 <p class="overlay-7-example">Verás algo como esto:</p>
             </div>
 
@@ -91,9 +92,11 @@
 
             <div class="overlay-9">
                 <p class="overlay-9-title">Cuando hayas escogido tus productos</p>
-                <p class="overlay-9-exp"><i class="fas fa-list-check"></i> Te mostraremos cuándo y en qué orden aplicarlos</p>
-                
-                <p class="overlay-9-exp"><span class="flag-icon flag-icon-co"></span> Podrás ordenar la rutina y recibirla en cualquier parte de Colombia.</p>
+                <p class="overlay-9-exp"><i class="fas fa-list-check"></i> Te mostraremos cuándo y en qué orden
+                    aplicarlos</p>
+
+                <p class="overlay-9-exp"><span class="flag-icon flag-icon-co"></span> Podrás ordenar la rutina y
+                    recibirla en cualquier parte de Colombia.</p>
             </div>
 
             <div class="overlay-10">
@@ -111,7 +114,7 @@
             <div class="overlay-2">
                 <img src="assets/marcas/roche.webp" alt="" class="fade-image">
             </div>
-            
+
             <div class="overlay-bottom"></div>
         </div>
 
@@ -119,11 +122,10 @@
             <button class="reverse-button">Cerrar</button>
             <div class="sliding-div-title">
                 <i class="fas fa-user"></i>
-                <p>Iniciar sesión</p>
+                <p>Accede a tu cuenta</p>
             </div>
             <div class="sliding-div-inputs">
-                <input type="text" class="input-field" placeholder="Cédula">
-                <input type="password" class="input-field" placeholder="Contraseña">
+                <input type="number" class="input-field" placeholder="Cédula">
             </div>
             <div class="log-in-button">
                 <button class="log-in">Ingresar</button>
@@ -273,7 +275,7 @@
                     <i class="fa-solid fa-triangle-exclamation"></i>
                 </div>
                 <div class="disclaimer-exp">
-                    <p>El Skincare no cura enfermedades, solo te hace mas bello. <br> <span class="exp-second">Si tienes
+                    <p>El Skincare no cura enfermedades. <br> <span class="exp-second">Si tienes
                             algún problema grave como:</span></p>
                 </div>
                 <div class="disclaimer-symptom">
@@ -323,7 +325,37 @@
         </div>
     </div>
 
+
+
     <script src="/js/main.js"></script>
+
+    <script src="/info/users.js"></script>
+    <script>
+        document.querySelector('.log-in').addEventListener('click', function () {
+            // Obtener el valor del campo de entrada
+            const inputFieldValue = document.querySelector('.input-field').value.trim();
+            let filteredValue = inputFieldValue.replace(/[.\s]/g, "");
+
+            // Validar que el campo no esté vacío
+            if (!inputFieldValue) {
+                alert('Ingresa un valor válido');
+                return;
+            }
+
+            // Buscar el usuario por cédula
+            const user = users.find(user => user.datosCliente[1] === filteredValue);
+
+            // Si se encuentra el usuario
+            if (user) {
+                // Redirigir a la página de pedidos con la cédula
+                window.location.href = `/user/${inputFieldValue}`;
+            } else {
+                // Si no se encuentra el usuario
+                alert('Usuario no encontrado');
+            }
+        });
+    </script>
+
 
     <script>
         function checkScreen() {

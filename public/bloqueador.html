@@ -95,8 +95,8 @@
         </div>
     </div>
 
-    <script src="js/product.js"></script>
-    <script src="js/info.js"></script>
+    <script src="/js/product.js"></script>
+    <script src="/js/info.js"></script>
     <script defer>
         function agregarProducto(productoId) {
             const producto = productoId === 'B1' ? B1 : B2;
@@ -157,7 +157,7 @@
                 </div>
                 <div class="zona-tipo-2">${B2.calidad === 'E' ? 'Estándar' : 'Premium'}</div>
                 <div class="zona-nombre">${B2.nombre} <br>
-                    <span style="font-family: 'h'; font-size: 4.5vw; color: #ffffffe0; margin-top: 1.5vw"">${B2.cantidad}ml</span>
+                    <span style="font-family: 'h'; font-size: 4.5vw; color: #ffffffe0; margin-top: 1.5vw">${B2.cantidad}ml</span>
                 </div>
                 <div class="zona-cantidad">
                     <p>$ ${B2.valor.toLocaleString('es-ES')}</p>

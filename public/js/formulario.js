@@ -8,7 +8,6 @@ function precargarImagenes() {
     });
 }
 
-
 // Función para renderizar la lista
 function renderProductList() {
     const productList = document.getElementById('product-list');
@@ -374,7 +373,6 @@ function renderNightRoutine() {
 
 function reemplazarProducto(index) {
     const productoSeleccionado = actualKit[index]
-    const counter = 0;
     if (productoSeleccionado && typeof productoSeleccionado.replace === 'number') {
         // Obtener el índice de reemplazo del producto seleccionado
         const indexToReplace = productoSeleccionado.replace;
@@ -1375,8 +1373,15 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function returnIfZero() {
+    if (actualKit .length === 0) {
+        window.location.href = 'index.html'; // Redirigir a formulario.html
+        return;
+    }
+}
 
 window.onload = function () {
+    returnIfZero()
     renderProductList();  // Renderiza la lista de productos
     actualizarFecha();    // Actualiza la fecha
     renderMorningRoutine();  // Renderiza la rutina de la mañana

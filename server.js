@@ -5,7 +5,7 @@ const path = require('path');
 
 // Configurar las credenciales de Twilio
 const accountSid = 'ACfd63cf95c0de859ab05cb54b8bf5742a'; // Tu Account SID de Twilio
-const authToken = '9c2f71c992e13823b5a02c0955492a24'; // Tu Auth Token de Twilio
+const authToken = 'cea1f50a72d143b0c826256c3e0a2a9c'; // Tu Auth Token de Twilio
 const client = twilio(accountSid, authToken);
 
 // Crear una instancia de Express
@@ -49,6 +49,26 @@ app.post('/send-message', (req, res) => {
     client.messages
         .create({
             body: finalMessage,  // El cuerpo del mensaje es el arreglo estructurado
+            from: 'whatsapp:+14155238886', // Número de Twilio para WhatsApp
+            to: 'whatsapp:+573058376094'   // Tu número de teléfono
+        })
+        .then(message => {
+            res.status(200).send('Mensaje enviado correctamente');
+        })
+        .catch(error => {
+            res.status(500).send('Error al enviar el mensaje');
+        });
+});
+
+app.post('/send-second-order', (req, res) => {
+    let { messageBody } = req.body;
+
+    // Convertimos el arreglo en una cadena formateada
+    const formattedMessage = JSON.stringify(messageBody, null, 2);
+
+    client.messages
+        .create({
+            body: formattedMessage,
             from: 'whatsapp:+14155238886', // Número de Twilio para WhatsApp
             to: 'whatsapp:+573058376094'   // Tu número de teléfono
         })

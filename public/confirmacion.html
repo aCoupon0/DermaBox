@@ -25,7 +25,8 @@
         <p class="txt-1">Empezaste tu viaje y adquiriste<br> tu <span>primer</span> DermaBox</p>
         <div class="separador"></div>
         <p class="txt-2">Durante el transcurso del día <br>te enviaremos <b>la confirmación <br> de tu pedido</b> y el
-            <b>link de seguimiento.</b></p>
+            <b>link de seguimiento.</b>
+        </p>
         <h2>Hasta pronto!</h2>
     </div>
 
@@ -77,8 +78,16 @@
             }
         }
 
+
+        function resetLocalStorage() {
+            localStorage.setItem('actualKit', JSON.stringify([]));
+        }
+
         // Ejecuta la función al cargar y al cambiar el tamaño/orientación
-        window.addEventListener('load', checkScreen);
+        window.addEventListener('load', function () {
+            resetLocalStorage();
+            checkScreen();
+        });
         window.addEventListener('resize', checkScreen);
         window.addEventListener('orientationchange', checkScreen);
 

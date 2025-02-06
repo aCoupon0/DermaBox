@@ -250,6 +250,8 @@ body::before {
     margin-top: 6vw;
     padding-top: 3vw;
     padding-bottom: 3vw;
+    border-top-left-radius: 5vw;
+    border-top-right-radius: 5vw;
 }
 
 .flecha-abajo {
@@ -269,9 +271,14 @@ body::before {
 .comparacion-zona {
     width: 100%;
     height: auto;
-    background-color: rgba(0, 0, 0, 0.721);
+    background: linear-gradient(90deg, rgba(254, 253, 253, 0.127), rgba(98, 100, 73, 0.261));
     display: flex;
     flex-direction: column;
+    border-bottom-left-radius: 5vw;
+    border-bottom-right-radius: 5vw;
+      
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px)
 }
 
 .separador-comparativo {
@@ -287,16 +294,15 @@ body::before {
     padding-right: 3vw;
     padding-left: 3vw;
     padding-bottom: 6vw;
-    display: flex;
-    justify-content: center;
-    gap: 4vw;
-    align-items: center;
-    flex-direction: row;
-    font-size: 4.9vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2vw;
+    font-size: 4.5vw;
     font-family: 'hb';
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.782);
+    box-shadow: 0px 10px 15px -5px rgba(255, 255, 255, 0.122);
     line-height: 5.5vw;
+    box-sizing: border-box;
 }
 
 .comparacion-zona-bloque-1 p:first-child {
@@ -310,9 +316,6 @@ body::before {
 .bloque-comparativo {
     width: 100%;
     height: 30vw;
-    
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
     margin-bottom: 5vw;
 }
 

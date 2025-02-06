@@ -69,9 +69,9 @@ body {
     color: white;
     font-family: 'hb';
     height: 30vw;
-    background-color: rgba(255, 255, 255, 0.203);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px); /* Añadir prefijo */
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.229), rgba(123, 123, 123, 0.263));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px); /* Añadir prefijo */
     box-shadow: 0 4px 17px rgba(255, 255, 255, 0);
     padding-top: 1vw;
     padding-bottom: 1vw;
@@ -405,6 +405,12 @@ span {
 .capture {
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .routine-periodicity {
@@ -436,7 +442,7 @@ span {
 }
 
 .morning-routine {
-    width: 95vw;
+    width: 90vw;
     height: auto;
     background-color: #80670271;
     backdrop-filter: blur(7px);
@@ -444,7 +450,6 @@ span {
     border-radius: 10vw;
     margin-bottom: 5vw;
     padding-bottom: 1vw;
-    margin-left: 2.5vw;
     font-family: 'hb';
 }
 
@@ -519,7 +524,7 @@ span {
 }
 
 .night-routine {
-    width: 95vw;
+    width: 90vw;
     height: auto;
     background-color: #00353d88;
     backdrop-filter: blur(7px);
@@ -527,7 +532,6 @@ span {
     border-radius: 10vw;
     margin-bottom: 5vw;
     padding-bottom: 1vw;
-    margin-left: 2.5vw;
     font-family: 'hb';
 }
 
@@ -591,12 +595,11 @@ span {
     padding-left: 5vw;
     padding-right: 5vw;
 }
-
+ 
 .makeup {
     height: auto;
     width: 100%;
-    padding-top: 3vw;
-    padding-bottom: 3vw;
+    padding: 5vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -606,6 +609,8 @@ span {
     color: #c0dfff;
     font-size: 4vw;
     font-family: 'hb';
+    line-height: 5vw;
+    box-sizing: border-box;
 }
 
 .categoria-producto {
@@ -667,6 +672,7 @@ span {
 .modal.show {
     opacity: 1; /* Visibilidad completa */
     visibility: visible; /* Ahora el modal es visible */
+    transition: opacity 0.5s ease; /* Transición suave al ocultar */
 }
 
 /* Cuando el modal está oculto (fade out) */
@@ -700,6 +706,7 @@ span {
     justify-content: flex-start;
     align-items: center;
     padding-left: 10vw;
+    gap: 5%;
 }
 
 .modal p{
@@ -721,12 +728,13 @@ input {
     padding: 2vw;
     padding-left: 6vw;
     font-size: 1rem;
-    border-radius: 15vw;
+    border-radius: 2vw;
     background-color: rgba(255, 255, 255, 0.163);
     color: white;
     font-family: "hb";
     font-size: 4.8vw;
     border: none;
+    border: 1px solid rgba(255, 255, 255, 0.254);
 }
 
 input:focus {
