@@ -5,7 +5,7 @@ const path = require('path');
 
 // Configurar las credenciales de Twilio
 const accountSid = 'ACfd63cf95c0de859ab05cb54b8bf5742a'; // Tu Account SID de Twilio
-const authToken = 'cea1f50a72d143b0c826256c3e0a2a9c'; // Tu Auth Token de Twilio
+const authToken = '63f8b16ff60ce1062f3758c80d1ed8db'; // Tu Auth Token de Twilio
 const client = twilio(accountSid, authToken);
 
 // Crear una instancia de Express
