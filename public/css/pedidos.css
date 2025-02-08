@@ -160,7 +160,7 @@ i {
     bottom: 0;
     width: 100%;
     height: 10vh;
-    background-color: #1c1c1c81;
+    background: linear-gradient(180deg, white, rgb(251, 240, 211));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,7 +177,7 @@ i {
     text-align: center;
     cursor: pointer;
     transition: opacity 0.3s ease;
-    color: rgb(221, 255, 246);
+    color: rgb(32, 18, 0);
 }
 
 /* Icono de Font Awesome */
@@ -801,13 +801,13 @@ i {
 .routine-included {
     width: 85%;
     height: auto;
-    background: linear-gradient(135deg, #6d7c427b, #495d137b);
+    background: linear-gradient(135deg, #12180093, #1a2200c0);
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     border-radius: 6vw;
-
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.271);
 }
 
 .routine-included-1 {
@@ -1746,6 +1746,7 @@ i {
     gap: 1vw;
     padding-left: 3%;
     padding-right: 3%;
+    box-sizing: border-box;
 }
 
 .zona-cantidad {
