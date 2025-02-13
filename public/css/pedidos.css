@@ -160,7 +160,7 @@ i {
     bottom: 0;
     width: 100%;
     height: 10vh;
-    background: linear-gradient(180deg, white, rgb(251, 240, 211));
+    background: linear-gradient(180deg,  rgb(180, 255, 242), rgb(117, 192, 168));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,7 +177,7 @@ i {
     text-align: center;
     cursor: pointer;
     transition: opacity 0.3s ease;
-    color: rgb(32, 18, 0);
+    color: rgb(0, 41, 40);
 }
 
 /* Icono de Font Awesome */
@@ -801,13 +801,13 @@ i {
 .routine-included {
     width: 85%;
     height: auto;
-    background: linear-gradient(135deg, #12180093, #1a2200c0);
+    background: linear-gradient(180deg,  rgb(0, 60, 50), rgb(0, 82, 56));
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     border-radius: 6vw;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.271);
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.074);
 }
 
 .routine-included-1 {
