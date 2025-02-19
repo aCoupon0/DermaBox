@@ -55,7 +55,7 @@ body {
 
 /* Estilo base para los productos */
 .flatlist {
-    width: 96%;
+    width: 93%;
     max-width: 600px;
     margin: 0 auto;
     padding: 0;
@@ -69,24 +69,23 @@ body {
     color: white;
     font-family: 'hb';
     height: 30vw;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.229), rgba(123, 123, 123, 0.263));
+    background: linear-gradient(90deg, rgba(29, 29, 29, 0.769), rgb(0, 35, 28));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px); /* Añadir prefijo */
     box-shadow: 0 4px 17px rgba(255, 255, 255, 0);
     padding-top: 1vw;
     padding-bottom: 1vw;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.148);
+    border-bottom: 1px solid rgba(151, 151, 151, 0.422);
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.273);
 }
 
 .first-item {
-    box-shadow: 0px -4px 15px rgba(255, 255, 255, 0.069), 0px -4px 15px rgba(173, 216, 230, 0.03);
     border-top: none;
     border-top-left-radius: 5vw;
     border-top-right-radius: 5vw;
 }
 
 .last-item {
-    box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.065), 0px 8px 15px rgba(173, 216, 230, 0.045);
     border-bottom: none;
     border-bottom-left-radius: 5vw;
     border-bottom-right-radius: 5vw;
@@ -140,7 +139,7 @@ body {
 }
 
 .zona-foto img {
-    width: 95%;
+    width: 90%;
     height: auto;
 }
 
@@ -160,8 +159,10 @@ body {
     align-items: center;
     text-align: left;
     font-family: 'hb';
-    color: white;
-    font-size: 1.1rem;
+    color: rgb(255, 255, 255);
+    font-size: 4vw;
+    padding-right: 3vw;
+    box-sizing: border-box;
 }
 
 .bloque-2 p {
@@ -187,7 +188,7 @@ body {
     width: 35%;
     max-width: 40%;
     height: 59%;
-    background-color: rgba(146, 255, 250, 0.129);
+    background-color: rgba(146, 255, 250, 0.024);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,10 +198,11 @@ body {
 }
 
 .tipo-producto {
-    font-size: 3.8vw;
+    font-size: 3vw;
     font-family: 'hb';
-    color: rgba(160, 253, 247, 0.811);
+    color: rgba(0, 179, 167, 0.811);
     text-decoration: wavy;
+    font-weight: 700;
 }
 
 .bloque-3-1 {
@@ -220,22 +222,23 @@ body {
 }
 
 .cantidad {
-    font-size: 1.1rem;
+    font-size: 4vw;
     font-family: 'h';
     font-weight: 300;
-    color: white;
+    color: rgb(182, 182, 182);
 }
 
 .valor {
-    font-size: 1.3rem;
+    font-size: 4.5vw;
     font-family: 'hb';
-    color: #B0F691;
+    font-weight: 700;
+    color: #67b645;
 }
 
 span {
-    font-size: 1rem;
+    font-size: 3vw;
     font-family: 'hb';
-    color: #B0F691;
+    color: #67b645;
 }
 
 .price-zone {
@@ -266,15 +269,15 @@ span {
 }
 
 .purchase-btn {
-    height: 8vh;
+    height: auto;
     width: 80%;
+    padding: 3vw 0 3vw 0;
     border-radius: 15vw;
-    color: rgb(71, 56, 3);
-    background-color: white;
+    color: rgb(71, 55, 0);
+    background-color: rgb(255, 251, 237);
     font-family: 'hb';
     font-size: 5.5vw;
     border: none;
-    font-weight: 600;
 }
 
 .precio {
@@ -318,26 +321,29 @@ span {
 
 .duration-zone {
     width: 100%;
-    height: 13vw;
-    background: linear-gradient(135deg, #d2f8ff, rgb(177, 243, 255));
+    height: auto;
+    padding: 2vw 0 2vw 6vw;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #ffffff, rgb(255, 255, 248));
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     gap: 1.5vw;
-    padding-left: 6vw;
 }
 
 .duration-1 {
     font-family: 'h';
-    font-size: 6vw;
-    color: rgb(0, 52, 63);
+    font-size: 5vw;
+    color: rgb(17, 13, 0);
+    margin: 0;
 }
 
 .duration-2 {
     font-family: 'hb';
-    font-size: 6vw;
-    color: rgb(0, 52, 63);
+    font-size: 5vw;
+    color: rgb(0, 0, 0);
+    margin: 0;
 }
 
 .routine-title {
@@ -752,6 +758,7 @@ input::placeholder {
     border-radius: 15vw;
     background-color: white;
     margin-top: 4vw;
+    margin-bottom: 6vw;
 }
 
 .selection-group {
