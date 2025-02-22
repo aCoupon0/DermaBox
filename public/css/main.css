@@ -49,6 +49,21 @@ section {
     position: relative;
 }
 
+.pre-overlay-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.568);
+    opacity: 0;
+    z-index: 8;
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease-in-out ;
+}
+
 .overlay {
     position: absolute; /* Hace que el div se superponga */
     top: 75vh;
@@ -58,12 +73,14 @@ section {
     background: linear-gradient(135deg, #ffffff, #edfffe);
     z-index: 10; /* Asegura que el overlay esté encima de los demás elementos */
     pointer-events: auto; 
-    transition: top 0.5s ease;
+    transition: all 0.5s ease;
     border-radius: 5vw;
     display: block;
     overflow-y: auto; /* Habilita el scroll vertical */
     overflow-x: hidden;
 }
+
+
 
 .overlay-1 {
     width: 100%;
@@ -71,12 +88,12 @@ section {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     border-top-left-radius: 5vw;
     border-top-right-radius: 5vw;
-    background: linear-gradient(to bottom, #9dd9ff, #abddfc);
+    background: linear-gradient(to bottom, #f5f5f5, #edf8fe);
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: "hb";
-    color: #002c48c0;
+    color: #00090fc0;
     font-size: 4.5vw;
     flex-direction: row;
     position: sticky; /* Se queda fijo en su contenedor padre */
@@ -89,17 +106,18 @@ section {
 }
 
 .overlay-1-btn {
-    height: 60%;
-    width: 25%;
-    border-radius: 5vw;
-    border: 1px solid #002b456c;
+    height: auto;
+    width: auto;
+    padding: 3vw;
+    box-sizing: border-box;
+    border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 4vw;
     opacity: 0; /* Inicia invisible */
-    transition: opacity 1s ease;
-    background-color: rgb(244, 254, 255);
+    transition: opacity 0.5s ease;
+    font-size: 6.5vw;
 }
 
 .overlay-2 {
@@ -146,26 +164,25 @@ section {
     line-height: 6vw;
     font-family: "hb";
     font-size: 4.8vw;
-    color: rgb(164, 2, 2);
-    
-    padding: 1vw 15vw 1vw 15vw;
+    text-align: left;
+    padding: 1vw 10vw 1vw 8vw;
     box-sizing: border-box;
 }
 
 .yellow {
-    background-color: rgb(255, 234, 150);
-    color: rgb(118, 95, 0);
+    background-color: rgb(255, 245, 206);
+    color: rgb(122, 101, 14);
     box-shadow: 0px 2px 10px rgba(37, 0, 0, 0.725);
 }
 
 .red {
-    background-color: rgb(255, 191, 191);
-    color: rgb(70, 0, 0);
+    background-color: rgb(255, 225, 225);
+    color: rgb(124, 12, 12);
 }
 
 .green {
-    background-color: rgb(211, 255, 191);
-    color: rgb(7, 42, 0);
+    background-color: rgb(234, 255, 224);
+    color: rgb(39, 104, 26);
 }
 
 .overlay-4 {
@@ -200,7 +217,7 @@ section {
 }
 
 .overlay-6 {
-    width: 83%;
+    width: 75%;
     height: 90%;
     background: linear-gradient(135deg, #ffffffa6, #edfbfa91);
     border-radius: 7vw;
@@ -209,15 +226,17 @@ section {
 
 .overlay-6-1 {
     width: 100%;
-    height: 20%;
+    height: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     font-family: "h";
     color: #00181b;
-    font-size: 5vw;
+    font-size: 4.5vw;
     line-height: 6vw;
     flex-direction: column;
+    text-align: left;
+    padding: 4vw 7vw;
 }
 
 .overlay-6-2 {
@@ -227,7 +246,7 @@ section {
     align-items: center;
     font-family: "hb";
     color: #B83721;
-    font-size: 4.5vw;
+    font-size: 4vw;
     line-height: 5vw;
     flex-direction: column;
 }
@@ -420,10 +439,10 @@ section {
 
 .button {
     font-size: 1.3rem;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border: none;
-    color: #B0F691;
-    background-color: #0f3200;
+    color: #0b2400;
+    background: linear-gradient(135deg, #befba5, #B2E6A6);
     cursor: pointer;
     width: auto;
     height: 14vw;
@@ -1351,10 +1370,6 @@ body.modal-active {
     cursor: pointer;
 }
 
-.close-18 {
-    background-color: #053a00;
-    color: white;
-}
 
 .back-18 {
     background-color: #480000;

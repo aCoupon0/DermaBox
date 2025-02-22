@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     let overlay = document.querySelector('.overlay');
+    let overlayScreen = document.querySelector('.pre-overlay-screen')
     let startTouch;
     let isSliding = false;
     let botonCerrar = document.querySelector('.overlay-1-btn')
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             isSliding = true;
             overlay.style.top = '20vh';
             botonCerrar.style.opacity = '1';
+            overlayScreen.style.opacity = '1'
         }
     });
 
@@ -123,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     bloque1.addEventListener('touchstart', function () {
         overlay.style.top = '75vh';
         botonCerrar.style.opacity = '0';
+        overlayScreen.style.opacity = '0'
         isSliding = false;  // Reiniciar el flag
     });
 
@@ -131,12 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.style.top = '75vh';
         botonCerrar.style.opacity = '0';
         isSliding = false;  // Reiniciar el flag
+        overlayScreen.style.opacity = '0'
     });
 
     botonCerrar.addEventListener('touchstart', function () {
         overlay.style.top = '75vh';
         botonCerrar.style.opacity = '0';
         isSliding = false;  // Reiniciar el flag
+        overlayScreen.style.opacity = '0'
     });
 
 
