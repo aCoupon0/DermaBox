@@ -567,16 +567,15 @@ i {
 
 .boton-omitir {
     width: 93%;
-    height: 65%;
+    height: 67%;
     border-radius: 15vw;
-    background-color:   #001e1d;
     border: none;
     font-size: 5vw;
-    color: #00fffb;
+    color: #002d2c;
     font-family: 'hb';
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-    background: linear-gradient(135deg, #001e1d, #003534);
+    background: linear-gradient(90deg, #e2fffe, #7ecfce);
     box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.102), 0px 4px 15px rgba(173, 216, 230, 0.035);
 }
 
