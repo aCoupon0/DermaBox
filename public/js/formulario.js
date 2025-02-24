@@ -516,7 +516,7 @@ const replaceData = [
     {
         nombre: 'Smoothing SA Cleanser de CeraVe',
         cantidad: 237,
-        valor: 81900,
+        valor: 83200,
         categoria: "LIMPIADOR",
         foto: "renewing",
         tiempo: "MN",
@@ -542,7 +542,7 @@ const replaceData = [
     {
         nombre: 'Neutrogena Hydroboost',
         cantidad: 50,
-        valor: 73500,
+        valor: 79700,
         categoria: "HIDRATANTE",
         foto: "neutrogena-2",
         tiempo: "N",
@@ -568,7 +568,7 @@ const replaceData = [
     {
         nombre: 'Eucerin Oil Control FPS+50',
         cantidad: 50,
-        valor: 134000,
+        valor: 112500,
         categoria: "BLOQUEADOR",
         foto: "eucerin",
         tiempo: "M",
@@ -594,7 +594,7 @@ const replaceData = [
     {
         nombre: 'Differin Adapalene 0.1%',
         cantidad: 30,
-        valor: 134100,
+        valor: 134500,
         categoria: "POTENCIADOR",
         foto: "adapaleno",
         tiempo: "N",
@@ -646,7 +646,7 @@ const replaceData = [
     {
         nombre: 'The Ordinary Niacinamida 10% + Zinc 1%',
         cantidad: 30,
-        valor: 77900,
+        valor: 78500,
         categoria: "POTENCIADOR",
         foto: "to-niacinamida",
         tiempo: "N",
@@ -672,7 +672,7 @@ const replaceData = [
     {
         nombre: 'La Roche-Posay Effaclar Puryfing',
         cantidad: 200,
-        valor: 140000,
+        valor: 115200,
         categoria: "LIMPIADOR",
         foto: "effaclar",
         tiempo: "N",
@@ -698,7 +698,7 @@ const replaceData = [
     {
         nombre: 'Sérum Hialurónico 2% + B5 The Ordinary',
         cantidad: 30,
-        valor: 63000,
+        valor: 87400,
         categoria: "POTENCIADOR",
         foto: "to-hialuronico",
         tiempo: "N",
@@ -724,7 +724,7 @@ const replaceData = [
     {
         nombre: 'The Ordinary Retinol 0.2% in Squalane',
         cantidad: 30,
-        valor: 73500,
+        valor: 108500,
         categoria: "POTENCIADOR",
         foto: "to-retinol",
         tiempo: "N",
@@ -776,7 +776,7 @@ const replaceData = [
     {
         nombre: 'The Ordinary Ácido Glicólico 7% Toning Solution',
         cantidad: 240,
-        valor: 122300,
+        valor: 133500,
         categoria: "POTENCIADOR",
         foto: "to-glycolyc",
         tiempo: "N",
@@ -802,7 +802,7 @@ const replaceData = [
     {
         nombre: 'Differin Adapalene 0.1%',
         cantidad: 30,
-        valor: 134100,
+        valor: 134500,
         categoria: "POTENCIADOR",
         foto: "adapaleno",
         tiempo: "N",
@@ -828,7 +828,7 @@ const replaceData = [
     {
         nombre: 'Differin Adapalene 0.1%',
         cantidad: 30,
-        valor: 134100,
+        valor: 134500,
         categoria: "POTENCIADOR",
         foto: "adapaleno",
         tiempo: "N",
@@ -854,7 +854,7 @@ const replaceData = [
     {
         nombre: 'The Ordinary Retinol 0.2% in Squalane',
         cantidad: 30,
-        valor: 73500,
+        valor: 108500,
         categoria: "POTENCIADOR",
         foto: "to-retinol",
         tiempo: "N",
@@ -880,7 +880,7 @@ const replaceData = [
     {
         nombre: 'Smoothing SA Cleanser de CeraVe',
         cantidad: 237,
-        valor: 81900,
+        valor: 83200,
         categoria: "LIMPIADOR",
         foto: "renewing",
         tiempo: "N",
@@ -959,7 +959,7 @@ const replaceData = [
     {
         nombre: 'Limpiador Hidratante de CeraVe',
         cantidad: 473,
-        valor: 112500,
+        valor: 89300,
         categoria: "LIMPIADOR",
         foto: "cerave-hydrating",
         tiempo: "N",
@@ -985,7 +985,7 @@ const replaceData = [
     {
         nombre: 'Limpiador Hidratante de CeraVe',
         cantidad: 473,
-        valor: 112500,
+        valor: 89300,
         categoria: "LIMPIADOR",
         foto: "cerave-hydrating",
         tiempo: "MN",
@@ -1037,7 +1037,7 @@ const replaceData = [
     {
         nombre: 'ISDIN Fusion Water Magic SPF 50',
         cantidad: 50,
-        valor: 109900,
+        valor: 119500,
         categoria: "BLOQUEADOR",
         foto: "isdin",
         tiempo: "M",
@@ -1064,7 +1064,7 @@ const replaceData = [
     {
         nombre: 'Crema Hidratante de Cerave',
         cantidad: 454,
-        valor: 91900,
+        valor: 119400,
         categoria: "HIDRATANTE",
         foto: "cerave-cream",
         tiempo: "MN",
@@ -1090,7 +1090,7 @@ const replaceData = [
     {
         nombre: 'Limpiador Hidratante de CeraVe',
         cantidad: 473,
-        valor: 112500,
+        valor: 89300,
         categoria: "LIMPIADOR",
         foto: "cerave-hydrating",
         tiempo: "N",
@@ -1116,7 +1116,7 @@ const replaceData = [
     {
         nombre: 'Crema Hidratante de Cerave',
         cantidad: 454,
-        valor: 91900,
+        valor: 119400,
         categoria: "HIDRATANTE",
         foto: "cerave-cream",
         tiempo: "MN",
@@ -1143,7 +1143,7 @@ const replaceData = [
     {
         nombre: 'Neutrogena Hydroboost',
         cantidad: 50,
-        valor: 73500,
+        valor: 79700,
         categoria: "HIDRATANTE",
         foto: "neutrogena-2",
         tiempo: "N",
@@ -1169,7 +1169,7 @@ const replaceData = [
     {
         nombre: 'The Ordinary Ácido Glicólico 7% Toning Solution',
         cantidad: 240,
-        valor: 122300,
+        valor: 133500,
         categoria: "POTENCIADOR",
         foto: "to-glycolyc",
         tiempo: "N",
@@ -1204,7 +1204,7 @@ function updateDurationAndDate() {
     
         {
             nombre: 'La Roche-Posay Effaclar Puryfing',
-            duration: 3
+            duration: 2
         },
     
         {
@@ -1224,7 +1224,7 @@ function updateDurationAndDate() {
     
         {
             nombre: 'Neutrogena Hydroboost',
-            duration: 6
+            duration: 2
         },
     
         {
@@ -1249,7 +1249,7 @@ function updateDurationAndDate() {
     
         {
             nombre: 'ISDIN Fusion Water Magic SPF 50',
-            duration: 3
+            duration: 2
         },
     
         {
@@ -1289,17 +1289,17 @@ function updateDurationAndDate() {
     
         {
             nombre: 'Sérum Hialurónico 2% + B5 The Ordinary',
-            duration: 7
+            duration: 4
         },
     
         {
             nombre: 'The Ordinary Retinol 0.2% in Squalane',
-            duration: 3
+            duration: 4
         },
     
         {
             nombre: 'CeraVe Skin Renewing Vitamin C Serum',
-            duration: 3
+            duration: 4
         },
     
         {
@@ -1309,7 +1309,7 @@ function updateDurationAndDate() {
     
         {
             nombre: 'Ácido Láctico 10% de The Ordinary',
-            duration: 3
+            duration: 4
         }
     ]
     let durationTime = 0;

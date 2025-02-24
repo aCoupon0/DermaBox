@@ -531,7 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Smoothing SA Cleanser de CeraVe',
             cantidad: 237,
-            valor: 81900,
+            valor: 83200,
             categoria: "LIMPIADOR",
             foto: "renewing",
             tiempo: "MN",
@@ -547,7 +547,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'La Roche-Posay Effaclar Puryfing',
             cantidad: 200,
-            valor: 140000,
+            valor: 115200,
             categoria: "LIMPIADOR",
             foto: "effaclar",
             tiempo: "N",
@@ -562,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Smoothing SA Cleanser de CeraVe',
             cantidad: 237,
-            valor: 81900,
+            valor: 83200,
             categoria: "LIMPIADOR",
             foto: "renewing",
             tiempo: "N",
@@ -578,7 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Limpiador Hidratante de CeraVe',
             cantidad: 473,
-            valor: 112500,
+            valor: 89300,
             categoria: "LIMPIADOR",
             foto: "cerave-hydrating",
             tiempo: "N",
@@ -594,7 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Limpiador Hidratante de CeraVe',
             cantidad: 473,
-            valor: 112500,
+            valor: 89300,
             categoria: "LIMPIADOR",
             foto: "cerave-hydrating",
             tiempo: "MN",
@@ -609,7 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Limpiador Hidratante de CeraVe',
             cantidad: 473,
-            valor: 112500,
+            valor: 89300,
             categoria: "LIMPIADOR",
             foto: "cerave-hydrating",
             tiempo: "N",
@@ -727,7 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Neutrogena Hydroboost',
             cantidad: 50,
-            valor: 73500,
+            valor: 79700,
             categoria: "HIDRATANTE",
             foto: "neutrogena-2",
             tiempo: "N",
@@ -741,7 +741,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Facial Moisturising Lotion PM',
             cantidad: 52,
-            valor: 87900,
+            valor: 69000,
             categoria: "HIDRATANTE",
             foto: "pm-lotion",
             tiempo: "N",
@@ -757,7 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Facial Moisturising Lotion PM',
             cantidad: 52,
-            valor: 87900,
+            valor: 69000,
             categoria: "HIDRATANTE",
             foto: "pm-lotion",
             tiempo: "N",
@@ -774,7 +774,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Crema Hidratante de Cerave',
             cantidad: 454,
-            valor: 91900,
+            valor: 119400,
             categoria: "HIDRATANTE",
             foto: "cerave-cream",
             tiempo: "MN",
@@ -789,7 +789,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Crema Hidratante de Cerave',
             cantidad: 454,
-            valor: 91900,
+            valor: 119400,
             categoria: "HIDRATANTE",
             foto: "cerave-cream",
             tiempo: "MN",
@@ -808,7 +808,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Neutrogena Hydroboost',
             cantidad: 50,
-            valor: 73500,
+            valor: 79700,
             categoria: "HIDRATANTE",
             foto: "neutrogena-2",
             tiempo: "N",
@@ -864,7 +864,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Eucerin Oil Control FPS+50',
             cantidad: 50,
-            valor: 134000,
+            valor: 112500,
             categoria: "BLOQUEADOR",
             foto: "eucerin",
             tiempo: "M",
@@ -882,7 +882,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'ISDIN Fusion Water Magic SPF 50',
             cantidad: 50,
-            valor: 109900,
+            valor: 119500,
             categoria: "BLOQUEADOR",
             foto: "isdin",
             tiempo: "M",
@@ -1073,7 +1073,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Differin Adapalene 0.1%',
             cantidad: 30,
-            valor: 134100,
+            valor: 134500,
             categoria: "POTENCIADOR",
             foto: "adapaleno",
             tiempo: "N",
@@ -1086,7 +1086,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'The Ordinary Niacinamida 10% + Zinc 1%',
             cantidad: 30,
-            valor: 77900,
+            valor: 78500,
             categoria: "POTENCIADOR",
             foto: "to-niacinamida",
             tiempo: "N",
@@ -1100,7 +1100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Sérum Hialurónico 2% + B5 The Ordinary',
             cantidad: 30,
-            valor: 63000,
+            valor: 87400,
             categoria: "POTENCIADOR",
             foto: "to-hialuronico",
             tiempo: "N",
@@ -1117,7 +1117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'The Ordinary Retinol 0.2% in Squalane',
             cantidad: 30,
-            valor: 73500,
+            valor: 108500,
             categoria: "POTENCIADOR",
             foto: "to-retinol",
             tiempo: "N",
@@ -1144,7 +1144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'The Ordinary Ácido Glicólico 7% Toning Solution',
             cantidad: 240,
-            valor: 122300,
+            valor: 133500,
             categoria: "POTENCIADOR",
             foto: "to-glycolyc",
             tiempo: "N",
@@ -1157,7 +1157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Differin Adapalene 0.1%',
             cantidad: 30,
-            valor: 134100,
+            valor: 134500,
             categoria: "POTENCIADOR",
             foto: "adapaleno",
             tiempo: "N",
@@ -1170,7 +1170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'Differin Adapalene 0.1%',
             cantidad: 30,
-            valor: 134100,
+            valor: 134500,
             categoria: "POTENCIADOR",
             foto: "adapaleno",
             tiempo: "N",
@@ -1183,7 +1183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'The Ordinary Retinol 0.2% in Squalane',
             cantidad: 30,
-            valor: 73500,
+            valor: 108500,
             categoria: "POTENCIADOR",
             foto: "to-retinol",
             tiempo: "N",
@@ -1209,7 +1209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             nombre: 'The Ordinary Ácido Glicólico 7% Toning Solution',
             cantidad: 240,
-            valor: 122300,
+            valor: 133500,
             categoria: "POTENCIADOR",
             foto: "to-glycolyc",
             tiempo: "N",
